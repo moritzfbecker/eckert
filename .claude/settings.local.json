@@ -10,7 +10,8 @@
       "Bash(git pull:*)",
       "Bash(git push:*)",
       "WebFetch(domain:racing.porsche.com)",
-      "Bash(git tag:*)"
+      "Bash(git tag:*)",
+      "Bash(npm install)"
     ],
     "deny": [],
     "ask": []
