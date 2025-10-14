@@ -15,7 +15,8 @@
       "Bash(npm install:*)",
       "Bash(pnpm install)",
       "Bash(pnpm run dev)",
-      "WebFetch(domain:www.figma.com)"
+      "WebFetch(domain:www.figma.com)",
+      "Bash(npm version:*)"
     ],
     "deny": [],
     "ask": []
