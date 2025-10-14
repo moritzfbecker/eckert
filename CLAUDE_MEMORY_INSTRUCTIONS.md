@@ -421,57 +421,63 @@ User configures them before production use.
 ### 15. Styling Guidelines (Porsche + Apple Inspired)
 
 ```
-CRITICAL RULE: Follow strict styling guidelines!
+CRITICAL RULE: NUR Schwarz & Weiß! KEINE Grautöne!
 
 Design Philosophy:
-- Minimalist Black/White (80% Black, 15% Gray/White, 5% Gradient)
+- NUR Schwarz & Weiß (keine Grautöne!)
+- Weißer Seitenhintergrund mit schwarzem Text
+- Schwarze Boxen/Buttons mit weißem Text
+- Apple Gradient NUR für Hover-Effekte (nie als Standard!)
 - Porsche-inspired: Clean, Premium, Professional
-- Apple-inspired: Minimal, Smooth Animations
-- Apple Gradient ONLY for CTAs and Highlights
 
-Colors (ALWAYS use):
-- bg-eckert-black (#010205) - Primary background
-- text-white - Primary text
-- text-gray-300 - Secondary text
-- bg-apple-gradient - Only for CTAs!
-- border-white/10 - Subtle borders
+Farbschema (STRIKT):
+Seite:
+- bg-eckert-white (#FFFFFF) - Seitenhintergrund
+- text-black - Text auf weißem Hintergrund
 
-Components (ALWAYS use from shared):
-import { Button, GlassCard, Container, Section, Hero, Input } from '@eckert-preisser/shared/ui';
+Boxen/Cards/Buttons:
+- bg-black (#000000) - Boxen Hintergrund
+- text-white - Text IN schwarzen Boxen
 
-Never create custom styled divs - use shared components!
+Navigation:
+- bg-white/80 backdrop-blur-porsche - Weißer Header
+- text-black - Schwarze Nav Links
+- border-black/10 - Subtle borders
 
-Tailwind Classes (MANDATORY):
-- Rounded: rounded-md (8px default, Porsche style)
-- Backdrop: backdrop-blur-porsche (32px, Porsche style)
-- Hover: hover:scale-[1.02] for cards, hover:scale-105 for buttons
-- Transitions: transition-all duration-300
-- Responsive: Mobile-first (text-2xl md:text-4xl lg:text-6xl)
+VERBOTEN:
+- text-gray-300, text-gray-400, text-gray-500 (KEINE Grautöne!)
+- bg-gray-50, bg-gray-100 (KEINE Grautöne!)
+- bg-apple-gradient auf Buttons (nur schwarz/weiß!)
 
-Animations (Framer Motion):
-- Scroll: whileInView with viewport={{ once: true, amount: 0.3 }}
-- Hover: whileHover={{ scale: 1.05 }}
-- Stagger: staggerChildren for lists
-- Float: animate={{ y: [0, -10, 0] }} for subtle movement
+Apple Gradient (NUR für Hover!):
+Official Colors: Pink (#FF2D55) → Purple (#AF52DE) → Blue (#007AFF)
 
-Typography:
-- Headlines: font-bold text-5xl md:text-6xl lg:text-7xl
-- Body: text-base md:text-lg text-gray-300
-- Line height: leading-tight (headlines), leading-relaxed (body)
+Verwendung:
+- hover:shadow-apple-glow (Glow um Buttons)
+- hover:bg-apple-gradient hover:bg-clip-text hover:text-transparent (Logo)
+- after:bg-apple-gradient (Underline bei Nav Links)
+- hover:bg-apple-gradient (Language Switcher)
 
-Layout:
-- Container: <Container size="lg">
-- Section: <Section variant="dark" spacing="lg">
-- Grid: grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
+NIEMALS:
+- bg-apple-gradient als Button Background
+- text-gradient als Standard
+- Gradient auf großen Flächen
 
-Never use:
-- Inline styles
-- Custom CSS files
-- Hardcoded colors
-- Desktop-first responsive
-- console.log for styling debug
+Components (ALWAYS from shared):
+import { Button, GlassCard, Container, Section, Hero, Input, Footer } from '@eckert-preisser/shared/ui';
 
-See STYLING_GUIDELINES.md for complete reference!
+Button Variants (ONLY 2!):
+- primary: bg-black text-white hover:shadow-apple-glow
+- secondary: bg-white text-black border border-black/20 hover:shadow-apple-glow
+
+Tailwind (MANDATORY):
+- rounded (8px default)
+- backdrop-blur-porsche (32px)
+- hover:scale-105 (buttons), hover:scale-[1.02] (cards)
+- transition-all duration-300
+- Mobile-first: text-2xl md:text-4xl lg:text-6xl
+
+See STYLING_GUIDELINES.md v2.0.0 for complete reference!
 ```
 
 ---
