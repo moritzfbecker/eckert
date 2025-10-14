@@ -11,7 +11,11 @@
       "Bash(git push:*)",
       "WebFetch(domain:racing.porsche.com)",
       "Bash(git tag:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(pnpm install)",
+      "Bash(pnpm run dev)",
+      "WebFetch(domain:www.figma.com)"
     ],
     "deny": [],
     "ask": []

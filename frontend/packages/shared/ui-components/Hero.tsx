@@ -34,8 +34,8 @@ export const Hero: React.FC<HeroProps> = ({
       {gradient && (
         <div className="
           absolute inset-0
-          bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-yellow-500/10
-          opacity-20
+          bg-subtle-gradient
+          opacity-30
         " />
       )}
 
@@ -61,6 +61,7 @@ export const HeroTitle: React.FC<{
     className={clsx(
       'text-5xl md:text-6xl lg:text-7xl',
       'font-bold leading-tight',
+      'text-black',
       'mb-6',
       className
     )}
@@ -82,7 +83,7 @@ export const HeroSubtitle: React.FC<{
     transition={{ duration: 0.6, delay: 0.2 }}
     className={clsx(
       'text-xl md:text-2xl',
-      'text-gray-300',
+      'text-black',
       'mb-12',
       'max-w-2xl',
       className

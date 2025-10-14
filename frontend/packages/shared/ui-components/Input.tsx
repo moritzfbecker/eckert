@@ -17,7 +17,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className="w-full">
       {label && (
-        <label className="block text-sm font-medium text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-black mb-2">
           {label}
         </label>
       )}
@@ -25,12 +25,12 @@ export const Input: React.FC<InputProps> = ({
       <input
         className={clsx(
           'w-full px-4 py-3',
-          'bg-white/5 backdrop-blur-sm',
-          'border border-white/20',
+          'bg-white',
+          'border border-black/20',
           'rounded-md',
-          'text-white placeholder-gray-500',
-          'focus:bg-white/10',
-          'focus:border-white/40',
+          'text-black placeholder-black/40',
+          'focus:bg-white',
+          'focus:border-black/40',
           'focus:outline-none',
           'focus:ring-2 focus:ring-pink-500/50',
           'transition-all duration-300',
@@ -48,7 +48,7 @@ export const Input: React.FC<InputProps> = ({
       )}
 
       {helperText && !error && (
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-sm text-black">
           {helperText}
         </p>
       )}

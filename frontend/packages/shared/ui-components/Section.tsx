@@ -23,9 +23,9 @@ export const Section: React.FC<SectionProps> = ({
   animate = true,
 }) => {
   const variantClasses = {
-    default: 'bg-eckert-black',
-    dark: 'bg-gray-950',
-    darker: 'bg-gray-900',
+    default: 'bg-eckert-white',
+    dark: 'bg-white',
+    darker: 'bg-white',
   };
 
   const spacingClasses = {

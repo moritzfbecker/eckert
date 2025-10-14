@@ -20,8 +20,8 @@ export const Card: React.FC<CardProps> = ({
       transition={{ duration: 0.5 }}
       whileHover={hover ? { scale: 1.02, boxShadow: '0 0 25px rgba(236,72,153,0.3)' } : {}}
       className={clsx(
-        'bg-black border border-gray-800 rounded-lg p-6',
-        'hover:border-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-yellow-500',
+        'bg-black text-white rounded-lg p-6 shadow-subtle',
+        'hover:shadow-elevated',
         'transition-all duration-300',
         className
       )}

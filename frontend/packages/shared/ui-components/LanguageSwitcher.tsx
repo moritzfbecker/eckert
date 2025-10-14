@@ -39,8 +39,8 @@ export const LanguageSwitcher: React.FC = () => {
             px-3 py-1 rounded-md text-sm font-medium transition-all duration-300
             ${
               currentLang === lang.code
-                ? 'bg-apple-gradient text-white shadow-apple-glow'
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                ? 'bg-black text-white'
+                : 'bg-white text-black border border-black/20 hover:bg-apple-gradient hover:text-white hover:border-transparent'
             }
           `}
         >

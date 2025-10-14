@@ -28,12 +28,11 @@ export const GlassCard: React.FC<GlassCardProps> = ({
       viewport={{ once: true, amount: 0.3 }}
       whileHover={hover ? { scale: 1.02 } : {}}
       className={clsx(
-        'bg-white/5',
-        'backdrop-blur-md',
-        'border border-white/10',
+        'bg-black text-white',
         'rounded-lg',
         'p-8',
-        hover && 'hover:bg-white/10 hover:border-white/20',
+        'shadow-subtle',
+        hover && 'hover:shadow-elevated hover:scale-[1.02]',
         gradient && 'hover:shadow-apple-glow',
         'transition-all duration-300',
         className

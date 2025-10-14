@@ -1,19 +1,14 @@
 import { motion } from 'framer-motion'
-import {
-  Button,
-  GlassCard,
-  Container,
-  Section,
-  Hero,
-  HeroTitle,
-  HeroSubtitle,
-  HeroActions,
-} from '@eckert-preisser/shared/ui'
-import { t } from '@eckert-preisser/shared/utils'
+import { Button } from '../../../shared/ui-components/Button'
+import { GlassCard } from '../../../shared/ui-components/GlassCard'
+import { Container } from '../../../shared/ui-components/Container'
+import { Section } from '../../../shared/ui-components/Section'
+import { Hero, HeroTitle, HeroSubtitle, HeroActions } from '../../../shared/ui-components/Hero'
+import { t } from '../../../shared/utils/i18n'
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-eckert-black">
+    <div className="min-h-screen bg-eckert-white">
       {/* Hero Section */}
       <Hero>
         <Container>
@@ -22,13 +17,13 @@ const Home = () => {
             <div>
               <HeroTitle>
                 {t('home.hero.title')}{' '}
-                <span className="text-gradient">Eckert Preisser</span>
+                <span className="text-black">Eckert Preisser</span>
               </HeroTitle>
 
-              <HeroSubtitle>{t('home.hero.subtitle')}</HeroSubtitle>
+              <HeroSubtitle className="text-black">{t('home.hero.subtitle')}</HeroSubtitle>
 
               <HeroActions>
-                <Button variant="gradient" size="lg">
+                <Button variant="primary" size="lg">
                   {t('button.get.started')}
                 </Button>
                 <Button variant="secondary" size="lg">
@@ -46,12 +41,11 @@ const Home = () => {
             >
               <div className="
                 w-full h-96
-                bg-subtle-gradient
-                backdrop-blur-sm
-                border border-white/10
+                bg-black
                 rounded-2xl
                 flex items-center justify-center
                 shadow-elevated
+                border border-black/10
               ">
                 <div className="text-center">
                   <motion.div
@@ -61,7 +55,7 @@ const Home = () => {
                   >
                     🚀
                   </motion.div>
-                  <p className="text-2xl font-semibold text-gradient">
+                  <p className="text-2xl font-semibold text-white">
                     Enterprise Ready
                   </p>
                 </div>
@@ -79,10 +73,10 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 text-black"
           >
             {t('home.features.title')}{' '}
-            <span className="text-gradient">Eckert Preisser</span>
+            <span className="text-black">Eckert Preisser</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -96,8 +90,8 @@ const Home = () => {
               >
                 <GlassCard>
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-2xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">
+                  <h3 className="text-2xl font-semibold mb-3 text-white">{feature.title}</h3>
+                  <p className="text-white leading-relaxed">
                     {feature.description}
                   </p>
                 </GlassCard>
@@ -117,21 +111,20 @@ const Home = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="
               text-center
-              bg-subtle-gradient
-              backdrop-blur-sm
-              border border-white/10
+              bg-black text-white
               rounded-2xl
               p-12 md:p-16
+              shadow-elevated
             "
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to <span className="text-gradient">Transform</span> Your Business?
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Ready to Transform Your Business?
             </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            <p className="text-xl text-white mb-12 max-w-2xl mx-auto">
               Join thousands of companies using our enterprise platform
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="gradient" size="lg">
+              <Button variant="primary" size="lg">
                 {t('button.get.started')}
               </Button>
               <Button variant="secondary" size="lg">

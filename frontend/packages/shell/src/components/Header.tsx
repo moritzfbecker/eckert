@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { LanguageSwitcher } from '@eckert-preisser/shared/ui'
-import { t } from '@eckert-preisser/shared/utils'
+import { LanguageSwitcher } from '../../../shared/ui-components/LanguageSwitcher'
+import { t } from '../../../shared/utils/i18n'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -14,8 +14,8 @@ const Header = () => {
       transition={{ duration: 0.5 }}
       className="
         fixed top-0 left-0 right-0 z-50
-        bg-black/80 backdrop-blur-porsche
-        border-b border-white/10
+        bg-white/80 backdrop-blur-porsche
+        border-b border-black/10
         h-16 md:h-20
       "
     >
@@ -24,7 +24,7 @@ const Header = () => {
         <Link to="/" className="text-2xl font-bold">
           <motion.span
             whileHover={{ scale: 1.05 }}
-            className="text-gradient"
+            className="text-black hover:text-gradient transition-all duration-300"
           >
             Eckert Preisser
           </motion.span>
@@ -43,7 +43,7 @@ const Header = () => {
             whileTap={{ scale: 0.95 }}
             className="
               px-6 py-2
-              bg-apple-gradient
+              bg-black text-white
               rounded-md
               font-semibold
               hover:shadow-apple-glow
@@ -57,7 +57,7 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 text-white hover:bg-white/10 rounded-md transition-colors"
+          className="md:hidden p-2 text-black hover:bg-black/10 rounded-md transition-colors"
           aria-label="Toggle menu"
         >
           <svg
@@ -94,8 +94,8 @@ const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="
               md:hidden
-              bg-black/95 backdrop-blur-porsche
-              border-b border-white/10
+              bg-white/95 backdrop-blur-porsche
+              border-b border-black/10
             "
           >
             <div className="container mx-auto px-6 py-6 space-y-4">
@@ -109,14 +109,14 @@ const Header = () => {
                 {t('nav.dashboard')}
               </MobileNavLink>
 
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-4 border-t border-black/10">
                 <LanguageSwitcher />
               </div>
 
               <button
                 className="
                   w-full px-6 py-3
-                  bg-apple-gradient
+                  bg-black text-white
                   rounded-md
                   font-semibold
                   hover:shadow-apple-glow
@@ -138,8 +138,7 @@ const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) =>
   <Link
     to={to}
     className="
-      text-gray-300
-      hover:text-white
+      text-black
       font-medium
       transition-colors duration-300
       relative
@@ -168,8 +167,8 @@ const MobileNavLink = ({
     onClick={onClick}
     className="
       block px-4 py-3
-      text-gray-300 hover:text-white
-      hover:bg-white/5
+      text-black
+      hover:bg-black/5
       rounded-md
       font-medium
       transition-all duration-300

@@ -8,14 +8,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Eckert Preisser Brand Colors (Porsche-inspired)
-        'eckert-black': '#010205',
+        // Eckert Preisser Brand Colors
+        'eckert-black': '#000000',
         'eckert-white': '#FFFFFF',
 
-        // Apple Gradient Colors (nur für Akzente!)
-        'apple-pink': '#ec4899',
-        'apple-purple': '#a855f7',
-        'apple-yellow': '#eab308',
+        // Official Apple Gradient Colors (from Apple Design Resources)
+        'apple-pink': '#FF2D55',      // Apple Pink
+        'apple-purple': '#AF52DE',    // Apple Purple
+        'apple-blue': '#007AFF',      // Apple Blue
+        'apple-orange': '#FF9500',    // Apple Orange
+        'apple-yellow': '#FFCC00',    // Apple Yellow
+        'apple-green': '#34C759',     // Apple Green
+        'apple-red': '#FF3B30',       // Apple Red
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
@@ -28,15 +32,35 @@ export default {
         'display-xl': ['4.5rem', { lineHeight: '5rem', letterSpacing: '-0.02em' }],     // 72px
       },
       backgroundImage: {
-        'apple-gradient': 'linear-gradient(to right, #ec4899, #a855f7, #eab308)',
-        'apple-gradient-hover': 'linear-gradient(to right, #db2777, #9333ea, #ca8a04)',
-        'subtle-gradient': 'linear-gradient(to bottom right, rgba(236, 72, 153, 0.05), rgba(234, 179, 8, 0.05))',
+        // Official Apple Gradients (from Apple Design Resources)
+
+        // Primary: Pink → Purple → Blue (most common)
+        'apple-gradient': 'linear-gradient(135deg, #FF2D55 0%, #AF52DE 50%, #007AFF 100%)',
+
+        // Warm: Orange → Pink → Red
+        'apple-gradient-warm': 'linear-gradient(135deg, #FF9500 0%, #FF2D55 50%, #FF3B30 100%)',
+
+        // Cool: Green → Blue → Purple
+        'apple-gradient-cool': 'linear-gradient(135deg, #34C759 0%, #007AFF 50%, #AF52DE 100%)',
+
+        // Sunset: Yellow → Orange → Pink
+        'apple-gradient-sunset': 'linear-gradient(135deg, #FFCC00 0%, #FF9500 50%, #FF2D55 100%)',
+
+        // Purple Dream: Purple → Pink
+        'apple-gradient-purple': 'linear-gradient(135deg, #AF52DE 0%, #FF2D55 100%)',
+
+        // Ocean: Blue → Purple
+        'apple-gradient-ocean': 'linear-gradient(135deg, #007AFF 0%, #AF52DE 100%)',
+
+        // Subtle backgrounds
+        'subtle-gradient': 'linear-gradient(to bottom right, rgba(255, 45, 85, 0.03), rgba(175, 82, 222, 0.03))',
+        'subtle-gradient-warm': 'linear-gradient(to bottom right, rgba(255, 149, 0, 0.03), rgba(255, 45, 85, 0.03))',
       },
       boxShadow: {
-        'apple-glow': '0 0 25px rgba(236, 72, 153, 0.5)',
-        'apple-glow-lg': '0 0 40px rgba(236, 72, 153, 0.6)',
-        'subtle': '0 2px 8px rgba(0, 0, 0, 0.2)',
-        'elevated': '0 8px 24px rgba(0, 0, 0, 0.3)',
+        'apple-glow': '0 0 30px rgba(255, 45, 85, 0.4), 0 0 60px rgba(175, 82, 222, 0.3)',
+        'apple-glow-lg': '0 0 40px rgba(255, 45, 85, 0.5), 0 0 80px rgba(175, 82, 222, 0.4)',
+        'subtle': '0 2px 8px rgba(0, 0, 0, 0.08)',
+        'elevated': '0 8px 24px rgba(0, 0, 0, 0.12)',
       },
       backdropBlur: {
         'porsche': '32px',
@@ -86,8 +110,8 @@ export default {
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 5px rgba(236, 72, 153, 0.5)' },
-          '100%': { boxShadow: '0 0 25px rgba(236, 72, 153, 0.8)' },
+          '0%': { boxShadow: '0 0 5px rgba(255, 45, 85, 0.5)' },
+          '100%': { boxShadow: '0 0 25px rgba(255, 45, 85, 0.8), 0 0 50px rgba(175, 82, 222, 0.6)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
