@@ -1,87 +1,146 @@
 import { motion } from 'framer-motion'
-import { Button } from '@eckert-preisser/shared/ui'
-import { Card } from '@eckert-preisser/shared/ui'
-import { fadeInUp, slideInFromLeft, slideInFromRight } from '@eckert-preisser/shared/animations'
+import {
+  Button,
+  GlassCard,
+  Container,
+  Section,
+  Hero,
+  HeroTitle,
+  HeroSubtitle,
+  HeroActions,
+} from '@eckert-preisser/shared/ui'
+import { t } from '@eckert-preisser/shared/utils'
 
 const Home = () => {
   return (
-    <div className="pt-20">
+    <div className="min-h-screen bg-eckert-black">
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20 min-h-screen flex items-center">
-        <div className="grid md:grid-cols-2 gap-12 items-center w-full">
-          <motion.div
-            initial={slideInFromLeft.initial}
-            animate={slideInFromLeft.animate}
-            transition={slideInFromLeft.transition}
-          >
-            <h1 className="text-6xl font-bold mb-6">
-              Welcome to{' '}
-              <span className="text-gradient">
-                Eckert Preisser
-              </span>
-            </h1>
-            <p className="text-xl text-gray-400 mb-8">
-              Enterprise-level solutions for modern businesses.
-              Built with cutting-edge technology and designed for scale.
-            </p>
-            <div className="flex gap-4">
-              <Button variant="gradient" size="lg">
-                Get Started
-              </Button>
-              <Button variant="secondary" size="lg">
-                Learn More
-              </Button>
-            </div>
-          </motion.div>
+      <Hero>
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Hero Content */}
+            <div>
+              <HeroTitle>
+                {t('home.hero.title')}{' '}
+                <span className="text-gradient">Eckert Preisser</span>
+              </HeroTitle>
 
-          <motion.div
-            initial={slideInFromRight.initial}
-            animate={slideInFromRight.animate}
-            transition={slideInFromRight.transition}
-            className="relative"
-          >
-            <div className="w-full h-96 bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-yellow-500/20 rounded-lg backdrop-blur-sm border border-gray-800 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🚀</div>
-                <p className="text-2xl font-semibold text-gradient">
-                  Enterprise Ready
-                </p>
-              </div>
+              <HeroSubtitle>{t('home.hero.subtitle')}</HeroSubtitle>
+
+              <HeroActions>
+                <Button variant="gradient" size="lg">
+                  {t('button.get.started')}
+                </Button>
+                <Button variant="secondary" size="lg">
+                  {t('button.learn.more')}
+                </Button>
+              </HeroActions>
             </div>
-          </motion.div>
-        </div>
-      </section>
+
+            {/* Hero Visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative"
+            >
+              <div className="
+                w-full h-96
+                bg-subtle-gradient
+                backdrop-blur-sm
+                border border-white/10
+                rounded-2xl
+                flex items-center justify-center
+                shadow-elevated
+              ">
+                <div className="text-center">
+                  <motion.div
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                    className="text-6xl mb-4"
+                  >
+                    🚀
+                  </motion.div>
+                  <p className="text-2xl font-semibold text-gradient">
+                    Enterprise Ready
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </Container>
+      </Hero>
 
       {/* Features Section */}
-      <section className="container mx-auto px-6 py-20">
-        <motion.h2
-          initial={fadeInUp.initial}
-          whileInView={fadeInUp.animate}
-          transition={fadeInUp.transition}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12"
-        >
-          Why Choose <span className="text-gradient">Eckert Preisser</span>
-        </motion.h2>
+      <Section variant="dark" spacing="lg">
+        <Container>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-4xl md:text-5xl font-bold text-center mb-16"
+          >
+            {t('home.features.title')}{' '}
+            <span className="text-gradient">Eckert Preisser</span>
+          </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card>
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <GlassCard>
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-2xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* CTA Section */}
+      <Section spacing="xl">
+        <Container size="md">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="
+              text-center
+              bg-subtle-gradient
+              backdrop-blur-sm
+              border border-white/10
+              rounded-2xl
+              p-12 md:p-16
+            "
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Ready to <span className="text-gradient">Transform</span> Your Business?
+            </h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Join thousands of companies using our enterprise platform
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="gradient" size="lg">
+                {t('button.get.started')}
+              </Button>
+              <Button variant="secondary" size="lg">
+                Contact Sales
+              </Button>
+            </div>
+          </motion.div>
+        </Container>
+      </Section>
     </div>
   )
 }

@@ -418,7 +418,65 @@ User configures them before production use.
 
 ---
 
-### 15. Config-First Development
+### 15. Styling Guidelines (Porsche + Apple Inspired)
+
+```
+CRITICAL RULE: Follow strict styling guidelines!
+
+Design Philosophy:
+- Minimalist Black/White (80% Black, 15% Gray/White, 5% Gradient)
+- Porsche-inspired: Clean, Premium, Professional
+- Apple-inspired: Minimal, Smooth Animations
+- Apple Gradient ONLY for CTAs and Highlights
+
+Colors (ALWAYS use):
+- bg-eckert-black (#010205) - Primary background
+- text-white - Primary text
+- text-gray-300 - Secondary text
+- bg-apple-gradient - Only for CTAs!
+- border-white/10 - Subtle borders
+
+Components (ALWAYS use from shared):
+import { Button, GlassCard, Container, Section, Hero, Input } from '@eckert-preisser/shared/ui';
+
+Never create custom styled divs - use shared components!
+
+Tailwind Classes (MANDATORY):
+- Rounded: rounded-md (8px default, Porsche style)
+- Backdrop: backdrop-blur-porsche (32px, Porsche style)
+- Hover: hover:scale-[1.02] for cards, hover:scale-105 for buttons
+- Transitions: transition-all duration-300
+- Responsive: Mobile-first (text-2xl md:text-4xl lg:text-6xl)
+
+Animations (Framer Motion):
+- Scroll: whileInView with viewport={{ once: true, amount: 0.3 }}
+- Hover: whileHover={{ scale: 1.05 }}
+- Stagger: staggerChildren for lists
+- Float: animate={{ y: [0, -10, 0] }} for subtle movement
+
+Typography:
+- Headlines: font-bold text-5xl md:text-6xl lg:text-7xl
+- Body: text-base md:text-lg text-gray-300
+- Line height: leading-tight (headlines), leading-relaxed (body)
+
+Layout:
+- Container: <Container size="lg">
+- Section: <Section variant="dark" spacing="lg">
+- Grid: grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
+
+Never use:
+- Inline styles
+- Custom CSS files
+- Hardcoded colors
+- Desktop-first responsive
+- console.log for styling debug
+
+See STYLING_GUIDELINES.md for complete reference!
+```
+
+---
+
+### 16. Config-First Development
 
 ```
 Workflow for new features requiring config:
@@ -453,7 +511,7 @@ ALWAYS in .gitignore!
 
 ## How to Use These Memory Entries
 
-1. Copy each section (1-12)
+1. Copy each section (1-16)
 2. Go to Claude's Memory settings
 3. Paste each section as a separate memory entry
 4. Save
@@ -466,6 +524,11 @@ After adding these to memory, Claude will ALWAYS:
 - Use proper exception handling
 - Reference correct file locations
 - Follow the development workflow
+- Use i18n for all user-facing text
+- Use external config files (no .env)
+- Follow Porsche/Apple styling guidelines
+- Use shared components
+- Mobile-first responsive design
 
 ---
 
