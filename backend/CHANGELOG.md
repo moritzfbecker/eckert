@@ -4,7 +4,7 @@ All backend-specific changes are documented here.
 
 ---
 
-## [1.0.0] - 2024-10-14
+## [1.0.0] - 2025-10-14
 
 ### Added
 - Initial microservices architecture

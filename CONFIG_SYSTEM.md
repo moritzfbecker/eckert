@@ -551,9 +551,9 @@ const ProductForm = () => {
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0.0 | 2024-10-14 | Initial config system implementation |
+| 1.0.0 | 2025-10-14 | Initial config system implementation |
 
 ---
 
-**Last Updated**: 2024-10-14
+**Last Updated**: 2025-10-14
 **Version**: 1.0.0

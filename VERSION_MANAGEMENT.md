@@ -19,8 +19,8 @@ MAJOR.MINOR.PATCH
 
 | Component | Version | Last Updated |
 |-----------|---------|--------------|
-| Backend   | 1.0.0   | 2024-10-14   |
-| Frontend  | 1.0.0   | 2024-10-14   |
+| Backend   | 1.0.0   | 2025-10-14   |
+| Frontend  | 1.0.0   | 2025-10-14   |
 
 ---
 
@@ -402,5 +402,5 @@ git push --tags
 
 ---
 
-**Last Updated**: 2024-10-14
+**Last Updated**: 2025-10-14
 **Version**: 1.0.0
