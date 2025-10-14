@@ -7,8 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [Frontend 1.1.0] - 2025-10-14
+
 ### Added
-- Initial project structure
+- Comprehensive styling guidelines (STYLING_GUIDELINES.md) [STYLING_001]
+- Porsche-inspired UI components (GlassCard, Hero, Container, Section, Input) [FRONTEND_UI_002-006]
+- Extended Tailwind config with Porsche/Apple design tokens [FRONTEND_STYLE_001]
+- Mobile-responsive header with i18n support [FRONTEND_NAV_001]
+
+### Changed
+- Updated Home page with new component library [FRONTEND_PAGE_001]
+- All text now uses i18n system [FRONTEND_I18N_003]
+
+**Author**: Claude AI
+**Type**: Feature
 
 ---
 

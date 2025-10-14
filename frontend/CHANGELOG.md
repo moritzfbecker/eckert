@@ -4,6 +4,42 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.1.0] - 2025-10-14
+
+### Added
+- Comprehensive styling guidelines document (STYLING_GUIDELINES.md) [STYLING_001]
+- Extended Tailwind config with Porsche-inspired design:
+  - eckert-black (#010205) and eckert-white colors
+  - Display font sizes with custom line-heights
+  - backdrop-blur-porsche (32px) utility
+  - Extended animations (slide-up, slide-down, slide-left, slide-right, scale-in, float)
+  - subtle-gradient background
+  - elevated shadow utilities
+- New UI Components:
+  - Input component with error states [FRONTEND_UI_002]
+  - Container component with size variants [FRONTEND_UI_003]
+  - Section component with variant and spacing [FRONTEND_UI_004]
+  - GlassCard component (Porsche-style glassmorphism) [FRONTEND_UI_005]
+  - Hero, HeroTitle, HeroSubtitle, HeroActions components [FRONTEND_UI_006]
+- Redesigned Header component:
+  - Mobile menu with animations [FRONTEND_NAV_001]
+  - i18n support with t() function [FRONTEND_I18N_001]
+  - Porsche-style backdrop blur (32px) [FRONTEND_STYLE_002]
+  - Gradient underline on nav links [FRONTEND_STYLE_003]
+  - Integrated LanguageSwitcher [FRONTEND_I18N_002]
+
+### Changed
+- Updated Home page to use new components (Hero, GlassCard, Container, Section) [FRONTEND_PAGE_001]
+- All user-facing text now uses i18n t() function [FRONTEND_I18N_003]
+- Improved responsive design with mobile-first approach [FRONTEND_RESPONSIVE_001]
+- Enhanced animations with viewport triggers [FRONTEND_ANIM_002]
+
+**Author**: Claude AI
+**Version**: Frontend v1.1.0
+**Type**: New Feature - Styling System
+
+---
+
 ## [1.0.0] - 2025-10-14
 
 ### Added
