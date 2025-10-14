@@ -50,7 +50,7 @@ npm version major
 ### 1. Edit CHANGELOG.md
 
 ```markdown
-## [1.0.1] - 2024-10-15
+## [1.0.1] - 2025-10-15
 
 ### Fixed
 - Fixed user login issue [USER_ERR_401_001]

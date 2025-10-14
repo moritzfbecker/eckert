@@ -99,7 +99,7 @@ mvn versions:commit
 #### 2. Update Changelog
 Edit `backend/CHANGELOG.md`:
 ```markdown
-## [1.0.1] - 2024-10-15
+## [1.0.1] - 2025-10-15
 
 ### Fixed
 - Fixed user not found error message [USER_ERR_404_001]
@@ -156,7 +156,7 @@ npm version 1.0.1
 #### 3. Update Changelog
 Edit `frontend/CHANGELOG.md`:
 ```markdown
-## [1.0.1] - 2024-10-15
+## [1.0.1] - 2025-10-15
 
 ### Fixed
 - Fixed button hover animation glitch [FRONTEND_ERR_001]
@@ -365,7 +365,7 @@ mvn versions:commit
 
 3. **Update changelog**
 ```markdown
-## [1.0.1] - 2024-10-15
+## [1.0.1] - 2025-10-15
 ### Fixed
 - Fixed user validation error [USER_ERR_400_001]
 ```

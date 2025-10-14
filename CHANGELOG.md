@@ -54,7 +54,7 @@ We use [Semantic Versioning](https://semver.org/):
 ### Example Entry
 
 ```markdown
-## [1.2.0] - 2024-10-15
+## [1.2.0] - 2025-10-15
 
 ### Added
 - New user authentication endpoint `POST /api/users/login` [USER_001]

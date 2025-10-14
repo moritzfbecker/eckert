@@ -690,7 +690,7 @@ git push --tags
 ### Changelog Entry Template
 
 ```markdown
-## [1.0.1] - 2024-10-15
+## [1.0.1] - 2025-10-15
 
 ### Fixed
 - Fixed user validation error [USER_ERR_400_001]
