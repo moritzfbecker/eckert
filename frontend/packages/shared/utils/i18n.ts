@@ -75,6 +75,7 @@ const loadDefaultTranslations = (): void => {
     'nav.home': 'Startseite',
     'nav.products': 'Produkte',
     'nav.dashboard': 'Dashboard',
+    'nav.account': 'Konto',
     'nav.login': 'Anmelden',
     'nav.logout': 'Abmelden',
 
@@ -146,6 +147,7 @@ const loadDefaultTranslations = (): void => {
     'nav.home': 'Home',
     'nav.products': 'Products',
     'nav.dashboard': 'Dashboard',
+    'nav.account': 'Account',
     'nav.login': 'Login',
     'nav.logout': 'Logout',
 

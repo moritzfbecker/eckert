@@ -197,6 +197,11 @@
 | FRONTEND_NAV_013 | Mobile menu centered below navbar | Success |
 | FRONTEND_NAV_014 | Navbar Porsche Motorsport style with rounded-md and UPPERCASE text | Success |
 | FRONTEND_NAV_015 | Mobile menu with rounded-md corners | Success |
+| FRONTEND_NAV_016 | Complete navbar redesign based on old EckertPreisser project | Success |
+| FRONTEND_NAV_017 | Header rewritten to match old project design | Success |
+| FRONTEND_NAV_018 | Full-screen mobile menu overlay | Success |
+| FRONTEND_NAV_019 | Mobile menu with language selector and account section | Success |
+| FRONTEND_NAV_020 | Proper navbar centering with flexbox spacers | Success |
 
 #### UI Components (FRONTEND_UI)
 | Code | Description | Type |
@@ -215,6 +220,7 @@
 | FRONTEND_UI_012 | Fixed vertical alignment of language & account buttons | Success |
 | FRONTEND_UI_013 | Improved button sizing consistency (h-10) | Success |
 | FRONTEND_UI_014 | Dropdown menu width increased for flag display | Success |
+| FRONTEND_UI_015 | All buttons and dropdowns same height and properly aligned | Success |
 
 #### Styling (FRONTEND_STYLE)
 | Code | Description | Type |
@@ -223,6 +229,7 @@
 | FRONTEND_STYLE_002 | Porsche-style backdrop blur | Success |
 | FRONTEND_STYLE_003 | Gradient underline on nav links | Success |
 | FRONTEND_STYLE_004 | Navbar rounded-full pill shape | Success |
+| FRONTEND_STYLE_005 | Gray-200 text with white hover (old project style) | Success |
 
 #### Animations (FRONTEND_ANIM)
 | Code | Description | Type |
@@ -232,6 +239,7 @@
 | FRONTEND_ANIM_003 | Logo hover animation | Success |
 | FRONTEND_ANIM_004 | Independent element animations | Success |
 | FRONTEND_ANIM_005 | Scroll detection to hide/show logo with fade animation | Success |
+| FRONTEND_ANIM_006 | Scroll detection threshold changed to 10px | Success |
 
 #### Pages (FRONTEND_PAGE)
 | Code | Description | Type |
@@ -259,6 +267,10 @@
 | FRONTEND_I18N_006 | Old LanguageSwitcher component removed from Header | Success |
 | FRONTEND_I18N_007 | SVG flag icons replace emoji flags (German & British) | Success |
 | FRONTEND_I18N_008 | Language dropdown shows "GER" + flag (not "GER" + "DE") | Success |
+| FRONTEND_I18N_009 | Added "nav.account" translation (DE: "Konto", EN: "Account") | Success |
+| FRONTEND_I18N_010 | Language switcher shows flag BEFORE code | Success |
+| FRONTEND_I18N_011 | Language dropdown shows Flag + CODE + Label | Success |
+| FRONTEND_I18N_012 | Language codes changed to DE/EN (from GER/ENG) | Success |
 
 #### Cleanup (FRONTEND_CLEAN)
 | Code | Description | Type |

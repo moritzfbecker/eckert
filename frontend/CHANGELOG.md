@@ -4,6 +4,42 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.5.0] - 2025-10-15
+
+### Added
+- Complete navbar redesign based on old EckertPreisser project [FRONTEND_NAV_016]
+  - Three-part layout: Logo left, Nav center, Language+Account right
+  - Logo top-left (hides on scroll after 10px)
+  - Center navbar with proper flexbox centering
+  - Language dropdown with flag SVG on left, code (DE/EN) on right
+  - Account dropdown with Dashboard and Logout options
+  - All elements use consistent styling: bg-black/60 backdrop-blur-sm border-white/10
+  - rounded-xl corners for all boxes
+  - text-xs font size with uppercase tracking-wider
+  - Gray-200 text with white hover
+  - Proper mobile menu overlay with full-screen backdrop
+- Added "nav.account" translation (DE: "Konto", EN: "Account") [FRONTEND_I18N_009]
+
+### Changed
+- Header completely rewritten to match old project design [FRONTEND_NAV_017]
+- Language switcher now shows flag BEFORE code (not after) [FRONTEND_I18N_010]
+- Language dropdown shows: Flag + CODE + Label (e.g., 🇩🇪 DE Deutsch) [FRONTEND_I18N_011]
+- All navigation uses text-gray-200 with white hover (not text-white) [FRONTEND_STYLE_005]
+- Scroll detection threshold changed from 50px to 10px [FRONTEND_ANIM_006]
+- Mobile menu now full-screen overlay instead of dropdown [FRONTEND_NAV_018]
+- Mobile menu includes language selector and account section [FRONTEND_NAV_019]
+
+### Fixed
+- Navbar now properly centered using flexbox spacers (flex-1 on left and right) [FRONTEND_NAV_020]
+- All buttons and dropdowns now same height and properly aligned [FRONTEND_UI_015]
+- Language codes display correctly (DE, EN instead of GER, ENG) [FRONTEND_I18N_012]
+
+**Author**: Claude AI
+**Version**: Frontend v1.5.0
+**Type**: Feature - Complete Navbar Redesign Based on Old Project
+
+---
+
 ## [1.4.2] - 2025-10-15
 
 ### Added

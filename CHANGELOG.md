@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.5.0] - 2025-10-15
+
+### Added
+- Complete navbar redesign based on old EckertPreisser project [FRONTEND_NAV_016]
+- Language dropdown with SVG flags (DE/EN) [FRONTEND_I18N_009-012]
+- Account dropdown with Dashboard and Logout [FRONTEND_UI_015]
+- Full-screen mobile menu overlay [FRONTEND_NAV_018]
+
+### Changed
+- Header completely rewritten to match old project design [FRONTEND_NAV_017]
+- Proper navbar centering with flexbox spacers [FRONTEND_NAV_020]
+- Gray-200 text with white hover styling [FRONTEND_STYLE_005]
+
+**Author**: Claude AI
+**Type**: Feature
+
+---
+
 ## [Frontend 1.4.2] - 2025-10-15
 
 ### Added
