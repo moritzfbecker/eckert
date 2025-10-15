@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.4.0] - 2025-10-15
+
+### Added
+- Custom language dropdown with flag icons (GER 🇩🇪, ENG 🇬🇧) [FRONTEND_I18N_004]
+- Account menu dropdown with Profile, Settings, Logout [FRONTEND_UI_009]
+- Scroll detection to hide logo when scrolling [FRONTEND_ANIM_005]
+
+### Changed
+- Navbar with rounded-md corners (Porsche Motorsport style) [FRONTEND_NAV_014]
+- All navigation text converted to UPPERCASE [FRONTEND_NAV_014]
+- Logo text uppercase [FRONTEND_UI_010]
+- Custom language switcher replaces old component [FRONTEND_I18N_005]
+
+**Author**: Claude AI
+**Type**: Feature
+
+---
+
 ## [Frontend 1.3.1] - 2025-10-15
 
 ### Fixed

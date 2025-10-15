@@ -4,6 +4,43 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.4.0] - 2025-10-15
+
+### Added
+- Custom Language Switcher dropdown with flag icons and language codes [FRONTEND_I18N_004]
+  - GER 🇩🇪 and ENG 🇬🇧 display with dropdown menu
+  - Black glassmorphism background with 32px backdrop blur
+  - Dropdown animation with smooth transitions
+  - Language code on left, flag on right
+- Account menu dropdown next to language switcher [FRONTEND_UI_009]
+  - Profile, Settings, and Logout options
+  - User icon with "ACCOUNT" label
+  - Matching glassmorphism style
+  - Smooth dropdown animations
+- Scroll detection to hide logo when user scrolls down [FRONTEND_ANIM_005]
+  - Logo visible only at top of page (scrollY < 50px)
+  - Smooth fade out/in animation with AnimatePresence
+  - Logo returns when scrolling back to top
+
+### Changed
+- Navbar styling updated to Porsche Motorsport design [FRONTEND_NAV_014]
+  - Changed from rounded-full to rounded-md (subtle rounded corners)
+  - All navigation text converted to UPPERCASE
+  - Improved center alignment (truly centered, not left-edge centered)
+- Language switcher replaced with custom dropdown implementation [FRONTEND_I18N_005]
+- Logo text now uppercase [FRONTEND_UI_010]
+- CTA button changed to rounded-md with uppercase text [FRONTEND_UI_011]
+- Mobile menu updated with rounded-md corners [FRONTEND_NAV_015]
+
+### Removed
+- Old LanguageSwitcher component removed from Header (replaced with custom dropdown) [FRONTEND_I18N_006]
+
+**Author**: Claude AI
+**Version**: Frontend v1.4.0
+**Type**: Feature - Porsche Motorsport Navigation Polish
+
+---
+
 ## [1.3.1] - 2025-10-15
 
 ### Fixed
