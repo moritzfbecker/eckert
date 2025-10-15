@@ -3,7 +3,7 @@ import { Section } from '../../../shared/ui-components/Section'
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-eckert-white">
+    <div className="min-h-screen bg-eckert-white pt-24 md:pt-32">
       {/* Main Content */}
       <Section spacing="xl">
         <Container>
