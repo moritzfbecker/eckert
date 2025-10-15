@@ -1,8 +1,9 @@
 {
   "name": "eckert-preisser-frontend",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "description": "Eckert Preisser Enterprise Frontend Monorepo",
+  "packageManager": "npm@11.5.2",
   "workspaces": [
     "packages/*"
   ],

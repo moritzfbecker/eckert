@@ -4,6 +4,18 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.2.1] - 2025-10-15
+
+### Fixed
+- Added missing `packageManager` field to package.json for Turborepo v2.5+ compatibility [FRONTEND_CONFIG_001]
+- Updated turbo.json from deprecated `pipeline` to `tasks` field for Turborepo v2.0+ [FRONTEND_CONFIG_002]
+
+**Author**: Claude AI
+**Version**: Frontend v1.2.1
+**Type**: Bug Fix - Configuration Updates
+
+---
+
 ## [1.2.0] - 2025-10-14
 
 ### Added

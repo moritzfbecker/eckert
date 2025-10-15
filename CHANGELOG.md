@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.2.1] - 2025-10-15
+
+### Fixed
+- Added missing `packageManager` field to package.json for Turborepo v2.5+ compatibility [FRONTEND_CONFIG_001]
+- Updated turbo.json from deprecated `pipeline` to `tasks` field for Turborepo v2.0+ [FRONTEND_CONFIG_002]
+
+**Author**: Claude AI
+**Type**: Bug Fix
+
+---
+
 ## [Frontend 1.2.0] - 2025-10-14
 
 ### Added
