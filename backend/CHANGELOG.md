@@ -4,6 +4,33 @@ All backend-specific changes are documented here.
 
 ---
 
+## [1.0.2] - 2025-10-15
+
+### Added
+- Production-ready Dockerfiles for all microservices [DOCKER_001]
+  - service-discovery (Eureka Server)
+  - config-server
+  - api-gateway
+  - user-service
+  - product-service
+  - order-service
+  - notification-service
+- Multi-stage Docker builds for optimized images [DOCKER_002]
+  - Stage 1: Maven build with all dependencies
+  - Stage 2: Minimal JRE runtime image
+- Security: Non-root user in all Docker containers [DOCKER_003]
+- Health check for Eureka service in Dockerfile [DOCKER_004]
+
+### Changed
+- docker-compose.yml build context set to root directory [DOCKER_005]
+- All Dockerfiles use correct paths relative to backend root [DOCKER_006]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v1.0.2
+**Type**: DevOps - Docker Production Setup
+
+---
+
 ## [1.0.1] - 2025-10-15
 
 ### Added
