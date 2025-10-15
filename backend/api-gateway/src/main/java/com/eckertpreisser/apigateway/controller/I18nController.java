@@ -6,13 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 /**
- * I18n Controller
+ * I18n Controller (WebFlux/Reactive for Spring Cloud Gateway)
  *
  * Provides translation endpoints for frontend
  * Serves messages from external i18n files
@@ -32,66 +32,71 @@ public class I18nController {
      * Get all messages for a specific language
      *
      * @param language Language code (de or en)
-     * @return Map of all translations
+     * @return Mono of Map with all translations
      */
     @GetMapping("/i18n/messages/{language}")
-    public ResponseEntity<Map<String, String>> getMessages(@PathVariable String language) {
-        try {
-            LoggerUtil.info(logger, "I18N_API_001", "Loading messages for language",
-                Map.of("language", language));
+    public Mono<ResponseEntity<Map<String, String>>> getMessages(@PathVariable String language) {
+        return Mono.fromCallable(() -> {
+            try {
+                LoggerUtil.info(logger, "I18N_API_001", "Loading messages for language",
+                    Map.of("language", language));
 
-            // Get all supported languages
-            String[] supportedLanguages = MessageSource.getSupportedLanguages();
-            boolean isSupported = false;
-            for (String lang : supportedLanguages) {
-                if (lang.equals(language)) {
-                    isSupported = true;
-                    break;
+                // Get all supported languages
+                String[] supportedLanguages = MessageSource.getSupportedLanguages();
+                String finalLanguage = language;
+                boolean isSupported = false;
+                for (String lang : supportedLanguages) {
+                    if (lang.equals(finalLanguage)) {
+                        isSupported = true;
+                        break;
+                    }
                 }
+
+                if (!isSupported) {
+                    LoggerUtil.warn(logger, "I18N_API_WARN_001", "Unsupported language requested",
+                        Map.of("language", finalLanguage, "fallback", "de"));
+                    finalLanguage = "de";
+                }
+
+                // Get all messages
+                Map<String, String> messages = getAllMessagesForLanguage(finalLanguage);
+
+                LoggerUtil.info(logger, "I18N_API_002", "Messages loaded successfully",
+                    Map.of("language", finalLanguage, "count", messages.size()));
+
+                return ResponseEntity.ok(messages);
+
+            } catch (Exception e) {
+                LoggerUtil.error(logger, "I18N_API_ERR_001", "Failed to load messages", e,
+                    Map.of("language", language));
+                return ResponseEntity.internalServerError().<Map<String, String>>build();
             }
-
-            if (!isSupported) {
-                LoggerUtil.warn(logger, "I18N_API_WARN_001", "Unsupported language requested",
-                    Map.of("language", language, "fallback", "de"));
-                language = "de";
-            }
-
-            // Get all messages
-            Map<String, String> messages = getAllMessagesForLanguage(language);
-
-            LoggerUtil.info(logger, "I18N_API_002", "Messages loaded successfully",
-                Map.of("language", language, "count", messages.size()));
-
-            return ResponseEntity.ok(messages);
-
-        } catch (Exception e) {
-            LoggerUtil.error(logger, "I18N_API_ERR_001", "Failed to load messages", e,
-                Map.of("language", language));
-            return ResponseEntity.internalServerError().build();
-        }
+        });
     }
 
     /**
      * Get language configuration
      *
-     * @return Language configuration
+     * @return Mono of Language configuration
      */
     @GetMapping("/config/language")
-    public ResponseEntity<Map<String, Object>> getLanguageConfig() {
-        try {
-            LoggerUtil.info(logger, "I18N_API_003", "Loading language configuration");
+    public Mono<ResponseEntity<Map<String, Object>>> getLanguageConfig() {
+        return Mono.fromCallable(() -> {
+            try {
+                LoggerUtil.info(logger, "I18N_API_003", "Loading language configuration");
 
-            Map<String, Object> config = new HashMap<>();
-            config.put("defaultLanguage", "de");
-            config.put("supportedLanguages", MessageSource.getSupportedLanguages());
-            config.put("fallbackLanguage", "en");
+                Map<String, Object> config = new HashMap<>();
+                config.put("defaultLanguage", "de");
+                config.put("supportedLanguages", MessageSource.getSupportedLanguages());
+                config.put("fallbackLanguage", "en");
 
-            return ResponseEntity.ok(config);
+                return ResponseEntity.ok(config);
 
-        } catch (Exception e) {
-            LoggerUtil.error(logger, "I18N_API_ERR_002", "Failed to load language config", e);
-            return ResponseEntity.internalServerError().build();
-        }
+            } catch (Exception e) {
+                LoggerUtil.error(logger, "I18N_API_ERR_002", "Failed to load language config", e);
+                return ResponseEntity.internalServerError().<Map<String, Object>>build();
+            }
+        });
     }
 
     /**

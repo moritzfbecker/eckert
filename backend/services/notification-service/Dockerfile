@@ -6,22 +6,11 @@
 FROM maven:3.9-eclipse-temurin-21-alpine AS build
 WORKDIR /app
 
-# Copy parent pom
-COPY pom.xml ./
+# Copy entire project
+COPY . .
 
-# Copy shared modules
-COPY shared/common-models ./shared/common-models
-COPY shared/common-utils ./shared/common-utils
-COPY shared/security-config ./shared/security-config
-
-# Copy ALL modules (Maven needs them for multi-module build)
-COPY service-discovery ./service-discovery
-COPY config-server ./config-server
-COPY api-gateway ./api-gateway
-COPY services ./services
-
-# Build only notification-service
-RUN mvn clean package -DskipTests -pl services/notification-service -am
+# Build everything (Maven reactor handles dependencies)
+RUN mvn clean install -DskipTests
 
 # Stage 2: Runtime
 FROM eclipse-temurin:21-jre-alpine
@@ -29,6 +18,10 @@ WORKDIR /app
 
 # Create non-root user for security
 RUN addgroup -S spring && adduser -S spring -G spring
+
+# Create config directory with proper permissions
+RUN mkdir -p /app/config && chown -R spring:spring /app/config
+
 USER spring:spring
 
 # Copy JAR from build stage

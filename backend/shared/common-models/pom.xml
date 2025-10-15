@@ -17,14 +17,36 @@
     <description>Shared DTOs and models across all microservices</description>
 
     <dependencies>
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
+        </dependency>
+
+        <!-- Shared Modules -->
+        <dependency>
+            <groupId>com.eckertpreisser</groupId>
+            <artifactId>common-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Spring Boot Web (for RestControllerAdvice, ResponseEntity) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- SLF4J (for Logger) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
     </dependencies>
 

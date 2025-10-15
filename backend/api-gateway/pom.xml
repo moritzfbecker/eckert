@@ -17,6 +17,7 @@
     <description>Spring Cloud Gateway for routing and load balancing</description>
 
     <dependencies>
+        <!-- Spring Cloud Dependencies -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
@@ -33,6 +34,21 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
         </dependency>
+
+        <!-- Shared Modules -->
+        <dependency>
+            <groupId>com.eckertpreisser</groupId>
+            <artifactId>common-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.eckertpreisser</groupId>
+            <artifactId>common-models</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Spring Boot WebFlux (Gateway is reactive, not MVC!) -->
+        <!-- Gateway starter already includes webflux, no need to add it -->
     </dependencies>
 
     <build>

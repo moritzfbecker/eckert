@@ -33,6 +33,34 @@ All backend-specific changes are documented here.
 
 ## [1.0.1] - 2025-10-15
 
+### Added (Session 2025-10-15)
+- Production-ready Docker setup with simplified docker-compose (3 essential services) [DOCKER_007]
+- Logback config simplified for Docker (console-only logging) [DOCKER_008]
+- Config directory with proper permissions in all Dockerfiles [DOCKER_009]
+- WebFlux/Reactive i18n controller for Spring Cloud Gateway compatibility [BACKEND_API_002]
+- spring.main.web-application-type=reactive in API Gateway config [BACKEND_CONFIG_001]
+
+### Fixed
+- API Gateway POM dependencies (common-utils, common-models) [BACKEND_DEP_001]
+- common-models POM dependencies (common-utils, spring-boot-starter-web, slf4j) [BACKEND_DEP_002]
+- Maven build strategy in Dockerfiles (mvn clean install -DskipTests) [DOCKER_010]
+- Spring MVC/WebFlux conflict in API Gateway [BACKEND_FIX_001]
+- Logback SizeAndTimeBasedFNATP error in Docker [BACKEND_FIX_002]
+- Config directory permissions for non-root user [DOCKER_011]
+
+### Changed
+- docker-compose.yml: Only 3 essential services (Eureka, Config, API Gateway) [DOCKER_012]
+- docker-compose.yml: Removed obsolete version field [DOCKER_013]
+- All placeholder services commented out for later development [DOCKER_014]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v1.0.1
+**Type**: DevOps & Integration - Docker Production Setup + i18n Integration
+
+---
+
+## [1.0.1] - 2025-10-15
+
 ### Added
 - I18nController in API Gateway for frontend translation delivery [BACKEND_API_001]
   - GET /api/i18n/messages/{language} - Get all translations for language
