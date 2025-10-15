@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - All placeholder sections and hardcoded feature data [FRONTEND_CLEAN_002-005]
 
-**Author**: Claude AI
+**Author**: Moritz F. Becker - Claude AI generated Changelog
 **Type**: Cleanup
 
 ---
@@ -39,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Home page with new component library [FRONTEND_PAGE_001]
 - All text now uses i18n system [FRONTEND_I18N_003]
 
-**Author**: Claude AI
+**Author**: Moritz F. Becker - Claude AI generated Changelog
 **Type**: Feature
 
 ---
