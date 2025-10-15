@@ -36,6 +36,17 @@
 | BACKEND_I18N_001 | Extended MessageSource with frontend translations | Success |
 | BACKEND_I18N_002 | MessageSource contains 60+ translation keys | Success |
 
+### Docker & DevOps (DOCKER)
+
+| Code | Description | Type |
+|------|-------------|------|
+| DOCKER_001 | Production-ready Dockerfiles for all 7 microservices | Success |
+| DOCKER_002 | Multi-stage Docker builds for optimized images | Success |
+| DOCKER_003 | Security: Non-root users in all containers | Success |
+| DOCKER_004 | Health check for Eureka service in Dockerfile | Success |
+| DOCKER_005 | docker-compose.yml build context set to root | Success |
+| DOCKER_006 | All Dockerfiles use correct relative paths | Success |
+
 ### System Errors (SYS)
 
 | Code | Description | HTTP Status | Solution |

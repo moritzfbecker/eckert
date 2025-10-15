@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 1.0.2] - 2025-10-15
+
+### Added
+- Production-ready Dockerfiles for all 7 microservices [DOCKER_001-004]
+- Multi-stage builds for optimized images [DOCKER_002]
+- Security: Non-root users in containers [DOCKER_003]
+
+### Changed
+- docker-compose.yml with correct build contexts [DOCKER_005-006]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: DevOps
+
+---
+
 ## [Backend 1.0.1] - 2025-10-15
 
 ### Added
