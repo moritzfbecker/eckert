@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.3.1] - 2025-10-15
+
+### Fixed
+- Fixed navbar layout with 3-part design: logo left, navbar center, language right [FRONTEND_NAV_007]
+- Logo positioned in top-left corner [FRONTEND_NAV_008]
+- Language switcher positioned in top-right corner [FRONTEND_NAV_009]
+- Center navbar properly centered with pill shape [FRONTEND_NAV_010]
+- Fixed positioning bugs from v1.3.0 [FRONTEND_NAV_012]
+
+### Changed
+- Logo changed to black text for white background [FRONTEND_UI_008]
+- Navbar uses rounded-full pill shape [FRONTEND_STYLE_004]
+
+**Author**: Claude AI
+**Type**: Bug Fix
+
+---
+
 ## [Frontend 1.3.0] - 2025-10-15
 
 ### Added

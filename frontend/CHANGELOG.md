@@ -4,6 +4,29 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.3.1] - 2025-10-15
+
+### Fixed
+- Fixed navbar layout with 3-part design: logo left, navbar center, language right [FRONTEND_NAV_007]
+- Logo now positioned in top-left corner (fixed top-6 left-6) [FRONTEND_NAV_008]
+- Language switcher now positioned in top-right corner (fixed top-6 right-6) [FRONTEND_NAV_009]
+- Center navbar now properly centered with rounded-full pill shape [FRONTEND_NAV_010]
+- Removed logo and language switcher from navbar (separate elements now) [FRONTEND_NAV_011]
+- Fixed positioning bugs from previous version [FRONTEND_NAV_012]
+- Updated home page padding (pt-32 md:pt-40) for new layout [FRONTEND_PAGE_005]
+
+### Changed
+- Logo changed to black text (from white) for visibility on white background [FRONTEND_UI_008]
+- Navbar now uses rounded-full instead of rounded-xl [FRONTEND_STYLE_004]
+- Mobile menu now centered below navbar (280px width) [FRONTEND_NAV_013]
+- All three elements (logo, navbar, language) animate independently on load [FRONTEND_ANIM_004]
+
+**Author**: Claude AI
+**Version**: Frontend v1.3.1
+**Type**: Bug Fix - Navbar Layout
+
+---
+
 ## [1.3.0] - 2025-10-15
 
 ### Added
