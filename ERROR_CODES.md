@@ -195,6 +195,8 @@
 | FRONTEND_NAV_011 | Separated logo and language from navbar | Success |
 | FRONTEND_NAV_012 | Fixed positioning bugs | Success |
 | FRONTEND_NAV_013 | Mobile menu centered below navbar | Success |
+| FRONTEND_NAV_014 | Navbar Porsche Motorsport style with rounded-md and UPPERCASE text | Success |
+| FRONTEND_NAV_015 | Mobile menu with rounded-md corners | Success |
 
 #### UI Components (FRONTEND_UI)
 | Code | Description | Type |
@@ -207,6 +209,9 @@
 | FRONTEND_UI_006 | Hero components | Success |
 | FRONTEND_UI_007 | CTA button styling updated | Success |
 | FRONTEND_UI_008 | Logo changed to black text | Success |
+| FRONTEND_UI_009 | Account menu dropdown with Profile, Settings, Logout | Success |
+| FRONTEND_UI_010 | Logo text uppercase | Success |
+| FRONTEND_UI_011 | CTA button rounded-md with uppercase text | Success |
 
 #### Styling (FRONTEND_STYLE)
 | Code | Description | Type |
@@ -223,6 +228,7 @@
 | FRONTEND_ANIM_002 | Enhanced animations with viewport | Success |
 | FRONTEND_ANIM_003 | Logo hover animation | Success |
 | FRONTEND_ANIM_004 | Independent element animations | Success |
+| FRONTEND_ANIM_005 | Scroll detection to hide/show logo with fade animation | Success |
 
 #### Pages (FRONTEND_PAGE)
 | Code | Description | Type |
@@ -245,6 +251,9 @@
 | FRONTEND_I18N_001 | i18n support in Header | Success |
 | FRONTEND_I18N_002 | LanguageSwitcher integrated | Success |
 | FRONTEND_I18N_003 | All text uses i18n t() | Success |
+| FRONTEND_I18N_004 | Custom language dropdown with flag icons and codes (GER/ENG) | Success |
+| FRONTEND_I18N_005 | Custom language switcher replaces old component | Success |
+| FRONTEND_I18N_006 | Old LanguageSwitcher component removed from Header | Success |
 
 #### Cleanup (FRONTEND_CLEAN)
 | Code | Description | Type |
