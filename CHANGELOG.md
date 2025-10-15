@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.4.2] - 2025-10-15
+
+### Added
+- Comprehensive FRONTEND_AGENT_BRIEFING.md for onboarding new AI agents [FRONTEND_DOC_001]
+
+**Author**: Claude AI
+**Type**: Documentation
+
+---
+
 ## [Frontend 1.4.1] - 2025-10-15
 
 ### Fixed
