@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.3.0] - 2025-10-15
+
+### Added
+- Porsche Motorsport-inspired floating navbar with glassmorphism [FRONTEND_NAV_002]
+- Centered navbar design with 32px backdrop blur [FRONTEND_NAV_003]
+- White text on black background for navbar [FRONTEND_NAV_004]
+- Apple gradient logo hover effect [FRONTEND_ANIM_003]
+- Smooth opacity hover on navigation links [FRONTEND_NAV_005]
+
+### Changed
+- Header component completely redesigned [FRONTEND_NAV_003]
+- Home page padding adjusted for floating navbar [FRONTEND_PAGE_004]
+- CTA button styling updated to white background [FRONTEND_UI_007]
+
+**Author**: Claude AI
+**Type**: Feature
+
+---
+
 ## [Frontend 1.2.1] - 2025-10-15
 
 ### Fixed

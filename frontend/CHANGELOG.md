@@ -4,6 +4,38 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.3.0] - 2025-10-15
+
+### Added
+- Porsche Motorsport-inspired floating navbar design [FRONTEND_NAV_002]
+  - Centered floating navbar with black/80 background
+  - 32px backdrop blur for glassmorphism effect
+  - Rounded corners (rounded-xl) with white/10 border
+  - White text on black background
+  - Apple gradient on logo hover
+  - Smooth opacity hover effects on nav links (0.7)
+  - Mobile menu with same black glassmorphism style
+  - Responsive positioning (top-4 from viewport)
+  - Max width constraint (1400px) with 95% width
+  - LanguageSwitcher adapted for dark background
+
+### Changed
+- Header component completely redesigned to match Porsche Motorsport aesthetic [FRONTEND_NAV_003]
+- Home page padding adjusted for floating navbar (pt-24 md:pt-32) [FRONTEND_PAGE_004]
+- Desktop navigation now uses motion.div wrapper for hover effects [FRONTEND_ANIM_003]
+- CTA button changed to white background with black text [FRONTEND_UI_007]
+- Mobile menu now appears below navbar instead of full-screen [FRONTEND_NAV_004]
+
+### Fixed
+- Navigation links now visible on dark background [FRONTEND_NAV_005]
+- Mobile menu positioning adapted for floating navbar [FRONTEND_NAV_006]
+
+**Author**: Claude AI
+**Version**: Frontend v1.3.0
+**Type**: Feature - Porsche-Style Navigation
+
+---
+
 ## [1.2.1] - 2025-10-15
 
 ### Fixed
