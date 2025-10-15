@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 1.0.1] - 2025-10-15
+
+### Added
+- I18nController in API Gateway for frontend translations [BACKEND_API_001]
+- Extended MessageSource with 60+ frontend translation keys [BACKEND_I18N_001-002]
+
+**Author**: Claude AI
+**Type**: Feature
+
+---
+
+## [Frontend 1.5.1] - 2025-10-15
+
+### Changed
+- i18n system now loads ALL translations from Backend Config System [FRONTEND_I18N_013-016]
+- Removed hardcoded fallback translations (only minimal emergency fallback)
+
+**Author**: Claude AI
+**Type**: Integration
+
+---
+
 ## [Frontend 1.5.0] - 2025-10-15
 
 ### Added

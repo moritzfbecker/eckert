@@ -23,6 +23,19 @@
 
 ## Backend Error Codes
 
+### API Endpoints (BACKEND_API)
+
+| Code | Description | HTTP Status | Solution |
+|------|-------------|-------------|----------|
+| BACKEND_API_001 | I18nController created for frontend translations | 200 | Success |
+
+### Internationalization Backend (BACKEND_I18N)
+
+| Code | Description | Type |
+|------|-------------|------|
+| BACKEND_I18N_001 | Extended MessageSource with frontend translations | Success |
+| BACKEND_I18N_002 | MessageSource contains 60+ translation keys | Success |
+
 ### System Errors (SYS)
 
 | Code | Description | HTTP Status | Solution |
@@ -271,6 +284,10 @@
 | FRONTEND_I18N_010 | Language switcher shows flag BEFORE code | Success |
 | FRONTEND_I18N_011 | Language dropdown shows Flag + CODE + Label | Success |
 | FRONTEND_I18N_012 | Language codes changed to DE/EN (from GER/ENG) | Success |
+| FRONTEND_I18N_013 | i18n system loads ALL translations from backend | Success |
+| FRONTEND_I18N_014 | changeLanguage() uses logger instead of console.log | Success |
+| FRONTEND_I18N_015 | Frontend i18n properly integrated with backend config | Success |
+| FRONTEND_I18N_016 | Translation loading errors logged with error codes | Success |
 
 #### Cleanup (FRONTEND_CLEAN)
 | Code | Description | Type |

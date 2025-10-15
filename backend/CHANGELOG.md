@@ -4,6 +4,33 @@ All backend-specific changes are documented here.
 
 ---
 
+## [1.0.1] - 2025-10-15
+
+### Added
+- I18nController in API Gateway for frontend translation delivery [BACKEND_API_001]
+  - GET /api/i18n/messages/{language} - Get all translations for language
+  - GET /api/config/language - Get language configuration
+  - CORS enabled for frontend access
+  - Proper logging with error codes
+- Extended MessageSource with complete frontend translations [BACKEND_I18N_001]
+  - Navigation texts (nav.home, nav.products, nav.dashboard, nav.account, etc.)
+  - Button labels (button.save, button.submit, button.get.started, etc.)
+  - Form labels (form.email, form.password, form.first.name, etc.)
+  - Validation messages (validation.required, validation.email.invalid, etc.)
+  - Error messages (error.unauthorized, error.not.found, etc.)
+  - Success messages (success.saved, success.updated, etc.)
+  - Home page content (home.hero.title, home.features.title, etc.)
+  - All texts in both DE and EN
+
+### Changed
+- MessageSource now contains 60+ translation keys for complete frontend support [BACKEND_I18N_002]
+
+**Author**: Claude AI
+**Version**: Backend v1.0.1
+**Type**: Feature - Complete i18n System Integration
+
+---
+
 ## [1.0.0] - 2025-10-14
 
 ### Added

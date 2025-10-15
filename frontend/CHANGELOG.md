@@ -4,6 +4,27 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.5.1] - 2025-10-15
+
+### Changed
+- i18n system now loads ALL translations from Backend Config System [FRONTEND_I18N_013]
+  - Removed hardcoded fallback translations from frontend code
+  - Added proper logger integration (no more console.log)
+  - Added isI18nInitialized() function
+  - Minimal emergency fallback (only 6 keys) when backend unavailable
+  - All translations now come from backend/MessageSource
+- changeLanguage() now uses logger instead of console.log [FRONTEND_I18N_014]
+
+### Fixed
+- Frontend i18n system now properly integrated with backend config system [FRONTEND_I18N_015]
+- Translation loading errors now logged with proper error codes [FRONTEND_I18N_016]
+
+**Author**: Claude AI
+**Version**: Frontend v1.5.1
+**Type**: Integration - Backend Config System
+
+---
+
 ## [1.5.0] - 2025-10-15
 
 ### Added
