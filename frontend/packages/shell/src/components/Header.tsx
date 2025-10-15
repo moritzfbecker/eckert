@@ -35,8 +35,29 @@ const Header = () => {
     setIsLanguageMenuOpen(false)
   }
 
+  const GermanFlag = () => (
+    <svg width="20" height="15" viewBox="0 0 5 3" className="inline-block">
+      <rect width="5" height="1" y="0" fill="#000000"/>
+      <rect width="5" height="1" y="1" fill="#DD0000"/>
+      <rect width="5" height="1" y="2" fill="#FFCE00"/>
+    </svg>
+  )
+
+  const BritishFlag = () => (
+    <svg width="20" height="15" viewBox="0 0 60 30" className="inline-block">
+      <clipPath id="t">
+        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+      </clipPath>
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+    </svg>
+  )
+
   const getLanguageDisplay = (code: string) => {
-    return code === 'de' ? { flag: '🇩🇪', code: 'GER' } : { flag: '🇬🇧', code: 'ENG' }
+    return code === 'de' ? { flag: <GermanFlag />, code: 'GER' } : { flag: <BritishFlag />, code: 'ENG' }
   }
 
   return (
@@ -69,7 +90,7 @@ const Header = () => {
         )}
       </AnimatePresence>
 
-      {/* Account Button - Right Top Corner */}
+      {/* Language Switcher & Account - Right Top Corner */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -83,8 +104,9 @@ const Header = () => {
               whileHover={{ scale: 1.02 }}
               onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
               className="
+                h-10
                 flex items-center gap-2
-                px-4 py-2
+                px-4
                 bg-black/80 backdrop-blur-[32px]
                 border border-white/10
                 rounded-md
@@ -94,7 +116,7 @@ const Header = () => {
               "
             >
               <span>{getLanguageDisplay(currentLang).code}</span>
-              <span className="text-lg">{getLanguageDisplay(currentLang).flag}</span>
+              {getLanguageDisplay(currentLang).flag}
               <svg
                 className={`w-4 h-4 transition-transform duration-200 ${isLanguageMenuOpen ? 'rotate-180' : ''}`}
                 fill="none"
@@ -114,7 +136,7 @@ const Header = () => {
                   transition={{ duration: 0.2 }}
                   className="
                     absolute top-full right-0 mt-2
-                    w-full min-w-[120px]
+                    w-full min-w-[140px]
                     bg-black/95 backdrop-blur-[32px]
                     border border-white/10
                     rounded-md
@@ -125,28 +147,28 @@ const Header = () => {
                   <button
                     onClick={() => handleLanguageChange('de')}
                     className="
-                      w-full flex items-center justify-between gap-2
-                      px-4 py-2
+                      w-full flex items-center gap-3
+                      px-4 py-2.5
                       text-white text-sm font-semibold uppercase
                       hover:bg-white/10
                       transition-colors duration-200
                     "
                   >
                     <span>GER</span>
-                    <span className="text-lg">🇩🇪</span>
+                    <GermanFlag />
                   </button>
                   <button
                     onClick={() => handleLanguageChange('en')}
                     className="
-                      w-full flex items-center justify-between gap-2
-                      px-4 py-2
+                      w-full flex items-center gap-3
+                      px-4 py-2.5
                       text-white text-sm font-semibold uppercase
                       hover:bg-white/10
                       transition-colors duration-200
                     "
                   >
                     <span>ENG</span>
-                    <span className="text-lg">🇬🇧</span>
+                    <BritishFlag />
                   </button>
                 </motion.div>
               )}
@@ -159,8 +181,9 @@ const Header = () => {
               whileHover={{ scale: 1.02 }}
               onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
               className="
+                h-10
                 flex items-center gap-2
-                px-4 py-2
+                px-4
                 bg-black/80 backdrop-blur-[32px]
                 border border-white/10
                 rounded-md
@@ -169,7 +192,7 @@ const Header = () => {
                 transition-all duration-300
               "
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
               <span>Account</span>

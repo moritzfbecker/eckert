@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.4.1] - 2025-10-15
+
+### Fixed
+- Replaced emoji flags with SVG icons (German & British flags) [FRONTEND_I18N_007]
+- Fixed vertical alignment of language switcher and account button [FRONTEND_UI_012]
+- Improved button sizing consistency (h-10 for both) [FRONTEND_UI_013]
+
+### Changed
+- Language dropdown shows "GER" + flag (not "GER" + "DE") [FRONTEND_I18N_008]
+- Dropdown width increased for better flag display [FRONTEND_UI_014]
+
+**Author**: Claude AI
+**Type**: Bug Fix
+
+---
+
 ## [Frontend 1.4.0] - 2025-10-15
 
 ### Added

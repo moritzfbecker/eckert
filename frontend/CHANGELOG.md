@@ -4,6 +4,33 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.4.1] - 2025-10-15
+
+### Fixed
+- Replaced emoji flags with proper SVG flag icons (German & British) [FRONTEND_I18N_007]
+  - German flag: Black, Red, Gold horizontal stripes
+  - British flag: Union Jack with proper colors
+  - Flags now display correctly in all browsers
+  - GER/ENG text displayed correctly next to flags
+- Fixed vertical alignment of language switcher and account button [FRONTEND_UI_012]
+  - Both buttons now have consistent height (h-10)
+  - Perfect alignment on same baseline
+  - Matching padding and sizing
+- Improved button sizing consistency [FRONTEND_UI_013]
+  - Language switcher: h-10 with px-4 padding
+  - Account button: h-10 with px-4 padding
+  - Icons sized consistently (w-4 h-4)
+
+### Changed
+- Language dropdown now shows "GER" + flag instead of "GER" + "DE" [FRONTEND_I18N_008]
+- Dropdown menu width increased to min-w-[140px] for better flag display [FRONTEND_UI_014]
+
+**Author**: Claude AI
+**Version**: Frontend v1.4.1
+**Type**: Bug Fix - Flag Icons & Alignment
+
+---
+
 ## [1.4.0] - 2025-10-15
 
 ### Added

@@ -212,6 +212,9 @@
 | FRONTEND_UI_009 | Account menu dropdown with Profile, Settings, Logout | Success |
 | FRONTEND_UI_010 | Logo text uppercase | Success |
 | FRONTEND_UI_011 | CTA button rounded-md with uppercase text | Success |
+| FRONTEND_UI_012 | Fixed vertical alignment of language & account buttons | Success |
+| FRONTEND_UI_013 | Improved button sizing consistency (h-10) | Success |
+| FRONTEND_UI_014 | Dropdown menu width increased for flag display | Success |
 
 #### Styling (FRONTEND_STYLE)
 | Code | Description | Type |
@@ -254,6 +257,8 @@
 | FRONTEND_I18N_004 | Custom language dropdown with flag icons and codes (GER/ENG) | Success |
 | FRONTEND_I18N_005 | Custom language switcher replaces old component | Success |
 | FRONTEND_I18N_006 | Old LanguageSwitcher component removed from Header | Success |
+| FRONTEND_I18N_007 | SVG flag icons replace emoji flags (German & British) | Success |
+| FRONTEND_I18N_008 | Language dropdown shows "GER" + flag (not "GER" + "DE") | Success |
 
 #### Cleanup (FRONTEND_CLEAN)
 | Code | Description | Type |
