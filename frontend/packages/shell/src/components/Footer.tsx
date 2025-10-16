@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Container } from '../../../shared/ui-components/Container'
-import { t } from '../../../shared/utils/i18n'
+import { useTranslation } from '@eckert-preisser/shared/hooks'
 
 const Footer = () => {
+  const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
 
   return (

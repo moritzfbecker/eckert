@@ -1,14 +1,13 @@
-import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { t, changeLanguage, getCurrentLanguage } from '../../../shared/utils/i18n'
+import { useTranslation } from '@eckert-preisser/shared/hooks'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [currentLang, setCurrentLang] = useState(getCurrentLanguage())
+  const { t, language, changeLanguage } = useTranslation()
   const location = useLocation()
 
   // Scroll detection for logo visibility
@@ -20,20 +19,8 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Language change listener
-  useEffect(() => {
-    const handleLanguageChange = (event: CustomEvent) => {
-      setCurrentLang(event.detail.language)
-    }
-    window.addEventListener('languageChanged', handleLanguageChange as EventListener)
-    return () => {
-      window.removeEventListener('languageChanged', handleLanguageChange as EventListener)
-    }
-  }, [])
-
   const handleLanguageChange = (langCode: string) => {
     changeLanguage(langCode)
-    setCurrentLang(langCode)
     setIsLanguageMenuOpen(false)
   }
 
@@ -76,7 +63,7 @@ const Header = () => {
     { name: t('nav.dashboard'), path: '/dashboard' }
   ]
 
-  const currentLanguage = languages.find(l => l.code === currentLang) || languages[0]
+  const currentLanguage = languages.find(l => l.code === language) || languages[0]
 
   return (
     <>
@@ -173,7 +160,7 @@ const Header = () => {
                     className={`
                       w-full px-4 py-2 text-left text-xs hover:bg-white/10 transition-colors
                       flex items-center gap-2
-                      ${currentLang === lang.code ? 'text-white bg-white/5' : 'text-gray-300'}
+                      ${language === lang.code ? 'text-white bg-white/5' : 'text-gray-300'}
                     `}
                   >
                     <div className="flex-shrink-0">{lang.flagSvg}</div>
@@ -283,7 +270,7 @@ const Header = () => {
                     }}
                     className={`
                       flex items-center gap-3 px-4 py-2 rounded-lg transition-colors
-                      ${currentLang === lang.code ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/5'}
+                      ${language === lang.code ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/5'}
                     `}
                   >
                     {lang.flagSvg}

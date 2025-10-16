@@ -16,7 +16,20 @@
       "Bash(pnpm install)",
       "Bash(pnpm run dev)",
       "WebFetch(domain:www.figma.com)",
-      "Bash(npm version:*)"
+      "Bash(npm version:*)",
+      "Bash(git stash:*)",
+      "Read(//c/Users/morit/IdeaProjects/EckertPreisser/**)",
+      "Bash(mvn versions:set:*)",
+      "Bash(java:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker-compose:*)",
+      "Bash(curl:*)",
+      "Bash(git rm:*)",
+      "Bash(mvn spring-boot:run:*)",
+      "Bash(timeout:*)",
+      "Bash(where:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

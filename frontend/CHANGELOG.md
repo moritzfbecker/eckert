@@ -4,6 +4,57 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.6.0] - 2025-10-16
+
+### Added
+- React Context Provider for i18n system [FRONTEND_I18N_017]
+  - I18nContext provides reactive state management
+  - Translations loaded from backend on mount
+  - Components automatically re-render when translations load
+  - Supports loading state and error handling
+  - Fallback translations when backend unavailable
+- useTranslation custom hook for components [FRONTEND_I18N_018]
+  - Provides t() function for translations
+  - Provides language state (current language)
+  - Provides changeLanguage() function
+  - Provides isLoading and error states
+  - Throws error if used outside I18nProvider
+- React Router routes for /products and /dashboard [FRONTEND_NAV_021]
+  - Added placeholder pages with "Coming Soon" message
+  - Fixes React Router warning about unmatched routes
+
+### Changed
+- Components now re-render when translations load [FRONTEND_I18N_019]
+  - Header component uses useTranslation hook [FRONTEND_I18N_020]
+  - Footer component uses useTranslation hook [FRONTEND_I18N_021]
+  - App.tsx wrapped with I18nProvider at root level
+  - Removed old i18n utility direct imports
+  - All components reactive to language changes
+- Logging improved with new error codes [I18N_CTX_001-004]
+  - I18N_CTX_001: Context initialization
+  - I18N_CTX_002: Language config loaded
+  - I18N_CTX_003: Initialization success
+  - I18N_CTX_004: Language changed
+  - I18N_CTX_ERR_001: Initialization failed
+  - I18N_CTX_WARN_001: Using fallback translations
+  - I18N_CTX_WARN_002: Unsupported language
+
+### Fixed
+- Translations now display correctly in Header and Footer [FRONTEND_I18N_019]
+  - Components no longer show translation keys (nav.home, etc.)
+  - Components wait for translations to load before first render
+  - Language changes trigger immediate re-render with new translations
+- React Router warnings eliminated [FRONTEND_NAV_022]
+  - /products route now exists (placeholder page)
+  - /dashboard route now exists (placeholder page)
+  - No more "No routes matched location" warnings in console
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.6.0
+**Type**: Feature - Reactive i18n System with React Context
+
+---
+
 ## [1.5.1] - 2025-10-15
 
 ### Changed

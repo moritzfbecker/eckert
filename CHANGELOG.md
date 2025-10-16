@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.6.0] - 2025-10-16
+
+### Added
+- React Context Provider for reactive i18n system [FRONTEND_I18N_017]
+- useTranslation hook for component-level i18n [FRONTEND_I18N_018]
+- React Router routes for /products and /dashboard [FRONTEND_NAV_021]
+
+### Changed
+- Header and Footer components now use useTranslation hook [FRONTEND_I18N_020-021]
+- Components automatically re-render when translations load [FRONTEND_I18N_019]
+
+### Fixed
+- Translations display correctly (no more translation keys shown) [FRONTEND_I18N_019]
+- React Router warnings eliminated [FRONTEND_NAV_022]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
 ## [Backend 1.0.2] - 2025-10-15
 
 ### Added
