@@ -316,6 +316,30 @@
 | I18N_CTX_WARN_001 | Using fallback translations - Backend unavailable | Check backend |
 | I18N_CTX_WARN_002 | Unsupported language requested | Use supported language |
 
+#### Legal Pages (FRONTEND_LEGAL)
+| Code | Description | Type |
+|------|-------------|------|
+| FRONTEND_LEGAL_001 | Impressum page created | Success |
+| FRONTEND_LEGAL_002 | Datenschutz (Privacy Policy) page created | Success |
+| FRONTEND_LEGAL_003 | Cookie Policy page created | Success |
+| FRONTEND_LEGAL_004 | All legal pages use new design system | Success |
+| FRONTEND_LEGAL_005 | Legal routes added to App.tsx | Success |
+| FRONTEND_LEGAL_006 | Footer legal links updated with translations | Success |
+| FRONTEND_LEGAL_007 | Impressum page fully translated with i18n (24 keys) | Success |
+| FRONTEND_LEGAL_008 | Datenschutz page main sections translated (20 keys) | Success |
+| FRONTEND_LEGAL_009 | Cookie Policy page main sections translated (14 keys) | Success |
+| FRONTEND_LEGAL_010 | All legal pages use useTranslation hook | Success |
+
+#### Internationalization Backend (BACKEND_I18N)
+| Code | Description | Type |
+|------|-------------|------|
+| BACKEND_I18N_003 | Added footer translations (legal.*, footer.*) | Success |
+| BACKEND_I18N_004 | 13 new translation keys added (7 footer, 4 legal, 2 contact) | Success |
+| BACKEND_I18N_005 | Added 60+ legal page translations (impressum.*, datenschutz.*, cookies.*) | Success |
+| BACKEND_I18N_006 | MessageSource now always regenerates properties files | Success |
+| BACKEND_I18N_007 | Added getAllMessages() method for dynamic key loading | Success |
+| BACKEND_I18N_008 | I18nController uses dynamic key loading (no hardcoded array) | Success |
+
 #### Cleanup (FRONTEND_CLEAN)
 | Code | Description | Type |
 |------|-------------|------|

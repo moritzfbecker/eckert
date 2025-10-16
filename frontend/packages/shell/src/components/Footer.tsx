@@ -19,21 +19,21 @@ const Footer = () => {
             <h3 className="text-2xl font-bold mb-4 text-white">
               Eckert Preisser
             </h3>
-            <p className="text-white mb-4">
-              Enterprise-level solutions for modern businesses.
+            <p className="text-white/80 mb-4">
+              {t('footer.tagline')}
             </p>
           </div>
 
           {/* Navigation Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">
-              {t('nav.home')}
+              {t('footer.company')}
             </h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   to="/"
-                  className="text-white hover:text-white/80 transition-colors duration-300"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {t('nav.home')}
                 </Link>
@@ -41,7 +41,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/products"
-                  className="text-white hover:text-white/80 transition-colors duration-300"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {t('nav.products')}
                 </Link>
@@ -49,7 +49,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/dashboard"
-                  className="text-white hover:text-white/80 transition-colors duration-300"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {t('nav.dashboard')}
                 </Link>
@@ -59,30 +59,32 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Legal</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">
+              {t('footer.legal')}
+            </h4>
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/privacy"
-                  className="text-white hover:text-white/80 transition-colors duration-300"
+                  to="/datenschutz"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  Privacy Policy
+                  {t('legal.privacy')}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/terms"
-                  className="text-white hover:text-white/80 transition-colors duration-300"
+                  to="/impressum"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  Terms of Service
+                  {t('legal.imprint')}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/imprint"
-                  className="text-white hover:text-white/80 transition-colors duration-300"
+                  to="/cookie-policy"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  Imprint
+                  {t('legal.cookies')}
                 </Link>
               </li>
             </ul>
@@ -90,9 +92,16 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
-            <p className="text-white">
-              Email: info@eckert-preisser.com
+            <h4 className="text-lg font-semibold mb-4 text-white">
+              {t('footer.contact')}
+            </h4>
+            <p className="text-white/80 mb-2">
+              <span className="font-semibold text-white">{t('footer.email')}:</span><br />
+              info@eckertpreisser.de
+            </p>
+            <p className="text-white/80">
+              <span className="font-semibold text-white">{t('footer.phone')}:</span><br />
+              +49 (0) 123 456789
             </p>
           </div>
         </div>
@@ -103,8 +112,8 @@ const Footer = () => {
           border-t border-white/10
           text-center
         ">
-          <p className="text-white">
-            © {currentYear} Eckert Preisser Enterprise. All rights reserved.
+          <p className="text-white/80">
+            {t('footer.copyright', { '0': currentYear })}
           </p>
         </div>
       </Container>

@@ -4,6 +4,41 @@ All backend-specific changes are documented here.
 
 ---
 
+## [1.0.3] - 2025-10-16
+
+### Added
+- Complete i18n system for all legal pages [BACKEND_I18N_003-005]
+  - Footer: 7 keys (company, legal, contact, email, phone, copyright, tagline)
+  - Legal navigation: 4 keys (privacy, imprint, terms, cookies)
+  - Impressum: 24 keys - ALL sections (provider, contact, register, VAT, liability, copyright, design)
+  - Datenschutz: 44 keys - ALL main sections (collection, hosting, privacy, rights, storage, revocation, portability, etc.)
+  - Cookie Policy: 83 keys - COMPLETE (4 cookie types, table data, management, browsers, blocking)
+  - **Total: 162 translation keys x 2 languages = 324 entries**
+- getAllMessages() method in MessageSource [BACKEND_I18N_007]
+  - Dynamically returns all translation keys from cache
+  - No hardcoded arrays needed
+  - New keys automatically included
+
+### Changed
+- MessageSource ALWAYS regenerates properties files [BACKEND_I18N_006]
+  - Removed file-exists check
+  - Properties regenerated on every startup
+  - Ensures code changes reflected immediately
+- I18nController uses dynamic key loading [BACKEND_I18N_008]
+  - Removed 56-key hardcoded array
+  - Uses MessageSource.getAllMessages()
+  - Scales automatically with new keys
+
+### Fixed
+- Curly quotes („") causing Java compilation errors
+  - Replaced with single quotes ('') in multiple locations
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v1.0.3-SNAPSHOT
+**Type**: Minor - Complete Legal Pages i18n (162 keys)
+
+---
+
 ## [1.0.2] - 2025-10-15
 
 ### Added

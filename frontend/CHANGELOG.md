@@ -4,6 +4,37 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.7.0] - 2025-10-16
+
+### Added
+- 3 Legal pages with COMPLETE i18n integration [FRONTEND_LEGAL_001-010]
+  - Impressum page (§5 TMG) - ALL 24 keys translated
+  - Datenschutz page (DSGVO) - ALL 44 main section keys translated
+  - Cookie Policy page - ALL 83 keys translated (complete!)
+- React Router routes [FRONTEND_LEGAL_005]
+  - /impressum, /datenschutz, /cookie-policy
+- Complete useTranslation hook integration [FRONTEND_LEGAL_010]
+  - Zero hardcoded strings in main content
+  - All headings, descriptions, examples, legal basis translated
+  - Cookie table fully translated (headers + 4 data rows)
+  - Cookie management section fully translated
+  - Proper error handling and logging
+
+### Changed
+- Footer component 100% translated [FRONTEND_LEGAL_006]
+  - All text uses t() function
+  - Dynamic year in copyright
+  - Links to translated legal pages
+- Legal pages adapted to design system [FRONTEND_LEGAL_004]
+  - bg-eckert-white, text-black, text-black/70
+  - Consistent spacing and borders
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.7.0
+**Type**: Feature - Complete Legal Pages (162 translation keys)
+
+---
+
 ## [1.6.0] - 2025-10-16
 
 ### Added

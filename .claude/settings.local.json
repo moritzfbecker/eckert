@@ -29,7 +29,10 @@
       "Bash(mvn spring-boot:run:*)",
       "Bash(timeout:*)",
       "Bash(where:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Read(//c/Users/morit/**)",
+      "WebFetch(domain:becker.limited)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []

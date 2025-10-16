@@ -9,6 +9,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.7.0] - 2025-10-16
+
+### Added
+- 3 COMPLETE legal pages (162 translation keys total)
+  - Impressum: 24 keys
+  - Datenschutz: 44 keys
+  - Cookie Policy: 83 keys (100% translated!)
+
+### Changed
+- Footer 100% translated
+- All legal pages use useTranslation
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
+## [Backend 1.0.3] - 2025-10-16
+
+### Added
+- 162 translation keys (DE+EN = 324 entries)
+- getAllMessages() dynamic loading
+
+### Changed
+- MessageSource always regenerates
+- I18nController dynamic loading
+
+### Fixed
+- Curly quotes compilation errors
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Minor
+
+---
+
 ## [Frontend 1.6.0] - 2025-10-16
 
 ### Added
