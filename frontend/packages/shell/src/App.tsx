@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Impressum from './pages/Impressum'
 import Datenschutz from './pages/Datenschutz'
 import CookiePolicy from './pages/CookiePolicy'
+import Status from './pages/Status'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<div className="container mx-auto py-20"><h1 className="text-4xl">Products Page (Coming Soon)</h1></div>} />
             <Route path="/dashboard" element={<div className="container mx-auto py-20"><h1 className="text-4xl">Dashboard Page (Coming Soon)</h1></div>} />
+            <Route path="/status" element={<Status />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />

@@ -4,6 +4,26 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.8.0] - 2025-10-16
+
+### Added
+- System Status Dashboard page [STATUS_001-002]
+  - Real-time monitoring of all microservices
+  - Health check for Eureka, Config Server, API Gateway
+  - Overall system status indicator (Operational/Degraded/Down)
+  - Auto-refresh every 30 seconds
+  - Manual refresh button
+  - Service details (name, port, status, version)
+- Status link in Footer
+- Route /status for status dashboard
+- 25 translation keys for status page (status.*)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.8.0
+**Type**: Feature - Status Dashboard
+
+---
+
 ## [1.7.0] - 2025-10-16
 
 ### Added

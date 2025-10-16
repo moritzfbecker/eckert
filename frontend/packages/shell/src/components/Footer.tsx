@@ -90,7 +90,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact + Status */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">
               {t('footer.contact')}
@@ -99,10 +99,16 @@ const Footer = () => {
               <span className="font-semibold text-white">{t('footer.email')}:</span><br />
               info@eckertpreisser.de
             </p>
-            <p className="text-white/80">
+            <p className="text-white/80 mb-4">
               <span className="font-semibold text-white">{t('footer.phone')}:</span><br />
               +49 (0) 123 456789
             </p>
+            <Link
+              to="/status"
+              className="text-white/80 hover:text-white transition-colors duration-300 block"
+            >
+              {t('footer.status')}
+            </Link>
           </div>
         </div>
 

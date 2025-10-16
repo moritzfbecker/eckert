@@ -164,6 +164,33 @@ public class MessageSource {
             messages.setProperty("footer.phone", "Telefon");
             messages.setProperty("footer.copyright", "© {0} Eckert Preisser Enterprise. Alle Rechte vorbehalten.");
             messages.setProperty("footer.tagline", "Enterprise-Level-Lösungen für moderne Unternehmen.");
+            messages.setProperty("footer.status", "System-Status");
+
+            // Status Page
+            messages.setProperty("status.title", "System-Status Dashboard");
+            messages.setProperty("status.subtitle", "Echtzeit-Überwachung aller Microservices und Module");
+            messages.setProperty("status.backend.title", "Backend Services");
+            messages.setProperty("status.frontend.title", "Frontend Module");
+            messages.setProperty("status.service.healthy", "Online");
+            messages.setProperty("status.service.unhealthy", "Offline");
+            messages.setProperty("status.service.unknown", "Unbekannt");
+            messages.setProperty("status.version", "Version");
+            messages.setProperty("status.port", "Port");
+            messages.setProperty("status.uptime", "Laufzeit");
+            messages.setProperty("status.last.check", "Letzte Prüfung");
+            messages.setProperty("status.refresh", "Aktualisieren");
+            messages.setProperty("status.view.logs", "Logs ansehen");
+            messages.setProperty("status.services.eureka", "Service Discovery (Eureka)");
+            messages.setProperty("status.services.config", "Config Server");
+            messages.setProperty("status.services.gateway", "API Gateway");
+            messages.setProperty("status.services.user", "User Service");
+            messages.setProperty("status.services.product", "Product Service");
+            messages.setProperty("status.services.order", "Order Service");
+            messages.setProperty("status.services.notification", "Notification Service");
+            messages.setProperty("status.overall.title", "Gesamt-Status");
+            messages.setProperty("status.overall.operational", "Alle Systeme funktionsfähig");
+            messages.setProperty("status.overall.degraded", "Eingeschränkter Betrieb");
+            messages.setProperty("status.overall.down", "Systemausfall");
 
             // Impressum Page
             messages.setProperty("impressum.title", "Impressum");
@@ -455,6 +482,33 @@ public class MessageSource {
             messages.setProperty("footer.phone", "Phone");
             messages.setProperty("footer.copyright", "© {0} Eckert Preisser Enterprise. All rights reserved.");
             messages.setProperty("footer.tagline", "Enterprise-level solutions for modern businesses.");
+            messages.setProperty("footer.status", "System Status");
+
+            // Status Page
+            messages.setProperty("status.title", "System Status Dashboard");
+            messages.setProperty("status.subtitle", "Real-time monitoring of all microservices and modules");
+            messages.setProperty("status.backend.title", "Backend Services");
+            messages.setProperty("status.frontend.title", "Frontend Modules");
+            messages.setProperty("status.service.healthy", "Online");
+            messages.setProperty("status.service.unhealthy", "Offline");
+            messages.setProperty("status.service.unknown", "Unknown");
+            messages.setProperty("status.version", "Version");
+            messages.setProperty("status.port", "Port");
+            messages.setProperty("status.uptime", "Uptime");
+            messages.setProperty("status.last.check", "Last Check");
+            messages.setProperty("status.refresh", "Refresh");
+            messages.setProperty("status.view.logs", "View Logs");
+            messages.setProperty("status.services.eureka", "Service Discovery (Eureka)");
+            messages.setProperty("status.services.config", "Config Server");
+            messages.setProperty("status.services.gateway", "API Gateway");
+            messages.setProperty("status.services.user", "User Service");
+            messages.setProperty("status.services.product", "Product Service");
+            messages.setProperty("status.services.order", "Order Service");
+            messages.setProperty("status.services.notification", "Notification Service");
+            messages.setProperty("status.overall.title", "Overall Status");
+            messages.setProperty("status.overall.operational", "All Systems Operational");
+            messages.setProperty("status.overall.degraded", "Degraded Performance");
+            messages.setProperty("status.overall.down", "System Outage");
 
             // Impressum Page
             messages.setProperty("impressum.title", "Imprint");
