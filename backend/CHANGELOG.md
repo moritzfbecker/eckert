@@ -4,6 +4,38 @@ All backend-specific changes are documented here.
 
 ---
 
+## [1.0.3] - 2025-10-16
+
+### Added
+- Footer translations in MessageSource [BACKEND_I18N_003]
+  - footer.company, footer.legal, footer.contact, footer.email, footer.phone
+  - footer.copyright, footer.tagline
+- Legal page translations in MessageSource [BACKEND_I18N_004]
+  - legal.privacy, legal.imprint, legal.terms, legal.cookies
+- Complete legal page content translations [BACKEND_I18N_005]
+  - Impressum: 24 keys (impressum.*)
+  - Datenschutz: 20 keys (datenschutz.*)
+  - Cookie Policy: 14 keys (cookies.*)
+  - Total: ~70 new translation keys (DE + EN)
+- getAllMessages() method in MessageSource [BACKEND_I18N_007]
+  - Dynamically returns all translation keys
+  - No hardcoded key arrays needed
+
+### Changed
+- MessageSource now always regenerates properties files [BACKEND_I18N_006]
+  - Ensures MessageSource code changes are reflected
+  - Properties files always up-to-date
+- I18nController uses dynamic key loading [BACKEND_I18N_008]
+  - Removed hardcoded key array
+  - Uses MessageSource.getAllMessages()
+  - New keys automatically included
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v1.0.3-SNAPSHOT
+**Type**: Minor - Complete Legal Pages i18n
+
+---
+
 ## [1.0.2] - 2025-10-15
 
 ### Added

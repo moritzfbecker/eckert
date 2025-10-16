@@ -101,35 +101,11 @@ public class I18nController {
 
     /**
      * Get all messages for a language
+     * Dynamically loads ALL keys from MessageSource
      */
     private Map<String, String> getAllMessagesForLanguage(String language) {
-        Map<String, String> messages = new HashMap<>();
-
-        // Load all predefined keys
-        // This is a simple implementation - in production you might want to load from Properties file directly
-        String[] keys = {
-            "app.name", "app.welcome",
-            "nav.home", "nav.products", "nav.dashboard", "nav.account", "nav.login", "nav.logout",
-            "nav.solutions", "nav.archive", "nav.contact",
-            "user.profile", "user.settings", "user.created", "user.updated", "user.deleted",
-            "user.not.found", "user.already.exists", "user.welcome",
-            "button.save", "button.cancel", "button.delete", "button.edit", "button.submit",
-            "button.back", "button.next", "button.get.started", "button.learn.more",
-            "form.email", "form.password", "form.first.name", "form.last.name", "form.phone", "form.address",
-            "validation.required", "validation.email.invalid", "validation.password.weak", "validation.password.mismatch",
-            "error.something.went.wrong", "error.try.again", "error.internal", "error.unauthorized",
-            "error.forbidden", "error.not.found",
-            "success.saved", "success.deleted", "success.updated",
-            "home.hero.title", "home.hero.subtitle", "home.features.title",
-            "home.feature.fast.title", "home.feature.fast.desc",
-            "home.feature.secure.title", "home.feature.secure.desc",
-            "home.feature.scalable.title", "home.feature.scalable.desc"
-        };
-
-        for (String key : keys) {
-            messages.put(key, MessageSource.getMessage(key, language));
-        }
-
-        return messages;
+        // Use MessageSource.getAllMessages() to dynamically get ALL translation keys
+        // This ensures new keys are automatically included without manual updates
+        return MessageSource.getAllMessages(language);
     }
 }

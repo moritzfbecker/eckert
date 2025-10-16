@@ -4,6 +4,43 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.7.0] - 2025-10-16
+
+### Added
+- Legal pages from old EckertPreisser project [FRONTEND_LEGAL_001-003]
+  - Impressum page (§5 TMG compliant) [FRONTEND_LEGAL_001]
+  - Datenschutz page (DSGVO-compliant privacy policy) [FRONTEND_LEGAL_002]
+  - Cookie Policy page with detailed cookie information [FRONTEND_LEGAL_003]
+- React Router routes for all legal pages [FRONTEND_LEGAL_005]
+  - /impressum → Impressum page
+  - /datenschutz → Datenschutz page
+  - /cookie-policy → Cookie Policy page
+- Full i18n support for all legal pages [FRONTEND_LEGAL_007-010]
+  - Impressum fully translated (24 translation keys) [FRONTEND_LEGAL_007]
+  - Datenschutz main sections translated (20 keys) [FRONTEND_LEGAL_008]
+  - Cookie Policy main sections translated (14 keys) [FRONTEND_LEGAL_009]
+  - All pages use useTranslation hook [FRONTEND_LEGAL_010]
+
+### Changed
+- Footer component fully translated with backend i18n [FRONTEND_LEGAL_006]
+  - All hardcoded text replaced with t() function
+  - Company section: footer.company, footer.tagline
+  - Legal section: footer.legal, legal.privacy, legal.imprint, legal.cookies
+  - Contact section: footer.contact, footer.email, footer.phone
+  - Copyright: footer.copyright with dynamic year
+- Legal pages adapted to new design system [FRONTEND_LEGAL_004]
+  - bg-eckert-white instead of bg-white
+  - text-black instead of text-gray-900
+  - text-black/70 for secondary text
+  - border border-black/10 for boxes
+  - Consistent spacing and typography
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.7.0
+**Type**: Feature - Legal Pages with Complete i18n Integration
+
+---
+
 ## [1.6.0] - 2025-10-16
 
 ### Added

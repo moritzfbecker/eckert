@@ -9,6 +9,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.7.0] - 2025-10-16
+
+### Added
+- Legal pages with full i18n support [FRONTEND_LEGAL_001-010]
+  - Impressum (24 translation keys)
+  - Datenschutz (20 translation keys)
+  - Cookie Policy (14 translation keys)
+- Routes for all legal pages
+
+### Changed
+- Footer fully translated with backend i18n
+- All legal pages use useTranslation hook
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
+## [Backend 1.0.3] - 2025-10-16
+
+### Added
+- 70+ translation keys for legal pages [BACKEND_I18N_003-005]
+- getAllMessages() method in MessageSource [BACKEND_I18N_007]
+
+### Changed
+- MessageSource always regenerates properties [BACKEND_I18N_006]
+- I18nController uses dynamic key loading [BACKEND_I18N_008]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Minor
+
+---
+
 ## [Frontend 1.6.0] - 2025-10-16
 
 ### Added
