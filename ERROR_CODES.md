@@ -316,6 +316,14 @@
 | I18N_CTX_WARN_001 | Using fallback translations - Backend unavailable | Check backend |
 | I18N_CTX_WARN_002 | Unsupported language requested | Use supported language |
 
+#### Status Page (STATUS)
+| Code | Description | Action |
+|------|-------------|--------|
+| STATUS_001 | Checking service health | Info |
+| STATUS_002 | Service health check complete | Info |
+| STATUS_WARN_001 | Service unreachable | Check service logs |
+| STATUS_ERR_001 | Failed to fetch service status | Retry or check network |
+
 #### Legal Pages (FRONTEND_LEGAL)
 | Code | Description | Type |
 |------|-------------|------|

@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.8.0] - 2025-10-16
+
+### Added
+- System Status Dashboard (Real-time service monitoring)
+- 25 translation keys for status page
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
 ## [Frontend 1.7.0] - 2025-10-16
 
 ### Added

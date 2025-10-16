@@ -32,7 +32,8 @@
       "Bash(npm run dev:*)",
       "Read(//c/Users/morit/**)",
       "WebFetch(domain:becker.limited)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(taskkill /F /FI \"IMAGENAME eq node.exe\")"
     ],
     "deny": [],
     "ask": []
