@@ -5,6 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/development/',  // For deployment at becker.limited/development/
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
