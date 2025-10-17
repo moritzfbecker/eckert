@@ -1,5 +1,26 @@
 # Quick Start: Multi-Language Support
 
+**Version**: 2.0.0 (Updated for useTranslation Hook + Config Server)
+**Last Updated**: 2025-10-17
+
+## ⚠️ CRITICAL RULES
+
+```
+1. NIEMALS hardcoded Text in Frontend!
+   ❌ <h1>Contact</h1>
+   ✅ <h1>{t('contact.title')}</h1>
+
+2. IMMER useTranslation Hook verwenden!
+   const { t } = useTranslation()
+
+3. Keys in MessageSource.java hinzufügen!
+   Nicht direkt in .properties Files!
+
+4. Beide Sprachen pflegen (DE + EN)!
+```
+
+---
+
 ## 5-Minute Guide
 
 ### Backend
@@ -38,67 +59,91 @@ public class UserService {
 
 ---
 
-### Frontend
+### Frontend (v1.6.0+ - useTranslation Hook)
 
-#### 1. Import i18n
+#### 1. Import useTranslation Hook
 ```typescript
-import { t, changeLanguage } from '@eckert-preisser/shared/utils';
+import { useTranslation } from '@eckert-preisser/shared/hooks';
 ```
 
-#### 2. Translate Text
-```typescript
-// Simple translation
-const message = t('user.created');
+#### 2. Use in Component
+```tsx
+const MyComponent = () => {
+  const { t, language, changeLanguage } = useTranslation();
 
-// With parameters
-const welcome = t('user.welcome', { 0: 'John' });
-
-// In JSX
-<h1>{t('app.welcome')}</h1>
-<p>{t('home.hero.subtitle')}</p>
+  return (
+    <div>
+      <h1>{t('page.title')}</h1>
+      <p>{t('page.description')}</p>
+      <button>{t('button.submit')}</button>
+    </div>
+  );
+};
 ```
 
-#### 3. Switch Language
-```typescript
-// Change to English
-changeLanguage('en');
+#### 3. CRITICAL: NEVER Hardcode Text!
+```tsx
+// ❌ WRONG - NEVER DO THIS!
+<h1>Welcome</h1>
+<button>Submit</button>
+<p>Contact us at info@example.com</p>
 
-// Change to German
-changeLanguage('de');
-
-// Get current language
-const lang = getCurrentLanguage();
+// ✅ CORRECT - ALWAYS DO THIS!
+const { t } = useTranslation();
+<h1>{t('welcome.title')}</h1>
+<button>{t('button.submit')}</button>
+<p>{t('contact.email.info')}</p>
 ```
 
-#### 4. Language Switcher Component
-```typescript
-import { LanguageSwitcher } from '@eckert-preisser/shared/ui';
+#### 4. Switch Language
+```tsx
+const { changeLanguage } = useTranslation();
 
-// In Header
-<LanguageSwitcher />
+// In a button
+<button onClick={() => changeLanguage('en')}>
+  English
+</button>
+
+<button onClick={() => changeLanguage('de')}>
+  Deutsch
+</button>
 ```
 
 ---
 
-## Adding New Translations
+## Adding New Translations (v1.1.0+)
 
-### 1. Backend - Add to Properties Files
+### 1. Add to MessageSource.java (Backend)
 
-**config/i18n/messages_de.properties**:
-```properties
-product.added=Produkt hinzugefügt
-product.updated=Produkt aktualisiert
-product.deleted=Produkt gelöscht
+**Wichtig**: Editiere `backend/shared/common-utils/.../MessageSource.java`
+
+```java
+// In createMessageFile("de") Methode
+if ("de".equals(language)) {
+    messages.setProperty("product.added", "Produkt hinzugefügt");
+    messages.setProperty("product.updated", "Produkt aktualisiert");
+    messages.setProperty("product.deleted", "Produkt gelöscht");
+}
+
+// In createMessageFile("en") Methode
+else if ("en".equals(language)) {
+    messages.setProperty("product.added", "Product added");
+    messages.setProperty("product.updated", "Product updated");
+    messages.setProperty("product.deleted", "Product deleted");
+}
 ```
 
-**config/i18n/messages_en.properties**:
-```properties
-product.added=Product added
-product.updated=Product updated
-product.deleted=Product deleted
+### 2. Rebuild Config Server
+
+**Properties Files werden automatisch generiert!**
+
+```bash
+cd backend
+docker-compose build config-server
+docker-compose up -d config-server
 ```
 
-### 2. Use in Code
+### 3. Use in Code
 
 **Backend**:
 ```java
@@ -106,9 +151,12 @@ String message = MessageSource.getMessage("product.added", language);
 ```
 
 **Frontend**:
-```typescript
-const message = t('product.added');
+```tsx
+const { t } = useTranslation();
+<p>{t('product.added')}</p>
 ```
+
+**Frontend lädt Keys automatisch vom Backend!**
 
 ---
 
@@ -178,29 +226,37 @@ public class UserService {
 }
 ```
 
-### Frontend Component
-```typescript
-const UserForm = () => {
-  const [language, setLanguage] = useState(getCurrentLanguage());
+### Frontend Component (v1.6.0+ with useTranslation)
+```tsx
+import { useTranslation } from '@eckert-preisser/shared/hooks';
+import { useState } from 'react';
 
-  const handleSubmit = async (data) => {
+const UserForm = () => {
+  const { t, language } = useTranslation();  // ← IMMER useTranslation Hook!
+  const [formData, setFormData] = useState({});
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await api.post('/users', { ...data, language });
+      await api.post('/users', { ...formData, language });
+      // ✅ RICHTIG: t() für Notifications
       toast.success(t('user.created'));
     } catch (error) {
+      // ✅ RICHTIG: t() für Fehler
       toast.error(t('error.something.went.wrong'));
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* ✅ RICHTIG: t() für ALLE Texte */}
       <h2>{t('user.create')}</h2>
 
       <label>{t('form.email')}</label>
-      <input type="email" />
+      <input type="email" placeholder={t('form.email.placeholder')} />
 
       <label>{t('form.password')}</label>
-      <input type="password" />
+      <input type="password" placeholder={t('form.password.placeholder')} />
 
       <button>{t('button.save')}</button>
     </form>
@@ -208,22 +264,30 @@ const UserForm = () => {
 };
 ```
 
+**WICHTIG**: Auch Placeholders, Alt-Texte, Tooltips mit t() Keys!
+
 ---
 
 ## DO's ✅
 
-- Use MessageSource (backend) or t() (frontend)
+- **Frontend**: IMMER useTranslation Hook verwenden
+- **Frontend**: ALLE Texte mit t() - auch Placeholders!
+- **Backend**: MessageSource für alle user-facing Strings
 - Add translations in BOTH DE and EN
 - Use same key in both files
-- Use descriptive keys (user.created not uc)
-- Keep messages in external files
+- Use descriptive keys (contact.form.name not cfn)
+- Edit MessageSource.java, nicht .properties direkt!
+- Rebuild Config Server nach Änderungen
 
 ## DON'Ts ❌
 
-- Don't hardcode text
-- Don't forget English translation
-- Don't use vague keys
-- Don't skip i18n for user-facing text
+- ❌ **NIEMALS hardcoded Text im Frontend!**
+- ❌ **NIEMALS Strings wie "Submit", "Contact", "Send"!**
+- ❌ Don't forget English translation
+- ❌ Don't use vague keys
+- ❌ Don't skip i18n for ANY user-facing text
+- ❌ Don't edit .properties files directly
+- ❌ Don't forget to rebuild Config Server
 
 ---
 

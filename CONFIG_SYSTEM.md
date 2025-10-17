@@ -1,18 +1,41 @@
 # Configuration System Documentation
 
+**Version**: 2.0.0 (Updated for Config Server Architecture)
+**Last Updated**: 2025-10-17
+
 ## Overview
 
-Das Eckert Preisser Enterprise System verwendet ein **zentrales externes Konfigurationssystem**.
+Das Eckert Preisser Enterprise System verwendet einen **zentralen Config Server** für alle Microservices.
 
-**Wichtige Regel**: **KEINE** `.env` Dateien im Code!
+**Wichtige Regeln**:
+- **KEINE** `.env` Dateien im Code!
+- **Config Server** = Single Source of Truth für ALLE Configs
+- Services nutzen **Spring Cloud Config Client**
+- **KEINE** lokalen config/ Ordner in Services
 
-Alle Konfigurationen werden beim ersten Start automatisch in externen YAML-Dateien erstellt, die der Admin dann anpassen kann.
+---
+
+## Enterprise Architecture (v1.1.0+)
+
+```
+Config Server (Port 8888)
+├── ConfigManager (NUR HIER!)
+├── Erstellt config/ beim Start
+├── Spring Cloud Config Server API
+└── Dient Configs an alle Services
+
+Services (Gateway, User, Product, etc.)
+├── Spring Cloud Config Client
+├── application.yml: NUR spring.config.import
+├── KEINE hardcoded Werte!
+└── Configs kommen VOM Config Server
+```
 
 ---
 
 ## Konfigurationsordner
 
-Beim ersten Start der Applikation wird automatisch ein `config/` Ordner erstellt:
+Beim ersten Start des **Config Servers** wird automatisch ein `config/` Ordner erstellt:
 
 ```
 config/
@@ -171,53 +194,80 @@ validation.email.invalid=Invalid email address
 validation.password.weak=Password is too weak
 ```
 
-### Neue Übersetzungen hinzufügen
+### Neue Übersetzungen hinzufügen (v1.1.0+)
 
-1. **Beide Dateien bearbeiten** (DE + EN)
-2. **Gleichen Key verwenden**:
-```properties
-# messages_de.properties
-product.added=Produkt hinzugefügt
+**Wichtig**: Übersetzungen werden in **Backend MessageSource.java** verwaltet!
 
-# messages_en.properties
-product.added=Product added
+1. **Öffne MessageSource.java**:
+   - `backend/shared/common-utils/src/main/java/.../MessageSource.java`
+
+2. **Füge Keys hinzu** (in BEIDEN Sprachen!):
+```java
+// Deutsche Sektion
+if ("de".equals(language)) {
+    messages.setProperty("product.added", "Produkt hinzugefügt");
+    messages.setProperty("product.name", "Produktname");
+}
+
+// Englische Sektion
+else if ("en".equals(language)) {
+    messages.setProperty("product.added", "Product added");
+    messages.setProperty("product.name", "Product name");
+}
 ```
 
-3. **Im Code verwenden**:
+3. **Config Server neu builden**:
+```bash
+docker-compose build config-server
+docker-compose up -d config-server
+```
+
+4. **Im Code verwenden**:
 
 **Backend:**
 ```java
 String message = MessageSource.getMessage("product.added", "de");
-String formatted = MessageSource.getMessage("user.welcome", "de", "John");
 ```
 
 **Frontend:**
-```typescript
-import { t } from '@eckert-preisser/shared/utils';
-
-const message = t('product.added');
-const formatted = t('user.welcome', { 0: 'John' });
+```tsx
+const { t } = useTranslation();
+<p>{t('product.added')}</p>
 ```
+
+**Properties-Dateien werden AUTOMATISCH generiert beim Config Server Start!**
 
 ---
 
-## Backend: Verwendung
+## Backend: Verwendung (NEW v1.1.0)
 
-### ConfigManager
+### Config Server - Central Configuration
 
-Automatische Konfigurationsinitialisierung:
+**ConfigManager** ist jetzt NUR im Config Server!
 
 ```java
-import com.eckertpreisser.common.utils.ConfigManager;
+// ❌ VERALTET - ConfigManager aus common-utils (GELÖSCHT!)
+// import com.eckertpreisser.common.utils.ConfigManager;
 
-// Wird automatisch beim Start aufgerufen
-ConfigManager.initializeConfigIfNotExists();
+// ✅ NEU - Spring Cloud Config Client
+// application.yml in jedem Service:
+spring:
+  config:
+    import: "optional:configserver:http://config-server:8888"
 
-// Config laden
-Map<String, Object> dbConfig = ConfigManager.loadConfig("database.yml");
+// Das ist ALLES! Configs werden automatisch geladen!
+```
 
-// Config-Verzeichnis abrufen
-String configDir = ConfigManager.getConfigDirectory();
+**Services holen Configs automatisch vom Config Server:**
+```java
+// Einfach @Value verwenden - kommt vom Config Server!
+@Value("${spring.datasource.url}")
+private String databaseUrl;
+
+@Value("${spring.mail.host}")
+private String mailHost;
+
+// KEINE ConfigManager Calls mehr nötig!
 ```
 
 ### MessageSource
@@ -261,48 +311,60 @@ public class UserService {
 
 ---
 
-## Frontend: Verwendung
+## Frontend: Verwendung (NEW v1.6.0+)
 
-### i18n Initialisierung
+### CRITICAL: NIEMALS hardcoded Text!
 
-In der Shell App:
+```tsx
+// ❌ FALSCH - NEVER DO THIS!
+<h1>Contact Us</h1>
+<button>Submit</button>
 
-```typescript
-import { initI18n } from '@eckert-preisser/shared/utils';
-
-// In App.tsx or main.tsx
-useEffect(() => {
-  initI18n();
-}, []);
+// ✅ RICHTIG - ALWAYS DO THIS!
+const { t } = useTranslation();
+<h1>{t('contact.title')}</h1>
+<button>{t('button.submit')}</button>
 ```
 
-### Übersetzungen verwenden
+### i18n mit useTranslation Hook
+
+**In JEDER Component:**
 
 ```typescript
-import { t, changeLanguage, getCurrentLanguage } from '@eckert-preisser/shared/utils';
+import { useTranslation } from '@eckert-preisser/shared/hooks';
 
-// Übersetzen
-const message = t('user.created');
-const welcome = t('user.welcome', { 0: 'John' });
+const MyComponent = () => {
+  const { t, language, changeLanguage } = useTranslation();
 
-// Sprache wechseln
-changeLanguage('en');  // Wechsel zu Englisch
-changeLanguage('de');  // Wechsel zu Deutsch
-
-// Aktuelle Sprache
-const lang = getCurrentLanguage();  // 'de' oder 'en'
+  return (
+    <div>
+      <h1>{t('page.title')}</h1>
+      <p>{t('page.description')}</p>
+      <button onClick={() => changeLanguage('en')}>
+        {t('button.switch.language')}
+      </button>
+    </div>
+  );
+};
 ```
 
-### LanguageSwitcher Component
+### I18nProvider (App-Level)
 
-```typescript
-import { LanguageSwitcher } from '@eckert-preisser/shared/ui';
+```tsx
+// App.tsx
+import { I18nProvider } from '@eckert-preisser/shared/contexts';
 
-// In Header oder Navigation
-<LanguageSwitcher />
+function App() {
+  return (
+    <I18nProvider>
+      {/* All components can now use useTranslation */}
+      <YourApp />
+    </I18nProvider>
+  );
+}
 ```
 
-Das zeigt zwei Buttons (DE / EN) zum Sprachwechsel.
+**Translations laden automatisch vom Backend Config Server!**
 
 ---
 
@@ -429,11 +491,13 @@ changeLanguage('en');
 
 **Problem**: Config-Dateien wurden nicht erstellt
 
-**Lösung**:
-```java
-// Manuell initialisieren
-ConfigManager.initializeConfigIfNotExists();
-```
+**Lösung** (v1.1.0+):
+1. Prüfe ob Config Server läuft: `docker ps | grep config-server`
+2. Config Server Logs checken: `docker logs backend-config-server-1`
+3. Suche nach: `CONFIG_SERVER_INIT_002` - Config Server initialized
+4. Falls nicht: Config Server neu starten
+
+**Config Server erstellt automatisch config/ beim Start!**
 
 ### Übersetzung fehlt
 

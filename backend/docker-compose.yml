@@ -17,7 +17,7 @@ services:
       retries: 5
       start_period: 40s
 
-  # Config Server - ESSENTIAL
+  # Config Server - ESSENTIAL (Central Configuration Management)
   config-server:
     build:
       context: .
@@ -25,10 +25,12 @@ services:
     ports:
       - "8888:8888"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_PROFILES_ACTIVE=docker,native
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
     depends_on:
       - service-discovery
+    volumes:
+      - config-data:/app/config
     networks:
       - eckert-network
 
@@ -42,6 +44,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
     depends_on:
       - service-discovery
       - config-server
@@ -85,7 +88,9 @@ networks:
   eckert-network:
     driver: bridge
 
-# volumes:
+volumes:
+  # Config Server persistent storage for configuration files
+  config-data:
   # Uncomment when placeholder services are enabled
   # postgres-user-data:
   # postgres-product-data:

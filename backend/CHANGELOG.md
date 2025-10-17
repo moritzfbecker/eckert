@@ -4,6 +4,93 @@ All backend-specific changes are documented here.
 
 ---
 
+## [1.1.1] - 2025-10-17
+
+### Removed
+- ConfigManager from common-utils [CONFIG_CLEANUP_001]
+  - ConfigManager now ONLY in config-server
+  - Removed deprecated code from common-utils
+  - Clean architecture: Config Server = only config management point
+
+### Changed
+- Documentation updated for Config Server architecture [DOC_UPDATE_001]
+  - CLAUDE.md: Frontend i18n rules added (NO hardcoded text!)
+  - DEVELOPMENT_GUIDELINES.md: useTranslation examples added
+  - CONFIG_SYSTEM.md: Config Server architecture documented
+  - QUICK_START_I18N.md: useTranslation Hook + MessageSource.java workflow
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v1.1.1-SNAPSHOT
+**Type**: Cleanup - Remove deprecated ConfigManager + Documentation updates
+
+---
+
+## [1.1.0] - 2025-10-17
+
+### Added
+- **Enterprise Config Server System** - Central configuration management for all microservices [CONFIG_SERVER_001-012]
+  - ConfigManager in config-server/service/ for centralized config management
+  - Automatic config template generation on startup:
+    - config/application.yml (shared settings for all services)
+    - config/database.yml (database credentials template)
+    - config/mail.yml (SMTP settings template)
+    - config/language.yml (i18n configuration)
+    - config/api-gateway.yml (Gateway-specific settings with CORS, Circuit Breakers, Eureka)
+  - Spring Cloud Config Server with Native File System backend
+  - Docker Volume for persistent config storage
+  - Professional YAML headers with timestamps
+- **Spring Cloud Config Client Integration** [CONFIG_CLIENT_001]
+  - API Gateway now fetches ALL configs from Config Server
+  - spring.config.import for modern Spring Boot 2.4+ config loading
+  - Automatic retry mechanism with exponential backoff
+  - NO hardcoded configs in service application.yml files
+
+### Changed
+- Config Server application.yml: Git backend → Native File System [CONFIG_SERVER_NATIVE_001]
+  - search-locations: file:./config
+  - Profiles: native
+  - Bootstrap enabled for proper config loading
+- API Gateway application.yml: Simplified to config import only [CONFIG_CLIENT_002]
+  - All actual configs moved to config/api-gateway.yml
+  - Only spring.config.import remains in application.yml
+  - Clean separation: connection info vs actual config
+- API Gateway StartupConfig: Removed local ConfigManager calls [GATEWAY_REFACTOR_001]
+  - No more local config generation
+  - Only i18n initialization remains
+  - All configs come from Config Server
+- docker-compose.yml: Config Server with volume mount [DOCKER_VOL_001]
+  - config-data volume for persistent storage
+  - Config Server depends on service-discovery
+  - API Gateway depends on config-server
+  - Environment: SPRING_PROFILES_ACTIVE=docker,native
+
+### Deprecated
+- ConfigManager in common-utils marked as @Deprecated [CONFIG_DEPRECATION_001]
+  - Configuration management moved to Config Server
+  - Clear migration path documented in JavaDoc
+  - Will be removed in version 2.0.0
+
+### Architecture Changes
+- **Before (1.0.x):** Each service managed own configs locally
+- **After (1.1.0):** Config Server = Single source of truth for all configs
+  ```
+  Config Server (Port 8888)
+  ├── Creates config/ templates on startup
+  ├── Serves configs via Spring Cloud Config API
+  └── Services fetch configs automatically via Config Client
+
+  Services (Gateway, User, Product, etc.)
+  ├── bootstrap.yml OR spring.config.import
+  ├── NO hardcoded configs
+  └── All configs from Config Server
+  ```
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v1.1.0-SNAPSHOT
+**Type**: Major Feature - Enterprise Config Server System (Centralized Configuration Management)
+
+---
+
 ## [1.0.3] - 2025-10-16
 
 ### Added

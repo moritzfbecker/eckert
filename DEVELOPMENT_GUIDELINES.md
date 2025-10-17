@@ -381,13 +381,17 @@ export const useApi = <T,>(endpoint: string): UseApiResult<T> => {
 - Cleanup in `useEffect` wenn nötig
 
 #### 3. Pages
+
 ```tsx
 // Home.tsx
 import { motion } from 'framer-motion';
 import { Button, Card } from '@eckert-preisser/shared/ui';
+import { useTranslation } from '@eckert-preisser/shared/hooks';
 import { fadeInUp } from '@eckert-preisser/shared/animations';
 
 const Home = () => {
+  const { t } = useTranslation(); // ALWAYS use for i18n!
+
   return (
     <div className="pt-20">
       <section className="container mx-auto px-6 py-20">
@@ -397,11 +401,11 @@ const Home = () => {
           transition={fadeInUp.transition}
           className="text-6xl font-bold mb-6"
         >
-          Welcome to <span className="text-gradient">Eckert Preisser</span>
+          {t('home.hero.title')} <span className="text-gradient">Eckert Preisser</span>
         </motion.h1>
 
         <Button variant="gradient" size="lg">
-          Get Started
+          {t('button.get.started')}
         </Button>
       </section>
     </div>
@@ -413,10 +417,24 @@ export default Home;
 
 **Regeln:**
 - Page Components im `pages/` Ordner
+- **IMMER useTranslation Hook verwenden!**
+- **ALLE Texte mit t() Keys - KEINE hardcoded Strings!**
 - Verwende Shared Components
 - Scroll Animations mit Framer Motion
 - Responsive Design mit Tailwind
 - SEO-friendly (Title, Meta-Tags)
+
+**i18n CRITICAL:**
+```tsx
+// ❌ WRONG - NEVER DO THIS!
+<h1>Welcome to Eckert Preisser</h1>
+<button>Get Started</button>
+
+// ✅ CORRECT - ALWAYS DO THIS!
+const { t } = useTranslation();
+<h1>{t('home.hero.title')}</h1>
+<button>{t('button.get.started')}</button>
+```
 
 ### Styling Guidelines
 

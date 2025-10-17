@@ -1,64 +1,15 @@
-server:
-  port: 8080
+# ========================================
+# API Gateway - Application Configuration
+# ========================================
+# This file connects to Config Server
+# All actual configs are managed centrally in Config Server
+# ========================================
 
 spring:
   application:
     name: api-gateway
-  main:
-    web-application-type: reactive  # CRITICAL: Force reactive mode for Spring Cloud Gateway
+  config:
+    import: "optional:configserver:http://config-server:8888"
   cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:3000"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS
-            allowedHeaders: "*"
-            allowCredentials: true
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,gateway
-  endpoint:
-    health:
-      show-details: always
-    gateway:
-      enabled: true
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      userServiceCircuitBreaker:
-        sliding-window-size: 10
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 10000
-      productServiceCircuitBreaker:
-        sliding-window-size: 10
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 10000
-      orderServiceCircuitBreaker:
-        sliding-window-size: 10
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 10000
-      notificationServiceCircuitBreaker:
-        sliding-window-size: 10
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 10000
+    config:
+      fail-fast: false

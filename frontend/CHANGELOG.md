@@ -4,6 +4,117 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [1.10.2] - 2025-10-17
+
+### Fixed
+- Sidebar sticky behavior corrected [FRONTEND_FIX_002]
+  - Sidebar now properly sticky within content area
+  - Content properly positioned (not over-centered)
+  - Flexbox layout with proper gap
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.10.2
+**Type**: Bug Fix
+
+---
+
+## [1.10.1] - 2025-10-17
+
+### Fixed
+- Sidebar no longer overlaps Footer on Concept page [FRONTEND_FIX_001]
+  - Changed from fixed to absolute positioning within content wrapper
+  - Sidebar now sticky only within content area
+  - Stops scrolling before Footer appears
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.10.1
+**Type**: Bug Fix
+
+---
+
+## [1.10.0] - 2025-10-17
+
+### Added
+- Documentation-style layout for Concept page [FRONTEND_LAYOUT_001]
+  - Sticky sidebar navigation (Desktop: left-6 like logo position)
+  - Bottom navigation bar (Mobile: App-style with horizontal scroll)
+  - ScrollSpy functionality with automatic active section detection
+  - Smooth scroll to sections on click
+  - Apple Glow highlighting for active section
+- Chapter 1 visual structure [FRONTEND_CONCEPT_001]
+  - 3 Stats boxes in responsive grid (34%, 58%, 167%)
+  - 3 Assumptions cards with border-left styling
+  - Intro paragraphs with proper spacing
+  - Professional typography and layout
+- 25+ i18n keys for Chapter 1 [FRONTEND_I18N_025]
+  - Intro paragraphs (p1, p2, p3)
+  - Stats values and descriptions
+  - Assumptions titles and realities
+  - All text via t() keys - NO hardcoded strings
+
+### Changed
+- Concept page completely redesigned as documentation [FRONTEND_REDESIGN_001]
+  - From cards grid to sidebar + content layout
+  - Desktop: Sidebar fixed at left-6
+  - Mobile: Bottom navigation instead of sidebar
+  - Content properly spaced (ml-96 + px-12 on desktop)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.10.0
+**Type**: Feature - Documentation Layout for Concept Page
+
+---
+
+## [1.9.1] - 2025-10-17
+
+### Changed
+- Solutions page renamed to Concept page [FRONTEND_RENAME_001]
+  - Solutions.tsx → Concept.tsx
+  - Route: /solutions → /concept
+  - i18n keys: solutions.* → concept.*
+  - Navigation: nav.solutions → nav.concept
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.9.1
+**Type**: Rename
+
+---
+
+## [1.9.0] - 2025-10-17
+
+### Added
+- Solutions page with 6 solution cards [FRONTEND_PAGE_006]
+  - Enterprise Solutions, Security First, High Performance, Cloud Native, Customizable, Scalable
+  - Responsive grid layout (1 col mobile → 2 tablet → 3 desktop)
+  - Black cards with white text following design guidelines
+  - Framer Motion scroll animations with staggered delays
+  - Apple Glow hover effects on cards
+  - CTA section with contact link
+- Contact page with contact form and information [FRONTEND_PAGE_007]
+  - Two-column layout (info left, form right on desktop)
+  - Contact information cards (Email, Phone, Address)
+  - Full contact form with validation
+  - White input fields on black card background
+  - Apple Glow button hover effects
+  - Mobile-responsive (stacks to 1 column)
+- Routes for /solutions and /contact [FRONTEND_NAV_023]
+
+### Changed
+- Navigation links updated [FRONTEND_NAV_024]
+  - Removed: Products, Dashboard (from main navbar)
+  - Added: Solutions, Contact
+  - Dashboard still accessible via Account dropdown
+  - Uses existing i18n keys (nav.solutions, nav.contact)
+
+### Removed
+- Products route from main navigation (still in code as placeholder)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.9.0
+**Type**: Feature - Solutions & Contact Pages
+
+---
+
 ## [1.8.0] - 2025-10-16
 
 ### Added

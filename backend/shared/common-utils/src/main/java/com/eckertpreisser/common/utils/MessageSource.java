@@ -87,7 +87,7 @@ public class MessageSource {
             messages.setProperty("nav.account", "Konto");
             messages.setProperty("nav.login", "Anmelden");
             messages.setProperty("nav.logout", "Abmelden");
-            messages.setProperty("nav.solutions", "Lösungen");
+            messages.setProperty("nav.concept", "Konzept");
             messages.setProperty("nav.archive", "Archiv");
             messages.setProperty("nav.contact", "Kontakt");
 
@@ -393,6 +393,81 @@ public class MessageSource {
             messages.setProperty("datenschutz.changes.title", "6. Änderungen der Datenschutzerklärung");
             messages.setProperty("datenschutz.changes.content", "Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der Einführung neuer Services. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.");
 
+            // Solutions Page
+            messages.setProperty("concept.title", "Unsere Lösungen");
+            messages.setProperty("concept.subtitle", "Enterprise-Level-Lösungen für moderne Unternehmen. Gebaut mit modernster Technologie und für Skalierbarkeit konzipiert.");
+            messages.setProperty("concept.card1.title", "Enterprise Solutions");
+            messages.setProperty("concept.card1.description", "Maßgeschneiderte Enterprise-Lösungen für moderne Unternehmen. Skalierbar, sicher und zukunftssicher.");
+            messages.setProperty("concept.card2.title", "Security First");
+            messages.setProperty("concept.card2.description", "Enterprise-Grade Sicherheit mit JWT-Authentifizierung, OAuth2 und vollständiger Datenverschlüsselung.");
+            messages.setProperty("concept.card3.title", "High Performance");
+            messages.setProperty("concept.card3.description", "Optimiert für Geschwindigkeit mit Microservices-Architektur und modernsten Technologien.");
+            messages.setProperty("concept.card4.title", "Cloud Native");
+            messages.setProperty("concept.card4.description", "Containerisiert mit Docker, bereit für Kubernetes und moderne Cloud-Infrastruktur.");
+            messages.setProperty("concept.card5.title", "Customizable");
+            messages.setProperty("concept.card5.description", "Vollständig anpassbar an Ihre Geschäftsanforderungen mit flexibler Architektur.");
+            messages.setProperty("concept.card6.title", "Skalierbar");
+            messages.setProperty("concept.card6.description", "Microservices-Architektur die mit Ihrem Unternehmen wächst. Von Startup bis Enterprise.");
+            messages.setProperty("concept.cta.title", "Bereit loszulegen?");
+            messages.setProperty("concept.cta.subtitle", "Kontaktieren Sie uns für eine unverbindliche Beratung.");
+            messages.setProperty("concept.cta.button", "Jetzt Kontakt aufnehmen");
+
+            // Contact Page
+            messages.setProperty("contact.title", "Kontakt");
+            messages.setProperty("contact.subtitle", "Haben Sie Fragen? Wir helfen Ihnen gerne weiter.");
+            messages.setProperty("contact.form.title", "Nachricht senden");
+            messages.setProperty("contact.form.name", "Name");
+            messages.setProperty("contact.form.email", "E-Mail");
+            messages.setProperty("contact.form.subject", "Betreff");
+            messages.setProperty("contact.form.message", "Nachricht");
+            messages.setProperty("contact.form.send", "Nachricht senden");
+            messages.setProperty("contact.form.name.placeholder", "Ihr Name");
+            messages.setProperty("contact.form.email.placeholder", "ihre.email@beispiel.de");
+            messages.setProperty("contact.form.subject.placeholder", "Worum geht es?");
+            messages.setProperty("contact.form.message.placeholder", "Ihre Nachricht an uns...");
+
+            // Concept Page - Documentation Structure
+            messages.setProperty("concept.page.title", "Unser Konzept");
+            messages.setProperty("concept.page.subtitle", "Eine neue Perspektive auf strategische Personalberatung");
+            messages.setProperty("concept.sidebar.title", "Inhaltsverzeichnis");
+
+            // Chapter Navigation
+            messages.setProperty("concept.nav.chapter1", "Die verborgene Krise");
+            messages.setProperty("concept.nav.chapter2", "Was wir anders machen");
+            messages.setProperty("concept.nav.chapter3", "Wissenschaft + Unternehmertum");
+            messages.setProperty("concept.nav.chapter4", "16-Jahres-Proof");
+            messages.setProperty("concept.nav.chapter5", "Das 3-Säulen-Framework");
+            messages.setProperty("concept.nav.chapter6", "Finnland-Erkenntnisse");
+            messages.setProperty("concept.nav.chapter7", "Der Malik-Ansatz");
+            messages.setProperty("concept.nav.chapter8", "Mandantenmodelle");
+            messages.setProperty("concept.nav.chapter9", "Leadership-Assessment");
+
+            // Chapter 1 - Die verborgene Krise
+            messages.setProperty("concept.chapter1.title", "Die verborgene Krise, die Ihre Board-Meetings nicht adressieren");
+            messages.setProperty("concept.chapter1.subtitle", "Das Pattern, das Sie vermutlich bereits kennen – aber noch nicht quantifiziert haben");
+
+            // Chapter 1 - Intro Paragraphs
+            messages.setProperty("concept.chapter1.intro.p1", "Ihre letzte Strategieberatung lieferte eine 300-Seiten-Präsentation. Brillante Analyse. Klare Empfehlungen. 18 Monate später: 30% der Empfehlungen sind umgesetzt. Die anderen 70% verschwanden in 'organizational friction'.");
+            messages.setProperty("concept.chapter1.intro.p2", "Sie dachten, das sei normal. Es ist nicht normal – es ist systematisch.");
+            messages.setProperty("concept.chapter1.intro.p3", "Was wenn der limitierende Faktor nicht Ihre Strategie ist, sondern etwas, das klassische Strategieberatungen systematisch übersehen? Was wenn es dokumentierte Evidenz gibt, dass Organisationen mit 1/7 Ihres Budgets Sie übertreffen können – nicht trotz, sondern wegen ihrer Ressourcen-Limitierung?");
+
+            // Chapter 1 - Stats
+            messages.setProperty("concept.chapter1.stat1.value", "34%");
+            messages.setProperty("concept.chapter1.stat1.text", "des Erfolgs werden durch Budget erklärt. 66% bleiben unerklärt.");
+            messages.setProperty("concept.chapter1.stat2.value", "58%");
+            messages.setProperty("concept.chapter1.stat2.text", "des Erfolgs korrelieren mit einem Faktor, den Sie vermutlich nicht messen: Coaching-Leverage.");
+            messages.setProperty("concept.chapter1.stat3.value", "167%");
+            messages.setProperty("concept.chapter1.stat3.text", "Effizienz-Vorteil systematischer Entwickler gegenüber Talent-Akkumulierern.");
+
+            // Chapter 1 - Assumptions Section
+            messages.setProperty("concept.chapter1.assumptions.title", "Die drei Annahmen, die Ihre Resource-Allokation sabotieren");
+            messages.setProperty("concept.chapter1.assumption1.title", "Annahme: Elite-Talent + Elite-Budget = Elite-Performance");
+            messages.setProperty("concept.chapter1.assumption1.reality", "Realität aus 2025 EuroBasket: Finnland (78/100 Talent-Score, €6,75M Budget) erreichte Platz 4. Spanien (82/100 Talent-Score, €28M Budget) schied in Vorrunde aus – frühestes Aus seit 1989.");
+            messages.setProperty("concept.chapter1.assumption2.title", "Annahme: Best Practices der Marktführer sind zu kopieren");
+            messages.setProperty("concept.chapter1.assumption2.reality", "Realität: High-Talent-Organisationen unter-performen systematisch. Spanien -13 Plätze unter Erwartung. Serbien (bester Spieler der Welt) -6 Plätze. Finnland (schwächstes Talent) +10 Plätze über Erwartung.");
+            messages.setProperty("concept.chapter1.assumption3.title", "Annahme: ROI muss innerhalb von 24 Monaten sichtbar sein");
+            messages.setProperty("concept.chapter1.assumption3.reality", "Realität: ZOLLERN Hidden Champion: 16 Jahre systematische Begleitung, 8% dokumentierter Vorsteuerumsatzrendite-Beitrag. Break-Even Jahr 4. Volle Systematik-Verankerung ermöglichte Selbstläufer-Qualitäten.");
+
         } else if ("en".equals(language)) {
             // English messages
             messages.setProperty("app.name", "Eckert Preisser Enterprise");
@@ -405,7 +480,7 @@ public class MessageSource {
             messages.setProperty("nav.account", "Account");
             messages.setProperty("nav.login", "Login");
             messages.setProperty("nav.logout", "Logout");
-            messages.setProperty("nav.solutions", "Solutions");
+            messages.setProperty("nav.concept", "Concept");
             messages.setProperty("nav.archive", "Archive");
             messages.setProperty("nav.contact", "Contact");
 
@@ -707,6 +782,81 @@ public class MessageSource {
             messages.setProperty("datenschutz.ssl.content", "This site uses SSL/TLS encryption for security reasons and to protect the transmission of confidential content, such as orders or inquiries that you send to us as the site operator. You can recognize an encrypted connection by the fact that the address line of the browser changes from 'http://' to 'https://' and by the lock symbol in your browser line. If SSL/TLS encryption is activated, the data you transmit to us cannot be read by third parties.");
             messages.setProperty("datenschutz.changes.title", "6. Changes to the Privacy Policy");
             messages.setProperty("datenschutz.changes.content", "We reserve the right to occasionally adjust this privacy policy so that it always complies with current legal requirements or to implement changes to our services in the privacy policy, for example when introducing new services. The new privacy policy will then apply to your next visit.");
+
+            // Solutions Page
+            messages.setProperty("concept.title", "Our Solutions");
+            messages.setProperty("concept.subtitle", "Enterprise-level solutions for modern businesses. Built with cutting-edge technology and designed for scale.");
+            messages.setProperty("concept.card1.title", "Enterprise Solutions");
+            messages.setProperty("concept.card1.description", "Tailor-made enterprise solutions for modern companies. Scalable, secure and future-proof.");
+            messages.setProperty("concept.card2.title", "Security First");
+            messages.setProperty("concept.card2.description", "Enterprise-grade security with JWT authentication, OAuth2 and full data encryption.");
+            messages.setProperty("concept.card3.title", "High Performance");
+            messages.setProperty("concept.card3.description", "Optimized for speed with microservices architecture and cutting-edge technologies.");
+            messages.setProperty("concept.card4.title", "Cloud Native");
+            messages.setProperty("concept.card4.description", "Containerized with Docker, ready for Kubernetes and modern cloud infrastructure.");
+            messages.setProperty("concept.card5.title", "Customizable");
+            messages.setProperty("concept.card5.description", "Fully customizable to your business requirements with flexible architecture.");
+            messages.setProperty("concept.card6.title", "Scalable");
+            messages.setProperty("concept.card6.description", "Microservices architecture that grows with your business. From startup to enterprise.");
+            messages.setProperty("concept.cta.title", "Ready to get started?");
+            messages.setProperty("concept.cta.subtitle", "Contact us for a non-binding consultation.");
+            messages.setProperty("concept.cta.button", "Contact us now");
+
+            // Contact Page
+            messages.setProperty("contact.title", "Contact");
+            messages.setProperty("contact.subtitle", "Have questions? We're happy to help.");
+            messages.setProperty("contact.form.title", "Send Message");
+            messages.setProperty("contact.form.name", "Name");
+            messages.setProperty("contact.form.email", "Email");
+            messages.setProperty("contact.form.subject", "Subject");
+            messages.setProperty("contact.form.message", "Message");
+            messages.setProperty("contact.form.send", "Send Message");
+            messages.setProperty("contact.form.name.placeholder", "Your name");
+            messages.setProperty("contact.form.email.placeholder", "your.email@example.com");
+            messages.setProperty("contact.form.subject.placeholder", "What is this about?");
+            messages.setProperty("contact.form.message.placeholder", "Your message to us...");
+
+            // Concept Page - Documentation Structure
+            messages.setProperty("concept.page.title", "Our Concept");
+            messages.setProperty("concept.page.subtitle", "A new perspective on strategic HR consulting");
+            messages.setProperty("concept.sidebar.title", "Table of Contents");
+
+            // Chapter Navigation
+            messages.setProperty("concept.nav.chapter1", "The Hidden Crisis");
+            messages.setProperty("concept.nav.chapter2", "What We Do Differently");
+            messages.setProperty("concept.nav.chapter3", "Science + Entrepreneurship");
+            messages.setProperty("concept.nav.chapter4", "16-Year Proof");
+            messages.setProperty("concept.nav.chapter5", "The 3-Pillar Framework");
+            messages.setProperty("concept.nav.chapter6", "Finland Insights");
+            messages.setProperty("concept.nav.chapter7", "The Malik Approach");
+            messages.setProperty("concept.nav.chapter8", "Client Models");
+            messages.setProperty("concept.nav.chapter9", "Leadership Assessment");
+
+            // Chapter 1 - The Hidden Crisis
+            messages.setProperty("concept.chapter1.title", "The Hidden Crisis Your Board Meetings Don't Address");
+            messages.setProperty("concept.chapter1.subtitle", "The pattern you probably already know – but haven't quantified yet");
+
+            // Chapter 1 - Intro Paragraphs
+            messages.setProperty("concept.chapter1.intro.p1", "Your last strategy consultation delivered a 300-page presentation. Brilliant analysis. Clear recommendations. 18 months later: 30% of recommendations implemented. The other 70% disappeared into 'organizational friction'.");
+            messages.setProperty("concept.chapter1.intro.p2", "You thought that was normal. It's not normal – it's systematic.");
+            messages.setProperty("concept.chapter1.intro.p3", "What if the limiting factor isn't your strategy, but something that classical strategy consultancies systematically overlook? What if there's documented evidence that organizations with 1/7th of your budget can outperform you – not despite, but because of their resource constraints?");
+
+            // Chapter 1 - Stats
+            messages.setProperty("concept.chapter1.stat1.value", "34%");
+            messages.setProperty("concept.chapter1.stat1.text", "of success is explained by budget. 66% remains unexplained.");
+            messages.setProperty("concept.chapter1.stat2.value", "58%");
+            messages.setProperty("concept.chapter1.stat2.text", "of success correlates with a factor you probably don't measure: Coaching-Leverage.");
+            messages.setProperty("concept.chapter1.stat3.value", "167%");
+            messages.setProperty("concept.chapter1.stat3.text", "efficiency advantage of systematic developers over talent accumulators.");
+
+            // Chapter 1 - Assumptions Section
+            messages.setProperty("concept.chapter1.assumptions.title", "The three assumptions sabotaging your resource allocation");
+            messages.setProperty("concept.chapter1.assumption1.title", "Assumption: Elite-Talent + Elite-Budget = Elite-Performance");
+            messages.setProperty("concept.chapter1.assumption1.reality", "Reality from 2025 EuroBasket: Finland (78/100 Talent-Score, €6.75M budget) reached 4th place. Spain (82/100 Talent-Score, €28M budget) eliminated in preliminary round – earliest exit since 1989.");
+            messages.setProperty("concept.chapter1.assumption2.title", "Assumption: Best practices of market leaders should be copied");
+            messages.setProperty("concept.chapter1.assumption2.reality", "Reality: High-talent organizations systematically underperform. Spain -13 places below expectation. Serbia (world's best player) -6 places. Finland (weakest talent) +10 places above expectation.");
+            messages.setProperty("concept.chapter1.assumption3.title", "Assumption: ROI must be visible within 24 months");
+            messages.setProperty("concept.chapter1.assumption3.reality", "Reality: ZOLLERN Hidden Champion: 16 years of systematic support, 8% documented pre-tax revenue margin contribution. Break-even year 4. Full systematic anchoring enabled self-sustaining qualities.");
         }
 
         try (var writer = Files.newBufferedWriter(messageFile, StandardCharsets.UTF_8)) {

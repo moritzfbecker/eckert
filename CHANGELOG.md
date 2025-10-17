@@ -9,6 +9,99 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 1.10.2] - 2025-10-17
+
+### Fixed
+- Sidebar sticky behavior + Content positioning [FRONTEND_FIX_002]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Bug Fix
+
+---
+
+## [Frontend 1.10.1] - 2025-10-17
+
+### Fixed
+- Sidebar/Footer overlap on Concept page [FRONTEND_FIX_001]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Bug Fix
+
+---
+
+## [Frontend 1.10.0] - 2025-10-17
+
+### Added
+- Documentation-style layout for Concept page (Sidebar + ScrollSpy + Bottom Nav) [FRONTEND_LAYOUT_001]
+- Chapter 1 with Stats boxes and Assumptions cards [FRONTEND_CONCEPT_001]
+- 25+ i18n keys for Chapter 1 content [FRONTEND_I18N_025]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
+## [Frontend 1.9.1] - 2025-10-17
+
+### Changed
+- Solutions → Concept (Page renamed, routes, i18n keys) [FRONTEND_RENAME_001]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Rename
+
+---
+
+## [Backend 1.1.1] - 2025-10-17
+
+### Removed
+- ConfigManager from common-utils [CONFIG_CLEANUP_001]
+
+### Changed
+- Documentation updated (CLAUDE.md, DEVELOPMENT_GUIDELINES.md, CONFIG_SYSTEM.md, QUICK_START_I18N.md)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Cleanup
+
+---
+
+## [Frontend 1.9.0] - 2025-10-17
+
+### Added
+- Solutions page with 6 solution cards [FRONTEND_PAGE_006]
+- Contact page with form and contact info [FRONTEND_PAGE_007]
+- Routes: /solutions, /contact [FRONTEND_NAV_023]
+
+### Changed
+- Navbar: Solutions + Contact (removed Products from main nav) [FRONTEND_NAV_024]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
+## [Backend 1.1.0] - 2025-10-17
+
+### Added
+- **Enterprise Config Server System** - Centralized configuration management [CONFIG_SERVER_001-012]
+  - Config Server with automatic template generation (application.yml, database.yml, mail.yml, language.yml, api-gateway.yml)
+  - Spring Cloud Config Server with Native File System backend
+  - Spring Cloud Config Client integration in API Gateway
+  - Docker Volume for persistent config storage
+- Spring Cloud Config Client in API Gateway [CONFIG_CLIENT_001]
+
+### Changed
+- Config Server: Git → Native File System backend [CONFIG_SERVER_NATIVE_001]
+- API Gateway: All configs now from Config Server (NO hardcoded values) [CONFIG_CLIENT_002]
+- docker-compose.yml: Config Server with volume mount [DOCKER_VOL_001]
+
+### Deprecated
+- ConfigManager in common-utils (moved to Config Server) [CONFIG_DEPRECATION_001]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Major Feature - Enterprise Config Server
+
+---
+
 ## [Frontend 1.8.0] - 2025-10-16
 
 ### Added

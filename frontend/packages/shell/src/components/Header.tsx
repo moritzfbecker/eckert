@@ -59,8 +59,8 @@ const Header = () => {
   // Navigation links
   const navLinks = [
     { name: t('nav.home'), path: '/' },
-    { name: t('nav.products'), path: '/products' },
-    { name: t('nav.dashboard'), path: '/dashboard' }
+    { name: t('nav.concept'), path: '/concept' },
+    { name: t('nav.contact'), path: '/contact' }
   ]
 
   const currentLanguage = languages.find(l => l.code === language) || languages[0]

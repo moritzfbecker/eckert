@@ -36,6 +36,78 @@
 | BACKEND_I18N_001 | Extended MessageSource with frontend translations | Success |
 | BACKEND_I18N_002 | MessageSource contains 60+ translation keys | Success |
 
+### Config Server (CONFIG_SERVER)
+
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| CONFIG_SERVER_001 | Starting Config Server initialization | INFO |
+| CONFIG_SERVER_002 | Config Server initialized successfully | INFO |
+| CONFIG_SERVER_003 | Created config directory | INFO |
+| CONFIG_SERVER_004 | Config directory already exists | INFO |
+| CONFIG_SERVER_005 | Shared application config already exists, skipping | INFO |
+| CONFIG_SERVER_006 | Created shared application config | INFO |
+| CONFIG_SERVER_007 | Created database config | INFO |
+| CONFIG_SERVER_008 | Created mail config | INFO |
+| CONFIG_SERVER_009 | Created language config | INFO |
+| CONFIG_SERVER_010 | Created API Gateway config | INFO |
+| CONFIG_SERVER_011 | Service config already exists | INFO |
+| CONFIG_SERVER_012 | Created service-specific config | INFO |
+| CONFIG_SERVER_INIT_001 | Initializing Config Server | INFO |
+| CONFIG_SERVER_INIT_002 | Config Server initialization completed successfully | INFO |
+| CONFIG_SERVER_NATIVE_001 | Native File System backend configured | INFO |
+
+#### Error Codes
+| Code | Description | HTTP Status | Solution |
+|------|-------------|-------------|----------|
+| CONFIG_SERVER_ERR_001 | Failed to initialize Config Server | 500 | Check logs and config directory permissions |
+| CONFIG_SERVER_ERR_INIT_001 | Failed to initialize Config Server | 500 | Check config directory and YAML syntax |
+
+#### Warning Codes
+| Code | Description | Action |
+|------|-------------|--------|
+| CONFIG_SERVER_WARN_001 | Config file not found | File will be created with defaults |
+
+### Config Client (CONFIG_CLIENT)
+
+| Code | Description | Type |
+|------|-------------|------|
+| CONFIG_CLIENT_001 | Spring Cloud Config Client integrated | Success |
+| CONFIG_CLIENT_002 | Service configs simplified to config import only | Success |
+
+### API Gateway Startup (GATEWAY_STARTUP)
+
+| Code | Description | Type |
+|------|-------------|------|
+| GATEWAY_STARTUP_001 | API Gateway starting - Configs from Config Server | INFO |
+| GATEWAY_STARTUP_002 | i18n system initialized | INFO |
+| GATEWAY_STARTUP_003 | API Gateway startup complete | INFO |
+| GATEWAY_STARTUP_ERR_001 | Failed to initialize API Gateway | ERROR |
+
+### Gateway Refactoring (GATEWAY_REFACTOR)
+
+| Code | Description | Type |
+|------|-------------|------|
+| GATEWAY_REFACTOR_001 | Removed local ConfigManager calls from StartupConfig | Success |
+
+### Configuration Deprecation (CONFIG_DEPRECATION)
+
+| Code | Description | Type |
+|------|-------------|------|
+| CONFIG_DEPRECATION_001 | ConfigManager in common-utils marked as @Deprecated | Info |
+
+### Configuration Cleanup (CONFIG_CLEANUP)
+
+| Code | Description | Type |
+|------|-------------|------|
+| CONFIG_CLEANUP_001 | ConfigManager removed from common-utils (now only in config-server) | Success |
+
+### Documentation Updates (DOC_UPDATE)
+
+| Code | Description | Type |
+|------|-------------|------|
+| DOC_UPDATE_001 | Documentation updated for Config Server architecture and i18n rules | Success |
+
 ### Docker & DevOps (DOCKER)
 
 | Code | Description | Type |
@@ -46,6 +118,7 @@
 | DOCKER_004 | Health check for Eureka service in Dockerfile | Success |
 | DOCKER_005 | docker-compose.yml build context set to root | Success |
 | DOCKER_006 | All Dockerfiles use correct relative paths | Success |
+| DOCKER_VOL_001 | Docker Volume for Config Server persistent storage | Success |
 
 ### System Errors (SYS)
 
@@ -226,6 +299,8 @@
 | FRONTEND_NAV_018 | Full-screen mobile menu overlay | Success |
 | FRONTEND_NAV_019 | Mobile menu with language selector and account section | Success |
 | FRONTEND_NAV_020 | Proper navbar centering with flexbox spacers | Success |
+| FRONTEND_NAV_023 | Routes added for /solutions and /contact | Success |
+| FRONTEND_NAV_024 | Navigation updated: Solutions + Contact (removed Products from main nav) | Success |
 
 #### UI Components (FRONTEND_UI)
 | Code | Description | Type |
@@ -273,6 +348,29 @@
 | FRONTEND_PAGE_003 | Simplified Home page | Success |
 | FRONTEND_PAGE_004 | Home page padding adjusted | Success |
 | FRONTEND_PAGE_005 | Home page padding for new layout | Success |
+| FRONTEND_PAGE_006 | Solutions page created with 6 solution cards | Success |
+| FRONTEND_PAGE_007 | Contact page created with form and contact info | Success |
+
+#### Layout & Structure (FRONTEND_LAYOUT)
+| Code | Description | Type |
+|------|-------------|------|
+| FRONTEND_LAYOUT_001 | Documentation-style layout with sticky sidebar and bottom nav | Success |
+
+#### Concept Page (FRONTEND_CONCEPT)
+| Code | Description | Type |
+|------|-------------|------|
+| FRONTEND_CONCEPT_001 | Chapter 1 with Stats boxes and Assumptions cards | Success |
+
+#### Redesign (FRONTEND_REDESIGN)
+| Code | Description | Type |
+|------|-------------|------|
+| FRONTEND_REDESIGN_001 | Concept page redesigned from cards to documentation layout | Success |
+
+#### Bug Fixes (FRONTEND_FIX)
+| Code | Description | Type |
+|------|-------------|------|
+| FRONTEND_FIX_001 | Fixed Sidebar/Footer overlap on Concept page | Bug Fix |
+| FRONTEND_FIX_002 | Fixed Sidebar sticky behavior and Content positioning | Bug Fix |
 
 #### Configuration (FRONTEND_CONFIG)
 | Code | Description | Type |
@@ -304,6 +402,7 @@
 | FRONTEND_I18N_019 | Components re-render when translations load | Success |
 | FRONTEND_I18N_020 | Header component uses useTranslation hook | Success |
 | FRONTEND_I18N_021 | Footer component uses useTranslation hook | Success |
+| FRONTEND_I18N_025 | 25+ i18n keys added for Concept Chapter 1 (intro, stats, assumptions) | Success |
 
 #### i18n Context (I18N_CTX)
 | Code | Description | Action |
