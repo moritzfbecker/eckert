@@ -4,6 +4,33 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.9.0] - 2025-10-21
+
+### Added
+- **Homepage Content - 3 Professional Sections** [FRONTEND_HOME_001]
+  - Hero Section: "Why invest millions and harvest mediocrity?"
+    - Central question about strategy investment ROI
+    - "The unused third dimension" hook
+    - Large, centered typography
+  - Problem Section: "You are optimizing the wrong variables"
+    - 3 Thoughts with emojis (💭, 🤔, ⚡)
+    - Black boxes with white text
+    - Implementation ceiling, Human Performance, 100% limit
+  - Finland Story: "A Story Outside Your Industry"
+    - Finnish Paradox explanation
+    - Stat box: "14. Place by budget ranking"
+    - 3 Border-left points: 16-year development, Underdog systematization, 10x ROI
+    - Black relevance conclusion box
+  - 25+ new config keys with English defaults
+  - Framer Motion scroll animations
+  - Design: Schwarz/Weiß (no gray!), Apple Glow hover
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.9.0
+**Type**: MINOR - Homepage Content
+
+---
+
 ## [2.8.0] - 2025-10-21
 
 ### Added
