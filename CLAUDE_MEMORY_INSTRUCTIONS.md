@@ -557,9 +557,66 @@ ALWAYS in .gitignore!
 
 ---
 
+### 17. Enterprise Git Workflow (GitFlow)
+
+```
+CRITICAL RULE: ALWAYS use GitFlow with Pull Requests!
+
+Branch Structure:
+main (production) ← Requires 2 approvals, auto-deploy to prod
+staging (pre-prod) ← Requires 1 approval, QA testing
+develop (integration) ← Requires 1 approval, auto-deploy to dev
+
+Temporary Branches:
+feature/CONFIG-123-description ← New features (from develop)
+bugfix/BUG-456-description ← Bug fixes (from develop)
+hotfix/CRITICAL-description ← Production fixes (from main)
+release/v2.1.0 ← Release prep (from develop)
+
+Workflow:
+1. Create feature branch from develop
+2. Make changes + commit frequently
+3. Push to origin
+4. Create Pull Request to develop
+5. Wait for 1 approval
+6. Merge (Squash & Merge)
+7. Delete feature branch
+
+Commit Convention:
+feat: New feature
+fix: Bug fix
+docs: Documentation
+chore: Build/config
+test: Tests
+
+Every commit MUST include:
+- Type (feat/fix/docs/etc)
+- Description
+- Ticket number [CONFIG-123]
+- Claude signature
+
+Never:
+- Direct commits to main/staging/develop
+- Force push to protected branches
+- Merge without approvals
+- Skip version bumps
+- Skip CHANGELOG updates
+
+PR Requirements:
+- Summary of changes
+- Test plan checklist
+- Breaking changes noted
+- Related tickets linked
+- CI must be green
+
+See GIT\_WORKFLOW.md for complete Enterprise Git process!
+```
+
+---
+
 ## How to Use These Memory Entries
 
-1. Copy each section (1-16)
+1. Copy each section (1-17)
 2. Go to Claude's Memory settings
 3. Paste each section as a separate memory entry
 4. Save
@@ -577,6 +634,8 @@ After adding these to memory, Claude will ALWAYS:
 - Follow Porsche/Apple styling guidelines
 - Use shared components
 - Mobile-first responsive design
+- **Use GitFlow with Pull Requests**
+- **Never commit directly to main/staging/develop**
 
 ---
 

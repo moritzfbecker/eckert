@@ -32,11 +32,11 @@ Dieses Projekt implementiert eine moderne, skalierbare Enterprise-Lösung mit:
 - **Build Tool**: Maven
 - **Service Discovery**: Netflix Eureka
 - **API Gateway**: Spring Cloud Gateway
-- **Config Management**: External YAML configs (auto-generated)
+- **Config Management**: Enterprise Config API v2.0 (RESTful API, Auto-Registration)
 - **Database**: PostgreSQL (Production), H2 (Development)
 - **Security**: JWT, Spring Security
 - **Logging**: SLF4J + Logback mit strukturierten Error Codes
-- **i18n**: MessageSource mit DE/EN Support
+- **i18n**: Config API v2.0 mit Fluent API und modular structure
 
 ### Frontend
 - **Framework**: React 18.3.1
@@ -46,7 +46,7 @@ Dieses Projekt implementiert eine moderne, skalierbare Enterprise-Lösung mit:
 - **Animations**: Framer Motion 11
 - **Routing**: React Router v6
 - **Language**: TypeScript 5.6
-- **i18n**: Custom i18n System mit DE/EN Support
+- **i18n**: useConfig Hook v2.0 mit Fluent API und auto-registration
 - **Logging**: Structured Logger mit Error Codes
 - **Error Handling**: Global Error Handler mit custom Error Classes
 
@@ -66,7 +66,8 @@ Eckert Enterprise/
 │   ├── shared/
 │   │   ├── common-models/          # Shared DTOs
 │   │   ├── common-utils/           # Shared Utilities
-│   │   └── security-config/        # Security Configuration
+│   │   ├── security-config/        # Security Configuration
+│   │   └── config-client/          # Config Client (NEW v2.0!)
 │   ├── pom.xml                     # Root Maven Configuration
 │   └── docker-compose.yml          # Docker Compose Setup
 │
@@ -175,14 +176,15 @@ npm run build
 - [DEVELOPMENT_GUIDELINES.md](./DEVELOPMENT_GUIDELINES.md) - Vollständige Entwicklungsrichtlinien
 - [ERROR_CODES.md](./ERROR_CODES.md) - Alle Error Codes und deren Bedeutung
 - [VERSION_MANAGEMENT.md](./VERSION_MANAGEMENT.md) - Version Bump Workflow
-- [CONFIG_SYSTEM.md](./CONFIG_SYSTEM.md) - Externes Konfigurationssystem
+- [CONFIG_API.md](./CONFIG_API.md) - **Config API v2.0 Complete Reference (NEW!)**
+- [CONFIG_SYSTEM.md](./CONFIG_SYSTEM.md) - Config System v2.0 Architecture
 - [CHANGELOG.md](./CHANGELOG.md) - Projekt Changelog
 
 ### Quick Start Guides
 - [docs/QUICK_START_LOGGING.md](./docs/QUICK_START_LOGGING.md) - Logging in 5 Minuten
 - [docs/QUICK_START_VERSIONING.md](./docs/QUICK_START_VERSIONING.md) - Versioning in 5 Minuten
 - [docs/QUICK_START_I18N.md](./docs/QUICK_START_I18N.md) - i18n in 5 Minuten
-- [docs/QUICK_START_CONFIG.md](./docs/QUICK_START_CONFIG.md) - Config in 5 Minuten
+- [docs/QUICK_START_CONFIG_V2.md](./docs/QUICK_START_CONFIG_V2.md) - Config API v2.0 in 5 Minuten (NEW!)
 
 ### Code Style
 
@@ -192,8 +194,8 @@ npm run build
 - DTOs für alle API-Responses
 - Verwende `@Transactional` für Service-Layer
 - **IMMER** LoggerUtil mit Error Codes verwenden
-- **IMMER** MessageSource für i18n verwenden
-- **NIEMALS** .env Dateien - nur externe YAML Configs
+- **IMMER** ConfigClient für i18n verwenden (v2.0)
+- **NIEMALS** .env Dateien - nur Config Server API
 - Custom Exceptions mit Error Codes werfen
 
 #### Frontend (React/TypeScript)
@@ -203,7 +205,7 @@ npm run build
 - Tailwind CSS für Styling
 - Framer Motion für Animationen
 - **IMMER** logger für Logging verwenden
-- **IMMER** t() für Übersetzungen verwenden
+- **IMMER** useConfig für Übersetzungen verwenden (v2.0)
 - **NIEMALS** console.log verwenden
 
 ### Git Workflow
@@ -323,31 +325,40 @@ animate-glow
 - KEINE .env Dateien - alles in config/application.yml
 - Passwörter und Secrets in externen YAML-Dateien
 
-## 🌐 Multi-Language Support
+## 🌐 Multi-Language Support v2.0
 
-Die komplette Applikation unterstützt Deutsch und Englisch:
+Die komplette Applikation unterstützt Deutsch und Englisch mit **Enterprise Config API v2.0**:
 
-### Backend
+### Backend (NEW v2.0)
 ```java
-// i18n verwenden
-String messageDe = MessageSource.getMessage("user.created", "de");
-String messageEn = MessageSource.getMessage("user.created", "en");
+// Fluent API mit ConfigClient
+@Autowired
+private ConfigClient configClient;
+
+ServiceConfig config = configClient.load("email", "de");
+String subject = config.get("email.welcome.subject", "Welcome!");  // EN default
+String body = config.get("email.welcome.body", "Hi {name}!");
 ```
 
-### Frontend
+### Frontend (NEW v2.0)
 ```typescript
-// Übersetzungen verwenden
-import { t, changeLanguage } from '@eckert-preisser/shared/utils';
+// useConfig Hook mit Fluent API
+import { useConfig } from '@eckert-preisser/shared/hooks';
 
-const message = t('user.created');  // Aktuelle Sprache
-changeLanguage('en');  // Zu Englisch wechseln
+const Home = () => {
+  const config = useConfig('homepage', 'de');
+
+  return <h1>{config.get('home.title', 'Welcome')}</h1>  // EN default
+}
 ```
 
-### Übersetzungsdateien
-- Backend: `config/i18n/messages_de.properties` und `messages_en.properties`
-- Frontend: Verwendet gleiche Keys, lädt von Backend
+### Config Files v2.0 (Modular!)
+- Backend: `config/i18n/de/homepage.properties` (small files!)
+- Backend: `config/i18n/de/concept.properties`
+- Backend: `config/i18n/en/` (same structure)
+- **Auto-created on first .get() call!**
 
-Siehe [CONFIG_SYSTEM.md](./CONFIG_SYSTEM.md) für Details.
+Siehe [CONFIG_API.md](./CONFIG_API.md) und [CONFIG_SYSTEM.md](./CONFIG_SYSTEM.md) für Details.
 
 ---
 
@@ -400,34 +411,50 @@ git tag backend-v1.0.1
 ```
 
 Aktuelle Versionen:
-- Backend: v1.0.0
-- Frontend: v1.0.0
+- Backend: **v2.0.0** (Config API - MAJOR Release!)
+- Frontend: **v2.0.0** (useConfig Hook)
 
 Siehe [VERSION_MANAGEMENT.md](./VERSION_MANAGEMENT.md) für Details.
 
 ---
 
-## ⚙️ Configuration System
+## ⚙️ Configuration System v2.0 - Enterprise Config API
 
-**KEINE .env Dateien!** Alle Konfiguration in externen YAML-Dateien.
+**KEINE .env Dateien!** Alle Konfiguration via **Config Server RESTful API**.
 
-Beim ersten Start werden automatisch erstellt:
+**NEW in v2.0: Auto-Registration!**
+
+### Backend
+```java
+ServiceConfig config = configClient.load("email", "de");
+String subject = config.get("email.subject", "Welcome!");
+// → Auto-creates config/i18n/de/email.properties
+```
+
+### Frontend
+```typescript
+const config = useConfig('homepage', 'de');
+const title = config.get('home.title', 'Welcome');
+// → Auto-creates config/i18n/de/homepage.properties
+```
+
+### File Structure v2.0 (Modular!)
 ```
 config/
-├── application.yml      # JWT secret, port, default language
-├── database.yml        # DB credentials
-├── mail.yml           # SMTP settings
-├── language.yml       # i18n config
-└── i18n/              # Übersetzungen
+├── i18n/de/homepage.properties   # Small modular files!
+├── i18n/de/concept.properties    # ~50 lines each
+├── i18n/en/homepage.properties
+├── app/api-gateway.yml
+└── features/flags.yml
 ```
 
-**Production Workflow:**
-1. App starten → config/ wird generiert
-2. App stoppen
-3. Config-Dateien bearbeiten
-4. App neu starten
+**Benefits v2.0:**
+- ✅ Auto-created on first use (no manual editing!)
+- ✅ Modular structure (50 lines vs 900+ lines!)
+- ✅ Fluent API (.get() pattern everywhere)
+- ✅ RESTful API for config management
 
-Siehe [CONFIG_SYSTEM.md](./CONFIG_SYSTEM.md) für Details.
+Siehe [CONFIG_API.md](./CONFIG_API.md) und [CONFIG_SYSTEM.md](./CONFIG_SYSTEM.md) für Details.
 
 ---
 
