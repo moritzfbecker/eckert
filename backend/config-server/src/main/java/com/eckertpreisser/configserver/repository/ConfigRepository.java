@@ -220,11 +220,11 @@ public class ConfigRepository {
             writer.write("\n");
 
             // Write sorted properties
-            properties.entrySet().stream()
-                    .sorted(Map.Entry.comparingByKey())
-                    .forEach(entry -> {
+            properties.stringPropertyNames().stream()
+                    .sorted()
+                    .forEach(key -> {
                         try {
-                            writer.write(entry.getKey() + "=" + entry.getValue() + "\n");
+                            writer.write(key + "=" + properties.getProperty(key) + "\n");
                         } catch (IOException e) {
                             throw new UncheckedIOException(e);
                         }
