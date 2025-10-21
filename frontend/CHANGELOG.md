@@ -4,6 +4,28 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.4.0] - 2025-10-21
+
+### Added
+- **Chapter 5 - 3-Pillar Framework** [FRONTEND_CONCEPT_005]
+  - Complete 3-Pillar Framework by Pfeiffer & Eckert
+  - Pillar 1: Technology Portfolio (Pfeiffer)
+  - Pillar 2: Resource Strength (Pfeiffer)
+  - Pillar 3: Human Performance Potential (Eckert) with 3 sub-dimensions:
+    - 3.1 Enablers (Workflow, Teams, Decisions)
+    - 3.2 Success Techniques (Klopp collective intelligence, Alonso systematization)
+    - 3.3 Malik's Cybernetics (Control loops, CEO becomes Performance Enabler)
+  - Each pillar with: Number, Title, Author, Description, ZOLLERN Application
+  - Special design: Gray boxes with border-left, white sub-boxes, black application highlight
+  - 8% → 12% ROI improvement explanation
+  - 30 new config keys with English defaults
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.4.0
+**Type**: MINOR - Chapter 5 Framework
+
+---
+
 ## [2.3.0] - 2025-10-21
 
 ### Added

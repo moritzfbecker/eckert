@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.4.0] - 2025-10-21
+
+### Added
+- Chapter 5 - 3-Pillar Framework (Pfeiffer & Eckert, 30 config keys, 3 sub-dimensions)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Content
+
+---
+
 ## [Frontend 2.3.0] - 2025-10-21
 
 ### Added

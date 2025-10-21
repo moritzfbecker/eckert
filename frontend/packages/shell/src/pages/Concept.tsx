@@ -540,8 +540,168 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
+            {/* Chapter 5 - 3-Pillar Framework */}
+            <motion.section
+              id="chapter5"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {config.get('concept.chapter5.title', 'The 3-Pillar Framework by Pfeiffer & Eckert: The ZOLLERN-Validated Performance Architecture')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {config.get('concept.chapter5.subtitle', 'The framework distilled from 16 years of ZOLLERN engagement')}
+              </p>
+
+              {/* Intro Text */}
+              <div className="text-lg text-black/80 leading-relaxed mb-12">
+                <p className="mb-6">
+                  {config.get('concept.chapter5.intro.p1', 'This 3-pillar framework is not academic theory. It is the systematized essence of the ZOLLERN engagement: 16 years of practical application at a Hidden Champion, from which we extracted the effective mechanisms and formulated them as an explicit framework.')}
+                </p>
+                <p className="mb-6">
+                  {config.get('concept.chapter5.intro.p2', 'The original engagement generated a measurable 8% pre-tax return contribution with developed self-running qualities. Through the further development of the methodology based on these empirical findings – with expanded tools and refined systematization – we can achieve 12% today: 50% more than in the original engagement.')}
+                </p>
+              </div>
+
+              {/* Three Pillars */}
+              <div className="space-y-10 mb-12">
+                {/* Pillar 1 - Technology Portfolio */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <div className="flex items-start gap-4 mb-4">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {config.get('concept.chapter5.pillar1.number', '01')}
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-black mb-2">
+                        {config.get('concept.chapter5.pillar1.title', 'Technology Portfolio')}
+                      </h3>
+                      <p className="text-sm text-black/50 italic mb-4">
+                        {config.get('concept.chapter5.pillar1.author', '(by Pfeiffer)')}
+                      </p>
+                      <p className="text-lg text-black/80 mb-4">
+                        {config.get('concept.chapter5.pillar1.description', 'Systematic technology positioning in the competitive environment')}
+                      </p>
+                      <p className="text-black/70 mb-4">
+                        {config.get('concept.chapter5.pillar1.content', 'Portfolio management based on technology attractiveness vs. relative resource strength. Which technologies offer strategic advantage? Which are commodity?')}
+                      </p>
+                      <div className="bg-white p-4 rounded border border-black/10">
+                        <p className="text-sm font-semibold text-black mb-1">
+                          {config.get('concept.chapter5.pillar1.application.label', 'ZOLLERN Application:')}
+                        </p>
+                        <p className="text-sm text-black/70">
+                          {config.get('concept.chapter5.pillar1.application.text', 'Systematic evaluation of automation solutions in tool measurement/adjustment technology.')}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pillar 2 - Resource Strength */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <div className="flex items-start gap-4 mb-4">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {config.get('concept.chapter5.pillar2.number', '02')}
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-black mb-2">
+                        {config.get('concept.chapter5.pillar2.title', 'Resource Strength')}
+                      </h3>
+                      <p className="text-sm text-black/50 italic mb-4">
+                        {config.get('concept.chapter5.pillar2.author', '(by Pfeiffer)')}
+                      </p>
+                      <p className="text-lg text-black/80 mb-4">
+                        {config.get('concept.chapter5.pillar2.description', 'The organizational capability for technology implementation')}
+                      </p>
+                      <p className="text-black/70 mb-4">
+                        {config.get('concept.chapter5.pillar2.content', 'Where are our relative strengths? How do we maximize organizational capabilities? How do we translate technology potential into actual implementation?')}
+                      </p>
+                      <div className="bg-white p-4 rounded border border-black/10">
+                        <p className="text-sm font-semibold text-black mb-1">
+                          {config.get('concept.chapter5.pillar2.application.label', 'ZOLLERN Application:')}
+                        </p>
+                        <p className="text-sm text-black/70">
+                          {config.get('concept.chapter5.pillar2.application.text', 'The IPA Pattern – 4x faster technology adoption through systematic resource strength development.')}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pillar 3 - Human Performance Potential */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <div className="flex items-start gap-4 mb-4">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {config.get('concept.chapter5.pillar3.number', '03')}
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-black mb-2">
+                        {config.get('concept.chapter5.pillar3.title', 'Human Performance Potential')}
+                      </h3>
+                      <p className="text-sm text-black/50 italic mb-4">
+                        {config.get('concept.chapter5.pillar3.author', '(by Peter Eckert)')}
+                      </p>
+                      <p className="text-lg text-black/80 mb-6">
+                        {config.get('concept.chapter5.pillar3.description', 'The integrated dimensions for sustainable performance transformation')}
+                      </p>
+
+                      {/* Sub-dimensions */}
+                      <div className="space-y-4">
+                        {/* 3.1 Ermöglicher */}
+                        <div className="bg-white p-5 rounded border border-black/10">
+                          <h4 className="text-lg font-bold text-black mb-2">
+                            {config.get('concept.chapter5.pillar3.dim1.title', '3.1 Enablers (Eckert)')}
+                          </h4>
+                          <p className="text-sm text-black/70">
+                            {config.get('concept.chapter5.pillar3.dim1.text', 'Workflow redesign, team architectures, decision mechanisms – the systems that translate technology into productivity.')}
+                          </p>
+                        </div>
+
+                        {/* 3.2 Erfolgstechniken */}
+                        <div className="bg-white p-5 rounded border border-black/10">
+                          <h4 className="text-lg font-bold text-black mb-2">
+                            {config.get('concept.chapter5.pillar3.dim2.title', '3.2 Success Techniques (Klopp/Alonso)')}
+                          </h4>
+                          <p className="text-sm text-black/70 mb-2">
+                            <strong className="text-black">Klopp:</strong> {config.get('concept.chapter5.pillar3.dim2.klopp', 'Collective intelligence instead of star dependency.')}
+                          </p>
+                          <p className="text-sm text-black/70">
+                            <strong className="text-black">Alonso:</strong> {config.get('concept.chapter5.pillar3.dim2.alonso', 'Underdog advantage through systematization.')}
+                          </p>
+                        </div>
+
+                        {/* 3.3 Malik's Kybernetik */}
+                        <div className="bg-white p-5 rounded border border-black/10">
+                          <h4 className="text-lg font-bold text-black mb-2">
+                            {config.get('concept.chapter5.pillar3.dim3.title', '3.3 Malik\'s Cybernetics')}
+                          </h4>
+                          <p className="text-sm text-black/70">
+                            {config.get('concept.chapter5.pillar3.dim3.text', 'Functioning control loops, feedback mechanisms, steering systems. This is where CEOs become Performance Enablers.')}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Application Box */}
+                      <div className="bg-black text-white p-5 rounded mt-6">
+                        <p className="text-sm font-semibold mb-2">
+                          {config.get('concept.chapter5.pillar3.application.label', 'ZOLLERN Application:')}
+                        </p>
+                        <p className="text-sm text-white/90">
+                          {config.get('concept.chapter5.pillar3.application.text', 'This integrated pillar is the heart. Here the transformation happens from presentation to performance, from heads to hearts of CEOs, from there through the entire organization – until self-running qualities emerge.')}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-black/10 mt-12" />
+            </motion.section>
+
             {/* Other Chapters - Standard Layout */}
-            {chapters.slice(4).map((chapter, index) => (
+            {chapters.slice(5).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}
