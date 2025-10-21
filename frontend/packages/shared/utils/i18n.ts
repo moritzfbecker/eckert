@@ -61,7 +61,7 @@ export const initI18n = async (): Promise<void> => {
       { currentLanguage, translationCount: Object.keys(translations.de).length });
 
   } catch (error) {
-    logger.error('I18N_INIT_ERR_001', 'Failed to initialize i18n from backend', error);
+    logger.error('I18N_INIT_ERR_001', 'Failed to initialize i18n from backend', error as Error);
     // Use minimal fallback
     loadMinimalFallback();
   }
@@ -84,7 +84,7 @@ const loadTranslations = async (language: string): Promise<void> => {
       { language, count: Object.keys(data).length });
 
   } catch (error) {
-    logger.error('I18N_LOAD_ERR_001', `Failed to load ${language} translations from backend`, error,
+    logger.error('I18N_LOAD_ERR_001', `Failed to load ${language} translations from backend`, error as Error,
       { language });
   }
 };

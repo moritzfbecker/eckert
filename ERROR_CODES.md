@@ -68,12 +68,88 @@
 |------|-------------|--------|
 | CONFIG_SERVER_WARN_001 | Config file not found | File will be created with defaults |
 
-### Config Client (CONFIG_CLIENT)
+### Config Client v2.0 (CONFIG_CLIENT)
 
-| Code | Description | Type |
-|------|-------------|------|
-| CONFIG_CLIENT_001 | Spring Cloud Config Client integrated | Success |
-| CONFIG_CLIENT_002 | Service configs simplified to config import only | Success |
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| CONFIG_CLIENT_001 | Config loaded from cache | INFO |
+| CONFIG_CLIENT_002 | Config loaded from server | INFO |
+| CONFIG_CLIENT_003 | Cache cleared | INFO |
+
+#### Warning Codes
+| Code | Description | Action |
+|------|-------------|--------|
+| CONFIG_CLIENT_WARN_001 | Config Server unavailable, using defaults | Check Config Server connection |
+
+### Config Service (CONFIG_SRV)
+
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| CONFIG_SRV_001 | Config loaded from cache | INFO |
+| CONFIG_SRV_002 | Config loaded from file | INFO |
+| CONFIG_SRV_003 | Config not modified, skipping save | INFO |
+| CONFIG_SRV_004 | Config saved successfully | INFO |
+| CONFIG_SRV_005 | Created new config with defaults | INFO |
+| CONFIG_SRV_006 | Merged new defaults into existing config | INFO |
+| CONFIG_SRV_007 | Config key updated | INFO |
+| CONFIG_SRV_008 | Config key deleted | INFO |
+| CONFIG_SRV_009 | Config deleted | INFO |
+| CONFIG_SRV_010 | Cache cleared | INFO |
+
+### Config Repository (CONFIG_REPO)
+
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| CONFIG_REPO_001 | Config file does not exist yet | INFO |
+| CONFIG_REPO_002 | Config saved successfully | INFO |
+| CONFIG_REPO_003 | Config deleted | INFO |
+
+#### Error Codes
+| Code | Description | HTTP Status | Solution |
+|------|-------------|-------------|----------|
+| CONFIG_REPO_ERR_001 | Failed to load config | 500 | Check file permissions and syntax |
+| CONFIG_REPO_ERR_002 | Failed to save config | 500 | Check directory permissions |
+| CONFIG_REPO_ERR_003 | Failed to list categories | 500 | Check directory exists |
+| CONFIG_REPO_ERR_004 | Failed to delete config | 500 | Check file permissions |
+
+### Config API (CONFIG_API)
+
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| CONFIG_API_001 | I18n config requested | INFO |
+| CONFIG_API_002 | I18n config read request | INFO |
+| CONFIG_API_003 | I18n key update request | INFO |
+| CONFIG_API_004 | I18n key delete request | INFO |
+| CONFIG_API_005 | I18n config delete request | INFO |
+| CONFIG_API_006 | List i18n categories request | INFO |
+| CONFIG_API_007 | App config requested | INFO |
+| CONFIG_API_008 | App config read request | INFO |
+| CONFIG_API_009 | App config key update request | INFO |
+| CONFIG_API_010 | App config delete request | INFO |
+| CONFIG_API_011 | List app categories request | INFO |
+| CONFIG_API_012 | Cache clear request | INFO |
+
+### Config Hook - Frontend (CONFIG_HOOK)
+
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| CONFIG_HOOK_001 | Config loaded successfully | INFO |
+| CONFIG_HOOK_002 | Config cache cleared | INFO |
+
+#### Error Codes
+| Code | Description | Action |
+|------|-------------|--------|
+| CONFIG_HOOK_ERR_001 | Failed to load config | Check backend connection |
+
+#### Warning Codes
+| Code | Description | Action |
+|------|-------------|--------|
+| CONFIG_HOOK_WARN_001 | Config error - using defaults | Check error logs |
 
 ### API Gateway Startup (GATEWAY_STARTUP)
 
@@ -560,5 +636,5 @@ throw new ApiError('API_ERR_TIMEOUT', 'Request timeout', 408);
 
 ---
 
-**Last Updated**: 2025-10-14
-**Version**: 1.0.0
+**Last Updated**: 2025-10-21
+**Version**: 2.0.0 - Enterprise Config API

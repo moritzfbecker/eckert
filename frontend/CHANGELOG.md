@@ -4,6 +4,86 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.0.0] - 2025-10-21
+
+### BREAKING CHANGES ⚠️
+
+**Config API v2.0 - New Configuration System**
+
+This is a MAJOR version bump with breaking changes to i18n system!
+
+### Added
+- **useConfig Hook** - Enterprise-level configuration hook [CONFIG_HOOK_001-002]
+  - Fluent API with .get() pattern
+  - Auto-registration of English defaults
+  - Caching for performance
+  - Type-safe access (getNumber, getBoolean)
+  - Usage: `const config = useConfig('homepage', 'de')`
+  - Example: `config.get('home.title', 'Welcome')`
+
+- **FrontendConfig Class** [FRONTEND_CONFIG_003]
+  - Configuration container with fluent API
+  - Automatic backend synchronization
+  - English defaults in code
+  - German/custom values from Config Server
+
+- **Example Implementation** [FRONTEND_CONFIG_004]
+  - Home.tsx updated with useConfig hook
+  - Demonstrates .get() pattern with defaults
+  - Shows auto-registration workflow
+
+### Changed
+- **i18n System Paradigm Shift** [FRONTEND_I18N_026]
+  - OLD: useTranslation with t() function
+  - NEW: useConfig with .get() pattern
+  - OLD: Keys without defaults
+  - NEW: English defaults required in code
+
+### Deprecated
+- **useTranslation Hook** (use useConfig instead!)
+- **t() function** (use config.get() instead!)
+
+### Migration Required
+
+**React Components:**
+```typescript
+// OLD v1.x
+const { t } = useTranslation()
+<h1>{t('home.title')}</h1>
+
+// NEW v2.0
+const config = useConfig('homepage', 'de')
+<h1>{config.get('home.title', 'Welcome to Eckert Preisser')}</h1>
+```
+
+**See CONFIG_API.md for complete migration guide.**
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.0.0
+**Type**: MAJOR - Config API Integration (Breaking Changes)
+
+---
+
+## [1.11.0] - 2025-10-21
+
+### Added
+- Chapter 2 for Concept page [FRONTEND_CONCEPT_002]
+  - Three Promises section with numbered cards (01, 02, 03)
+  - Large numbers with border-left styling
+  - Promise 1: New perspective on limiting problems
+  - Promise 2: Solutions for unperceived problems
+  - Promise 3: Breakout from stagnation position
+  - Conclusion box with black background and white text
+  - Professional typography and spacing
+  - whitespace-pre-line for paragraph breaks
+  - Scroll animations with Framer Motion
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v1.11.0
+**Type**: Feature - Chapter 2 Content
+
+---
+
 ## [1.10.2] - 2025-10-17
 
 ### Fixed

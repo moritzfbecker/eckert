@@ -28,15 +28,17 @@ Config: External YAML configs (NO .env files!)
 
 Current Versions:
 
-\- Backend: v1.0.0
+\- Backend: v2.0.0 (Config API - MAJOR REWRITE!)
 
-\- Frontend: v1.0.0
+\- Frontend: v2.0.0 (useConfig Hook)
 
 
 
 CRITICAL: All user-facing text MUST be in both German and English!
 
-CRITICAL: NO .env files! All config in external YAML files!
+CRITICAL: NO .env files! All config via Config Server API!
+
+CRITICAL: Use Config API v2.0 with fluent .get() pattern!
 
 ```
 
@@ -570,7 +572,7 @@ Before ANY commit, verify:
 
 
 
-\### 10. File Locations Reference
+\### 10. File Locations Reference (Updated v2.0.0)
 
 
 
@@ -586,9 +588,15 @@ Documentation:
 
 \- DEVELOPMENT\_GUIDELINES.md (root)
 
+\- CONFIG\_API.md (root - NEW v2.0!)
+
+\- CONFIG\_SYSTEM.md (root - Updated v2.0)
+
 \- docs/QUICK\_START\_LOGGING.md
 
 \- docs/QUICK\_START\_VERSIONING.md
+
+\- docs/QUICK\_START\_CONFIG.md
 
 
 
@@ -602,6 +610,24 @@ Backend Shared:
 
 \- common-models/dto/ApiResponse.java
 
+\- config-client/ConfigClient.java (NEW v2.0!)
+
+\- config-client/ServiceConfig.java (NEW v2.0!)
+
+
+
+Backend Config Server (NEW v2.0):
+
+\- config-server/model/Config.java
+
+\- config-server/model/ConfigType.java
+
+\- config-server/service/ConfigService.java
+
+\- config-server/repository/ConfigRepository.java
+
+\- config-server/controller/ConfigApiController.java
+
 
 
 Frontend Shared:
@@ -611,6 +637,8 @@ Frontend Shared:
 \- shared/utils/errorHandler.ts
 
 \- shared/utils/api.ts
+
+\- shared/hooks/useConfig.ts (NEW v2.0!)
 
 \- shared/ui-components/Button.tsx
 
@@ -730,7 +758,7 @@ ALWAYS check ERROR\_CODES.md before adding new codes
 
 
 
-\### 13. Multi-Language Support (i18n)
+\### 13. Multi-Language Support v2.0 (i18n with Config API)
 
 
 
@@ -740,57 +768,79 @@ CRITICAL RULE: ALL user-facing text MUST support DE and EN!
 
 
 
-Backend (ALWAYS use MessageSource):
+Backend (NEW v2.0 - ALWAYS use ConfigClient):
 
-import com.eckertpreisser.common.utils.MessageSource;
-
-
-
-String messageDe = MessageSource.getMessage("user.created", "de");
-
-String messageEn = MessageSource.getMessage("user.created", "en");
-
-String formatted = MessageSource.getMessage("user.welcome", "de", "Max");
+import com.eckertpreisser.config.client.ConfigClient;
 
 
 
-Frontend (ALWAYS use t function):
+ServiceConfig config = configClient.load("email", "de");
 
-import { t, changeLanguage } from '@eckert-preisser/shared/utils';
+String subject = config.get("email.welcome.subject", "Welcome!");
 
-
-
-const message = t('user.created');
-
-const welcome = t('user.welcome', { 0: 'John' });
-
-changeLanguage('en');  // Switch to English
+String body = config.get("email.welcome.body", "Hi {name}!");
 
 
 
-Adding new translations:
+Frontend (NEW v2.0 - ALWAYS use useConfig Hook):
 
-1\. Add to config/i18n/messages\_de.properties
-
-2\. Add to config/i18n/messages\_en.properties
-
-3\. Use SAME key in both files
-
-4\. Use in code with MessageSource or t()
+import { useConfig } from '@eckert-preisser/shared/hooks';
 
 
 
-Translation Files:
+const config = useConfig('homepage', 'de');
 
-\- Backend: config/i18n/messages\_de.properties
+<h1>{config.get('home.title', 'Welcome')}</h1>
 
-\- Backend: config/i18n/messages\_en.properties
-
-\- Frontend: Uses same keys, loads from backend
+<p>{config.get('home.subtitle', 'Enterprise solutions')}</p>
 
 
 
-Never hardcode user-facing text! Always use i18n!
+Config Files (NEW v2.0 - Modular Structure):
+
+\- Backend: config/i18n/de/homepage.properties (small files!)
+
+\- Backend: config/i18n/de/concept.properties
+
+\- Backend: config/i18n/de/contact.properties
+
+\- Frontend: Loads from Config Server API
+
+
+
+Adding new translations (v2.0):
+
+1\. Just use .get() with English default!
+
+2\. Config auto-registers and creates file
+
+3\. Edit config/i18n/de/{category}.properties if needed
+
+4\. No code changes required!
+
+
+
+Example (Frontend):
+
+const config = useConfig('homepage', 'de');
+
+config.get('home.new.key', 'New English Default');
+
+// → Creates config/i18n/de/homepage.properties automatically
+
+
+
+Example (Backend):
+
+ServiceConfig config = configClient.load("email", "de");
+
+String msg = config.get("email.new.key", "English Default");
+
+// → Creates config/i18n/de/email.properties automatically
+
+
+
+Never hardcode user-facing text! Always use Config API with defaults!
 
 ```
 
@@ -800,7 +850,7 @@ Never hardcode user-facing text! Always use i18n!
 
 
 
-\### 14. Config Server System (Enterprise Architecture)
+\### 14. Config Server System v2.0 (Enterprise Config API)
 
 
 
@@ -808,65 +858,91 @@ Never hardcode user-facing text! Always use i18n!
 
 CRITICAL RULE: NO .env files in code!
 
-CRITICAL RULE: ALL config managed by Config Server!
+CRITICAL RULE: ALL config managed by Config Server API!
 
 
 
-Architecture (NEW in v1.1.0):
+Architecture (NEW in v2.0.0 - MAJOR REWRITE):
 
 Config Server (Port 8888)
 
-├── ConfigManager (ONLY in config-server!)
+├── RESTful API (/api/config/*)
 
-├── Creates config/ on startup
+├── ConfigService (Fluent API)
 
-├── Spring Cloud Config API
+├── ConfigRepository (Modular file I/O)
 
-└── Services fetch configs automatically
+└── Modular config/ structure
 
 
 
 Services (Gateway, User, Product, etc.)
 
-├── Spring Cloud Config Client
+├── ConfigClient (Fluent API client)
 
-├── application.yml: ONLY spring.config.import
+├── ServiceConfig (.get() pattern)
 
-├── NO hardcoded configs!
-
-└── Everything from Config Server
+└── Auto-registration of defaults
 
 
 
-Config files (auto-generated by Config Server):
+Frontend (React)
 
-\- config/application.yml (Shared for ALL services)
+├── useConfig Hook (Fluent API)
 
-\- config/database.yml (DB credentials)
+├── FrontendConfig (.get() pattern)
 
-\- config/mail.yml (SMTP settings)
-
-\- config/language.yml (i18n settings)
-
-\- config/api-gateway.yml (Gateway-specific)
-
-\- config/i18n/messages\_\*.properties (Translations)
+└── Auto-registration of defaults
 
 
 
-Service Configuration (Spring Cloud Config Client):
+Config Structure (v2.0 - Modular!):
 
-// application.yml in ANY service
+config/
 
-spring:
+├── i18n/de/homepage.properties (NOT one giant file!)
 
-&nbsp; config:
+├── i18n/de/concept.properties
 
-&nbsp;   import: "optional:configserver:http://config-server:8888"
+├── i18n/en/homepage.properties
+
+├── app/api-gateway.yml
+
+└── features/flags.yml
 
 
 
-// That's ALL! Everything else from Config Server!
+Backend Usage (v2.0):
+
+ServiceConfig config = configClient.load("email", "de");
+
+String subject = config.get("email.subject", "Welcome!");  // EN default
+
+// → Creates config/i18n/de/email.properties if not exists
+
+
+
+Frontend Usage (v2.0):
+
+const config = useConfig('homepage', 'de');
+
+const title = config.get('home.title', 'Welcome');  // EN default
+
+// → Creates config/i18n/de/homepage.properties if not exists
+
+
+
+Key Benefits v2.0:
+
+\- Modular files (50 lines each, NOT 900!)
+
+\- Auto-registration (just .get() with default)
+
+\- Fluent API (clean code)
+
+\- RESTful API (admin can update via HTTP)
+
+\- Scalable (add categories without code changes)
 
 
 
@@ -874,19 +950,17 @@ Never use:
 
 \- .env files
 
-\- Hardcoded credentials
+\- Hardcoded user-facing strings
 
-\- Local config files in services
+\- MessageSource.java (DEPRECATED in v2.0!)
 
-\- ConfigManager in common-utils (REMOVED!)
+\- Manual property file editing (use Config API!)
 
 
 
-Config Server = Single source of truth!
+Config Server API = Single source of truth!
 
-All secrets in Config Server's config/ folder.
-
-Services auto-load configs on startup.
+See CONFIG\_API.md for complete documentation.
 
 ```
 
@@ -896,7 +970,7 @@ Services auto-load configs on startup.
 
 
 
-\### 15. Critical Rules Summary (Updated v1.1.0)
+\### 15. Critical Rules Summary (Updated v2.0.0 - Config API)
 
 
 
@@ -916,9 +990,9 @@ NEVER SKIP THESE:
 
 5\. Use LoggerUtil (backend) / logger (frontend)
 
-6\. ALWAYS use t() for user-facing text (Frontend)
+6\. ALWAYS use useConfig() for user-facing text (Frontend)
 
-7\. ALWAYS use MessageSource (Backend)
+7\. ALWAYS use ConfigClient (Backend)
 
 8\. NO console.log or System.out.println
 
@@ -932,25 +1006,31 @@ NEVER SKIP THESE:
 
 
 
-Config Server Rules (NEW v1.1.0):
+Config Server Rules (NEW v2.0.0 - BREAKING CHANGES):
 
-\- Config Server = ONLY place for ConfigManager
+\- Config Server = RESTful API for ALL configs
 
-\- Services use Spring Cloud Config Client
+\- Modular structure (one file per category)
 
-\- NO local config files in services
+\- Auto-registration on first .get() call
 
-\- Everything from Config Server
+\- NO manual MessageSource editing!
+
+\- Use Fluent API everywhere
 
 
 
-i18n Rules (CRITICAL):
+i18n Rules v2.0 (CRITICAL):
 
-\- Frontend: ALWAYS use t() for ALL text
+\- Frontend: useConfig('category', 'de') + .get('key', 'default')
 
-\- Backend: ALWAYS use MessageSource
+\- Backend: configClient.load('category', 'de') + .get('key', 'default')
 
-\- Add keys to backend MessageSource.java
+\- English defaults ALWAYS in code
+
+\- Config files auto-created on first use
+
+\- Edit config/i18n/de/{category}.properties if needed
 
 \- Test in DE + EN
 
@@ -968,7 +1048,9 @@ Before ANY commit, verify:
 
 \- \[ ] Logging implemented
 
-\- \[ ] ALL text uses i18n (NO hardcoded!)
+\- \[ ] ALL text uses Config API with EN defaults
+
+\- \[ ] Config files created/updated
 
 \- \[ ] Tests pass
 

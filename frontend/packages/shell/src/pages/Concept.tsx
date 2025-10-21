@@ -206,8 +206,90 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
+            {/* Chapter 2 - Three Promises */}
+            <motion.section
+              id="chapter2"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {t('concept.chapter2.title')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {t('concept.chapter2.subtitle')}
+              </p>
+
+              {/* Intro Text */}
+              <div className="text-lg text-black/80 leading-relaxed mb-12">
+                <p>{t('concept.chapter2.intro')}</p>
+              </div>
+
+              {/* Promises */}
+              <div className="space-y-8 mb-12">
+                {/* Promise 1 */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {t('concept.chapter2.promise1.number')}
+                    </span>
+                    <h3 className="text-2xl font-bold text-black pt-2">
+                      {t('concept.chapter2.promise1.title')}
+                    </h3>
+                  </div>
+                  <p className="text-black/80 whitespace-pre-line">
+                    {t('concept.chapter2.promise1.text')}
+                  </p>
+                </div>
+
+                {/* Promise 2 */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {t('concept.chapter2.promise2.number')}
+                    </span>
+                    <h3 className="text-2xl font-bold text-black pt-2">
+                      {t('concept.chapter2.promise2.title')}
+                    </h3>
+                  </div>
+                  <p className="text-black/80 whitespace-pre-line">
+                    {t('concept.chapter2.promise2.text')}
+                  </p>
+                </div>
+
+                {/* Promise 3 */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {t('concept.chapter2.promise3.number')}
+                    </span>
+                    <h3 className="text-2xl font-bold text-black pt-2">
+                      {t('concept.chapter2.promise3.title')}
+                    </h3>
+                  </div>
+                  <p className="text-black/80 whitespace-pre-line">
+                    {t('concept.chapter2.promise3.text')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Conclusion */}
+              <div className="bg-black text-white rounded-lg p-8 mb-12">
+                <h3 className="text-2xl font-bold mb-4">
+                  {t('concept.chapter2.conclusion.title')}
+                </h3>
+                <p className="text-white/90 leading-relaxed whitespace-pre-line">
+                  {t('concept.chapter2.conclusion.text')}
+                </p>
+              </div>
+
+              <div className="border-t border-black/10 mt-12" />
+            </motion.section>
+
             {/* Other Chapters - Standard Layout */}
-            {chapters.slice(1).map((chapter, index) => (
+            {chapters.slice(2).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}

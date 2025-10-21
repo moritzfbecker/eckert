@@ -468,6 +468,30 @@ public class MessageSource {
             messages.setProperty("concept.chapter1.assumption3.title", "Annahme: ROI muss innerhalb von 24 Monaten sichtbar sein");
             messages.setProperty("concept.chapter1.assumption3.reality", "Realität: ZOLLERN Hidden Champion: 16 Jahre systematische Begleitung, 8% dokumentierter Vorsteuerumsatzrendite-Beitrag. Break-Even Jahr 4. Volle Systematik-Verankerung ermöglichte Selbstläufer-Qualitäten.");
 
+            // Chapter 2 - Drei Versprechen
+            messages.setProperty("concept.chapter2.title", "Drei Dinge, die wir Ihnen versprechen – und warum wir sie halten können");
+            messages.setProperty("concept.chapter2.subtitle", "Was unterscheidet uns von klassischen Strategieberatungen?");
+            messages.setProperty("concept.chapter2.intro", "Wir geben Ihnen keine Präsentationen. Wir geben Ihnen drei spezifische Outcomes, die klassische Strategieberatungen nicht liefern können – weil ihre Methodik strukturell nicht darauf ausgelegt ist.");
+
+            // Promise 1
+            messages.setProperty("concept.chapter2.promise1.number", "01");
+            messages.setProperty("concept.chapter2.promise1.title", "Eine neue Perspektive auf Ihr limitierendes Problem");
+            messages.setProperty("concept.chapter2.promise1.text", "Das Problem, das Sie nicht sehen können: Klassische Strategieberatungen analysieren, was Sie bereits wissen. Wir zeigen Ihnen, warum Finnland mit 1/4 des Budgets Spanien schlägt. Warum ZOLLERN über 16 Jahre 8% Rendite-Beitrag generierte. Warum Coaching-Leverage 71% mehr Performance-Varianz erklärt als Budget.\n\nSie dachten, Ihr Problem sei Strategie. Ihr Problem ist Systematik.");
+
+            // Promise 2
+            messages.setProperty("concept.chapter2.promise2.number", "02");
+            messages.setProperty("concept.chapter2.promise2.title", "Lösung für Probleme, die Sie noch nicht explizit wahrgenommen haben");
+            messages.setProperty("concept.chapter2.promise2.text", "Das Talent-Abundance-Paradox: Sie rekrutieren MBA-Elite für €180k Jahresgehalt, investieren aber nur €1.200 pro Manager in Development. Sie haben das teuerste Team in Ihrer Branche – aber nicht die höchste Performance. Warum?\n\nWir identifizieren die systemischen Ineffizienzen, die unter 'organizational excellence' verborgen sind: Star-Dependenz statt kollektiver Intelligenz. Präsentations-Performance statt Spielfeld-Results. Quick-Win-Sucht statt Systematik-Verankerung.");
+
+            // Promise 3
+            messages.setProperty("concept.chapter2.promise3.number", "03");
+            messages.setProperty("concept.chapter2.promise3.title", "Der Ausbruch aus der Stagnations-Position");
+            messages.setProperty("concept.chapter2.promise3.text", "Wenn es kein Weiterkommen zu geben scheint: Sie sind #3 oder #4 in Ihrem Markt. Seit 5 Jahren. Wettbewerber kopieren Ihre Moves. Ihre letzte 'Transformation' brachte 2,3% Produktivitätssteigerung – nicht die versprochenen 15%.\n\nDas Finnland-Pattern zeigt: Underdog-Advantage durch Systematik ist real und reproduzierbar. 167% Effizienz-Premium trotz Ressourcen-Gap. Dokumentiert über 16 Jahre bei ZOLLERN.");
+
+            // Conclusion
+            messages.setProperty("concept.chapter2.conclusion.title", "Warum diese drei Versprechen haltbar sind");
+            messages.setProperty("concept.chapter2.conclusion.text", "Klassische Strategieberatungen liefern was Sie kaufen: Präsentationen mit Empfehlungen. Ihre Methodik (Analyse → PowerPoint → Übergabe) kann strukturell keine Systematik-Verankerung leisten.\n\nUnsere Methodik (Malik-Kybernetik + 3-Säulen-Framework + 16-Jahres-Proof) ist explizit darauf ausgelegt, was klassische Beratungen übersehen: Wie Systematik sich in Köpfen und Herzen von CEOs niederschlägt, von dort ihren Weg durchs Unternehmen findet, und Selbstläufer-Qualitäten entwickelt.");
+
         } else if ("en".equals(language)) {
             // English messages
             messages.setProperty("app.name", "Eckert Preisser Enterprise");
@@ -857,6 +881,30 @@ public class MessageSource {
             messages.setProperty("concept.chapter1.assumption2.reality", "Reality: High-talent organizations systematically underperform. Spain -13 places below expectation. Serbia (world's best player) -6 places. Finland (weakest talent) +10 places above expectation.");
             messages.setProperty("concept.chapter1.assumption3.title", "Assumption: ROI must be visible within 24 months");
             messages.setProperty("concept.chapter1.assumption3.reality", "Reality: ZOLLERN Hidden Champion: 16 years of systematic support, 8% documented pre-tax revenue margin contribution. Break-even year 4. Full systematic anchoring enabled self-sustaining qualities.");
+
+            // Chapter 2 - Three Promises
+            messages.setProperty("concept.chapter2.title", "Three Things We Promise You – And Why We Can Deliver Them");
+            messages.setProperty("concept.chapter2.subtitle", "What distinguishes us from traditional strategy consultancies?");
+            messages.setProperty("concept.chapter2.intro", "We don't give you presentations. We give you three specific outcomes that traditional strategy consultancies cannot deliver – because their methodology is structurally not designed for it.");
+
+            // Promise 1
+            messages.setProperty("concept.chapter2.promise1.number", "01");
+            messages.setProperty("concept.chapter2.promise1.title", "A New Perspective on Your Limiting Problem");
+            messages.setProperty("concept.chapter2.promise1.text", "The problem you cannot see: Traditional strategy consultancies analyze what you already know. We show you why Finland beats Spain with 1/4 of the budget. Why ZOLLERN generated an 8% margin contribution over 16 years. Why Coaching-Leverage explains 71% more performance variance than budget.\n\nYou thought your problem was strategy. Your problem is systematics.");
+
+            // Promise 2
+            messages.setProperty("concept.chapter2.promise2.number", "02");
+            messages.setProperty("concept.chapter2.promise2.title", "Solutions for Problems You Haven't Explicitly Perceived Yet");
+            messages.setProperty("concept.chapter2.promise2.text", "The Talent-Abundance-Paradox: You recruit MBA elite for €180k annual salary, but only invest €1,200 per manager in development. You have the most expensive team in your industry – but not the highest performance. Why?\n\nWe identify the systemic inefficiencies hidden under 'organizational excellence': Star-dependency instead of collective intelligence. Presentation-performance instead of field-results. Quick-win-addiction instead of systematic anchoring.");
+
+            // Promise 3
+            messages.setProperty("concept.chapter2.promise3.number", "03");
+            messages.setProperty("concept.chapter2.promise3.title", "The Breakout from Stagnation Position");
+            messages.setProperty("concept.chapter2.promise3.text", "When there seems to be no progress: You're #3 or #4 in your market. For 5 years. Competitors copy your moves. Your last 'transformation' brought 2.3% productivity increase – not the promised 15%.\n\nThe Finland-Pattern shows: Underdog-Advantage through systematics is real and reproducible. 167% efficiency premium despite resource gap. Documented over 16 years at ZOLLERN.");
+
+            // Conclusion
+            messages.setProperty("concept.chapter2.conclusion.title", "Why These Three Promises Are Sustainable");
+            messages.setProperty("concept.chapter2.conclusion.text", "Traditional strategy consultancies deliver what you buy: Presentations with recommendations. Their methodology (Analysis → PowerPoint → Handover) cannot structurally provide systematic anchoring.\n\nOur methodology (Malik-Cybernetics + 3-Pillar-Framework + 16-Year-Proof) is explicitly designed for what traditional consultancies overlook: How systematics settles in the minds and hearts of CEOs, finds its way through the organization, and develops self-sustaining qualities.");
         }
 
         try (var writer = Files.newBufferedWriter(messageFile, StandardCharsets.UTF_8)) {

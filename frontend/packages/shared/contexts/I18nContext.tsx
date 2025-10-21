@@ -96,7 +96,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
         });
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-        logger.error('I18N_CTX_ERR_001', 'Failed to initialize i18n context', err, {
+        logger.error('I18N_CTX_ERR_001', 'Failed to initialize i18n context', err as Error, {
           error: errorMessage,
         });
 

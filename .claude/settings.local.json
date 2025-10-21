@@ -33,7 +33,15 @@
       "Read(//c/Users/morit/**)",
       "WebFetch(domain:becker.limited)",
       "Bash(python:*)",
-      "Bash(taskkill /F /FI \"IMAGENAME eq node.exe\")"
+      "Bash(taskkill /F /FI \"IMAGENAME eq node.exe\")",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(tasklist:*)",
+      "Bash(mvn versions:commit:*)",
+      "Bash(powershell:*)",
+      "Bash(move Solutions.tsx Concept.tsx)",
+      "Bash(git log:*)",
+      "Bash(del MAVEN_FIX.md)"
     ],
     "deny": [],
     "ask": []

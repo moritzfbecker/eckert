@@ -14,14 +14,15 @@ Frontend: React 18 Micro Frontends (TypeScript, Vite, Turborepo)
 Design: Minimalist Black/White theme with Apple gradient (Pink → Purple → Yellow)
 Architecture: Microservices backend + Micro frontend architecture
 Languages: Multi-language (German/English)
-Config: External YAML configs (NO .env files!)
+Config: Enterprise Config API v2.0 (NO .env files!)
 
 Current Versions:
-- Backend: v1.0.0
-- Frontend: v1.0.0
+- Backend: v2.0.0 (Config API - MAJOR REWRITE!)
+- Frontend: v2.0.0 (useConfig Hook)
 
 CRITICAL: All user-facing text MUST be in both German and English!
-CRITICAL: NO .env files! All config in external YAML files!
+CRITICAL: NO .env files! All config via Config Server RESTful API!
+CRITICAL: Use Config API v2.0 with fluent .get() pattern!
 ```
 
 ---
@@ -269,7 +270,7 @@ Before ANY commit, verify:
 
 ---
 
-### 10. File Locations Reference
+### 10. File Locations Reference (Updated v2.0)
 
 ```
 Documentation:
@@ -277,19 +278,32 @@ Documentation:
 - CHANGELOG.md (root + backend/ + frontend/)
 - VERSION_MANAGEMENT.md (root)
 - DEVELOPMENT_GUIDELINES.md (root)
+- CONFIG_API.md (root - NEW v2.0!)
+- CONFIG_SYSTEM.md (root - Updated v2.0)
 - docs/QUICK_START_LOGGING.md
 - docs/QUICK_START_VERSIONING.md
+- docs/QUICK_START_CONFIG.md
 
 Backend Shared:
 - common-utils/LoggerUtil.java
 - common-models/exception/BaseException.java
 - common-models/exception/GlobalExceptionHandler.java
 - common-models/dto/ApiResponse.java
+- config-client/ConfigClient.java (NEW v2.0!)
+- config-client/ServiceConfig.java (NEW v2.0!)
+
+Backend Config Server (NEW v2.0):
+- config-server/model/Config.java
+- config-server/model/ConfigType.java
+- config-server/service/ConfigService.java
+- config-server/repository/ConfigRepository.java
+- config-server/controller/ConfigApiController.java
 
 Frontend Shared:
 - shared/utils/logger.ts
 - shared/utils/errorHandler.ts
 - shared/utils/api.ts
+- shared/hooks/useConfig.ts (NEW v2.0!)
 - shared/ui-components/Button.tsx
 - shared/ui-components/Card.tsx
 
@@ -349,71 +363,89 @@ ALWAYS check ERROR_CODES.md before adding new codes
 
 ---
 
-### 13. Multi-Language Support (i18n)
+### 13. Multi-Language Support v2.0 (Config API)
 
 ```
 CRITICAL RULE: ALL user-facing text MUST support DE and EN!
 
-Backend (ALWAYS use MessageSource):
-import com.eckertpreisser.common.utils.MessageSource;
+Backend (NEW v2.0 - ALWAYS use ConfigClient):
+import com.eckertpreisser.config.client.ConfigClient;
 
-String messageDe = MessageSource.getMessage("user.created", "de");
-String messageEn = MessageSource.getMessage("user.created", "en");
-String formatted = MessageSource.getMessage("user.welcome", "de", "Max");
+ServiceConfig config = configClient.load("email", "de");
+String subject = config.get("email.subject", "Welcome!");  // EN default
+String body = config.get("email.body", "Hi {name}!");
 
-Frontend (ALWAYS use t function):
-import { t, changeLanguage } from '@eckert-preisser/shared/utils';
+Frontend (NEW v2.0 - ALWAYS use useConfig Hook):
+import { useConfig } from '@eckert-preisser/shared/hooks';
 
-const message = t('user.created');
-const welcome = t('user.welcome', { 0: 'John' });
-changeLanguage('en');  // Switch to English
+const config = useConfig('homepage', 'de');
+<h1>{config.get('home.title', 'Welcome')}</h1>  // EN default
 
-Adding new translations:
-1. Add to config/i18n/messages_de.properties
-2. Add to config/i18n/messages_en.properties
-3. Use SAME key in both files
-4. Use in code with MessageSource or t()
+Adding new translations v2.0 (AUTO-REGISTRATION!):
+1. Just use .get() with English default
+2. Config Server auto-creates file on first use
+3. Edit config/i18n/de/{category}.properties if needed
+4. NO code changes required!
 
-Translation Files:
-- Backend: config/i18n/messages_de.properties
-- Backend: config/i18n/messages_en.properties
-- Frontend: Uses same keys, loads from backend
+Translation Files v2.0 (MODULAR!):
+- config/i18n/de/homepage.properties (small files!)
+- config/i18n/de/concept.properties
+- config/i18n/de/email.properties
+- config/i18n/en/ (same structure)
 
-Never hardcode user-facing text! Always use i18n!
+DEPRECATED:
+- MessageSource.java (use ConfigClient instead!)
+- messages_de.properties (use modular files!)
+
+Never hardcode user-facing text! Always use Config API with EN defaults!
 ```
 
 ---
 
-### 14. External Configuration System
+### 14. Config Server System v2.0 (Enterprise Config API)
 
 ```
 CRITICAL RULE: NO .env files in code!
-CRITICAL RULE: ALL config in external YAML files!
+CRITICAL RULE: ALL config via Config Server RESTful API!
 
-Config files (auto-generated on first start):
-- config/application.yml (Main settings)
-- config/database.yml (DB credentials)
-- config/mail.yml (SMTP settings)
-- config/language.yml (i18n settings)
-- config/i18n/messages_*.properties (Translations)
+Architecture v2.0 (MAJOR REWRITE):
+Config Server (Port 8888)
+├── RESTful API (/api/config/*)
+├── ConfigService (Fluent API, Caching, Auto-registration)
+├── ConfigRepository (Modular file I/O)
+└── Modular config/ structure (small files!)
 
-Backend Config Management:
-import com.eckertpreisser.common.utils.ConfigManager;
+Services use ConfigClient:
+ServiceConfig config = configClient.load("email", "de");
+String subject = config.get("email.subject", "Welcome!");
+// → Auto-creates config/i18n/de/email.properties
 
-// Initialize (runs automatically on startup)
-ConfigManager.initializeConfigIfNotExists();
+Frontend uses useConfig:
+const config = useConfig('homepage', 'de');
+const title = config.get('home.title', 'Welcome');
+// → Auto-creates config/i18n/de/homepage.properties
 
-// Load config
-Map<String, Object> dbConfig = ConfigManager.loadConfig("database.yml");
+Config Structure v2.0 (MODULAR!):
+config/
+├── i18n/de/homepage.properties (NOT one giant file!)
+├── i18n/de/concept.properties
+├── i18n/en/homepage.properties
+├── app/api-gateway.yml
+└── features/flags.yml
 
-Never use:
-- .env files
-- Hardcoded credentials
-- Environment variables in code
+Key Benefits v2.0:
+- Modular files (50 lines each, NOT 900!)
+- Auto-registration (defaults in code)
+- Fluent API (.get() pattern)
+- RESTful API (CRUD operations)
+- Type-safe (getInt, getBoolean, etc.)
 
-All secrets MUST be in external config files!
-Config files are generated automatically on first start.
-User configures them before production use.
+DEPRECATED v1.x:
+- ConfigManager.java (removed from common-utils)
+- MessageSource.java (use ConfigClient!)
+- Single messages_de.properties (use modular!)
+
+See CONFIG_API.md for complete v2.0 documentation!
 ```
 
 ---
@@ -482,32 +514,42 @@ See STYLING_GUIDELINES.md v2.0.0 for complete reference!
 
 ---
 
-### 16. Config-First Development
+### 16. Config-First Development v2.0
 
 ```
-Workflow for new features requiring config:
+NEW v2.0 Workflow - Auto-Registration!
 
-1. Add config to ConfigManager (if new file needed)
-2. Generate example config on startup
-3. Document in CONFIG_SYSTEM.md
-4. Use ConfigManager.loadConfig() in code
-5. Never hardcode values
+1. Use .get() with English default in code
+2. Config Server auto-creates file on first use
+3. Edit config files if customization needed
+4. Never hardcode values
 
-Example config structure:
+Backend Example:
+ServiceConfig config = configClient.load("payment", "de");
+String provider = config.get("payment.provider", "stripe");
+// → Auto-creates config/i18n/de/payment.properties
+
+Frontend Example:
+const config = useConfig('homepage', 'de');
+const title = config.get('home.title', 'Welcome');
+// → Auto-creates config/i18n/de/homepage.properties
+
+Config Structure v2.0 (MODULAR!):
 config/
-├── application.yml      # App settings
-├── database.yml        # DB settings
-├── mail.yml           # Mail settings
-├── language.yml       # i18n settings
-└── i18n/
-    ├── messages_de.properties
-    └── messages_en.properties
+├── i18n/de/homepage.properties (small!)
+├── i18n/de/concept.properties
+├── i18n/en/homepage.properties
+├── app/payment.yml
+└── features/flags.yml
 
-Production deployment:
-1. Start app → config/ created
-2. Stop app
-3. Edit config files
-4. Restart app
+Production deployment v2.0:
+1. Start app → Configs auto-created on .get() calls
+2. Edit config files if needed (optional!)
+3. Restart or clear cache
+4. Changes reflected immediately
+
+NO manual file editing required!
+Defaults in code = Single source of truth!
 
 NEVER commit config/ to git!
 ALWAYS in .gitignore!

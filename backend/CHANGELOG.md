@@ -4,6 +4,105 @@ All backend-specific changes are documented here.
 
 ---
 
+## [2.0.0] - 2025-10-21
+
+### BREAKING CHANGES ⚠️
+
+**Complete Config System Rewrite - Enterprise Config API**
+
+This is a MAJOR version bump with breaking changes. Migration required!
+
+### Added
+- **Enterprise Config Server API** [CONFIG_API_001-012]
+  - RESTful API for all configuration management
+  - POST /api/config/i18n/{category}/{language} - Get or register translations
+  - GET /api/config/i18n/{category}/{language} - Get translations
+  - PUT /api/config/i18n/{category}/{language}/{key} - Update single key
+  - DELETE /api/config/i18n/{category}/{language}/{key} - Delete key
+  - GET /api/config/i18n/categories/{language} - List categories
+  - POST /api/config/app/{category} - Get or register app config
+  - GET /api/config/cache/clear - Clear cache
+  - Complete CRUD operations for all config types
+
+- **Config Server Core System** [CONFIG_SRV_001-010]
+  - Config.java - Fluent API class with .get() pattern
+  - ConfigType.java - Enum for I18N, APP, FEATURE_FLAG, CUSTOM
+  - ConfigService.java - Business logic with caching and auto-registration
+  - ConfigRepository.java - File I/O for .properties and .yml files
+  - ConfigApiController.java - RESTful API controller
+  - Auto-registration of defaults on first .get() call
+  - In-memory caching for performance
+  - Type-safe access (getInt, getBoolean, getLong, getDouble)
+
+- **Config Client for Microservices** [CONFIG_CLIENT_001-003]
+  - ConfigClient.java - Client for accessing Config Server from services
+  - ServiceConfig.java - Fluent API for services
+  - ConfigClientType.java - Type enum
+  - Automatic fallback to defaults when Config Server unavailable
+  - Thread-safe caching
+
+- **Modular Config File Structure** [CONFIG_REPO_001-003]
+  - config/i18n/de/{category}.properties (NOT one giant file!)
+  - config/i18n/en/{category}.properties
+  - config/app/{service}.yml
+  - config/features/flags.yml
+  - Small files (~50 lines each) instead of 900+ line monolith
+
+### Changed
+- **Config paradigm shift**: Defaults in code → Auto-registration [CONFIG_SRV_005-006]
+  - OLD: Manual editing of MessageSource.java
+  - NEW: .get() with English defaults, files auto-created
+- Configuration now modular per category (homepage, concept, email, etc.)
+- File structure: Flat single file → Nested modular structure
+
+### Deprecated
+- **MessageSource.java static methods** (use ConfigClient instead!)
+  - MessageSource.getMessage() → config.get()
+  - Manual properties editing → Auto-registration
+- **Single messages_de.properties** (use modular config/i18n/de/{category}.properties!)
+
+### Removed
+- Requirement for manual config file editing (now auto-created!)
+
+### Migration Required
+
+**Backend Services:**
+```java
+// OLD v1.x
+String message = MessageSource.getMessage("user.created", "de");
+
+// NEW v2.0
+@Autowired
+private ConfigClient configClient;
+
+ServiceConfig config = configClient.load("user", "de");
+String message = config.get("user.created", "User created successfully");
+```
+
+**See CONFIG_API.md for complete migration guide.**
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v2.0.0-SNAPSHOT
+**Type**: MAJOR - Enterprise Config API (Breaking Changes)
+
+---
+
+## [1.1.2] - 2025-10-21
+
+### Added
+- Chapter 2 translations for Concept page [BACKEND_I18N_026-039]
+  - 14 new translation keys (DE + EN = 28 entries)
+  - concept.chapter2.title, subtitle, intro
+  - concept.chapter2.promise1-3 (number, title, text)
+  - concept.chapter2.conclusion (title, text)
+  - Complete "Three Promises" section with numbered promises
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Backend v1.1.2-SNAPSHOT
+**Type**: Feature - Chapter 2 Content for Concept Page
+
+---
+
 ## [1.1.1] - 2025-10-17
 
 ### Removed

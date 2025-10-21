@@ -84,7 +84,7 @@ const Status = () => {
       setServices(defaultServices.map(s =>
         s.name.includes('Frontend') ? s : { ...s, status: 'DOWN' }
       ))
-      logger.error('STATUS_ERR_001', 'Health check failed', error)
+      logger.error('STATUS_ERR_001', 'Health check failed', error as Error)
     }
 
     setLoading(false)

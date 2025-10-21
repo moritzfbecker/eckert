@@ -221,43 +221,137 @@ public class GlobalExceptionHandler {
 }
 ```
 
-### Configuration
+### Configuration v2.0 (Enterprise Config API)
 
-#### application.yml Structure
-```yaml
-server:
-  port: ${PORT:8081}
+#### CRITICAL: Use Config API v2.0!
 
-spring:
-  application:
-    name: user-service
-  datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/userdb}
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
-  jpa:
-    hibernate:
-      ddl-auto: ${DDL_AUTO:validate}
-    show-sql: ${SHOW_SQL:false}
+**NEW in v2.0**: Config Server provides RESTful API for ALL configurations.
 
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
-
-# Custom Properties
-app:
-  security:
-    jwt:
-      secret: ${JWT_SECRET}
-      expiration: ${JWT_EXPIRATION:86400000}
+**Dependencies:**
+```xml
+<!-- In any service pom.xml -->
+<dependency>
+    <groupId>com.eckertpreisser</groupId>
+    <artifactId>config-client</artifactId>
+</dependency>
 ```
 
-**Regeln:**
-- Alle Werte über Environment Variables konfigurierbar
-- Default-Werte für lokale Entwicklung
-- Secrets nie committed
-- Profile für verschiedene Environments
+#### Using ConfigClient (Fluent API)
+
+```java
+@Service
+@RequiredArgsConstructor
+public class UserService {
+
+    private final ConfigClient configClient;
+    private final EmailService emailService;
+
+    public void sendWelcomeEmail(User user) {
+        // Load i18n config with fluent API
+        ServiceConfig config = configClient.load("email", user.getLanguage());
+
+        // Use .get() pattern - English defaults
+        String subject = config.get("email.welcome.subject", "Welcome to our platform!");
+        String body = config.get("email.welcome.body", "Hi {name}, thank you for joining us!");
+        String footer = config.get("email.footer", "Best regards, Team");
+
+        // What happens:
+        // 1. ConfigClient calls Config Server API
+        // 2. Config Server checks: config/i18n/de/email.properties exists?
+        // 3. If NO → Creates file with EN defaults
+        // 4. If YES → Returns DE translations
+        // 5. Defaults auto-registered, file created automatically!
+
+        emailService.send(
+            user.getEmail(),
+            subject,
+            body.replace("{name}", user.getName()) + "\n\n" + footer
+        );
+    }
+}
+```
+
+#### Loading App Configs
+
+```java
+@Service
+@RequiredArgsConstructor
+public class PaymentService {
+
+    private final ConfigClient configClient;
+
+    @PostConstruct
+    public void init() {
+        // Load app-specific config (not i18n)
+        ServiceConfig config = configClient.loadApp("payment", Map.of(
+            "payment.provider", "stripe",
+            "payment.currency", "EUR",
+            "payment.timeout", "30000"
+        ));
+
+        String provider = config.get("payment.provider", "stripe");
+        String currency = config.get("payment.currency", "EUR");
+        int timeout = config.getInt("payment.timeout", 30000);
+
+        // Config saved to: config/app/payment.yml
+        initializePaymentProvider(provider, currency, timeout);
+    }
+}
+```
+
+#### Type-Safe Config Access
+
+```java
+// String
+String value = config.get("key", "default");
+
+// Integer
+int port = config.getInt("server.port", 8080);
+
+// Long
+long timeout = config.getLong("timeout.ms", 30000L);
+
+// Boolean
+boolean enabled = config.getBoolean("feature.enabled", false);
+
+// Double
+double rate = config.getDouble("tax.rate", 0.19);
+```
+
+#### Configuration Rules v2.0
+
+**DO:**
+- ✅ Load config once at top of method/class
+- ✅ Use English defaults ALWAYS
+- ✅ Use descriptive category names ("email", "payment", "homepage")
+- ✅ Let Config Server auto-create files
+- ✅ Use .get() with defaults everywhere
+
+**DON'T:**
+- ❌ Don't use MessageSource.java (DEPRECATED!)
+- ❌ Don't hardcode translations
+- ❌ Don't load config multiple times
+- ❌ Don't use null as default
+- ❌ Don't edit config files manually (use Config API!)
+
+#### Old vs New
+
+```java
+// ❌ OLD v1.x - DEPRECATED!
+String message = MessageSource.getMessage("user.created", "de");
+
+// ✅ NEW v2.0 - Enterprise Config API
+ServiceConfig config = configClient.load("user", "de");
+String message = config.get("user.created", "User created successfully");
+```
+
+**Migration Path:**
+1. Add config-client dependency
+2. Inject ConfigClient
+3. Replace MessageSource calls with ConfigClient
+4. Run service → Config files auto-created!
+
+See **CONFIG_API.md** for complete documentation.
 
 ## 💻 Frontend Development
 
@@ -383,14 +477,15 @@ export const useApi = <T,>(endpoint: string): UseApiResult<T> => {
 #### 3. Pages
 
 ```tsx
-// Home.tsx
+// Home.tsx - NEW v2.0 Config API
 import { motion } from 'framer-motion';
 import { Button, Card } from '@eckert-preisser/shared/ui';
-import { useTranslation } from '@eckert-preisser/shared/hooks';
+import { useConfig } from '@eckert-preisser/shared/hooks';
 import { fadeInUp } from '@eckert-preisser/shared/animations';
 
 const Home = () => {
-  const { t } = useTranslation(); // ALWAYS use for i18n!
+  // NEW v2.0: useConfig with category and language
+  const config = useConfig('homepage', 'de');
 
   return (
     <div className="pt-20">
@@ -401,11 +496,11 @@ const Home = () => {
           transition={fadeInUp.transition}
           className="text-6xl font-bold mb-6"
         >
-          {t('home.hero.title')} <span className="text-gradient">Eckert Preisser</span>
+          {config.get('home.hero.title', 'Welcome to')} <span className="text-gradient">Eckert Preisser</span>
         </motion.h1>
 
         <Button variant="gradient" size="lg">
-          {t('button.get.started')}
+          {config.get('button.get.started', 'Get Started')}
         </Button>
       </section>
     </div>
@@ -417,23 +512,25 @@ export default Home;
 
 **Regeln:**
 - Page Components im `pages/` Ordner
-- **IMMER useTranslation Hook verwenden!**
-- **ALLE Texte mit t() Keys - KEINE hardcoded Strings!**
+- **IMMER useConfig Hook verwenden (v2.0)!**
+- **ALLE Texte mit .get() + English defaults - KEINE hardcoded Strings!**
 - Verwende Shared Components
 - Scroll Animations mit Framer Motion
 - Responsive Design mit Tailwind
 - SEO-friendly (Title, Meta-Tags)
 
-**i18n CRITICAL:**
+**i18n CRITICAL (v2.0):**
 ```tsx
 // ❌ WRONG - NEVER DO THIS!
 <h1>Welcome to Eckert Preisser</h1>
 <button>Get Started</button>
 
-// ✅ CORRECT - ALWAYS DO THIS!
-const { t } = useTranslation();
-<h1>{t('home.hero.title')}</h1>
-<button>{t('button.get.started')}</button>
+// ✅ CORRECT v2.0 - ALWAYS DO THIS!
+const config = useConfig('homepage', 'de');
+<h1>{config.get('home.hero.title', 'Welcome to Eckert Preisser')}</h1>
+<button>{config.get('button.get.started', 'Get Started')}</button>
+
+// English defaults in code, German from backend!
 ```
 
 ### Styling Guidelines

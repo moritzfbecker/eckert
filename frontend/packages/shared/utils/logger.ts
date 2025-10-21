@@ -32,15 +32,7 @@ interface LogEntry {
 }
 
 class Logger {
-  private serviceName: string = 'frontend';
-  private isDevelopment: boolean = import.meta.env.DEV;
-
-  /**
-   * Set service name for this logger instance
-   */
-  setServiceName(name: string): void {
-    this.serviceName = name;
-  }
+  private isDevelopment: boolean = typeof import.meta !== 'undefined' && import.meta.env?.DEV || false;
 
   /**
    * Log DEBUG level message

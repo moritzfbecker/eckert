@@ -9,6 +9,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 2.0.0] - 2025-10-21
+
+### BREAKING CHANGES ⚠️
+- Enterprise Config API - Complete rewrite with RESTful API and fluent .get() pattern
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MAJOR - Breaking Changes
+
+---
+
+## [Frontend 2.0.0] - 2025-10-21
+
+### BREAKING CHANGES ⚠️
+- useConfig Hook - New configuration system with .get() pattern and English defaults
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MAJOR - Breaking Changes
+
+---
+
+## [Frontend 1.11.0] - 2025-10-21
+
+### Added
+- Chapter 2 for Concept page with Three Promises section [FRONTEND_CONCEPT_002]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
+## [Backend 1.1.2] - 2025-10-21
+
+### Added
+- Chapter 2 translations (14 keys, 28 entries DE+EN) [BACKEND_I18N_026-039]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: Feature
+
+---
+
 ## [Frontend 1.10.2] - 2025-10-17
 
 ### Fixed
