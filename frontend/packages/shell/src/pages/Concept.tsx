@@ -300,8 +300,112 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
+            {/* Chapter 3 - Science + Entrepreneurship */}
+            <motion.section
+              id="chapter3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {config.get('concept.chapter3.title', 'Science + Entrepreneurship: The Eckert-Preisser Methodology')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {config.get('concept.chapter3.subtitle', 'What distinguishes us from academic consultants and classical strategy consultancies')}
+              </p>
+
+              {/* Intro Text */}
+              <div className="text-lg text-black/80 leading-relaxed mb-12">
+                <p className="mb-6">
+                  {config.get('concept.chapter3.intro.p1', 'Every concept we implement has been entrepreneurially developed and tested in our own companies over years.')}
+                </p>
+                <p className="mb-6">
+                  {config.get('concept.chapter3.intro.p2', 'This creates a fundamental difference: We combine the scientific rigor of the Fraunhofer tradition (Peter Eckert\'s origin at IPA – Institute for Manufacturing Engineering and Automation) with entrepreneurial validation through real risk, real P&L responsibility, and real market proof.')}
+                </p>
+              </div>
+
+              {/* Three Validation Levels Header */}
+              <h3 className="text-2xl font-bold text-black mb-8">
+                {config.get('concept.chapter3.validation.title', 'The Three Validation Levels of Our Methods')}
+              </h3>
+
+              {/* Validation Levels */}
+              <div className="space-y-8 mb-12">
+                {/* Level 1 - Scientific */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {config.get('concept.chapter3.level1.number', '01')}
+                    </span>
+                    <h4 className="text-2xl font-bold text-black pt-2">
+                      {config.get('concept.chapter3.level1.title', 'Scientific Foundation')}
+                    </h4>
+                  </div>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter3.level1.subtitle', 'Fraunhofer Tradition: Systematic process analysis, cybernetic control mechanisms, documented measurement methodology.')}
+                  </p>
+                  <p className="text-black/70 whitespace-pre-line">
+                    {config.get('concept.chapter3.level1.text', 'Our frameworks are not based on management fads, but on systems theory, cybernetics, and documented long-term patterns. The Finland analysis includes 153+ external sources – not gut feelings.')}
+                  </p>
+                </div>
+
+                {/* Level 2 - Entrepreneurial */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {config.get('concept.chapter3.level2.number', '02')}
+                    </span>
+                    <h4 className="text-2xl font-bold text-black pt-2">
+                      {config.get('concept.chapter3.level2.title', 'Entrepreneurial Validation')}
+                    </h4>
+                  </div>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter3.level2.subtitle', 'Skin in the Game: Every system was tested in our own companies with our own capital, our own risk, and our own P&L responsibility.')}
+                  </p>
+                  <p className="text-black/70 whitespace-pre-line">
+                    {config.get('concept.chapter3.level2.text', 'We don\'t sell theories from textbooks. We implement systems that we ourselves have successfully operationalized under market conditions, with real competitive pressure and real employees.')}
+                  </p>
+                </div>
+
+                {/* Level 3 - Long-term */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="text-5xl font-bold text-black/20 leading-none">
+                      {config.get('concept.chapter3.level3.number', '03')}
+                    </span>
+                    <h4 className="text-2xl font-bold text-black pt-2">
+                      {config.get('concept.chapter3.level3.title', 'Long-Term Validation')}
+                    </h4>
+                  </div>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter3.level3.subtitle', '16-Year Proof: Not 6-month quick wins, but documented performance patterns across economic cycles.')}
+                  </p>
+                  <p className="text-black/70 whitespace-pre-line">
+                    {config.get('concept.chapter3.level3.text', 'While classical strategy consultancies disappear after presentation handover, we have accompanied and documented our systems through recessions, technology shifts, and management changes.')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Conclusion */}
+              <div className="bg-black text-white rounded-lg p-8 mb-12">
+                <h3 className="text-2xl font-bold mb-4">
+                  {config.get('concept.chapter3.conclusion.title', 'The Consequence of This Methodology')}
+                </h3>
+                <p className="text-white/90 leading-relaxed mb-4">
+                  {config.get('concept.chapter3.conclusion.text1', 'When a classical strategy consultancy sells you a framework, it comes from a case study with another client. When we sell you a framework, it comes from our own entrepreneurial validation – we built the system, operationalized it, defended it against competitors, and optimized it over years.')}
+                </p>
+                <p className="text-white/90 leading-relaxed font-bold text-xl">
+                  {config.get('concept.chapter3.conclusion.text2', 'We don\'t consult about management. We are managers who consult.')}
+                </p>
+              </div>
+
+              <div className="border-t border-black/10 mt-12" />
+            </motion.section>
+
             {/* Other Chapters - Standard Layout */}
-            {chapters.slice(2).map((chapter, index) => (
+            {chapters.slice(3).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}

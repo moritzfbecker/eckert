@@ -4,6 +4,25 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.2.0] - 2025-10-21
+
+### Added
+- **Chapter 3 - Science + Entrepreneurship** [FRONTEND_CONCEPT_003]
+  - Complete chapter with Eckert-Preisser Methodology
+  - Three Validation Levels: Scientific, Entrepreneurial, Long-term
+  - Level 1: Fraunhofer tradition and systems theory
+  - Level 2: Skin in the game - real company testing
+  - Level 3: 16-year proof across economic cycles
+  - Conclusion box: "We are managers who consult"
+  - 17 new config keys with English defaults
+  - Consistent styling with Chapter 1 & 2
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.2.0
+**Type**: MINOR - Chapter 3 Content
+
+---
+
 ## [2.1.0] - 2025-10-21
 
 ### Added

@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.2.0] - 2025-10-21
+
+### Added
+- Chapter 3 for Concept page - Science + Entrepreneurship with three validation levels
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Content
+
+---
+
 ## [Frontend 2.1.0] - 2025-10-21
 
 ### Added
