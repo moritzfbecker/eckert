@@ -4,6 +4,29 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.6.0] - 2025-10-21
+
+### Added
+- **Chapter 7 - Malik Approach** [FRONTEND_CONCEPT_007]
+  - Complete Malik cybernetic methodology explanation
+  - 85% vs 30% implementation success rates comparison
+  - Comparison table with 5 dimensions:
+    1. Main Focus (Analysis vs Implementation)
+    2. End Product (Presentation vs Functioning systems)
+    3. Consultant Role (Expert vs System architect)
+    4. Time Horizon (3-6 months vs 16-year pattern)
+    5. Implementation Philosophy (Presentation vs Field results)
+  - Classical vs Malik column comparison
+  - Gray highlight for Malik column
+  - The Decisive Question conclusion box
+  - 25 new config keys with English defaults
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.6.0
+**Type**: MINOR - Chapter 7 Methodology
+
+---
+
 ## [2.5.0] - 2025-10-21
 
 ### Added

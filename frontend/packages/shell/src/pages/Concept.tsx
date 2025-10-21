@@ -839,8 +839,142 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
+            {/* Chapter 7 - Malik Approach */}
+            <motion.section
+              id="chapter7"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {config.get('concept.chapter7.title', 'The Malik Approach: Why We Work According to Cybernetic Systematization')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {config.get('concept.chapter7.subtitle', 'The fundamental difference in consulting methodology')}
+              </p>
+
+              {/* Intro Text */}
+              <div className="text-lg text-black/80 leading-relaxed mb-12">
+                <p className="mb-6">
+                  {config.get('concept.chapter7.intro.p1', 'Fredmund Malik\'s cybernetic management methodology achieves documented implementation success rates of over 85%. Classical strategy consultancies, focused on analytical excellence and presentation quality, typically achieve implementation rates around 30%.')}
+                </p>
+                <p className="mb-6">
+                  {config.get('concept.chapter7.intro.p2', 'The difference is not in the intelligence of the consultants or the quality of the analysis. It lies in the fundamental approach: Presentation results vs. field performance.')}
+                </p>
+              </div>
+
+              {/* Comparison Table Header */}
+              <h3 className="text-2xl font-bold text-black mb-6">
+                {config.get('concept.chapter7.comparison.title', 'The Structural Difference of Approaches')}
+              </h3>
+
+              {/* Comparison Table */}
+              <div className="overflow-x-auto mb-12">
+                <div className="bg-gray-50 rounded-lg border border-black/10 p-6">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b-2 border-black/20">
+                        <th className="text-left py-4 px-4 font-bold text-black">
+                          {config.get('concept.chapter7.table.header.dimension', 'Dimension')}
+                        </th>
+                        <th className="text-left py-4 px-4 font-bold text-black">
+                          {config.get('concept.chapter7.table.header.classical', 'Classical Strategy Consulting')}
+                        </th>
+                        <th className="text-left py-4 px-4 font-bold text-black bg-black/5">
+                          {config.get('concept.chapter7.table.header.malik', 'Malik Systematization (Eckert Preisser)')}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-sm">
+                      {/* Row 1 - Main Focus */}
+                      <tr className="border-b border-black/10">
+                        <td className="py-4 px-4 font-semibold text-black align-top">
+                          {config.get('concept.chapter7.table.row1.dimension', 'Main Focus')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 align-top">
+                          {config.get('concept.chapter7.table.row1.classical', 'Strategic analysis & recommendation ("What should we do?")')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 bg-black/5 align-top">
+                          {config.get('concept.chapter7.table.row1.malik', 'Implementation & cybernetic steering ("How do we do it and how do we steer continuously?")')}
+                        </td>
+                      </tr>
+
+                      {/* Row 2 - End Product */}
+                      <tr className="border-b border-black/10">
+                        <td className="py-4 px-4 font-semibold text-black align-top">
+                          {config.get('concept.chapter7.table.row2.dimension', 'End Product')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 align-top">
+                          {config.get('concept.chapter7.table.row2.classical', 'Presentation with strategic recommendations\nDetailed roadmap')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 bg-black/5 align-top whitespace-pre-line">
+                          {config.get('concept.chapter7.table.row2.malik', 'Functioning management systems\nCEO becomes Performance Enabler\nSelf-running, steered processes')}
+                        </td>
+                      </tr>
+
+                      {/* Row 3 - Consultant Role */}
+                      <tr className="border-b border-black/10">
+                        <td className="py-4 px-4 font-semibold text-black align-top">
+                          {config.get('concept.chapter7.table.row3.dimension', 'Consultant Role')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 align-top">
+                          {config.get('concept.chapter7.table.row3.classical', 'External expert who delivers the answer\nProject-based')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 bg-black/5 align-top whitespace-pre-line">
+                          {config.get('concept.chapter7.table.row3.malik', 'System architect who enables the CEO\nConsulting independence as explicit goal\nWithdrawal after systematization anchoring')}
+                        </td>
+                      </tr>
+
+                      {/* Row 4 - Time Horizon */}
+                      <tr className="border-b border-black/10">
+                        <td className="py-4 px-4 font-semibold text-black align-top">
+                          {config.get('concept.chapter7.table.row4.dimension', 'Time Horizon')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 align-top">
+                          {config.get('concept.chapter7.table.row4.classical', 'Discrete project\n3-6 months typical')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 bg-black/5 align-top whitespace-pre-line">
+                          {config.get('concept.chapter7.table.row4.malik', 'Support until self-running qualities\n16-year pattern (ZOLLERN)\nThen largely withdrawal')}
+                        </td>
+                      </tr>
+
+                      {/* Row 5 - Implementation Philosophy */}
+                      <tr>
+                        <td className="py-4 px-4 font-semibold text-black align-top">
+                          {config.get('concept.chapter7.table.row5.dimension', 'Implementation Philosophy')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 align-top">
+                          {config.get('concept.chapter7.table.row5.classical', 'Good presentation results\nClient responsible for implementation')}
+                        </td>
+                        <td className="py-4 px-4 text-black/70 bg-black/5 align-top whitespace-pre-line">
+                          {config.get('concept.chapter7.table.row5.malik', 'Results on the field\nCEO becomes Performance Enabler\nSystem continues after our withdrawal')}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* The Decisive Question */}
+              <div className="bg-black text-white rounded-lg p-8 mb-12">
+                <h3 className="text-2xl font-bold mb-6">
+                  {config.get('concept.chapter7.question.title', 'The Decisive Question')}
+                </h3>
+                <p className="text-white/90 leading-relaxed mb-4">
+                  {config.get('concept.chapter7.question.option1', 'Do you want good presentation results that remain in the heads of some executives and may be partially implemented?')}
+                </p>
+                <p className="text-xl font-bold text-white leading-relaxed">
+                  {config.get('concept.chapter7.question.option2', 'Or do you want functioning cybernetic steering systems that settle in the heads and hearts of your CEOs, make their way through the company from there, develop self-running qualities – and generate measurable performance over 16 years, even after we have largely withdrawn?')}
+                </p>
+              </div>
+
+              <div className="border-t border-black/10 mt-12" />
+            </motion.section>
+
             {/* Other Chapters - Standard Layout */}
-            {chapters.slice(6).map((chapter, index) => (
+            {chapters.slice(7).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}
