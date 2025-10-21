@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.7.0] - 2025-10-21
+
+### Added
+- Chapter 8 - Two Client Archetypes (2-column grid, 30 config keys, Underdog vs Elite)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Content
+
+---
+
 ## [Frontend 2.6.0] - 2025-10-21
 
 ### Added

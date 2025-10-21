@@ -973,8 +973,151 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
+            {/* Chapter 8 - Two Client Archetypes */}
+            <motion.section
+              id="chapter8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {config.get('concept.chapter8.title', 'Two Client Archetypes')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {config.get('concept.chapter8.subtitle', 'Why different mandates require different structures')}
+              </p>
+
+              {/* Intro Text */}
+              <div className="text-lg text-black/80 leading-relaxed mb-12">
+                <p>
+                  {config.get('concept.chapter8.intro', 'Like Private Banking differentiates between Ultra-High-Net-Worth and Affluent Clients, we distinguish between two fundamentally different consulting contexts.')}
+                </p>
+              </div>
+
+              {/* Two Archetypes */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                {/* Archetype 1 - Underdog Systematizers */}
+                <div className="bg-gray-50 rounded-lg p-8 border-2 border-black/10">
+                  <h3 className="text-2xl font-bold text-black mb-2">
+                    {config.get('concept.chapter8.archetype1.title', 'Underdog Systematizers')}
+                  </h3>
+                  <p className="text-sm text-black/50 italic mb-6">
+                    {config.get('concept.chapter8.archetype1.subtitle', 'For organizations #3-#7 in the market')}
+                  </p>
+
+                  {/* Profile */}
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold text-black mb-3">
+                      {config.get('concept.chapter8.archetype1.profile.title', 'Profile:')}
+                    </h4>
+                    <ul className="space-y-2 text-sm text-black/70">
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype1.profile.item1', 'Your budget is 30-60% below the market leader')}</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype1.profile.item2', 'Talent density is limited')}</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype1.profile.item3', 'Best-practice copying doesn\'t work')}</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype1.profile.item4', 'You seek underdog advantage through systematization')}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* What You Receive */}
+                  <div className="bg-white p-5 rounded border border-black/10">
+                    <h4 className="text-lg font-bold text-black mb-3">
+                      {config.get('concept.chapter8.archetype1.receive.title', 'What You Receive:')}
+                    </h4>
+                    <p className="text-sm text-black/70">
+                      {config.get('concept.chapter8.archetype1.receive.text', 'The Finland Framework: 16-year roadmap to market leadership despite resource gap. 167% efficiency premium. The 3-pillar framework that works independent of star performers.')}
+                    </p>
+                  </div>
+
+                  {/* Access */}
+                  <div className="mt-6 pt-4 border-t border-black/10">
+                    <p className="text-sm">
+                      <span className="font-bold text-black">
+                        {config.get('concept.chapter8.archetype1.access.label', 'Access:')}
+                      </span>
+                      <span className="text-black/70 ml-2">
+                        {config.get('concept.chapter8.archetype1.access.text', 'Direct mandating')}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Archetype 2 - Elite Transformers */}
+                <div className="bg-black text-white rounded-lg p-8 border-2 border-white/10">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {config.get('concept.chapter8.archetype2.title', 'Elite Transformers')}
+                  </h3>
+                  <p className="text-sm text-white/50 italic mb-6">
+                    {config.get('concept.chapter8.archetype2.subtitle', 'For market leaders #1-#2')}
+                  </p>
+
+                  {/* Profile */}
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold text-white mb-3">
+                      {config.get('concept.chapter8.archetype2.profile.title', 'Profile:')}
+                    </h4>
+                    <ul className="space-y-2 text-sm text-white/70">
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype2.profile.item1', 'Budget and talent pool are excellent')}</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype2.profile.item2', 'Performance good – but not 10x better with 5x higher resources')}</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype2.profile.item3', 'Talent abundance paradox recognizable')}</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{config.get('concept.chapter8.archetype2.profile.item4', 'Good presentation results, limited field performance')}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* What You Receive */}
+                  <div className="bg-white/10 p-5 rounded border border-white/20">
+                    <h4 className="text-lg font-bold text-white mb-3">
+                      {config.get('concept.chapter8.archetype2.receive.title', 'What You Receive:')}
+                    </h4>
+                    <p className="text-sm text-white/90">
+                      {config.get('concept.chapter8.archetype2.receive.text', 'System Resilience Engineering. Transformation from star dependency to collective intelligence. The 3-pillar framework with ZOLLERN proof: CEO becomes Performance Enabler, system develops self-running qualities.')}
+                    </p>
+                  </div>
+
+                  {/* Access */}
+                  <div className="mt-6 pt-4 border-t border-white/10">
+                    <p className="text-sm">
+                      <span className="font-bold text-white">
+                        {config.get('concept.chapter8.archetype2.access.label', 'Access:')}
+                      </span>
+                      <span className="text-white/70 ml-2">
+                        {config.get('concept.chapter8.archetype2.access.text', 'After passed CEO Leadership Assessment')}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-black/10 mt-12" />
+            </motion.section>
+
             {/* Other Chapters - Standard Layout */}
-            {chapters.slice(7).map((chapter, index) => (
+            {chapters.slice(8).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}

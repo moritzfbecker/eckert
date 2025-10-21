@@ -4,6 +4,31 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.7.0] - 2025-10-21
+
+### Added
+- **Chapter 8 - Two Client Archetypes** [FRONTEND_CONCEPT_008]
+  - Complete client segmentation explanation
+  - 2-column grid design (Gray vs Black boxes)
+  - Archetype 1: Underdog Systematizers (#3-#7)
+    - Budget 30-60% below leader
+    - Limited talent density
+    - Finland Framework, 167% efficiency premium
+    - Access: Direct mandating
+  - Archetype 2: Elite Transformers (#1-#2)
+    - Excellent budget & talent pool
+    - Talent abundance paradox
+    - System Resilience Engineering
+    - Access: After CEO Leadership Assessment
+  - Each archetype: Profile (4 items) + What You Receive + Access
+  - 30 new config keys with English defaults
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.7.0
+**Type**: MINOR - Chapter 8 Archetypes
+
+---
+
 ## [2.6.0] - 2025-10-21
 
 ### Added
