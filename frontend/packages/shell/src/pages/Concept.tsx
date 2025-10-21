@@ -1116,8 +1116,201 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
-            {/* Other Chapters - Standard Layout */}
-            {chapters.slice(8).map((chapter, index) => (
+            {/* Chapter 9 - FRLA Assessment */}
+            <motion.section
+              id="chapter9"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {config.get('concept.chapter9.title', 'Finnish Revolution Leadership Assessment (FRLA)')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {config.get('concept.chapter9.subtitle', 'Required for Elite Transformer mandates. Tests whether you meet the fundamental prerequisites for 16-year vision implementation. <5% of all CEOs achieve 70+ points.')}
+              </p>
+
+              {/* Five Scenarios */}
+              <div className="space-y-10 mb-12">
+                {/* Scenario 1 - Investment Patience */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <h3 className="text-xl font-bold text-black mb-4">
+                    {config.get('concept.chapter9.scenario1.title', 'SCENARIO 1: Investment Patience Under Pressure')}
+                  </h3>
+                  <p className="text-black/80 mb-6">
+                    {config.get('concept.chapter9.scenario1.question', 'Your company has invested 5-8% of revenue in talent development for 2 years. No measurable performance improvements. Board demands cuts. Your decision?')}
+                  </p>
+                  <div className="space-y-3">
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario1.option1', 'Immediate 50% cut to secure board satisfaction')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario1.option2', '25% cut with strategic focus adjustment')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario1.option3', 'Continue with intensified monitoring')}
+                      </p>
+                    </div>
+                    <div className="bg-black text-white p-4 rounded border border-white/20">
+                      <p className="text-sm text-white/90">
+                        ✅ {config.get('concept.chapter9.scenario1.option4', 'Continue + communicate 4-year milestones (ZOLLERN: Break-even year 4, then self-running qualities) + external audit + board education on documented long-term ROI patterns')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Scenario 2 - Vision Horizon */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <h3 className="text-xl font-bold text-black mb-4">
+                    {config.get('concept.chapter9.scenario2.title', 'SCENARIO 2: Vision Horizon Definition')}
+                  </h3>
+                  <p className="text-black/80 mb-6">
+                    {config.get('concept.chapter9.scenario2.question', 'You are hired as CEO. Stakeholders expect a strategy plan. Which horizon do you choose?')}
+                  </p>
+                  <div className="space-y-3">
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario2.option1', '3-year plan (industry standard)')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario2.option2', '5-year plan (ambitious)')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario2.option3', '10-year plan (very long-term)')}
+                      </p>
+                    </div>
+                    <div className="bg-black text-white p-4 rounded border border-white/20">
+                      <p className="text-sm text-white/90">
+                        ✅ {config.get('concept.chapter9.scenario2.option4', '16-year vision with 4-year review gates (ZOLLERN: 8% over 16 years), CEO role as Performance Enabler, system with self-running qualities after anchoring')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Scenario 3 - CEO Role Definition */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <h3 className="text-xl font-bold text-black mb-4">
+                    {config.get('concept.chapter9.scenario3.title', 'SCENARIO 3: CEO Role Definition')}
+                  </h3>
+                  <p className="text-black/80 mb-6">
+                    {config.get('concept.chapter9.scenario3.question', 'What do you understand as your role in systematic performance transformation?')}
+                  </p>
+                  <div className="space-y-3">
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario3.option1', 'Consultants tell me what to do, I implement')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario3.option2', 'I delegate transformation to my executive team')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario3.option3', 'I am actively involved, but mainly as a sponsor')}
+                      </p>
+                    </div>
+                    <div className="bg-black text-white p-4 rounded border border-white/20">
+                      <p className="text-sm text-white/90">
+                        ✅ {config.get('concept.chapter9.scenario3.option4', 'I become a Performance Enabler myself through executive coaching – learn Malik cybernetics, coaching leverage, systematization anchoring – until I can steer the system myself and consultants can withdraw')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Scenario 4 - Underdog Mentality */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <h3 className="text-xl font-bold text-black mb-4">
+                    {config.get('concept.chapter9.scenario4.title', 'SCENARIO 4: Underdog Mentality vs. External Skepticism')}
+                  </h3>
+                  <p className="text-black/80 mb-6">
+                    {config.get('concept.chapter9.scenario4.question', 'Analysts predict: "Your company has no chance in competition." How do you communicate internally?')}
+                  </p>
+                  <div className="space-y-3">
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario4.option1', '"Be realistic, it will be difficult"')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario4.option2', '"We\'ll try our best"')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario4.option3', '"We can win if everything goes perfectly"')}
+                      </p>
+                    </div>
+                    <div className="bg-black text-white p-4 rounded border border-white/20">
+                      <p className="text-sm text-white/90">
+                        ✅ {config.get('concept.chapter9.scenario4.option4', '"Nobody but us expects us to win. We KNOW we will win." + Establishment of systematic underdog advantage mechanisms (Finland, ZOLLERN) + Anchoring in heads & hearts of entire organization')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Scenario 5 - System over Talent */}
+                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                  <h3 className="text-xl font-bold text-black mb-4">
+                    {config.get('concept.chapter9.scenario5.title', 'SCENARIO 5: System-over-Talent Prioritization')}
+                  </h3>
+                  <p className="text-black/80 mb-6">
+                    {config.get('concept.chapter9.scenario5.question', '€500k for star performer recruitment OR €500k for 3-pillar framework development. Your decision?')}
+                  </p>
+                  <div className="space-y-3">
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario5.option1', 'Hire star – elite talent is decisive')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario5.option2', '50/50 split as compromise')}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded border border-black/10">
+                      <p className="text-sm text-black/70">
+                        ❌ {config.get('concept.chapter9.scenario5.option3', 'Prefer team development')}
+                      </p>
+                    </div>
+                    <div className="bg-black text-white p-4 rounded border border-white/20">
+                      <p className="text-sm text-white/90">
+                        ✅ {config.get('concept.chapter9.scenario5.option4', '100% 3-pillar framework (Technology Portfolio + Resource Strength + Human Performance) + Malik cybernetics + system designs with self-running qualities (Talent Abundance Paradox: Spain -13 vs Finland +10)')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Assessment Conclusion */}
+              <div className="bg-black text-white rounded-lg p-8 mb-12">
+                <h3 className="text-2xl font-bold mb-4">
+                  {config.get('concept.chapter9.conclusion.title', 'Assessment Evaluation')}
+                </h3>
+                <p className="text-white/90 leading-relaxed mb-4">
+                  {config.get('concept.chapter9.conclusion.text', 'If you selected all 5 black options (✅): You understand what distinguishes presentations from performance. You have the prerequisites for Elite Transformer mandates.')}
+                </p>
+                <p className="text-white/70 text-sm">
+                  {config.get('concept.chapter9.conclusion.stats', 'Statistical Reality: <5% of all CEOs achieve 70+ points. The Finland Revolution requires what classical strategy consultancies don\'t test: 16-year vision capability.')}
+                </p>
+              </div>
+            </motion.section>
+
+            {/* Other Chapters - Standard Layout (None left!) */}
+            {chapters.slice(9).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}
