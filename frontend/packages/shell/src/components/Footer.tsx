@@ -1,9 +1,19 @@
 import { Link } from 'react-router-dom'
 import { Container } from '../../../shared/ui-components/Container'
-import { useTranslation } from '@eckert-preisser/shared/hooks'
+import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 
+/**
+ * Footer Component - v2.0 Config API
+ *
+ * Uses NEW useConfig Hook for translations with auto-registration.
+ * Category: 'common' (shared navigation and footer texts)
+ */
 const Footer = () => {
-  const { t } = useTranslation()
+  // Get current language from I18nContext
+  const { language } = useTranslation()
+
+  // NEW v2.0: useConfig with 'common' category and DYNAMIC language
+  const config = useConfig('common', language)
   const currentYear = new Date().getFullYear()
 
   return (
@@ -20,14 +30,14 @@ const Footer = () => {
               Eckert Preisser
             </h3>
             <p className="text-white/80 mb-4">
-              {t('footer.tagline')}
+              {config.get('footer.tagline', 'Enterprise-level solutions for modern businesses.')}
             </p>
           </div>
 
           {/* Navigation Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">
-              {t('footer.company')}
+              {config.get('footer.company', 'Company')}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -35,7 +45,7 @@ const Footer = () => {
                   to="/"
                   className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  {t('nav.home')}
+                  {config.get('nav.home', 'Home')}
                 </Link>
               </li>
               <li>
@@ -43,7 +53,7 @@ const Footer = () => {
                   to="/products"
                   className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  {t('nav.products')}
+                  {config.get('nav.products', 'Products')}
                 </Link>
               </li>
               <li>
@@ -51,7 +61,7 @@ const Footer = () => {
                   to="/dashboard"
                   className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  {t('nav.dashboard')}
+                  {config.get('nav.dashboard', 'Dashboard')}
                 </Link>
               </li>
             </ul>
@@ -60,7 +70,7 @@ const Footer = () => {
           {/* Legal */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">
-              {t('footer.legal')}
+              {config.get('footer.legal', 'Legal')}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -68,7 +78,7 @@ const Footer = () => {
                   to="/datenschutz"
                   className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  {t('legal.privacy')}
+                  {config.get('legal.privacy', 'Privacy Policy')}
                 </Link>
               </li>
               <li>
@@ -76,7 +86,7 @@ const Footer = () => {
                   to="/impressum"
                   className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  {t('legal.imprint')}
+                  {config.get('legal.imprint', 'Imprint')}
                 </Link>
               </li>
               <li>
@@ -84,7 +94,7 @@ const Footer = () => {
                   to="/cookie-policy"
                   className="text-white/80 hover:text-white transition-colors duration-300"
                 >
-                  {t('legal.cookies')}
+                  {config.get('legal.cookies', 'Cookie Policy')}
                 </Link>
               </li>
             </ul>
@@ -93,21 +103,21 @@ const Footer = () => {
           {/* Contact + Status */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">
-              {t('footer.contact')}
+              {config.get('footer.contact', 'Contact')}
             </h4>
             <p className="text-white/80 mb-2">
-              <span className="font-semibold text-white">{t('footer.email')}:</span><br />
+              <span className="font-semibold text-white">{config.get('footer.email', 'Email')}:</span><br />
               info@eckertpreisser.de
             </p>
             <p className="text-white/80 mb-4">
-              <span className="font-semibold text-white">{t('footer.phone')}:</span><br />
+              <span className="font-semibold text-white">{config.get('footer.phone', 'Phone')}:</span><br />
               +49 (0) 123 456789
             </p>
             <Link
               to="/status"
               className="text-white/80 hover:text-white transition-colors duration-300 block"
             >
-              {t('footer.status')}
+              {config.get('footer.status', 'System Status')}
             </Link>
           </div>
         </div>
@@ -119,7 +129,7 @@ const Footer = () => {
           text-center
         ">
           <p className="text-white/80">
-            {t('footer.copyright', { '0': currentYear })}
+            {config.get('footer.copyright', `© {0} Eckert Preisser Enterprise. All rights reserved.`).replace('{0}', currentYear.toString())}
           </p>
         </div>
       </Container>

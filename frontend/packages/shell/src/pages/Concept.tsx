@@ -1,10 +1,22 @@
 import { motion } from 'framer-motion'
-import { useTranslation } from '@eckert-preisser/shared/hooks'
+import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { useState, useEffect } from 'react'
 
+/**
+ * Concept Page - v2.0 Config API
+ *
+ * Uses NEW useConfig Hook with 'concept' category.
+ * All Chapter 1 & 2 content with English defaults.
+ * Language switches dynamically via Language Switcher.
+ */
 const Concept = () => {
-  const { t } = useTranslation()
   const [activeSection, setActiveSection] = useState('chapter1')
+
+  // Get current language from I18nContext
+  const { language } = useTranslation()
+
+  // NEW v2.0: useConfig with 'concept' category and DYNAMIC language
+  const config = useConfig('concept', language)
 
   // Kapitel mit IDs
   const chapters = [
@@ -61,7 +73,7 @@ const Concept = () => {
           <div className="sticky top-32 max-h-[calc(100vh-10rem)] overflow-y-auto">
             <div className="bg-black rounded-lg p-6">
               <h2 className="text-lg font-bold text-white mb-6 uppercase tracking-wider">
-                {t('concept.sidebar.title')}
+                {config.get('concept.sidebar.title', 'Table of Contents')}
               </h2>
               <nav className="space-y-2">
                 {chapters.map((chapter) => (
@@ -78,7 +90,7 @@ const Concept = () => {
                       }
                     `}
                   >
-                    {t(chapter.titleKey)}
+                    {config.get(chapter.titleKey, `Chapter ${chapters.indexOf(chapter) + 1}`)}
                   </button>
                 ))}
               </nav>
@@ -108,7 +120,7 @@ const Concept = () => {
                   }
                 `}
               >
-                {t(chapter.titleKey)}
+                {config.get(chapter.titleKey, `Chapter ${chapters.indexOf(chapter) + 1}`)}
               </button>
             ))}
           </div>
@@ -125,10 +137,10 @@ const Concept = () => {
               className="mb-16"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6">
-                {t('concept.page.title')}
+                {config.get('concept.page.title', 'Our Concept')}
               </h1>
               <p className="text-xl md:text-2xl text-black/80">
-                {t('concept.page.subtitle')}
+                {config.get('concept.page.subtitle', 'A new perspective on strategic HR consulting')}
               </p>
             </motion.div>
 
@@ -142,64 +154,64 @@ const Concept = () => {
               className="mb-16 scroll-mt-32"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                {t('concept.chapter1.title')}
+                {config.get('concept.chapter1.title', 'The Hidden Crisis Your Board Meetings Don\'t Address')}
               </h2>
               <p className="text-xl text-black/60 mb-8 italic">
-                {t('concept.chapter1.subtitle')}
+                {config.get('concept.chapter1.subtitle', 'The pattern you probably already know – but haven\'t quantified yet')}
               </p>
 
               {/* Intro Text */}
               <div className="text-lg text-black/80 leading-relaxed mb-12">
-                <p className="mb-6">{t('concept.chapter1.intro.p1')}</p>
+                <p className="mb-6">{config.get('concept.chapter1.intro.p1', 'Your last strategy consultation delivered a 300-page presentation. Brilliant analysis. Clear recommendations. 18 months later: 30% of recommendations implemented. The other 70% disappeared into organizational friction.')}</p>
                 <p className="mb-6">
-                  {t('concept.chapter1.intro.p2').split('Es ist nicht normal – es ist systematisch.')[0]}
-                  <strong className="text-black">{t('concept.chapter1.intro.p2').split('Es ist nicht normal – es ist systematisch.')[1] ? 'Es ist nicht normal – es ist systematisch.' : t('concept.chapter1.intro.p2').match(/It's not normal.*$/)?.[0] || ''}</strong>
+                  {config.get('concept.chapter1.intro.p2', 'You thought that was normal. It\'s not normal � it\'s systematic.').split('Es ist nicht normal – es ist systematisch.')[0]}
+                  <strong className="text-black">{config.get('concept.chapter1.intro.p2', 'You thought that was normal. It\'s not normal � it\'s systematic.').split('Es ist nicht normal – es ist systematisch.')[1] ? 'Es ist nicht normal – es ist systematisch.' : config.get('concept.chapter1.intro.p2', 'You thought that was normal. It\'s not normal � it\'s systematic.').match(/It's not normal.*$/)?.[0] || ''}</strong>
                 </p>
-                <p className="mb-6">{t('concept.chapter1.intro.p3')}</p>
+                <p className="mb-6">{config.get('concept.chapter1.intro.p3', 'What if the limiting factor isn\'t your strategy, but something that classical strategy consultancies systematically overlook?')}</p>
               </div>
 
               {/* Stats Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">{t('concept.chapter1.stat1.value')}</div>
-                  <p className="text-white/90" dangerouslySetInnerHTML={{ __html: t('concept.chapter1.stat1.text').replace('66%', '<strong class="text-white">66%</strong>') }} />
+                  <div className="text-5xl font-bold mb-3">{config.get('concept.chapter1.stat1.value', '34%')}</div>
+                  <p className="text-white/90" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.stat1.text', 'of success is explained by budget. 66% remains unexplained.').replace('66%', '<strong class="text-white">66%</strong>') }} />
                 </div>
                 <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">{t('concept.chapter1.stat2.value')}</div>
-                  <p className="text-white/90" dangerouslySetInnerHTML={{ __html: t('concept.chapter1.stat2.text').replace('Coaching-Leverage', '<strong class="text-white">Coaching-Leverage</strong>') }} />
+                  <div className="text-5xl font-bold mb-3">{config.get('concept.chapter1.stat2.value', '58%')}</div>
+                  <p className="text-white/90" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.stat2.text', 'of success correlates with Coaching-Leverage').replace('Coaching-Leverage', '<strong class="text-white">Coaching-Leverage</strong>') }} />
                 </div>
                 <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">{t('concept.chapter1.stat3.value')}</div>
-                  <p className="text-white/90" dangerouslySetInnerHTML={{ __html: t('concept.chapter1.stat3.text').replace(/^(\w+)/, '<strong class="text-white">$1</strong>') }} />
+                  <div className="text-5xl font-bold mb-3">{config.get('concept.chapter1.stat3.value', '167%')}</div>
+                  <p className="text-white/90" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.stat3.text', 'efficiency advantage of systematic developers').replace(/^(\w+)/, '<strong class="text-white">$1</strong>') }} />
                 </div>
               </div>
 
               {/* Annahmen Header */}
               <h3 className="text-2xl font-bold text-black mb-6">
-                {t('concept.chapter1.assumptions.title')}
+                {config.get('concept.chapter1.assumptions.title', 'The three assumptions sabotaging your resource allocation')}
               </h3>
 
               {/* Annahmen Cards */}
               <div className="space-y-6 mb-12">
                 <div className="border-l-4 border-black pl-6">
                   <h4 className="text-lg font-bold text-black mb-2">
-                    {t('concept.chapter1.assumption1.title')}
+                    {config.get('concept.chapter1.assumption1.title', 'Assumption: Elite-Talent + Elite-Budget = Elite-Performance')}
                   </h4>
-                  <p className="text-black/80" dangerouslySetInnerHTML={{ __html: t('concept.chapter1.assumption1.reality').replace(/^(\w+[^:]+:)/, '<strong>$1</strong>') }} />
+                  <p className="text-black/80" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.assumption1.reality', 'Reality from 2025 EuroBasket: Finland reached 4th place. Spain eliminated in preliminary round.').replace(/^(\w+[^:]+:)/, '<strong>$1</strong>') }} />
                 </div>
 
                 <div className="border-l-4 border-black pl-6">
                   <h4 className="text-lg font-bold text-black mb-2">
-                    {t('concept.chapter1.assumption2.title')}
+                    {config.get('concept.chapter1.assumption2.title', 'Assumption: Best practices of market leaders should be copied')}
                   </h4>
-                  <p className="text-black/80" dangerouslySetInnerHTML={{ __html: t('concept.chapter1.assumption2.reality').replace(/^(\w+:)/, '<strong>$1</strong>') }} />
+                  <p className="text-black/80" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.assumption2.reality', 'Reality: High-talent organizations systematically underperform.').replace(/^(\w+:)/, '<strong>$1</strong>') }} />
                 </div>
 
                 <div className="border-l-4 border-black pl-6">
                   <h4 className="text-lg font-bold text-black mb-2">
-                    {t('concept.chapter1.assumption3.title')}
+                    {config.get('concept.chapter1.assumption3.title', 'Assumption: ROI must be visible within 24 months')}
                   </h4>
-                  <p className="text-black/80" dangerouslySetInnerHTML={{ __html: t('concept.chapter1.assumption3.reality').replace(/^([^:]+:)/, '<strong>$1</strong>') }} />
+                  <p className="text-black/80" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.assumption3.reality', 'Reality: ZOLLERN Hidden Champion - 16 years, 8% margin contribution.').replace(/^([^:]+:)/, '<strong>$1</strong>') }} />
                 </div>
               </div>
 
@@ -216,15 +228,15 @@ const Concept = () => {
               className="mb-16 scroll-mt-32"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                {t('concept.chapter2.title')}
+                {config.get('concept.chapter2.title', 'Three Things We Promise You – And Why We Can Deliver Them')}
               </h2>
               <p className="text-xl text-black/60 mb-8 italic">
-                {t('concept.chapter2.subtitle')}
+                {config.get('concept.chapter2.subtitle', 'What distinguishes us from traditional strategy consultancies?')}
               </p>
 
               {/* Intro Text */}
               <div className="text-lg text-black/80 leading-relaxed mb-12">
-                <p>{t('concept.chapter2.intro')}</p>
+                <p>{config.get('concept.chapter2.intro', 'We don\'t give you presentations. We give you three specific outcomes that traditional strategy consultancies cannot deliver.')}</p>
               </div>
 
               {/* Promises */}
@@ -233,14 +245,14 @@ const Concept = () => {
                 <div className="border-l-4 border-black pl-6">
                   <div className="flex items-start gap-4 mb-3">
                     <span className="text-5xl font-bold text-black/20 leading-none">
-                      {t('concept.chapter2.promise1.number')}
+                      {config.get('concept.chapter2.promise1.number', '01')}
                     </span>
                     <h3 className="text-2xl font-bold text-black pt-2">
-                      {t('concept.chapter2.promise1.title')}
+                      {config.get('concept.chapter2.promise1.title', 'A New Perspective on Your Limiting Problem')}
                     </h3>
                   </div>
                   <p className="text-black/80 whitespace-pre-line">
-                    {t('concept.chapter2.promise1.text')}
+                    {config.get('concept.chapter2.promise1.text', 'The problem you cannot see: Traditional strategy consultancies analyze what you already know.')}
                   </p>
                 </div>
 
@@ -248,14 +260,14 @@ const Concept = () => {
                 <div className="border-l-4 border-black pl-6">
                   <div className="flex items-start gap-4 mb-3">
                     <span className="text-5xl font-bold text-black/20 leading-none">
-                      {t('concept.chapter2.promise2.number')}
+                      {config.get('concept.chapter2.promise2.number', '02')}
                     </span>
                     <h3 className="text-2xl font-bold text-black pt-2">
-                      {t('concept.chapter2.promise2.title')}
+                      {config.get('concept.chapter2.promise2.title', 'Solutions for Problems You Haven\'t Explicitly Perceived Yet')}
                     </h3>
                   </div>
                   <p className="text-black/80 whitespace-pre-line">
-                    {t('concept.chapter2.promise2.text')}
+                    {config.get('concept.chapter2.promise2.text', 'The Talent-Abundance-Paradox: You recruit MBA elite for €180k but invest only €1,200 per manager in development.')}
                   </p>
                 </div>
 
@@ -263,14 +275,14 @@ const Concept = () => {
                 <div className="border-l-4 border-black pl-6">
                   <div className="flex items-start gap-4 mb-3">
                     <span className="text-5xl font-bold text-black/20 leading-none">
-                      {t('concept.chapter2.promise3.number')}
+                      {config.get('concept.chapter2.promise3.number', '03')}
                     </span>
                     <h3 className="text-2xl font-bold text-black pt-2">
-                      {t('concept.chapter2.promise3.title')}
+                      {config.get('concept.chapter2.promise3.title', 'The Breakout from Stagnation Position')}
                     </h3>
                   </div>
                   <p className="text-black/80 whitespace-pre-line">
-                    {t('concept.chapter2.promise3.text')}
+                    {config.get('concept.chapter2.promise3.text', 'When there seems to be no progress: You\'re #3 or #4 in your market. For 5 years.')}
                   </p>
                 </div>
               </div>
@@ -278,10 +290,10 @@ const Concept = () => {
               {/* Conclusion */}
               <div className="bg-black text-white rounded-lg p-8 mb-12">
                 <h3 className="text-2xl font-bold mb-4">
-                  {t('concept.chapter2.conclusion.title')}
+                  {config.get('concept.chapter2.conclusion.title', 'Why These Three Promises Are Sustainable')}
                 </h3>
                 <p className="text-white/90 leading-relaxed whitespace-pre-line">
-                  {t('concept.chapter2.conclusion.text')}
+                  {config.get('concept.chapter2.conclusion.text', 'Traditional strategy consultancies deliver presentations with recommendations. Their methodology cannot structurally provide systematic anchoring.')}
                 </p>
               </div>
 
@@ -300,11 +312,11 @@ const Concept = () => {
                 className="mb-16 scroll-mt-32"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                  {t(`concept.${chapter.id}.title`)}
+                  {config.get(`concept.${chapter.id}.title`, `Chapter ${chapters.indexOf(chapter) + 1}`)}
                 </h2>
                 <div className="prose prose-lg max-w-none">
                   <p className="text-lg text-black/80 leading-relaxed whitespace-pre-line">
-                    {t(`concept.${chapter.id}.content`)}
+                    {config.get(`concept.${chapter.id}.content`, 'Content coming soon...')}
                   </p>
                 </div>
 

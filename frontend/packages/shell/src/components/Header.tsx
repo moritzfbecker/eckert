@@ -1,13 +1,25 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { useTranslation } from '@eckert-preisser/shared/hooks'
+import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 
+/**
+ * Header Component - v2.0 Config API
+ *
+ * Uses NEW useConfig Hook for translations with auto-registration.
+ * English defaults in code, German from Config Server.
+ */
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const { t, language, changeLanguage } = useTranslation()
+
+  // Keep useTranslation for language state (backward compatible)
+  const { language, changeLanguage } = useTranslation()
+
+  // NEW v2.0: useConfig with 'common' category and DYNAMIC language
+  const config = useConfig('common', language)
+
   const location = useLocation()
 
   // Scroll detection for logo visibility
@@ -56,11 +68,11 @@ const Header = () => {
     }
   ]
 
-  // Navigation links
+  // Navigation links - v2.0 with English defaults
   const navLinks = [
-    { name: t('nav.home'), path: '/' },
-    { name: t('nav.concept'), path: '/concept' },
-    { name: t('nav.contact'), path: '/contact' }
+    { name: config.get('nav.home', 'Home'), path: '/' },
+    { name: config.get('nav.concept', 'Concept'), path: '/concept' },
+    { name: config.get('nav.contact', 'Contact'), path: '/contact' }
   ]
 
   const currentLanguage = languages.find(l => l.code === language) || languages[0]
@@ -188,7 +200,7 @@ const Header = () => {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
-              {t('nav.account')}
+              {config.get('nav.account', 'Account')}
               <svg
                 className={`w-3 h-3 transition-transform ${isAccountMenuOpen ? 'rotate-180' : ''}`}
                 fill="none"
@@ -210,7 +222,7 @@ const Header = () => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
-                  <span className="font-semibold uppercase tracking-wider">{t('nav.dashboard')}</span>
+                  <span className="font-semibold uppercase tracking-wider">{config.get('nav.dashboard', 'Dashboard')}</span>
                 </Link>
                 <button
                   onClick={() => setIsAccountMenuOpen(false)}
@@ -219,7 +231,7 @@ const Header = () => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                   </svg>
-                  <span className="font-semibold uppercase tracking-wider">Logout</span>
+                  <span className="font-semibold uppercase tracking-wider">{config.get('nav.logout', 'Logout')}</span>
                 </button>
               </div>
             )}
@@ -291,7 +303,7 @@ const Header = () => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                <span className="text-sm font-semibold uppercase tracking-wider">{t('nav.dashboard')}</span>
+                <span className="text-sm font-semibold uppercase tracking-wider">{config.get('nav.dashboard', 'Dashboard')}</span>
               </Link>
               <button
                 onClick={() => {

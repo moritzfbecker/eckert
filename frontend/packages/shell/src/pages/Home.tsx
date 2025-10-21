@@ -1,6 +1,6 @@
 import { Container } from '../../../shared/ui-components/Container'
 import { Section } from '../../../shared/ui-components/Section'
-import { useConfig } from '@eckert-preisser/shared/hooks'
+import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 
 /**
  * Home Page - Example of new Config API
@@ -12,8 +12,11 @@ import { useConfig } from '@eckert-preisser/shared/hooks'
  * - No hardcoded strings!
  */
 const Home = () => {
-  // Load homepage config with i18n (German)
-  const config = useConfig('homepage', 'de')
+  // Get current language dynamically
+  const { language } = useTranslation()
+
+  // Load homepage config with DYNAMIC language (not hardcoded!)
+  const config = useConfig('homepage', language)
 
   return (
     <div className="min-h-screen bg-eckert-white pt-32 md:pt-40">

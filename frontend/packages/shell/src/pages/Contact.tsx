@@ -1,11 +1,16 @@
 import { motion } from 'framer-motion'
 import { Container } from '../../../shared/ui-components/Container'
 import { Section } from '../../../shared/ui-components/Section'
-import { useTranslation } from '@eckert-preisser/shared/hooks'
+import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { useState } from 'react'
 
+/**
+ * Contact Page - v2.0 Config API
+ * Category: 'contact'
+ */
 const Contact = () => {
-  const { t } = useTranslation()
+  const { language } = useTranslation()
+  const config = useConfig('contact', language)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -37,7 +42,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6"
             >
-              {t('contact.title')}
+              {config.get('contact.title', 'Contact')}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -45,7 +50,7 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-xl md:text-2xl text-black/80 max-w-3xl mx-auto"
             >
-              {t('contact.subtitle')}
+              {config.get('contact.subtitle', 'Have questions? We\'re here to help.')}
             </motion.p>
           </div>
 
@@ -59,14 +64,14 @@ const Contact = () => {
           >
             <div className="bg-black text-white rounded-lg p-8 md:p-12 shadow-elevated hover:shadow-apple-glow transition-all duration-300">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
-                {t('contact.form.title')}
+                {config.get('contact.form.title', 'Send us a message')}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-white mb-2 uppercase tracking-wider">
-                    {t('contact.form.name')} *
+                    {config.get('contact.form.name', 'Name')} *
                   </label>
                   <input
                     type="text"
@@ -85,14 +90,14 @@ const Contact = () => {
                       transition-all duration-300
                       text-lg
                     "
-                    placeholder={t('contact.form.name.placeholder')}
+                    placeholder={config.get('contact.form.name.placeholder', 'Your name')}
                   />
                 </div>
 
                 {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-white mb-2 uppercase tracking-wider">
-                    {t('contact.form.email')} *
+                    {config.get('contact.form.email', 'Email')} *
                   </label>
                   <input
                     type="email"
@@ -111,14 +116,14 @@ const Contact = () => {
                       transition-all duration-300
                       text-lg
                     "
-                    placeholder={t('contact.form.email.placeholder')}
+                    placeholder={config.get('contact.form.email.placeholder', 'your.email@example.com')}
                   />
                 </div>
 
                 {/* Subject */}
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-white mb-2 uppercase tracking-wider">
-                    {t('contact.form.subject')} *
+                    {config.get('contact.form.subject', 'Subject')} *
                   </label>
                   <input
                     type="text"
@@ -137,14 +142,14 @@ const Contact = () => {
                       transition-all duration-300
                       text-lg
                     "
-                    placeholder={t('contact.form.subject.placeholder')}
+                    placeholder={config.get('contact.form.subject.placeholder', 'What is this about?')}
                   />
                 </div>
 
                 {/* Message */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-white mb-2 uppercase tracking-wider">
-                    {t('contact.form.message')} *
+                    {config.get('contact.form.message', 'Message')} *
                   </label>
                   <textarea
                     id="message"
@@ -164,7 +169,7 @@ const Contact = () => {
                       resize-none
                       text-lg
                     "
-                    placeholder={t('contact.form.message.placeholder')}
+                    placeholder={config.get('contact.form.message.placeholder', 'Your message to us...')}
                   />
                 </div>
 
@@ -181,7 +186,7 @@ const Contact = () => {
                     uppercase text-base tracking-wider
                   "
                 >
-                  {t('contact.form.send')}
+                  {config.get('contact.form.send', 'Send Message')}
                 </button>
               </form>
             </div>
