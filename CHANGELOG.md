@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.3.0] - 2025-10-21
+
+### Added
+- Chapter 4 - ZOLLERN Hidden Champion (16-year validation, 3 phases, 25 config keys)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Content
+
+---
+
 ## [Frontend 2.2.0] - 2025-10-21
 
 ### Added

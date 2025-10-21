@@ -404,8 +404,144 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
+            {/* Chapter 4 - ZOLLERN Hidden Champion Validation */}
+            <motion.section
+              id="chapter4"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {config.get('concept.chapter4.title', '16-Year Performance Proof: The ZOLLERN Hidden Champion Validation')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {config.get('concept.chapter4.subtitle', 'What a rare long-term documentation reveals about consulting ROI')}
+              </p>
+
+              {/* Intro Text */}
+              <div className="text-lg text-black/80 leading-relaxed mb-12">
+                <p>
+                  {config.get('concept.chapter4.intro', 'Peter Eckert\'s engagement at ZOLLERN (Hidden Champion, tool measurement/adjustment technology): 16 years of systematic support with a documented 8% contribution to pre-tax return on sales.')}
+                </p>
+              </div>
+
+              {/* Stats Grid - ZOLLERN Proof */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-5xl font-bold mb-3">
+                    {config.get('concept.chapter4.stat1.value', '16')}
+                  </div>
+                  <p className="text-white/90">
+                    {config.get('concept.chapter4.stat1.text', 'years of systematic support').split('Wirtschaftszyklen')[0]}
+                    <strong className="text-white block mt-1">
+                      {config.get('concept.chapter4.stat1.highlight', 'Across multiple economic cycles')}
+                    </strong>
+                  </p>
+                </div>
+
+                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-5xl font-bold mb-3">
+                    {config.get('concept.chapter4.stat2.value', '8%')}
+                  </div>
+                  <p className="text-white/90">
+                    {config.get('concept.chapter4.stat2.text', 'contribution to pre-tax return on sales').split('nachweisbar')[0]}
+                    <strong className="text-white block mt-1">
+                      {config.get('concept.chapter4.stat2.highlight', 'Documented and verifiable')}
+                    </strong>
+                  </p>
+                </div>
+
+                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-5xl font-bold mb-3">
+                    {config.get('concept.chapter4.stat3.value', 'Self-Running')}
+                  </div>
+                  <p className="text-white/90">
+                    {config.get('concept.chapter4.stat3.text', 'CEO became Performance Enabler').split('Berater')[0]}
+                    <strong className="text-white block mt-1">
+                      {config.get('concept.chapter4.stat3.highlight', 'System runs independent of consultant')}
+                    </strong>
+                  </p>
+                </div>
+              </div>
+
+              {/* Performance Curve Header */}
+              <h3 className="text-2xl font-bold text-black mb-6">
+                {config.get('concept.chapter4.curve.title', 'The ZOLLERN Performance Curve: From Foundation to Self-Running System')}
+              </h3>
+              <p className="text-lg text-black/70 mb-10">
+                {config.get('concept.chapter4.curve.subtitle', 'What classical strategy consultancies cannot show – because they don\'t experience it: Systematic performance architecture develops self-running qualities when CEOs become Performance Enablers.')}
+              </p>
+
+              {/* Three Phases Header */}
+              <h3 className="text-2xl font-bold text-black mb-8">
+                {config.get('concept.chapter4.phases.title', 'The Path to Self-Steering System')}
+              </h3>
+
+              {/* Three Phases */}
+              <div className="space-y-8 mb-12">
+                {/* Phase 1: Years 1-4 */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <h4 className="text-2xl font-bold text-black">
+                      {config.get('concept.chapter4.phase1.title', 'Years 1-4: Foundation & CEO Transformation')}
+                    </h4>
+                  </div>
+                  <p className="text-black/80 mb-4 whitespace-pre-line">
+                    {config.get('concept.chapter4.phase1.text', 'Implementation of the 3-pillar framework. In parallel: Intensive executive coaching of the CEO. The CEO acquires the role of Performance Enabler – learns how Malik\'s cybernetics works, how coaching leverage emerges, how systematization is anchored. Break-even reached in year 4.')}
+                  </p>
+                  <p className="text-sm text-black/50 italic">
+                    {config.get('concept.chapter4.phase1.label', 'Year 1-4: CEO becomes Performance Enabler')}
+                  </p>
+                </div>
+
+                {/* Phase 2: Years 5-8 */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <h4 className="text-2xl font-bold text-black">
+                      {config.get('concept.chapter4.phase2.title', 'Years 5-8: Systematic Anchoring & Consultant Withdrawal')}
+                    </h4>
+                  </div>
+                  <p className="text-black/80 mb-4 whitespace-pre-line">
+                    {config.get('concept.chapter4.phase2.text', 'The three pillars work synergistically. Crucial: The CEO has internalized the systematic approach. He now steers himself. We increasingly withdraw into the background – as at ZOLLERN. The system develops self-running qualities because it is anchored in minds and hearts.')}
+                  </p>
+                  <p className="text-sm text-black/50 italic">
+                    {config.get('concept.chapter4.phase2.label', 'Years 5-8: Self-running qualities emerge')}
+                  </p>
+                </div>
+
+                {/* Phase 3: Years 9-16 */}
+                <div className="border-l-4 border-black pl-6">
+                  <div className="flex items-start gap-4 mb-3">
+                    <h4 className="text-2xl font-bold text-black">
+                      {config.get('concept.chapter4.phase3.title', 'Years 9-16: Sustainable Excellence Without Intensive Support')}
+                    </h4>
+                  </div>
+                  <p className="text-black/80 mb-4 whitespace-pre-line">
+                    {config.get('concept.chapter4.phase3.text', 'The system runs independently. Management changes are survived without performance drops (because systematization is institutionalized, not person-dependent). The 2008 financial crisis is navigated. The cumulative 8% pre-tax return contribution over 16 years is documented – without us needing to be intensively present.')}
+                  </p>
+                  <p className="text-sm text-black/50 italic">
+                    {config.get('concept.chapter4.phase3.label', 'Years 9-16: Self-steering')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Conclusion */}
+              <div className="bg-black text-white rounded-lg p-8 mb-12">
+                <h3 className="text-2xl font-bold mb-4">
+                  {config.get('concept.chapter4.conclusion.title', 'The Strategic Implication')}
+                </h3>
+                <p className="text-white/90 leading-relaxed mb-4">
+                  {config.get('concept.chapter4.conclusion.text1', 'We don\'t commit you to "9 years until peak". We accompany you until the CEO has become a Performance Enabler and the system has developed self-running qualities. At ZOLLERN, we largely withdrew after systematic anchoring – the system continued to run for years. That\'s the difference between presentations (which disappear) and systematization (which stays).')}
+                </p>
+              </div>
+
+              <div className="border-t border-black/10 mt-12" />
+            </motion.section>
+
             {/* Other Chapters - Standard Layout */}
-            {chapters.slice(3).map((chapter, index) => (
+            {chapters.slice(4).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}
