@@ -4,6 +4,34 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.9.1] - 2025-10-21
+
+### Changed
+- **Homepage Design Optimization** [FRONTEND_DESIGN_001]
+  - Hero typography: text-5xl → text-8xl (massive impact!)
+  - font-bold → font-black (stronger weight)
+  - tracking-tight for Hero (modern, tight)
+  - tracking-[0.3em] for uppercase preheadings
+  - leading-[1.1] for tighter line-height
+  - Stat Box "14.": text-7xl → text-9xl (gigantic!)
+  - inline-flex for better alignment
+  - Section spacing optimized: pt-40 md:pt-48
+  - Spacers between sections (h-20 md:h-32)
+  - Staggered animation delays (0.2s, 0.3s, 0.5s)
+  - Smoother easing (easeOut)
+  - whileHover scale effects (1.01, 1.02, 1.05)
+  - rounded-lg → rounded-xl (larger radius)
+  - p-8 → p-10 md:p-12 (more padding)
+  - CTA Button added: "Learn Our Concept" → /concept
+  - All hover effects with shadow-apple-glow
+  - Professional visual hierarchy
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.9.1
+**Type**: PATCH - Design Optimization
+
+---
+
 ## [2.9.0] - 2025-10-21
 
 ### Added

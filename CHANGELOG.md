@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.9.1] - 2025-10-21
+
+### Changed
+- Homepage Design Optimization (text-8xl Hero, text-9xl Stat, CTA Button, professional spacing)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Design Polish
+
+---
+
 ## [Frontend 2.9.0] - 2025-10-21
 
 ### Added
