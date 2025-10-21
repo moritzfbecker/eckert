@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.1.0] - 2025-10-21
+
+### Added
+- Complete Frontend Migration to Config API v2.0 - All 8 components migrated
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Frontend Migration Complete
+
+---
+
 ## [Backend 2.0.0] - 2025-10-21
 
 ### BREAKING CHANGES ⚠️

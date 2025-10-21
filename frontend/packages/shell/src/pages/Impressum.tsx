@@ -1,31 +1,39 @@
 /**
- * Impressum Page
+ * Impressum Page - v2.0 Config API
  *
  * Legal notice page (required for German websites)
- * Content from old EckertPreisser project
- * CRITICAL: ALL text uses i18n system (DE/EN)
+ * Category: 'legal'
  */
 
 import { Container } from '../../../shared/ui-components/Container'
-import { useTranslation } from '@eckert-preisser/shared/hooks'
+import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 
 const Impressum = () => {
-  const { t } = useTranslation()
+  const { language } = useTranslation()
+  const config = useConfig('legal', language)
 
   return (
     <div className="pt-32 pb-20 bg-eckert-white">
       <Container>
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl font-black mb-4 text-black">{t('impressum.title')}</h1>
-          <p className="text-black/60 mb-12">{t('impressum.subtitle')}</p>
+          <h1 className="text-5xl font-black mb-4 text-black">
+            {config.get('impressum.title', 'Legal Notice')}
+          </h1>
+          <p className="text-black/60 mb-12">
+            {config.get('impressum.subtitle', 'Information according to §5 TMG (German Telemedia Act)')}
+          </p>
 
           <div className="space-y-10">
             {/* Anbieter */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.provider.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.provider.title', 'Provider')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
-                <p className="font-semibold text-black">{t('impressum.provider.name')}</p>
-                {t('impressum.provider.address').split('\n').map((line, i) => (
+                <p className="font-semibold text-black">
+                  {config.get('impressum.provider.name', 'Eckert Preisser GmbH')}
+                </p>
+                {config.get('impressum.provider.address', 'Musterstraße 123\n12345 Musterstadt\nGermany').split('\n').map((line, i) => (
                   <p key={i} className="text-black/70">{line}</p>
                 ))}
               </div>
@@ -33,54 +41,78 @@ const Impressum = () => {
 
             {/* Kontakt */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.contact.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.contact.title', 'Contact')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10 space-y-2">
                 <p className="text-black/70">
-                  <span className="font-semibold text-black">{t('impressum.contact.phone')}:</span> +49 (0) 123 456789
+                  <span className="font-semibold text-black">
+                    {config.get('impressum.contact.phone', 'Phone')}:
+                  </span> +49 (0) 123 456789
                 </p>
                 <p className="text-black/70">
-                  <span className="font-semibold text-black">{t('impressum.contact.email')}:</span> info@eckertpreisser.de
+                  <span className="font-semibold text-black">
+                    {config.get('impressum.contact.email', 'Email')}:
+                  </span> info@eckertpreisser.de
                 </p>
                 <p className="text-black/70">
-                  <span className="font-semibold text-black">{t('impressum.contact.website')}:</span> www.eckertpreisser.de
+                  <span className="font-semibold text-black">
+                    {config.get('impressum.contact.website', 'Website')}:
+                  </span> www.eckertpreisser.de
                 </p>
               </div>
             </section>
 
             {/* Vertretungsberechtigte */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.representative.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.representative.title', 'Authorized Representatives')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
-                <p className="text-black/70">{t('impressum.representative.content')}</p>
+                <p className="text-black/70">
+                  {config.get('impressum.representative.content', 'Managing Director: Max Mustermann')}
+                </p>
               </div>
             </section>
 
             {/* Registereintrag */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.register.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.register.title', 'Register Entry')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10 space-y-2">
                 <p className="text-black/70">
-                  <span className="font-semibold text-black">{t('impressum.register.court')}:</span> Amtsgericht Musterstadt
+                  <span className="font-semibold text-black">
+                    {config.get('impressum.register.court', 'Register Court')}:
+                  </span> Amtsgericht Musterstadt
                 </p>
                 <p className="text-black/70">
-                  <span className="font-semibold text-black">{t('impressum.register.number')}:</span> HRB 12345
+                  <span className="font-semibold text-black">
+                    {config.get('impressum.register.number', 'Registration Number')}:
+                  </span> HRB 12345
                 </p>
               </div>
             </section>
 
             {/* Umsatzsteuer-ID */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.vat.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.vat.title', 'VAT ID')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
-                <p className="text-black/70">{t('impressum.vat.content')}</p>
+                <p className="text-black/70">
+                  {config.get('impressum.vat.content', 'VAT identification number according to §27a Value Added Tax Act: DE123456789')}
+                </p>
               </div>
             </section>
 
             {/* Verantwortlich für den Inhalt */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.responsible.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.responsible.title', 'Responsible for Content')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
-                {t('impressum.responsible.content').split('\n').map((line, i) => (
+                {config.get('impressum.responsible.content', 'Max Mustermann\nMusterstraße 123\n12345 Musterstadt').split('\n').map((line, i) => (
                   <p key={i} className="text-black/70">{line}</p>
                 ))}
               </div>
@@ -88,10 +120,12 @@ const Impressum = () => {
 
             {/* Streitschlichtung */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.dispute.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.dispute.title', 'Dispute Resolution')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
                 <p className="text-black/70 leading-relaxed">
-                  {t('impressum.dispute.content1')}
+                  {config.get('impressum.dispute.content1', 'The European Commission provides a platform for online dispute resolution (ODR):')}
                   <a
                     href="https://ec.europa.eu/consumers/odr/"
                     target="_blank"
@@ -102,48 +136,56 @@ const Impressum = () => {
                   </a>
                 </p>
                 <p className="text-black/70 leading-relaxed mt-4">
-                  {t('impressum.dispute.content2')}
+                  {config.get('impressum.dispute.content2', 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.')}
                 </p>
               </div>
             </section>
 
             {/* Haftungsausschluss */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.liability.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.liability.title', 'Disclaimer')}
+              </h2>
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2 text-black">{t('impressum.liability.content.title')}</h3>
+                  <h3 className="text-lg font-semibold mb-2 text-black">
+                    {config.get('impressum.liability.content.title', 'Liability for Content')}
+                  </h3>
                   <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
                     <p className="text-black/70 leading-relaxed">
-                      {t('impressum.liability.content.text1')}
+                      {config.get('impressum.liability.content.text1', 'As a service provider, we are responsible for our own content on these pages according to §7 para.1 TMG under general law. However, according to §§8 to 10 TMG, we are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.')}
                     </p>
                     <p className="text-black/70 leading-relaxed mt-3">
-                      {t('impressum.liability.content.text2')}
+                      {config.get('impressum.liability.content.text2', 'Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the point in time at which knowledge of a specific infringement is obtained. Upon notification of corresponding violations, we will remove this content immediately.')}
                     </p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-2 text-black">{t('impressum.liability.links.title')}</h3>
+                  <h3 className="text-lg font-semibold mb-2 text-black">
+                    {config.get('impressum.liability.links.title', 'Liability for Links')}
+                  </h3>
                   <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
                     <p className="text-black/70 leading-relaxed">
-                      {t('impressum.liability.links.text1')}
+                      {config.get('impressum.liability.links.text1', 'Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages.')}
                     </p>
                     <p className="text-black/70 leading-relaxed mt-3">
-                      {t('impressum.liability.links.text2')}
+                      {config.get('impressum.liability.links.text2', 'The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking. However, a permanent control of the contents of the linked pages is not reasonable without concrete evidence of a violation. Upon notification of violations, we will remove such links immediately.')}
                     </p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-2 text-black">{t('impressum.copyright.title')}</h3>
+                  <h3 className="text-lg font-semibold mb-2 text-black">
+                    {config.get('impressum.copyright.title', 'Copyright')}
+                  </h3>
                   <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
                     <p className="text-black/70 leading-relaxed">
-                      {t('impressum.copyright.text1')}
+                      {config.get('impressum.copyright.text1', 'The content and works created by the site operators on these pages are subject to German copyright law. The reproduction, editing, distribution and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator.')}
                     </p>
                     <p className="text-black/70 leading-relaxed mt-3">
-                      {t('impressum.copyright.text2')}
+                      {config.get('impressum.copyright.text2', 'Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are observed. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. Upon notification of violations, we will remove such content immediately.')}
                     </p>
                   </div>
                 </div>
@@ -152,10 +194,12 @@ const Impressum = () => {
 
             {/* Website Design & Development */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.design.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.design.title', 'Website Design & Development')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
                 <p className="text-black/70 leading-relaxed whitespace-pre-line">
-                  {t('impressum.design.content')}
+                  {config.get('impressum.design.content', 'Website design, development, and implementation:\nMoritz F. Becker\nBecker Limited')}
                   <br />
                   <a
                     href="https://becker.limited"
@@ -167,17 +211,19 @@ const Impressum = () => {
                   </a>
                 </p>
                 <p className="text-black/70 leading-relaxed mt-4">
-                  {t('impressum.design.rights')}
+                  {config.get('impressum.design.rights', 'All rights for design, concept, and implementation remain with Becker Limited.')}
                 </p>
               </div>
             </section>
 
             {/* Bildnachweise */}
             <section>
-              <h2 className="text-2xl font-bold mb-4 text-black">{t('impressum.images.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {config.get('impressum.images.title', 'Image Credits')}
+              </h2>
               <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
                 <p className="text-black/70 leading-relaxed">
-                  {t('impressum.images.content')}
+                  {config.get('impressum.images.content', 'All images and graphics used on this website are either created by us or used under appropriate licenses. Sources are indicated where required.')}
                 </p>
               </div>
             </section>

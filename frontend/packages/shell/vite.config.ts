@@ -15,6 +15,12 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
+      // Config API goes directly to Config Server (8888)
+      '/api/config': {
+        target: 'http://localhost:8888',
+        changeOrigin: true,
+      },
+      // All other API requests go to API Gateway (8080)
       '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,

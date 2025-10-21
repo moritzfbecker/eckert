@@ -41,7 +41,8 @@
       "Bash(powershell:*)",
       "Bash(move Solutions.tsx Concept.tsx)",
       "Bash(git log:*)",
-      "Bash(del MAVEN_FIX.md)"
+      "Bash(del MAVEN_FIX.md)",
+      "Bash(del SESSION_OVERVIEW_V2.md)"
     ],
     "deny": [],
     "ask": []

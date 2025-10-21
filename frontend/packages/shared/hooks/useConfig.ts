@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
-import { api } from '../utils/api'
 import { logger } from '../utils/logger'
+
+// Config Server direct URL (not through API Gateway!)
+const CONFIG_SERVER_URL = import.meta.env.VITE_CONFIG_SERVER_URL || 'http://localhost:8888'
 
 /**
  * FrontendConfig - Configuration container for React components
@@ -164,16 +166,29 @@ export function useConfig(category: string, language: string | null = null): Fro
 
         // Determine endpoint based on type
         const endpoint = language
-          ? `/api/config/i18n/${category}/${language}`
-          : `/api/config/app/${category}`
+          ? `${CONFIG_SERVER_URL}/api/config/i18n/${category}/${language}`
+          : `${CONFIG_SERVER_URL}/api/config/app/${category}`
 
         // Send defaults to backend for auto-registration
         const defaults = config.getDefaultsObject()
 
-        const response = await api.post<Record<string, string>>(endpoint, defaults)
+        // Direct fetch to Config Server (not through api.ts!)
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(defaults),
+        })
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
+
+        const data = await response.json()
 
         // Load values into config
-        config.load(response)
+        config.load(data)
 
         logger.info('CONFIG_HOOK_001', 'Config loaded successfully', {
           category,

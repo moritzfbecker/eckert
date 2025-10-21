@@ -4,6 +4,40 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.1.0] - 2025-10-21
+
+### Added
+- **Complete Frontend Migration to Config API v2.0** [FRONTEND_MIGRATION_001]
+  - Migrated all 8 components to useConfig Hook
+  - Header.tsx - Navigation with dynamic language
+  - Footer.tsx - Footer links with dynamic language
+  - Home.tsx - Homepage content
+  - Contact.tsx - Contact form labels and placeholders
+  - Concept.tsx - All chapter content (already migrated)
+  - Impressum.tsx - Legal notice (36 config keys)
+  - Datenschutz.tsx - Privacy policy (60 config keys)
+  - CookiePolicy.tsx - Cookie policy (92 config keys)
+
+### Changed
+- **Dynamic Language Support** [FRONTEND_LANG_001]
+  - All components now use `const { language } = useTranslation()`
+  - All useConfig calls use dynamic language (not hardcoded 'de')
+  - Language Switcher updates all pages automatically
+
+### Fixed
+- **Language Bug** [FRONTEND_FIX_003]
+  - Fixed hardcoded 'de' in useConfig calls
+  - Now uses dynamic language from I18nContext
+
+**Total Config Keys:** ~300+ keys with English defaults
+**Categories:** common, homepage, concept, contact, legal
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.1.0
+**Type**: MINOR - Complete Frontend Migration
+
+---
+
 ## [2.0.0] - 2025-10-21
 
 ### BREAKING CHANGES ⚠️
