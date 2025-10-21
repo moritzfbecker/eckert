@@ -700,8 +700,147 @@ const Concept = () => {
               <div className="border-t border-black/10 mt-12" />
             </motion.section>
 
+            {/* Chapter 6 - Finland Revolution - 5 Key Insights */}
+            <motion.section
+              id="chapter6"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-16 scroll-mt-32"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                {config.get('concept.chapter6.title', 'The Five Key Insights from the Finland Revolution')}
+              </h2>
+              <p className="text-xl text-black/60 mb-8 italic">
+                {config.get('concept.chapter6.subtitle', 'Why we are now guiding you through a basketball analysis')}
+              </p>
+
+              {/* Intro Text */}
+              <div className="text-lg text-black/80 leading-relaxed mb-12">
+                <p className="mb-6">
+                  <strong className="text-black">
+                    {config.get('concept.chapter6.intro.benefit.label', 'The benefit for you:')}
+                  </strong> {config.get('concept.chapter6.intro.benefit.text', 'EuroBasket 2025 provides rare, quantifiable evidence for patterns that exist in your company – but are not measured. Finland shows over 16 years documented how systematization compensates for resource gaps. This is not an analogy. These are transferable mechanisms.')}
+                </p>
+                <p className="mb-6">
+                  <strong className="text-black">
+                    {config.get('concept.chapter6.intro.learning.label', 'What you will learn in the next 5 minutes:')}
+                  </strong> {config.get('concept.chapter6.intro.learning.text', 'How coaching leverage explains 71% more performance variance than budget. Why high-talent organizations systematically underperform. How 16-year systematization generates 167% efficiency premium. And why these patterns worked at ZOLLERN for 16 years.')}
+                </p>
+              </div>
+
+              {/* Five Insights */}
+              <div className="space-y-10 mb-12">
+                {/* Insight 1 - Budget ≠ Success */}
+                <div className="border-l-4 border-black pl-6">
+                  <h3 className="text-2xl font-bold text-black mb-3">
+                    {config.get('concept.chapter6.insight1.title', 'INSIGHT 1: Budget ≠ Success (R² = 0.34)')}
+                  </h3>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter6.insight1.text', 'Only 34% of performance variance is explained by budget. 66% remains unexplained – until you understand that coaching leverage, not capital intensity, is the decisive factor.')}
+                  </p>
+                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                    <p className="text-sm font-semibold text-black mb-2">
+                      {config.get('concept.chapter6.insight1.implication.label', 'Implication for your organization:')}
+                    </p>
+                    <p className="text-sm text-black/70">
+                      {config.get('concept.chapter6.insight1.implication.text', 'Your current budget allocation logic neglects the dominant success factor. While you invest another 20 million in technology infrastructure, you ignore the 200% ROI potential of systematic manager development architectures.')}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Insight 2 - Coaching Leverage */}
+                <div className="border-l-4 border-black pl-6">
+                  <h3 className="text-2xl font-bold text-black mb-3">
+                    {config.get('concept.chapter6.insight2.title', 'INSIGHT 2: Coaching Leverage Factor Exceeds Budget Correlation by 71%')}
+                  </h3>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter6.insight2.text', 'Coaching leverage explains 58% of performance variance – 71% more than budget (34%). Finland\'s coaching leverage of 1.86 was 7x higher than Germany\'s 1.14.')}
+                  </p>
+                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                    <p className="text-sm font-semibold text-black mb-2">
+                      {config.get('concept.chapter6.insight2.implication.label', 'Implication for your organization:')}
+                    </p>
+                    <p className="text-sm text-black/70">
+                      {config.get('concept.chapter6.insight2.implication.text', 'Your HR strategy prioritizes talent acquisition over systematic competence development. You recruit MBA elite for €180,000 annual salary, but invest only €1,200 per manager in development. The inversion pattern is evident.')}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Insight 3 - Underdog Advantage */}
+                <div className="border-l-4 border-black pl-6">
+                  <h3 className="text-2xl font-bold text-black mb-3">
+                    {config.get('concept.chapter6.insight3.title', 'INSIGHT 3: Underdog Advantage Through Systematization is Reproducible')}
+                  </h3>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter6.insight3.text', 'Finland outperformed expectations by +10 places over 16 years. Georgia +11, Portugal +6. All three: Systematic developers, not talent accumulators.')}
+                  </p>
+                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                    <p className="text-sm font-semibold text-black mb-2">
+                      {config.get('concept.chapter6.insight3.implication.label', 'Implication for your organization:')}
+                    </p>
+                    <p className="text-sm text-black/70">
+                      {config.get('concept.chapter6.insight3.implication.text', 'If you are not #1 or #2 in resources in your market, do NOT copy the strategies of market leaders. You need underdog systematization: 16-20h development per week, 65% coaching share, system-over-star KPIs.')}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Insight 4 - Talent Abundance Paradox */}
+                <div className="border-l-4 border-black pl-6">
+                  <h3 className="text-2xl font-bold text-black mb-3">
+                    {config.get('concept.chapter6.insight4.title', 'INSIGHT 4: The Talent Abundance Paradox is Real and Measurable')}
+                  </h3>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter6.insight4.text', 'Spain (elite talent) underperformed by -13 places. Serbia (Jokić = best player in the world) by -6. Finland (weakest talent in semifinals) outperformed by +10.')}
+                  </p>
+                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                    <p className="text-sm font-semibold text-black mb-2">
+                      {config.get('concept.chapter6.insight4.implication.label', 'Implication for your organization:')}
+                    </p>
+                    <p className="text-sm text-black/70">
+                      {config.get('concept.chapter6.insight4.implication.text', 'Your "War for Talent" strategy could be counterproductive. Talent abundance leads to system neglect, star dependency, and lack of hunger motivation.')}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Insight 5 - 16-Year Systematization */}
+                <div className="border-l-4 border-black pl-6">
+                  <h3 className="text-2xl font-bold text-black mb-3">
+                    {config.get('concept.chapter6.insight5.title', 'INSIGHT 5: 16-Year Systematization Beats 2-Year Quick Wins')}
+                  </h3>
+                  <p className="text-black/80 mb-4">
+                    {config.get('concept.chapter6.insight5.text', 'Finland: Only team with documented 16-year development. ROI break-even year 4. Cumulative performance increase: 8-12% per year (vs. industry standard 2-3%).')}
+                  </p>
+                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                    <p className="text-sm font-semibold text-black mb-2">
+                      {config.get('concept.chapter6.insight5.implication.label', 'Implication for your organization:')}
+                    </p>
+                    <p className="text-sm text-black/70">
+                      {config.get('concept.chapter6.insight5.implication.text', 'Your quarterly earnings focus prevents the implementation of the only strategies that generate documented 10x returns. As long as your board has 24-month ROI expectations, you remain trapped in the mediocrity trap.')}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Transfer Conclusion */}
+              <div className="bg-black text-white rounded-lg p-8 mb-12">
+                <h3 className="text-2xl font-bold mb-4">
+                  {config.get('concept.chapter6.transfer.title', 'The Transfer: Finland → ZOLLERN → Your Organization')}
+                </h3>
+                <p className="text-white/90 leading-relaxed text-lg">
+                  {config.get('concept.chapter6.transfer.text', 'Same patterns. Same systematization. Same 16-year methodology.')}
+                </p>
+                <p className="text-white/70 mt-4">
+                  {config.get('concept.chapter6.transfer.examples', 'Finland in sports. ZOLLERN in industry. Documented. Measurable. Reproducible.')}
+                </p>
+              </div>
+
+              <div className="border-t border-black/10 mt-12" />
+            </motion.section>
+
             {/* Other Chapters - Standard Layout */}
-            {chapters.slice(5).map((chapter, index) => (
+            {chapters.slice(6).map((chapter, index) => (
               <motion.section
                 key={chapter.id}
                 id={chapter.id}

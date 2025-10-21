@@ -4,6 +4,28 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.5.0] - 2025-10-21
+
+### Added
+- **Chapter 6 - Finland Revolution - 5 Key Insights** [FRONTEND_CONCEPT_006]
+  - Complete Finland EuroBasket 2025 analysis
+  - 5 Key Insights with implications:
+    1. Budget ≠ Success (R² = 0.34) - 66% unexplained variance
+    2. Coaching Leverage exceeds Budget by 71%
+    3. Underdog Advantage is reproducible (Finland +10, Georgia +11)
+    4. Talent Abundance Paradox (Spain -13, Finland +10)
+    5. 16-Year Systematization beats Quick Wins (8-12% vs 2-3%)
+  - Each insight with gray implication box
+  - Transfer conclusion: Finland → ZOLLERN → Your Organization
+  - 35 new config keys with English defaults
+  - Quantified evidence for transferable mechanisms
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Version**: Frontend v2.5.0
+**Type**: MINOR - Chapter 6 Insights
+
+---
+
 ## [2.4.0] - 2025-10-21
 
 ### Added

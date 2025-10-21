@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.5.0] - 2025-10-21
+
+### Added
+- Chapter 6 - Finland Revolution (5 Insights, 35 config keys, quantified evidence)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Content
+
+---
+
 ## [Frontend 2.4.0] - 2025-10-21
 
 ### Added
