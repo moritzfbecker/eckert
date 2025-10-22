@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.12.0] - 2025-10-22
+
+### Added
+- **About Page** - New "Über uns" page with mission, story, approach (27+ keys)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Page
+
+---
+
 ## [Backend 3.0.0] - 2025-10-22
 
 ### BREAKING CHANGES

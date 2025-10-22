@@ -4,6 +4,32 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.12.0] - 2025-10-22
+
+### Added
+- **About Page** - New "Über uns" / "About Us" page [FRONTEND_PAGE_009]
+  - Mission section with black card
+  - Story section with company history
+  - Approach section with 3 principles (Evidence-Based, Scientific Rigor, Long-Term)
+  - Team section describing who we are
+  - Results section with 3 stats (16 years, 340% ROI, 8-12% potential)
+  - CTA section with contact button
+  - 27+ translation keys in 'about' category
+  - Route: /about
+  - Navigation link added to Header between Concept and Contact
+  - Follows strict black/white design guidelines
+  - Framer Motion animations throughout
+
+### Changed
+- **Navigation** - Added "Über uns" / "About" link [FRONTEND_NAV_025]
+- **common.properties** - Added nav.about translation
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Page
+**Version**: Frontend v2.12.0
+
+---
+
 ## [2.11.0] - 2025-10-22
 
 ### Changed

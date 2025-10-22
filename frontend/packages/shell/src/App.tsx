@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Concept from './pages/Concept'
+import About from './pages/About'
 import Contact from './pages/Contact'
 import Impressum from './pages/Impressum'
 import Datenschutz from './pages/Datenschutz'
@@ -25,6 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/concept" element={<Concept />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/dashboard" element={<div className="container mx-auto py-20"><h1 className="text-4xl">Dashboard Page (Coming Soon)</h1></div>} />
             <Route path="/status" element={<Status />} />
