@@ -1,11 +1,12 @@
 /**
- * useTranslation Hook
+ * useTranslation Hook - v3.0 (Simplified for Config API v2.0)
  *
- * React hook for accessing i18n translations
- * Automatically re-renders components when language changes
+ * Provides ONLY language state management
+ * Translations are now loaded via useConfig hook
  *
  * Usage:
- * const { t, language, changeLanguage, isLoading } = useTranslation();
+ * const { language, changeLanguage } = useTranslation()
+ * const config = useConfig('homepage', language)
  */
 
 import { useContext } from 'react';

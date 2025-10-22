@@ -9,6 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 3.0.0] - 2025-10-22
+
+### BREAKING CHANGES
+- **Removed MessageSource.java and I18nController.java** - Config API v2.0 is now the only way
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MAJOR - Breaking Changes
+
+---
+
+## [Frontend 2.11.0] - 2025-10-22
+
+### Changed
+- **I18nContext Simplified** - Only language state (173 → 63 lines)
+- **Legal Pages Fixed** - All gray tones removed, strict black/white
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Cleanup
+
+---
+
 ## [Frontend 2.10.0] - 2025-10-22
 
 ### Changed

@@ -4,6 +4,37 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.11.0] - 2025-10-22
+
+### Changed
+- **I18nContext Simplified** - v3.0 for Config API v2.0 [FRONTEND_I18N_027]
+  - Removed translation loading logic (now handled by useConfig)
+  - Removed t() function (deprecated - use config.get() instead)
+  - Removed translations state (not needed)
+  - Removed isLoading and error states
+  - Only provides: language state + changeLanguage()
+  - Reduced from 173 lines to 63 lines
+
+### Fixed
+- **All Legal Pages** - Strict Black/White Styling [FRONTEND_FIX_010]
+  - Removed ALL gray tones (bg-gray-50, text-gray-300, etc.)
+  - All boxes now bg-black with text-white
+  - Reduced top padding pt-32 → pt-24
+  - Fixed table styling in CookiePolicy
+  - Fixed link colors for better contrast
+  - 172 lines changed across 3 files
+
+- **Contact Page Positioning** [FRONTEND_FIX_008-009]
+  - Reduced top padding to match Concept page
+  - Removed Section component (extra padding)
+  - Content now starts at same height as Concept
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - i18n Cleanup + Legal Pages Fixes
+**Version**: Frontend v2.11.0
+
+---
+
 ## [2.10.0] - 2025-10-22
 
 ### Changed

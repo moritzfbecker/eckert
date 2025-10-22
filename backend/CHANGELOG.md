@@ -4,6 +4,53 @@ All backend-specific changes are documented here.
 
 ---
 
+## [3.0.0] - 2025-10-22
+
+### BREAKING CHANGES ⚠️
+
+**Complete removal of old i18n system - Config API v2.0 is now the ONLY way**
+
+This is a MAJOR version bump with breaking changes!
+
+### Removed
+- **MessageSource.java DELETED** [BACKEND_CLEANUP_001]
+  - Was deprecated in v2.0.0
+  - Replaced by Config API v2.0 (ConfigClient + ServiceConfig)
+  - No longer needed - Config Server handles all i18n
+
+- **I18nController.java DELETED** [BACKEND_CLEANUP_002]
+  - /api/i18n/messages/{language} endpoint removed
+  - /api/config/language endpoint removed
+  - Replaced by Config API endpoints (/api/config/i18n/*)
+  - Frontend now uses Config API directly via useConfig hook
+
+### Migration Path
+**If you still use MessageSource.java:**
+```java
+// OLD - REMOVED!
+String msg = MessageSource.getMessage("user.created", "de");
+
+// NEW - Use ConfigClient
+ServiceConfig config = configClient.load("user", "de");
+String msg = config.get("user.created", "User created");
+```
+
+**If you still call /api/i18n/messages/{language}:**
+```typescript
+// OLD - REMOVED!
+const response = await fetch('/api/i18n/messages/de');
+
+// NEW - Use useConfig hook
+const config = useConfig('common', 'de');
+const msg = config.get('user.created', 'User created');
+```
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MAJOR - Breaking Changes
+**Version**: Backend v3.0.0
+
+---
+
 ## [2.0.0] - 2025-10-21
 
 ### BREAKING CHANGES ⚠️
