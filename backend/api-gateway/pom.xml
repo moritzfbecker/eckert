@@ -49,6 +49,13 @@
             <groupId>com.eckertpreisser</groupId>
             <artifactId>common-models</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <!-- Exclude Spring MVC - Gateway uses WebFlux (reactive) -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Spring Boot WebFlux (Gateway is reactive, not MVC!) -->

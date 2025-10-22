@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.10.0] - 2025-10-22
+
+### Changed
+- **Complete Homepage Redesign** with Finland Basketball Narrative (70+ i18n keys)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Homepage Content
+
+---
+
 ## [Frontend 2.9.1] - 2025-10-21
 
 ### Changed

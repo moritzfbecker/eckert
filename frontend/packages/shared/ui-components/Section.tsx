@@ -6,7 +6,7 @@ interface SectionProps {
   className?: string;
   children: React.ReactNode;
   variant?: 'default' | 'dark' | 'darker';
-  spacing?: 'sm' | 'md' | 'lg' | 'xl';
+  spacing?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   animate?: boolean;
 }
 
@@ -29,6 +29,7 @@ export const Section: React.FC<SectionProps> = ({
   };
 
   const spacingClasses = {
+    none: '',
     sm: 'py-12 md:py-16',
     md: 'py-16 md:py-24',
     lg: 'py-20 md:py-32',

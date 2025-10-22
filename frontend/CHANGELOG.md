@@ -4,6 +4,42 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.10.0] - 2025-10-22
+
+### Changed
+- **Complete Homepage Redesign** - Finland Basketball Narrative [FRONTEND_PAGE_008]
+  - 70+ new i18n keys for Homepage v3.0
+  - Hero Section: Finland Basketball Story (37% less budget, Platz 4)
+  - Target Audience: 3 CEO Types section
+  - Three Pillars: Säule 1, 2, 3 explanation with highlighted Säule 3
+  - Stats Section: 340% ROI + 2 CTAs (Schnellstart + Beweisführung)
+  - Trust Metrics: 16 Jahre ZOLLERN, 8% Margin, 4.360 CEOs
+  - Two Paths: Mit/Ohne dritte Säule comparison (2 columns)
+  - Finland Deep Dive: Paradox + Translation to Business
+  - Final CTA: 3-Säulen-Diagnostik with disclaimer
+  - All sections with Framer Motion animations
+  - Professional black/white design with Apple gradient hovers
+  - Complete German translations in config/i18n/de/homepage.properties
+
+### Added
+- 70+ translation keys [FRONTEND_I18N_026]:
+  - home.hero.* (3 keys)
+  - home.audience.* (4 keys)
+  - home.pillars.* (8 keys)
+  - home.stats.* (2 keys)
+  - home.cta.* (6 keys)
+  - home.trust.* (7 keys)
+  - home.paths.* (11 keys)
+  - home.finland.* (10 keys)
+  - home.translation.* (9 keys)
+  - home.final.* (5 keys)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Homepage Content
+**Version**: Frontend v2.10.0
+
+---
+
 ## [2.9.1] - 2025-10-21
 
 ### Changed
