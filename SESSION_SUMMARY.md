@@ -1200,3 +1200,471 @@ config.get('home.title', 'Willkommen auf unserer Plattform')
 ---
 
 **Next Session:** Git Strategy setup (develop/staging branches), Testing, Security 🚀
+
+---
+
+# Session Summary - 2025-10-22 (Session 5)
+
+## 🎯 Was wurde erreicht
+
+### Frontend v2.10.0 → v2.12.1 (Homepage + Legal + About)
+
+**Homepage Komplett-Redesign (v2.10.0):**
+- ✅ 70+ neue i18n Keys - Finland Basketball Narrative
+- ✅ Hero: Finland Story (37% weniger Budget, Platz 4)
+- ✅ Target Audience: 3 CEO Types
+- ✅ Three Pillars: Säule 1, 2, 3 Erklärung
+- ✅ Stats: 340% ROI + 2 CTAs
+- ✅ Trust Metrics: 16 Jahre, 8%, 4.360 CEOs
+- ✅ Two Paths: Mit/Ohne Säule 3 Vergleich
+- ✅ Finland Deep Dive: Paradox + Translation
+- ✅ Final CTA: 3-Säulen-Diagnostik
+- ✅ Alle Styling-Fixes (5 Commits): Text-Farben, Emojis getrennt, Cards schwarz, Section-Backgrounds weiß
+
+**Legal Pages Migration (v2.11.0):**
+- ✅ Alle Grautöne entfernt (bg-gray-50 → bg-black)
+- ✅ Text in schwarzen Boxen: text-white
+- ✅ Top Padding reduziert: pt-32 → pt-24
+- ✅ Contact Page Positioning gefixed
+- ✅ 172 Zeilen geändert (3 Files)
+
+**About Page Komplett (v2.12.0 → v2.12.1):**
+- ✅ Peter Eckert 40-Jahr Biografie
+- ✅ Clean Sidebar Layout (inspiriert von hier.html)
+- ✅ Timeline mit 5 Phasen (1981-2025)
+- ✅ ZOLLERN Case Study komplett (Ausgangssituation, Intervention, Outcome)
+- ✅ Finland Säulen-Analyse (3 Pillar Boxes)
+- ✅ 3-Pillar Framework detailliert
+- ✅ Client Portfolio + Industry Expertise
+- ✅ 150+ Translation Keys
+- ✅ Alle Sections aus hier.html implementiert
+- ✅ Strict Black/White Design
+
+**i18n System Cleanup (v2.11.0):**
+- ✅ I18nContext vereinfacht: 173 → 63 Zeilen
+- ✅ t() Funktion entfernt (use config.get() instead)
+- ✅ Translation-Loading entfernt (useConfig handles this)
+- ✅ Nur noch: language state + changeLanguage()
+
+---
+
+### Backend v3.0.0 → v3.1.0 (BREAKING CHANGES + New Services)
+
+**BREAKING CHANGES v3.0.0:**
+- ✅ MessageSource.java GELÖSCHT (820 Zeilen)
+- ✅ I18nController.java GELÖSCHT (112 Zeilen)
+- ✅ Alte /api/i18n/messages/{language} endpoints entfernt
+- ✅ **Total: 1,292 Zeilen gelöscht!**
+- ✅ Config API v2.0 ist jetzt das EINZIGE System
+
+**Deutsche Übersetzungen komplett (v3.1.0):**
+- ✅ common.properties (25 Keys auf Deutsch)
+- ✅ homepage.properties (70 Keys auf Deutsch)
+- ✅ concept.properties (540 Keys auf Deutsch - aus Template)
+- ✅ contact.properties (12 Keys auf Deutsch)
+- ✅ impressum.properties (38 Keys auf Deutsch)
+- ✅ privacypolicy.properties (59 Keys auf Deutsch)
+- ✅ cookies.properties (56 Keys auf Deutsch)
+- ✅ about.properties (150+ Keys auf Deutsch)
+- ✅ **Total: 950+ German translations!**
+- ✅ Templates in docs/config-templates/ erstellt
+
+**Email Service erstellt (v3.1.0):**
+- ✅ RESTful Email Microservice (Port 8084)
+- ✅ Models: EmailRequest, EmailResponse, EmailType (3 Files)
+- ✅ EmailService mit SMTP Logic (via JavaMailSender)
+- ✅ EmailApiController mit 5 Endpoints
+- ✅ EmailConfig via ConfigClient v2.0 (SMTP settings)
+- ✅ application.yml
+- ✅ Error Codes dokumentiert (17 Codes)
+- ✅ **8 Files, production-ready**
+
+---
+
+## ⚠️ Was NICHT fertig wurde (MORGEN!)
+
+### Backend Services (VERBUGGED - NEUSTART NÖTIG!)
+
+**user-service (Port 8081) - TEILWEISE FERTIG:**
+- ✅ pom.xml erstellt (mit JPA, PostgreSQL, Security)
+- ✅ User Entity erstellt (mit allen Auth-Feldern)
+- ✅ UserDTO, CreateUserRequest, UpdateUserRequest erstellt
+- ✅ UserRepository erstellt
+- ✅ UserController erstellt (12 Endpoints)
+- ⚠️ UserService FALSCH - benutzt RegisterRequest statt CreateUserRequest
+- ⚠️ SecurityConfig fehlt noch
+- ⚠️ application.yml fehlt noch
+- ❌ Nicht im parent pom.xml
+
+**auth-service (Port 8082) - NICHT ERSTELLT:**
+- ❌ Komplett fehlt!
+- ❌ Muss von Grund auf neu erstellt werden
+
+**Was auth-service braucht (MORGEN MACHEN!):**
+
+```
+auth-service/ (Port 8082)
+├── model/
+│   ├── RegisterRequest.java (firstName, lastName, email, password)
+│   ├── LoginRequest.java (email, password)
+│   ├── LoginResponse.java (accessToken, refreshToken, user)
+│   └── RefreshTokenRequest.java (refreshToken)
+├── service/
+│   ├── AuthService.java (Main logic)
+│   │   ├── register() → calls user-service + email-service
+│   │   ├── login() → calls user-service, generates JWT
+│   │   ├── refreshToken()
+│   │   ├── verifyEmail() → calls user-service
+│   │   └── resetPassword() → calls user-service + email-service
+│   ├── JwtService.java (JWT generation/validation)
+│   └── PasswordService.java (BCrypt hashing)
+├── controller/
+│   └── AuthController.java
+│       ├── POST /auth/register
+│       ├── POST /auth/login
+│       ├── POST /auth/refresh
+│       ├── GET /auth/verify-email/{token}
+│       ├── POST /auth/forgot-password
+│       ├── POST /auth/reset-password
+│       └── GET /auth/me (current user)
+├── client/
+│   ├── UserServiceClient.java (RestTemplate → user-service)
+│   └── EmailServiceClient.java (RestTemplate → email-service)
+└── config/
+    ├── SecurityConfig.java (alle /auth/** endpoints öffentlich)
+    └── BeanConfig.java (PasswordEncoder, RestTemplate)
+```
+
+---
+
+## 📋 **Kompletter Plan für MORGEN (Session 6):**
+
+### **Phase 1: Backend Services sauber fertigstellen (2-3 Stunden)**
+
+**1. user-service fertigstellen:**
+- [ ] UserService.java korrigieren (CreateUserRequest nutzen)
+- [ ] Alle fehlenden Methoden implementieren (verifyEmail, updateUser, etc.)
+- [ ] SecurityConfig erstellen (minimal, nur CORS)
+- [ ] application.yml erstellen
+- [ ] Zu parent pom.xml hinzufügen
+- [ ] Build testen
+
+**2. auth-service komplett neu erstellen:**
+- [ ] Komplette Struktur wie oben (17 Files!)
+- [ ] AuthService ruft user-service API auf (RestTemplate)
+- [ ] AuthService ruft email-service API auf (RestTemplate)
+- [ ] JwtService für Token-Generation (via JwtUtils aus security-config)
+- [ ] PasswordService für BCrypt
+- [ ] AuthController mit allen 8 Endpoints
+- [ ] Zu parent pom.xml hinzufügen
+- [ ] Build testen
+
+**3. Docker:**
+- [ ] PostgreSQL zu docker-compose.yml hinzufügen
+- [ ] user-service zu docker-compose.yml
+- [ ] auth-service zu docker-compose.yml
+- [ ] email-service zu docker-compose.yml
+- [ ] Alle 4 Services in Docker testen
+
+---
+
+### **Phase 2: Frontend Auth System (1-2 Stunden)**
+
+**1. Auth Context + Hook:**
+- [ ] AuthContext.tsx erstellen (current user state, login, logout, register)
+- [ ] useAuth.ts Hook erstellen
+- [ ] Token storage (localStorage)
+- [ ] Auto-refresh logic
+- [ ] Axios interceptor für JWT
+
+**2. Auth Pages:**
+- [ ] Login.tsx (email, password form)
+- [ ] Register.tsx (firstName, lastName, email, password form)
+- [ ] VerifyEmail.tsx (/:token - success page)
+- [ ] ForgotPassword.tsx (email form)
+- [ ] ResetPassword.tsx (/:token - new password form)
+- [ ] Alle mit useConfig v2.0 + i18n
+
+**3. Protected Routes:**
+- [ ] ProtectedRoute.tsx Component
+- [ ] Dashboard.tsx (protected page)
+- [ ] /dashboard Route mit ProtectedRoute wrapper
+
+**4. Navigation Updates:**
+- [ ] Login/Register Links wenn nicht eingeloggt
+- [ ] User Avatar + Logout Link wenn eingeloggt
+- [ ] Account Dropdown mit Dashboard Link
+
+---
+
+### **Phase 3: Testing & Integration (30 Minuten)**
+
+**1. Backend Testing:**
+- [ ] POST /auth/register → user erstellt, email gesendet
+- [ ] POST /auth/login → JWT tokens zurück
+- [ ] GET /auth/verify-email/{token} → email verified
+- [ ] POST /auth/refresh → new access token
+- [ ] Alle Services in Docker laufen
+
+**2. Frontend Testing:**
+- [ ] Register Flow: Form → API → Success → Email
+- [ ] Login Flow: Form → API → JWT → Dashboard
+- [ ] Protected Route: Redirect wenn nicht eingeloggt
+- [ ] Token Refresh: Auto-refresh bei 401
+
+**3. End-to-End:**
+- [ ] Register → Email Verification → Login → Dashboard
+- [ ] Logout → Redirect to Home
+- [ ] Protected Routes funktionieren
+
+---
+
+### **Phase 4: Documentation & Version (30 Minuten)**
+
+- [ ] ERROR_CODES.md updaten (Auth codes)
+- [ ] README.md updaten (Auth flow dokumentieren)
+- [ ] CHANGELOG.md (backend + frontend)
+- [ ] Backend Version: v3.0.0 → v3.1.0 (MINOR)
+- [ ] Frontend Version: v2.12.1 → v2.13.0 (MINOR)
+- [ ] Git Commit + Tags + Push
+
+---
+
+## 📊 Aktuelle Versionen (Ende Session 5)
+
+- **Backend**: v3.0.0-SNAPSHOT (v3.1.0 vorbereitet aber nicht fertig)
+- **Frontend**: v2.12.1
+
+---
+
+## 🐛 Issues gefunden
+
+**1. user-service:**
+- ⚠️ UserService.java nutzt RegisterRequest (existiert nicht mehr)
+- ⚠️ Sollte CreateUserRequest nutzen (✅ schon erstellt)
+- ⚠️ SecurityConfig fehlt
+- ⚠️ application.yml fehlt
+- ⚠️ Nicht in parent pom.xml
+
+**2. auth-service:**
+- ❌ Wurde NICHT erstellt
+- ❌ Komplette Architektur fehlt
+- ❌ Muss morgen von Grund auf erstellt werden
+
+**3. Integration:**
+- ⚠️ Services können nicht miteinander kommunizieren (auth → user, auth → email)
+- ⚠️ RestTemplate/WebClient für Service-to-Service Calls fehlt
+- ⚠️ Docker-Compose fehlt neue Services
+
+---
+
+## ✅ Was FUNKTIONIERT (kann behalten werden)
+
+**Frontend:**
+- ✅ Homepage (v2.10.0)
+- ✅ About Page (v2.12.1) mit hier.html Layout
+- ✅ Legal Pages (v2.11.0) strict black/white
+- ✅ Contact Page
+- ✅ Concept Page
+- ✅ Alle deutschen Übersetzungen
+
+**Backend:**
+- ✅ Config Server (v3.0.0)
+- ✅ API Gateway
+- ✅ Eureka
+- ✅ **Email Service (komplett fertig!)**
+- ✅ Config API v2.0 läuft
+- ✅ Alte i18n System komplett entfernt
+
+---
+
+## 📁 Wichtige Files (Session 5)
+
+**Frontend:**
+- frontend/packages/shell/src/pages/Home.tsx (komplett neu, Finland Story)
+- frontend/packages/shell/src/pages/About.tsx (komplett neu, Peter Eckert Bio)
+- frontend/packages/shell/src/pages/Impressum.tsx (gray → black/white)
+- frontend/packages/shell/src/pages/Datenschutz.tsx (gray → black/white)
+- frontend/packages/shell/src/pages/CookiePolicy.tsx (gray → black/white)
+- frontend/packages/shell/src/pages/Contact.tsx (padding fixes)
+- frontend/packages/shared/contexts/I18nContext.tsx (vereinfacht, 173 → 63 Zeilen)
+
+**Backend:**
+- backend/services/email-service/ (NEU - 8 Files, komplett fertig!)
+- backend/services/user-service/ (TEILWEISE - 8 Files, braucht Fixes)
+- backend/shared/common-utils/src/main/java/.../MessageSource.java (GELÖSCHT!)
+- backend/api-gateway/src/main/java/.../I18nController.java (GELÖSCHT!)
+
+**Config:**
+- config/i18n/de/*.properties (8 Files, 950+ Keys auf Deutsch!)
+- docs/config-templates/*.properties (8 Templates committed)
+
+---
+
+## 🎯 Action Plan für MORGEN (Session 6)
+
+### **Priorität 1: Backend Auth System fertigstellen**
+
+**Step 1: user-service fixen (30 Min)**
+```bash
+# Was zu tun ist:
+1. UserService.java korrigieren
+2. SecurityConfig.java erstellen (minimal, nur CORS)
+3. application.yml erstellen
+4. Parent pom.xml updaten
+5. Build testen: mvn clean install
+```
+
+**Step 2: auth-service von Grund auf neu (90 Min)**
+```bash
+# Komplett neue Architektur:
+1. Alle Models erstellen (4 DTOs)
+2. JwtService erstellen (Token generation)
+3. PasswordService erstellen (BCrypt)
+4. UserServiceClient erstellen (RestTemplate)
+5. EmailServiceClient erstellen (RestTemplate)
+6. AuthService erstellen (Orchestration)
+7. AuthController erstellen (8 Endpoints)
+8. SecurityConfig erstellen
+9. application.yml erstellen
+10. Parent pom.xml updaten
+11. Build testen
+```
+
+**Step 3: Docker Integration (30 Min)**
+```bash
+# docker-compose.yml erweitern:
+1. postgres-user (PostgreSQL für user-service)
+2. user-service
+3. auth-service
+4. email-service
+5. Alle 7 Services starten testen
+```
+
+---
+
+### **Priorität 2: Frontend Auth System (90 Min)**
+
+**Step 1: Auth Context**
+```typescript
+// AuthContext.tsx erstellen:
+- currentUser state
+- login(email, password) → POST /auth/login
+- register(data) → POST /auth/register
+- logout()
+- refreshToken() → POST /auth/refresh
+- Token storage in localStorage
+```
+
+**Step 2: Pages**
+```typescript
+// 5 Pages erstellen:
+1. Login.tsx (Email/Password Form)
+2. Register.tsx (First/Last Name, Email, Password Form)
+3. VerifyEmail.tsx (Success page nach Email-Click)
+4. ForgotPassword.tsx (Email Form)
+5. ResetPassword.tsx (New Password Form)
+
+// Alle mit:
+- useConfig('auth', language) für i18n
+- useAuth() für API calls
+- Framer Motion animations
+- Black/White Design
+```
+
+**Step 3: Protected Routes**
+```typescript
+// ProtectedRoute.tsx:
+- Check if user logged in
+- Redirect to /login if not
+- Show children if authenticated
+
+// Dashboard.tsx:
+- Protected page
+- Shows user info
+- Logout button
+```
+
+**Step 4: Navigation**
+```typescript
+// Header.tsx updaten:
+- IF not logged in: Login/Register Links
+- IF logged in: User Avatar + Dashboard + Logout
+```
+
+---
+
+### **Priorität 3: Testing (30 Min)**
+
+**Backend:**
+```bash
+1. mvn clean install (alle Services bauen)
+2. docker-compose up -d (alle Services starten)
+3. POST /auth/register testen (Postman)
+4. POST /auth/login testen (JWT zurück?)
+5. GET /api/users/1 testen (via API Gateway)
+```
+
+**Frontend:**
+```bash
+1. npm run dev
+2. Register Flow testen
+3. Login Flow testen
+4. Dashboard zugreifen (protected)
+5. Logout testen
+```
+
+---
+
+### **Priorität 4: Documentation (30 Min)**
+
+- [ ] ERROR_CODES.md: Auth codes hinzufügen
+- [ ] README.md: Auth Flow dokumentieren
+- [ ] CHANGELOG.md: Backend v3.1.0 + Frontend v2.13.0
+- [ ] Git Commit + Tags + Push
+
+---
+
+## 📊 Geschätzte Zeit für MORGEN
+
+- **Backend Auth:** 2.5 Stunden
+- **Frontend Auth:** 1.5 Stunden
+- **Testing:** 0.5 Stunden
+- **Documentation:** 0.5 Stunden
+- **Total:** ~5 Stunden
+
+---
+
+## 🔑 Wichtige Erkenntnisse
+
+**Was gut lief:**
+- ✅ Email Service: Saubere RESTful API nach Enterprise Pattern
+- ✅ Config API v2.0: Funktioniert perfekt
+- ✅ Frontend: Alle Pages mit useConfig migriert
+- ✅ Translations: 950+ Keys auf Deutsch
+
+**Was schief lief:**
+- ⚠️ User Service + Auth Service vermischt (nicht Single Responsibility)
+- ⚠️ Zu schnell gebaut ohne saubere Planung
+- ⚠️ RegisterRequest vs CreateUserRequest Konfusion
+
+**Für MORGEN:**
+- ✅ ERST planen, DANN bauen
+- ✅ Ein Service nach dem anderen komplett fertig
+- ✅ Testen nach jedem Service
+- ✅ Saubere Trennung: user-service (CRUD), auth-service (Auth)
+
+---
+
+**Session Start**: 2025-10-22 ~10:00 UTC
+**Session End**: 2025-10-22 ~15:30 UTC
+**Duration**: ~5.5 hours
+**Status**: ✅ Frontend komplett, Email Service fertig, Auth System 50% (muss morgen sauber neu)
+**GitHub**: https://github.com/moritzfbecker/eckert
+**Commits**: 10+ commits
+**Tags**: frontend-v2.10.0, frontend-v2.11.0, frontend-v2.12.0, frontend-v2.12.1, backend-v3.0.0
+**Author**: Moritz F. Becker - Helped by Claude AI
+
+---
+
+**Next Session:** Backend Auth System sauber fertigstellen + Frontend Auth implementieren 🚀
