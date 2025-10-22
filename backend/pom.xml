@@ -24,10 +24,10 @@
         <module>api-gateway</module>
         <module>service-discovery</module>
         <module>config-server</module>
+        <!-- Business Services -->
         <module>services/user-service</module>
-        <module>services/product-service</module>
-        <module>services/order-service</module>
-        <module>services/notification-service</module>
+        <module>services/auth-service</module>
+        <module>services/email-service</module>
         <module>shared/common-models</module>
         <module>shared/common-utils</module>
         <module>shared/security-config</module>

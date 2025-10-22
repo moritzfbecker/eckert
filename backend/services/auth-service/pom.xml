@@ -12,9 +12,9 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>user-service</artifactId>
-    <name>User Service</name>
-    <description>User Management CRUD Microservice - NO Authentication Logic</description>
+    <artifactId>auth-service</artifactId>
+    <name>Auth Service</name>
+    <description>Authentication Microservice - JWT Token Management and User Authentication</description>
 
     <dependencies>
         <!-- Spring Boot Starter Web -->
@@ -23,23 +23,28 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Boot Data JPA -->
+        <!-- Spring Boot Security (for BCrypt and Security Config) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- PostgreSQL Driver -->
+        <!-- JWT Dependencies -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.12.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.12.6</version>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- H2 Database (for development/testing) -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.12.6</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -49,7 +54,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!-- Config Client -->
+        <!-- Config Client v2.0 -->
         <dependency>
             <groupId>com.eckertpreisser</groupId>
             <artifactId>config-client</artifactId>
@@ -65,6 +70,12 @@
         <dependency>
             <groupId>com.eckertpreisser</groupId>
             <artifactId>common-models</artifactId>
+        </dependency>
+
+        <!-- Security Config (JwtUtils) -->
+        <dependency>
+            <groupId>com.eckertpreisser</groupId>
+            <artifactId>security-config</artifactId>
         </dependency>
 
         <!-- Lombok -->
@@ -84,6 +95,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

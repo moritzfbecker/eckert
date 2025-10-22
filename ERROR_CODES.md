@@ -233,6 +233,95 @@
 | USER_ERR_BUS_001 | User account locked | 422 | Contact support |
 | USER_ERR_BUS_002 | Email verification required | 422 | Check your email |
 
+### Auth Service (AUTH)
+
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| AUTH_001 | Creating user via user-service API | INFO |
+| AUTH_002 | User created successfully | INFO |
+| AUTH_003 | Finding user by email via user-service API | INFO |
+| AUTH_004 | User found successfully | INFO |
+| AUTH_005 | Finding user by ID via user-service API | INFO |
+| AUTH_006 | User found successfully by ID | INFO |
+| AUTH_007 | Verifying email via user-service API | INFO |
+| AUTH_008 | Email verified successfully | INFO |
+| AUTH_009 | Updating password via user-service API | INFO |
+| AUTH_010 | Password updated successfully | INFO |
+| AUTH_011 | Sending welcome email via email-service | INFO |
+| AUTH_012 | Welcome email sent successfully | INFO |
+| AUTH_013 | Sending verification email via email-service | INFO |
+| AUTH_014 | Verification email sent successfully | INFO |
+| AUTH_015 | Sending password reset email via email-service | INFO |
+| AUTH_016 | Password reset email sent successfully | INFO |
+| AUTH_017 | Registering new user | INFO |
+| AUTH_018 | Password hashed successfully | DEBUG |
+| AUTH_019 | User registered successfully | INFO |
+| AUTH_020 | User login attempt | INFO |
+| AUTH_021 | User logged in successfully | INFO |
+| AUTH_022 | Refreshing JWT token | INFO |
+| AUTH_023 | Token refreshed successfully | INFO |
+| AUTH_024 | Verifying email | INFO |
+| AUTH_025 | Email verified successfully | INFO |
+| AUTH_026 | Password reset requested | INFO |
+| AUTH_027 | Password reset email sent | INFO |
+| AUTH_028 | Resetting password | INFO |
+| AUTH_029 | Password reset successfully | INFO |
+| AUTH_030 | Getting current user from token | INFO |
+| AUTH_031 | Current user retrieved successfully | INFO |
+| AUTH_032 | Logging out user | INFO |
+| AUTH_033 | User logged out successfully | INFO |
+| AUTH_034 | Register endpoint called | INFO |
+| AUTH_035 | User registered successfully via endpoint | INFO |
+| AUTH_036 | Login endpoint called | INFO |
+| AUTH_037 | User logged in successfully via endpoint | INFO |
+| AUTH_038 | Refresh token endpoint called | INFO |
+| AUTH_039 | Token refreshed successfully via endpoint | INFO |
+| AUTH_040 | Verify email endpoint called | INFO |
+| AUTH_041 | Email verified successfully via endpoint | INFO |
+| AUTH_042 | Forgot password endpoint called | INFO |
+| AUTH_043 | Password reset email sent via endpoint | INFO |
+| AUTH_044 | Reset password endpoint called | INFO |
+| AUTH_045 | Password reset successfully via endpoint | INFO |
+| AUTH_046 | Get current user endpoint called | INFO |
+| AUTH_047 | Current user retrieved via endpoint | INFO |
+| AUTH_048 | Logout endpoint called | INFO |
+| AUTH_049 | User logged out successfully via endpoint | INFO |
+
+#### Error Codes
+| Code | Description | HTTP Status | Solution |
+|------|-------------|-------------|----------|
+| AUTH_ERR_400_001 | Failed to create user | 400 | Check user data |
+| AUTH_ERR_400_002 | Failed to create user (service error) | 400 | Check user-service logs |
+| AUTH_ERR_400_003 | Failed to verify email | 400 | Check verification token |
+| AUTH_ERR_400_004 | Failed to update password | 400 | Check password format |
+| AUTH_ERR_400_005 | Invalid verification token | 400 | Request new verification email |
+| AUTH_ERR_400_006 | Invalid reset token | 400 | Request new password reset |
+| AUTH_ERR_401_001 | Invalid password | 401 | Check password |
+| AUTH_ERR_401_002 | Token has been invalidated | 401 | Login again |
+| AUTH_ERR_401_003 | Invalid token | 401 | Refresh or login again |
+| AUTH_ERR_401_004 | Error refreshing token | 401 | Login again |
+| AUTH_ERR_401_005 | Invalid token (getCurrentUser) | 401 | Login again |
+| AUTH_ERR_401_006 | Error getting current user | 401 | Check authentication token |
+| AUTH_ERR_403_001 | User account is inactive | 403 | Contact administrator |
+| AUTH_ERR_404_001 | User not found with email | 404 | Check email address |
+| AUTH_ERR_404_002 | User not found via user-service | 404 | Check user-service logs |
+| AUTH_ERR_404_003 | User not found with email (final) | 404 | Register new account |
+| AUTH_ERR_404_004 | User not found with ID | 404 | Check user ID |
+| AUTH_ERR_404_005 | User not found via user-service (by ID) | 404 | Check user-service logs |
+| AUTH_ERR_404_006 | User not found with ID (final) | 404 | Check user ID |
+| AUTH_ERR_500_001 | Error creating user via user-service | 500 | Check user-service availability |
+| AUTH_ERR_500_002 | Error verifying email via user-service | 500 | Check user-service availability |
+| AUTH_ERR_500_003 | Error updating password via user-service | 500 | Check user-service availability |
+| AUTH_ERR_500_004 | Error sending welcome email | 500 | Check email-service availability |
+| AUTH_ERR_500_005 | Error sending verification email | 500 | Check email-service availability |
+| AUTH_ERR_500_006 | Error sending password reset email | 500 | Check email-service availability |
+
+#### Warning Codes
+| Code | Description | Action |
+|------|-------------|--------|
+| AUTH_WARN_001 | Email service unavailable | Email not sent, user can still proceed |
+
 ### Product Service (PRODUCT)
 
 #### Success Codes
@@ -272,22 +361,32 @@
 | ORDER_ERR_BUS_003 | Order already shipped | 422 | Cannot modify shipped order |
 | ORDER_ERR_BUS_004 | Invalid shipping address | 422 | Update shipping address |
 
-### Notification Service (NOTIFICATION)
+### Email Service (EMAIL)
 
 #### Success Codes
 | Code | Description | Log Level |
 |------|-------------|-----------|
-| NOTIFICATION_001 | Email sent successfully | INFO |
-| NOTIFICATION_002 | SMS sent successfully | INFO |
-| NOTIFICATION_003 | Push notification sent | INFO |
+| EMAIL_001 | Sending email | INFO |
+| EMAIL_002 | Email sent successfully | INFO |
+| EMAIL_CONFIG_001 | Initializing JavaMailSender via ConfigClient | INFO |
+| EMAIL_CONFIG_002 | SMTP config loaded | INFO |
+| EMAIL_CONFIG_003 | JavaMailSender initialized successfully | INFO |
+| EMAIL_API_001 | Send email request received | INFO |
+| EMAIL_API_002 | Verification email request received | INFO |
+| EMAIL_API_003 | Password reset email request received | INFO |
+| EMAIL_API_004 | Welcome email request received | INFO |
+| EMAIL_API_005 | Health check requested | INFO |
 
 #### Error Codes
 | Code | Description | HTTP Status | Solution |
 |------|-------------|-------------|----------|
-| NOTIFICATION_ERR_400_001 | Invalid email address | 400 | Check email format |
-| NOTIFICATION_ERR_400_002 | Invalid phone number | 400 | Check phone format |
-| NOTIFICATION_ERR_BUS_001 | Email service unavailable | 422 | Retry later |
-| NOTIFICATION_ERR_BUS_002 | SMS quota exceeded | 422 | Contact administrator |
+| EMAIL_ERR_001 | Failed to send email (MessagingException) | 500 | Check SMTP config and recipient |
+| EMAIL_ERR_002 | Unexpected error sending email | 500 | Check logs for details |
+| EMAIL_CONFIG_ERR_001 | Failed to initialize JavaMailSender | 500 | Check Config Server and SMTP settings |
+| EMAIL_API_ERR_001 | Failed to send email (API) | 500 | Retry or check request |
+| EMAIL_API_ERR_002 | Failed to send verification email | 500 | Check recipient and config |
+| EMAIL_API_ERR_003 | Failed to send password reset email | 500 | Check recipient and config |
+| EMAIL_API_ERR_004 | Failed to send welcome email | 500 | Check recipient and config |
 
 ---
 

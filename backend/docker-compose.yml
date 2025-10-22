@@ -51,38 +51,78 @@ services:
     networks:
       - eckert-network
 
-  # PLACEHOLDER SERVICES - Commented out for now
-  # Uncomment when needed for development
+  # PostgreSQL for User Service
+  postgres-user:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=user_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-user-data:/var/lib/postgresql/data
+    networks:
+      - eckert-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  # # PostgreSQL for User Service
-  # postgres-user:
-  #   image: postgres:16-alpine
-  #   environment:
-  #     - POSTGRES_DB=userdb
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=postgres
-  #   ports:
-  #     - "5435:5432"
-  #   volumes:
-  #     - postgres-user-data:/var/lib/postgresql/data
-  #   networks:
-  #     - eckert-network
+  # User Service (CRUD only - no auth)
+  user-service:
+    build:
+      context: .
+      dockerfile: services/user-service/Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - DB_HOST=postgres-user
+      - DB_PORT=5432
+      - DB_NAME=user_db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+    depends_on:
+      - service-discovery
+      - postgres-user
+    networks:
+      - eckert-network
 
-  # # User Service - PLACEHOLDER
-  # user-service:
-  #   build:
-  #     context: .
-  #     dockerfile: services/user-service/Dockerfile
-  #   ports:
-  #     - "8081:8081"
-  #   environment:
-  #     - SPRING_PROFILES_ACTIVE=docker
-  #     - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
-  #   depends_on:
-  #     - service-discovery
-  #     - postgres-user
-  #   networks:
-  #     - eckert-network
+  # Email Service
+  email-service:
+    build:
+      context: .
+      dockerfile: services/email-service/Dockerfile
+    ports:
+      - "8084:8084"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+    depends_on:
+      - service-discovery
+      - config-server
+    networks:
+      - eckert-network
+
+  # Auth Service (authentication logic)
+  auth-service:
+    build:
+      context: .
+      dockerfile: services/auth-service/Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+    depends_on:
+      - service-discovery
+      - user-service
+      - email-service
+    networks:
+      - eckert-network
 
 networks:
   eckert-network:
@@ -91,7 +131,5 @@ networks:
 volumes:
   # Config Server persistent storage for configuration files
   config-data:
-  # Uncomment when placeholder services are enabled
-  # postgres-user-data:
-  # postgres-product-data:
-  # postgres-order-data:
+  # PostgreSQL persistent storage
+  postgres-user-data:

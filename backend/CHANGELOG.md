@@ -4,6 +4,53 @@ All backend-specific changes are documented here.
 
 ---
 
+## [3.1.0] - 2025-10-22
+
+### Added
+- **Email Service** - RESTful Email Microservice [BACKEND_SERVICE_001]
+  - Complete email sending via SMTP (JavaMailSender)
+  - Multi-language email templates via ConfigClient v2.0
+  - 5 API endpoints: send, verification, password-reset, welcome, health
+  - Template system with variable substitution
+  - Port: 8084
+  - 799 lines of code across 10 files
+
+- **User Service** - User CRUD Microservice [BACKEND_SERVICE_002]
+  - User management (create, read, update, deactivate)
+  - PostgreSQL database with JPA
+  - NO authentication logic (pure CRUD)
+  - Helper endpoints for auth-service
+  - Port: 8081
+  - 12 REST API endpoints
+
+- **Auth Service** - Authentication Microservice [BACKEND_SERVICE_003]
+  - User registration with password hashing (BCrypt)
+  - Login with JWT token generation
+  - Email verification flow
+  - Password reset flow
+  - Refresh token support
+  - Calls user-service and email-service via REST API
+  - Port: 8082
+  - 8 REST API endpoints
+  - 1,092 lines of code across 17 files
+
+- **PostgreSQL Database** [BACKEND_DB_001]
+  - Added to docker-compose.yml
+  - Database: user_db
+  - Port: 5432
+  - Persistent volume for data
+
+### Changed
+- **docker-compose.yml** - Added 4 new services (postgres-user, user-service, email-service, auth-service)
+- **parent pom.xml** - Added 3 service modules
+- **ERROR_CODES.md** - Added error codes for all 3 services (150+ new codes)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Services
+**Version**: Backend v3.1.0
+
+---
+
 ## [3.0.0] - 2025-10-22
 
 ### BREAKING CHANGES ⚠️

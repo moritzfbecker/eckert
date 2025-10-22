@@ -43,7 +43,8 @@
       "Bash(git log:*)",
       "Bash(del MAVEN_FIX.md)",
       "Bash(del SESSION_OVERVIEW_V2.md)",
-      "Bash(move \"C:\\Users\\morit\\IdeaProjects\\Eckert Enterprise\\config_concept_de.properties\" \"C:\\Users\\morit\\IdeaProjects\\Eckert Enterprise\\docs\\config-templates\\concept_de.properties\")"
+      "Bash(move \"C:\\Users\\morit\\IdeaProjects\\Eckert Enterprise\\config_concept_de.properties\" \"C:\\Users\\morit\\IdeaProjects\\Eckert Enterprise\\docs\\config-templates\\concept_de.properties\")",
+      "Bash(cmd /c:*)"
     ],
     "deny": [],
     "ask": []

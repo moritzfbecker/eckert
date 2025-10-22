@@ -1,7 +1,6 @@
 package com.eckertpreisser.userservice.dto;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Create User Request DTO
+ * Update User Request DTO
  *
- * Used by auth-service to create a new user after successful registration
- * NO password field - auth-service manages passwords separately
+ * Used to update user profile information
+ * All fields are optional - only provided fields will be updated
  *
  * @author Moritz F. Becker - Helped by Claude AI
  * @version 3.0.0
@@ -21,22 +20,19 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUserRequest {
+public class UpdateUserRequest {
 
-    @NotBlank(message = "First name is required")
     @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
     private String firstName;
 
-    @NotBlank(message = "Last name is required")
     @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
     private String lastName;
 
-    @NotBlank(message = "Email is required")
     @Email(message = "Email must be valid")
     private String email;
 
     @Size(max = 20, message = "Role must be max 20 characters")
-    private String role; // Optional, defaults to USER
+    private String role;
 
-    private String language; // Optional, defaults to "de"
+    private String language; // "de" or "en"
 }
