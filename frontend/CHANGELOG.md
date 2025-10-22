@@ -4,6 +4,30 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.12.1] - 2025-10-22
+
+### Changed
+- **About Page Rewrite** - Complete Peter Eckert biography [FRONTEND_PAGE_010]
+  - 150+ translation keys with comprehensive content
+  - Hero: Peter Eckert with PE avatar
+  - 4 Overview Cards: Academic, Entrepreneurial, Consulting, Methodology
+  - 5 Timeline Phases (1981-2025): Fraunhofer, 5 Companies, ZOLLERN transformation, Self-running phase, Systematization
+  - ZOLLERN Case Study: 8 years transformation, €192M impact, 4 stats, 4 methods
+  - 3-Pillar Framework: Detailed explanation of Pfeiffer + Eckert methodology
+  - Revolutionary Insight section
+  - Finland Research: 153 sources, complete table with 5 metrics
+  - Client Portfolio: 3 industry types with emojis
+  - Industries list: 8 sectors
+  - Final CTA with diagnostics offer
+  - All sections with professional black/white design
+  - Framer Motion animations throughout
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Content Update
+**Version**: Frontend v2.12.1
+
+---
+
 ## [2.12.0] - 2025-10-22
 
 ### Added
