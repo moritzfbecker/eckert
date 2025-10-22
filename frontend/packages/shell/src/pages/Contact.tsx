@@ -31,11 +31,11 @@ const Contact = () => {
   }
 
   return (
-    <div className="min-h-screen bg-eckert-white pt-32 md:pt-40 pb-20">
-      <Section spacing="xl">
+    <div className="min-h-screen bg-eckert-white pt-24 pb-20">
+      <Section spacing="lg">
         <Container>
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
