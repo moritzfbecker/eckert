@@ -264,8 +264,9 @@ const Home = () => {
                   transition-all duration-300
                 "
               >
+                <div className="text-5xl mb-4">🚀</div>
                 <h3 className="text-3xl font-bold text-white mb-4">
-                  {config.get('home.cta.quick.title', '🚀 Quick Start')}
+                  {config.get('home.cta.quick.title', 'Quick Start')}
                 </h3>
                 <p className="text-lg text-white/80 mb-6">
                   {config.get('home.cta.quick.subtitle', 'Free 3-Pillar Diagnostics for your company')}
@@ -298,8 +299,9 @@ const Home = () => {
                   transition-all duration-300
                 "
               >
+                <div className="text-5xl mb-4">📊</div>
                 <h3 className="text-3xl font-bold text-white mb-4">
-                  {config.get('home.cta.proof.title', '📊 Evidence')}
+                  {config.get('home.cta.proof.title', 'Evidence')}
                 </h3>
                 <p className="text-lg text-white/80 mb-6">
                   {config.get('home.cta.proof.subtitle', 'How Finland made it to the EC semifinals with 37% less budget')}
@@ -429,8 +431,9 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="bg-white border-2 border-black/10 rounded-xl p-8"
               >
+                <div className="text-4xl mb-4">❌</div>
                 <h3 className="text-2xl font-bold text-black mb-8">
-                  {config.get('home.paths.without.title', '❌ Without the third pillar')}
+                  {config.get('home.paths.without.title', 'Without the third pillar')}
                 </h3>
 
                 <div className="space-y-6 mb-8">
@@ -462,8 +465,9 @@ const Home = () => {
                   transition-all duration-300
                 "
               >
+                <div className="text-4xl text-white mb-4">✓</div>
                 <h3 className="text-2xl font-bold text-white mb-8">
-                  {config.get('home.paths.with.title', '✓ With activated third pillar')}
+                  {config.get('home.paths.with.title', 'With activated third pillar')}
                 </h3>
 
                 <div className="space-y-6 mb-8">
