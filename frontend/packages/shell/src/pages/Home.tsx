@@ -229,7 +229,7 @@ const Home = () => {
       </Section>
 
       {/* Stats + CTAs Section */}
-      <Section spacing="none" className="py-20 md:py-32 bg-black text-white">
+      <Section spacing="none" className="py-20 md:py-32 bg-eckert-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -238,9 +238,14 @@ const Home = () => {
             viewport={{ once: true }}
             className="max-w-6xl mx-auto"
           >
-            {/* ROI Stat */}
+            {/* ROI Stat - Black Card */}
             <motion.div
-              className="text-center mb-20"
+              className="
+                bg-black text-white rounded-xl p-12 mb-20
+                text-center
+                hover:shadow-apple-glow hover:scale-[1.02]
+                transition-all duration-300
+              "
             >
               <div className="text-8xl md:text-9xl font-black text-white mb-4">
                 {config.get('home.stats.roi', '340%')}
@@ -250,7 +255,7 @@ const Home = () => {
               </p>
             </motion.div>
 
-            {/* Two CTAs Side by Side */}
+            {/* Two CTAs Side by Side - Black Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* CTA 1 - Quick Start */}
               <motion.div
@@ -259,23 +264,23 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
                 className="
-                  bg-white rounded-xl p-8 border-2 border-white/20
+                  bg-black text-white rounded-xl p-8
                   hover:shadow-apple-glow hover:scale-105
                   transition-all duration-300
                 "
               >
                 <div className="text-5xl mb-4">🚀</div>
-                <h3 className="text-3xl font-bold text-black mb-4">
+                <h3 className="text-3xl font-bold text-white mb-4">
                   {config.get('home.cta.quick.title', 'Quick Start')}
                 </h3>
-                <p className="text-lg text-black/70 mb-6">
+                <p className="text-lg text-white/80 mb-6">
                   {config.get('home.cta.quick.subtitle', 'Free 3-Pillar Diagnostics for your company')}
                 </p>
                 <Link
                   to="/contact"
                   className="
                     inline-block w-full
-                    bg-black text-white
+                    bg-white text-black
                     px-6 py-4
                     rounded-lg
                     font-bold text-center
@@ -294,23 +299,23 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
                 className="
-                  bg-white rounded-xl p-8 border-2 border-white/20
+                  bg-black text-white rounded-xl p-8
                   hover:shadow-apple-glow hover:scale-105
                   transition-all duration-300
                 "
               >
                 <div className="text-5xl mb-4">📊</div>
-                <h3 className="text-3xl font-bold text-black mb-4">
+                <h3 className="text-3xl font-bold text-white mb-4">
                   {config.get('home.cta.proof.title', 'Evidence')}
                 </h3>
-                <p className="text-lg text-black/70 mb-6">
+                <p className="text-lg text-white/80 mb-6">
                   {config.get('home.cta.proof.subtitle', 'How Finland made it to the EC semifinals with 37% less budget')}
                 </p>
                 <Link
                   to="/concept"
                   className="
                     inline-block w-full
-                    bg-black text-white
+                    bg-white text-black
                     px-6 py-4
                     rounded-lg
                     font-bold text-center
