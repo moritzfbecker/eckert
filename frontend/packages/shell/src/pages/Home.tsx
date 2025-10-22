@@ -92,7 +92,7 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="flex items-start gap-4"
               >
-                <span className="text-2xl flex-shrink-0">→</span>
+                <span className="text-2xl flex-shrink-0 text-black">→</span>
                 <p className="text-xl md:text-2xl text-black">
                   {config.get('home.audience.elite', 'Elite companies with performance plateau despite massive strategy investments')}
                 </p>
@@ -105,7 +105,7 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="flex items-start gap-4"
               >
-                <span className="text-2xl flex-shrink-0">→</span>
+                <span className="text-2xl flex-shrink-0 text-black">→</span>
                 <p className="text-xl md:text-2xl text-black">
                   {config.get('home.audience.tech', 'Tech leaders with brilliant innovation but scaling problems')}
                 </p>
@@ -118,7 +118,7 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="flex items-start gap-4"
               >
-                <span className="text-2xl flex-shrink-0">→</span>
+                <span className="text-2xl flex-shrink-0 text-black">→</span>
                 <p className="text-xl md:text-2xl text-black">
                   {config.get('home.audience.resource', 'Resource-rich companies with technological backlog')}
                 </p>
@@ -242,7 +242,7 @@ const Home = () => {
             <motion.div
               className="text-center mb-20"
             >
-              <div className="text-8xl md:text-9xl font-black mb-4">
+              <div className="text-8xl md:text-9xl font-black text-white mb-4">
                 {config.get('home.stats.roi', '340%')}
               </div>
               <p className="text-2xl md:text-3xl text-white/80">
@@ -531,7 +531,7 @@ const Home = () => {
               {/* Three Stats Row */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div className="bg-black text-white rounded-xl p-8 text-center">
-                  <div className="text-6xl font-black mb-2">
+                  <div className="text-6xl font-black text-white mb-2">
                     {config.get('home.finland.rank', '14.')}
                   </div>
                   <p className="text-lg text-white/80">
@@ -540,7 +540,7 @@ const Home = () => {
                 </div>
 
                 <div className="bg-black text-white rounded-xl p-8 text-center">
-                  <div className="text-6xl font-black mb-2">
+                  <div className="text-6xl font-black text-white mb-2">
                     {config.get('home.finland.budget', '37%')}
                   </div>
                   <p className="text-lg text-white/80">
@@ -549,7 +549,7 @@ const Home = () => {
                 </div>
 
                 <div className="bg-black text-white rounded-xl p-8 text-center">
-                  <div className="text-6xl font-black mb-2">
+                  <div className="text-6xl font-black text-white mb-2">
                     {config.get('home.finland.roi', '10x')}
                   </div>
                   <p className="text-lg text-white/80">
