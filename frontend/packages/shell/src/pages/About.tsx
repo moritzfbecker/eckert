@@ -294,6 +294,50 @@ const About = () => {
               </div>
             </div>
 
+            {/* SECTION 1: Die Ausgangssituation (1994) */}
+            <div className="mb-12">
+              <h3 className="text-3xl font-bold text-black mb-6">
+                {config.get('about.zollern.situation.title', 'The Initial Situation (1994)')}
+              </h3>
+              <p className="text-lg text-black/70 leading-relaxed mb-8">
+                {config.get('about.zollern.situation.intro', 'ZOLLERN, traditional machinery manufacturer, Hidden Champion in niche markets. Strong market position, but structural weaknesses:')}
+              </p>
+
+              {/* 2 Metric Boxes Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {/* Negative Box - Säule 1 */}
+                <div className="bg-white border-l-4 border-black rounded-lg p-6 shadow-subtle">
+                  <div className="font-bold text-black mb-4">
+                    ❌ {config.get('about.zollern.situation.pillar1.title', 'Pillar 1: Technology Portfolio')}
+                  </div>
+                  <ul className="space-y-3 text-sm text-black/70">
+                    <li>→ {config.get('about.zollern.situation.pillar1.point1', 'Technology backlog to competitors')}</li>
+                    <li>→ {config.get('about.zollern.situation.pillar1.point2', 'R&D budget below average')}</li>
+                    <li>→ {config.get('about.zollern.situation.pillar1.point3', 'Innovation speed too slow')}</li>
+                  </ul>
+                </div>
+
+                {/* Positive Box - Säule 2 */}
+                <div className="bg-white border-l-4 border-black rounded-lg p-6 shadow-subtle">
+                  <div className="font-bold text-black mb-4">
+                    ✓ {config.get('about.zollern.situation.pillar2.title', 'Pillar 2: Resource Strength')}
+                  </div>
+                  <ul className="space-y-3 text-sm text-black/70">
+                    <li>→ {config.get('about.zollern.situation.pillar2.point1', 'Solid financing (family business)')}</li>
+                    <li>→ {config.get('about.zollern.situation.pillar2.point2', 'Stable customer relationships')}</li>
+                    <li>→ {config.get('about.zollern.situation.pillar2.point3', 'Experienced management')}</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Yellow Warning Box */}
+              <div className="bg-white border-l-4 border-black rounded-lg p-6 shadow-subtle">
+                <p className="text-base text-black/80 leading-relaxed">
+                  <strong className="text-black">{config.get('about.zollern.situation.dilemma.title', 'The Dilemma:')}</strong> {config.get('about.zollern.situation.dilemma.text', 'Classical strategy consulting would have recommended: "Invest massively in Pillar 1 (Technology)." Problem: Competitors with larger budgets would always be ahead. The alternative: Activate Pillar 3.')}
+                </p>
+              </div>
+            </div>
+
             {/* 4 Methods - Metric Boxes */}
             <h3 className="text-3xl font-bold text-black mb-8 pb-4 border-b-2 border-black">
               {config.get('about.zollern.essence.title', 'The Essence: What Was Done Concretely?')}
@@ -315,6 +359,114 @@ const About = () => {
               <div className="bg-white border-l-4 border-black rounded-lg p-6 shadow-subtle hover:shadow-elevated transition-all">
                 <h4 className="font-bold text-black mb-3">{config.get('about.zollern.method4.title', 'Malik Cybernetics')}</h4>
                 <p className="text-sm text-black/70 leading-relaxed">{config.get('about.zollern.method4.text', 'Functioning control loops instead of endless meetings. Self-control instead of micromanagement.')}</p>
+              </div>
+            </div>
+
+            {/* SECTION 2: Die Intervention (2006-2022) */}
+            <div className="mb-12">
+              <h3 className="text-3xl font-bold text-black mb-8 pb-4 border-b-2 border-black">
+                {config.get('about.zollern.intervention.title', 'The Intervention (1994-2022)')}
+              </h3>
+
+              {/* Timeline with 3 Phases */}
+              <div className="relative pl-12 space-y-12">
+                {/* Vertical Line */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-black" />
+
+                {/* Phase 1 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="absolute -left-[51px] top-0 w-4 h-4 bg-black rounded-full border-4 border-white shadow-md" />
+
+                  <div className="text-2xl font-bold text-black mb-2">
+                    {config.get('about.zollern.intervention.phase1.years', 'Phase 1: 1994-1998 (4 years)')}
+                  </div>
+                  <h4 className="text-xl font-bold text-black mb-4">
+                    {config.get('about.zollern.intervention.phase1.title', 'Foundation Building & Implicit Application')}
+                  </h4>
+                  <p className="text-base text-black/70 leading-relaxed mb-3">
+                    <strong className="text-black">{config.get('about.zollern.intervention.phase1.approach.label', 'Approach:')}</strong> {config.get('about.zollern.intervention.phase1.approach.text', 'Implicit application of 3-Pillar principles in projects. Development of "World Champion Hypothesis" as orientation for every project.')}
+                  </p>
+                  <p className="text-base text-black/70 leading-relaxed mb-3">
+                    <strong className="text-black">{config.get('about.zollern.intervention.phase1.methods.label', 'Methods:')}</strong> {config.get('about.zollern.intervention.phase1.methods.text', 'Performance Enabler training for leaders, establishment of control loop systems (Malik), first Underdog Systematics workshops.')}
+                  </p>
+                  <div className="bg-white border-l-4 border-black rounded-lg p-4">
+                    <p className="text-sm text-black/80">
+                      <strong className="text-black">{config.get('about.zollern.intervention.phase1.success.label', 'First Successes:')}</strong> {config.get('about.zollern.intervention.phase1.success.text', '3% margin increase in pilot areas. Management begins to recognize potential.')}
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Phase 2 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="absolute -left-[51px] top-0 w-4 h-4 bg-black rounded-full border-4 border-white shadow-md" />
+
+                  <div className="text-2xl font-bold text-black mb-2">
+                    {config.get('about.zollern.intervention.phase2.years', 'Phase 2: 1998-2002 (4 years)')}
+                  </div>
+                  <h4 className="text-xl font-bold text-black mb-4">
+                    {config.get('about.zollern.intervention.phase2.title', 'Full Permeation & Self-Running Quality Achieved')}
+                  </h4>
+                  <p className="text-base text-black/70 leading-relaxed mb-3">
+                    <strong className="text-black">{config.get('about.zollern.intervention.phase2.breakthrough.label', 'Breakthrough:')}</strong> {config.get('about.zollern.intervention.phase2.breakthrough.text', 'Full organizational permeation. Explicit formulation of 3 Pillars. Integration into strategic management processes. Development of internal trainers.')}
+                  </p>
+                  <p className="text-base text-black/70 leading-relaxed mb-3">
+                    <strong className="text-black">{config.get('about.zollern.intervention.phase2.methods.label', 'Methods:')}</strong> {config.get('about.zollern.intervention.phase2.methods.text', 'Complete rollout of documented coaching methods. Establishment of "CEO as Performance Enabler" model.')}
+                  </p>
+                  <div className="bg-black text-white rounded-lg p-5">
+                    <p className="text-base text-white font-semibold mb-2">
+                      {config.get('about.zollern.intervention.phase2.milestone.label', 'Milestone Reached (2002):')}
+                    </p>
+                    <p className="text-sm text-white/90">
+                      {config.get('about.zollern.intervention.phase2.milestone.text', '8% pre-tax margin increase. Technology disadvantage compensated. System develops self-running quality – continues without permanent external intervention.')}
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Phase 3 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="absolute -left-[51px] top-0 w-4 h-4 bg-black rounded-full border-4 border-white shadow-md" />
+
+                  <div className="text-2xl font-bold text-black mb-2">
+                    {config.get('about.zollern.intervention.phase3.years', 'Phase 3: 2002-2022 (20 years)')}
+                  </div>
+                  <h4 className="text-xl font-bold text-black mb-4">
+                    {config.get('about.zollern.intervention.phase3.title', 'Continuous Guidance & Further Development')}
+                  </h4>
+                  <p className="text-base text-black/70 leading-relaxed mb-3">
+                    <strong className="text-black">{config.get('about.zollern.intervention.phase3.guidance.label', 'Long-term Guidance:')}</strong> {config.get('about.zollern.intervention.phase3.guidance.text', 'Pillar 3 is anchored and runs independently. Continuous development and adaptation to new challenges. System runs as self-runner without permanent external intervention.')}
+                  </p>
+                  <p className="text-base text-black/70 leading-relaxed mb-3">
+                    <strong className="text-black">{config.get('about.zollern.intervention.phase3.result.label', 'The Result:')}</strong> {config.get('about.zollern.intervention.phase3.result.text', 'ZOLLERN overtakes technologically stronger competitors through superior human performance. Becomes world market leader in several segments.')}
+                  </p>
+                  <div className="bg-black text-white rounded-lg p-5">
+                    <p className="text-lg text-white font-bold mb-2">
+                      {config.get('about.zollern.intervention.phase3.final.label', 'Final Numbers (28 years: 1994-2022):')}
+                    </p>
+                    <p className="text-sm text-white/90 leading-relaxed">
+                      {config.get('about.zollern.intervention.phase3.final.line1', '8% average pre-tax margin increase')}<br />
+                      {config.get('about.zollern.intervention.phase3.final.line2', '= €12M additional annual profit at €150M revenue')}<br />
+                      {config.get('about.zollern.intervention.phase3.final.line3', '= €192M cumulative profit impact')}
+                    </p>
+                  </div>
+                </motion.div>
               </div>
             </div>
 
@@ -481,6 +633,72 @@ const About = () => {
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            {/* SECTION 3: Finland Säulen-Analyse */}
+            <div className="mt-12">
+              <h3 className="text-3xl font-bold text-black mb-8">
+                {config.get('about.finland.pillars.title', 'The Pillar Analysis: Why Finland Won')}
+              </h3>
+
+              {/* 3 Boxes for Pillars */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                {/* Pillar 1 - Weak */}
+                <div className="bg-white border-l-4 border-black rounded-lg p-6 shadow-subtle">
+                  <h4 className="font-bold text-black mb-3">
+                    {config.get('about.finland.pillars.pillar1.title', 'Pillar 1: Talent Base')}
+                  </h4>
+                  <p className="text-sm text-black/70 mb-2">
+                    <strong className="text-black">{config.get('about.finland.pillars.pillar1.status', 'Weak:')}</strong>
+                  </p>
+                  <p className="text-sm text-black/60 leading-relaxed">
+                    {config.get('about.finland.pillars.pillar1.text', '5.5M population, basketball not main sport, no NBA pipeline.')}
+                  </p>
+                </div>
+
+                {/* Pillar 2 - Below Average */}
+                <div className="bg-white border-l-4 border-black rounded-lg p-6 shadow-subtle">
+                  <h4 className="font-bold text-black mb-3">
+                    {config.get('about.finland.pillars.pillar2.title', 'Pillar 2: Resources')}
+                  </h4>
+                  <p className="text-sm text-black/70 mb-2">
+                    <strong className="text-black">{config.get('about.finland.pillars.pillar2.status', 'Below Average:')}</strong>
+                  </p>
+                  <p className="text-sm text-black/60 leading-relaxed">
+                    {config.get('about.finland.pillars.pillar2.text', 'Budget rank 14/24, 37% below average.')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Pillar 3 - Excellent (Full Width, Highlighted) */}
+              <div className="bg-black text-white rounded-lg p-8 mb-8 hover:shadow-apple-glow transition-all">
+                <h4 className="text-2xl font-bold text-white mb-4">
+                  ✓ {config.get('about.finland.pillars.pillar3.title', 'Pillar 3: Human Performance')}
+                </h4>
+                <p className="text-base text-white/90 mb-4">
+                  <strong className="text-white">{config.get('about.finland.pillars.pillar3.status', 'Excellent:')}</strong> {config.get('about.finland.pillars.pillar3.text', '16 years systematic performance development through Helsinki Basketball Academy (HBA). Investment structure: €35M over 2012-2021 in systematic talent and coach development according to documented framework.')}
+                </p>
+                <div className="bg-white/10 rounded-lg p-5 mt-4">
+                  <p className="text-sm text-white/90 leading-relaxed">
+                    <strong className="text-white">{config.get('about.finland.pillars.pillar3.methodology.label', 'The Methodology:')}</strong> {config.get('about.finland.pillars.pillar3.methodology.text', 'Underdog Systematics, collective intelligence development, Performance Enabler training for coaches, long-term commitment without quick-win expectations.')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Business Translation Box */}
+              <div className="bg-black text-white rounded-xl p-10 text-center">
+                <p className="text-2xl font-bold text-white mb-4">
+                  {config.get('about.finland.pillars.business.title', 'The Business Translation')}
+                </p>
+                <p className="text-lg text-white/90 leading-relaxed mb-6">
+                  {config.get('about.finland.pillars.business.text1', 'Finland had the same structural disadvantages as many mid-sized companies:')}
+                  <br />
+                  {config.get('about.finland.pillars.business.text2', 'Limited resources (Pillar 2), weaker "technology" (Pillar 1 = talent base).')}
+                </p>
+                <p className="text-xl font-bold text-white pt-6 border-t border-white/20">
+                  {config.get('about.finland.pillars.business.conclusion', 'But through Pillar 3: Overcompensation. 4th place out of 24 with budget rank 14.')}
+                </p>
+              </div>
             </div>
           </div>
 
