@@ -643,52 +643,60 @@ const Home = () => {
       </Section>
 
       {/* Final CTA Section */}
-      <Section spacing="none" className="py-20 md:py-32 bg-black text-white">
+      <Section spacing="none" className="py-20 md:py-32 bg-eckert-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-12">
-              {config.get('home.final.title', 'Now You Have a Choice')}
-            </h2>
+            {/* Black Card with all content */}
+            <div className="
+              bg-black text-white rounded-xl p-12 md:p-16
+              text-center
+              hover:shadow-apple-glow hover:scale-[1.01]
+              transition-all duration-300
+            ">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-12">
+                {config.get('home.final.title', 'Now You Have a Choice')}
+              </h2>
 
-            <p className="text-xl md:text-2xl text-white/80 mb-6 leading-relaxed">
-              {config.get('home.final.question1', 'The question is not whether your company has structural weaknesses.')}
-            </p>
-
-            <p className="text-2xl md:text-3xl text-white font-bold mb-12 leading-relaxed">
-              {config.get('home.final.question2', 'The question is: Are you ready to overcompensate them through systematic human performance development?')}
-            </p>
-
-            {/* CTA Button */}
-            <Link
-              to="/contact"
-              className="
-                inline-block
-                bg-white text-black
-                px-10 py-5
-                rounded-lg
-                font-bold text-xl
-                uppercase tracking-wider
-                hover:shadow-apple-glow hover:scale-105
-                transition-all duration-300
-                mb-8
-              "
-            >
-              {config.get('home.final.cta', 'Request Free 3-Pillar Diagnostics')}
-            </Link>
-
-            <div className="space-y-2">
-              <p className="text-base text-white/60">
-                {config.get('home.final.disclaimer', 'No sales presentation. No generic solutions.')}
+              <p className="text-xl md:text-2xl text-white/80 mb-6 leading-relaxed">
+                {config.get('home.final.question1', 'The question is not whether your company has structural weaknesses.')}
               </p>
-              <p className="text-base text-white/80">
-                {config.get('home.final.promise', 'Only an evidence-based analysis of where your greatest untapped potential lies.')}
+
+              <p className="text-2xl md:text-3xl text-white font-bold mb-12 leading-relaxed">
+                {config.get('home.final.question2', 'The question is: Are you ready to overcompensate them through systematic human performance development?')}
               </p>
+
+              {/* CTA Button */}
+              <Link
+                to="/contact"
+                className="
+                  inline-block
+                  bg-white text-black
+                  px-10 py-5
+                  rounded-lg
+                  font-bold text-xl
+                  uppercase tracking-wider
+                  hover:shadow-apple-glow hover:scale-105
+                  transition-all duration-300
+                  mb-8
+                "
+              >
+                {config.get('home.final.cta', 'Request Free 3-Pillar Diagnostics')}
+              </Link>
+
+              <div className="space-y-2">
+                <p className="text-base text-white/60">
+                  {config.get('home.final.disclaimer', 'No sales presentation. No generic solutions.')}
+                </p>
+                <p className="text-base text-white/80">
+                  {config.get('home.final.promise', 'Only an evidence-based analysis of where your greatest untapped potential lies.')}
+                </p>
+              </div>
             </div>
           </motion.div>
         </Container>
