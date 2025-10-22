@@ -32,8 +32,8 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-eckert-white pt-24 pb-20">
-      <Section spacing="lg">
-        <Container>
+      <Container>
+        <div className="py-12">
           {/* Header */}
           <div className="text-center mb-12">
             <motion.h1
@@ -191,8 +191,8 @@ const Contact = () => {
               </form>
             </div>
           </motion.div>
-        </Container>
-      </Section>
+        </div>
+      </Container>
     </div>
   )
 }
