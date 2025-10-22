@@ -259,23 +259,23 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
                 className="
-                  bg-white/10 backdrop-blur-sm rounded-xl p-8
-                  hover:bg-white/20 hover:scale-105
+                  bg-white rounded-xl p-8 border-2 border-white/20
+                  hover:shadow-apple-glow hover:scale-105
                   transition-all duration-300
                 "
               >
                 <div className="text-5xl mb-4">🚀</div>
-                <h3 className="text-3xl font-bold text-white mb-4">
+                <h3 className="text-3xl font-bold text-black mb-4">
                   {config.get('home.cta.quick.title', 'Quick Start')}
                 </h3>
-                <p className="text-lg text-white/80 mb-6">
+                <p className="text-lg text-black/70 mb-6">
                   {config.get('home.cta.quick.subtitle', 'Free 3-Pillar Diagnostics for your company')}
                 </p>
                 <Link
                   to="/contact"
                   className="
                     inline-block w-full
-                    bg-white text-black
+                    bg-black text-white
                     px-6 py-4
                     rounded-lg
                     font-bold text-center
@@ -294,23 +294,23 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
                 className="
-                  bg-white/10 backdrop-blur-sm rounded-xl p-8
-                  hover:bg-white/20 hover:scale-105
+                  bg-white rounded-xl p-8 border-2 border-white/20
+                  hover:shadow-apple-glow hover:scale-105
                   transition-all duration-300
                 "
               >
                 <div className="text-5xl mb-4">📊</div>
-                <h3 className="text-3xl font-bold text-white mb-4">
+                <h3 className="text-3xl font-bold text-black mb-4">
                   {config.get('home.cta.proof.title', 'Evidence')}
                 </h3>
-                <p className="text-lg text-white/80 mb-6">
+                <p className="text-lg text-black/70 mb-6">
                   {config.get('home.cta.proof.subtitle', 'How Finland made it to the EC semifinals with 37% less budget')}
                 </p>
                 <Link
                   to="/concept"
                   className="
                     inline-block w-full
-                    bg-white text-black
+                    bg-black text-white
                     px-6 py-4
                     rounded-lg
                     font-bold text-center
