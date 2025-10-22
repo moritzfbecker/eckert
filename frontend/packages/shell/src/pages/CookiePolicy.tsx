@@ -10,7 +10,7 @@ import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 
 const CookiePolicy = () => {
   const { language } = useTranslation()
-  const config = useConfig('legal', language)
+  const config = useConfig('cookies', language)
 
   return (
     <div className="pt-24 pb-20 bg-eckert-white">

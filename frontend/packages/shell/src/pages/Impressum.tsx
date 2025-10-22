@@ -10,7 +10,7 @@ import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 
 const Impressum = () => {
   const { language } = useTranslation()
-  const config = useConfig('legal', language)
+  const config = useConfig('impressum', language)
 
   return (
     <div className="pt-24 pb-20 bg-eckert-white">
