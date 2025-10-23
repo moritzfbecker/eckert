@@ -3,13 +3,13 @@ FROM maven:3.9.9-eclipse-temurin-21-alpine AS build
 
 WORKDIR /app
 
-# Copy parent pom and all modules
+# Copy parent pom and ALL modules (Maven needs all for dependency resolution!)
 COPY pom.xml .
 COPY shared shared/
 COPY service-discovery service-discovery/
 COPY config-server config-server/
 COPY api-gateway api-gateway/
-COPY services/email-service services/email-service/
+COPY services services/
 
 # Build the application
 RUN mvn clean install -DskipTests -pl services/email-service -am
