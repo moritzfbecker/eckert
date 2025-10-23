@@ -30,7 +30,7 @@ services:
     depends_on:
       - service-discovery
     volumes:
-      - config-data:/app/config
+      - /opt/eckert/config:/app/config  # Bind mount - accessible via SFTP!
     networks:
       - eckert-network
 
