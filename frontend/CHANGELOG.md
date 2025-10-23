@@ -4,6 +4,25 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.13.0] - 2025-10-23
+
+### Added
+- **Complete Auth System** - Login, Register, Dashboard, Protected Routes
+  - AuthContext + useAuth hook (state management, localStorage)
+  - authApi.ts - REST API client for all auth endpoints
+  - Login page with email/password form
+  - Register page with 4-field form
+  - Dashboard page (protected, shows user info)
+  - ProtectedRoute component (redirects to /login if not authenticated)
+  - Header conditional rendering (Login/Register OR User Menu + Logout)
+- **100% Config API v2.0** - All text via useConfig (NO hardcoded strings!)
+- **15 Error Codes** - AUTH_FE_001-015, AUTH_FE_ERR_001-005, AUTH_FE_WARN_001-003, AUTH_CTX_001-010
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Complete Frontend Auth System
+
+---
+
 ## [2.12.2] - 2025-10-23
 
 ### Changed

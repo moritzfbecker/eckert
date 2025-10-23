@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.13.0] - 2025-10-23
+
+### Added
+- **Complete Frontend Auth System** - Login, Register, Dashboard
+  - AuthContext with JWT token management (localStorage)
+  - authApi client for all auth endpoints (register, login, logout, refresh, etc.)
+  - Login + Register pages with form validation
+  - Dashboard page (protected route)
+  - ProtectedRoute component
+  - Header shows Login/Register OR User Menu based on auth status
+- **100% Config API v2.0** - All auth pages use useConfig (auth.login.*, auth.register.*, etc.)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Frontend Auth Complete
+
+---
+
 ## [Backend 3.1.0] - 2025-10-23
 
 ### Added

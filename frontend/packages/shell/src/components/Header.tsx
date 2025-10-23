@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
+import { useAuth } from '@eckert-preisser/shared/contexts/AuthContext'
 
 /**
  * Header Component - v2.0 Config API
@@ -19,6 +20,9 @@ const Header = () => {
 
   // NEW v2.0: useConfig with 'common' category and DYNAMIC language
   const config = useConfig('common', language)
+
+  // Auth state
+  const { user, logout, isAuthenticated } = useAuth()
 
   const location = useLocation()
 
@@ -185,58 +189,51 @@ const Header = () => {
             )}
           </div>
 
-          {/* Account Button with Dropdown */}
-          <div className="
-            flex items-center justify-center
-            px-2 py-1.5
-            rounded-xl
-            transition-all duration-300
-            bg-black/60 backdrop-blur-sm border border-white/10 shadow-lg
-            relative
-          ">
-            <button
-              onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
-              className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              {config.get('nav.account', 'Account')}
-              <svg
-                className={`w-3 h-3 transition-transform ${isAccountMenuOpen ? 'rotate-180' : ''}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          {/* Auth Buttons - Show based on auth status */}
+          {isAuthenticated && user ? (
+            /* Logged In - User Menu */
+            <div className="flex items-center justify-center px-2 py-1.5 rounded-xl transition-all duration-300 bg-black/60 backdrop-blur-sm border border-white/10 shadow-lg relative">
+              <button
+                onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
+                className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider flex items-center gap-2"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                {user.firstName}
+                <svg className={`w-3 h-3 transition-transform ${isAccountMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
 
-            {/* Account Dropdown */}
-            {isAccountMenuOpen && (
-              <div className="absolute top-full mt-2 right-0 bg-black/90 backdrop-blur-md border border-white/10 rounded-lg shadow-xl overflow-hidden min-w-[180px]">
-                <Link
-                  to="/dashboard"
-                  onClick={() => setIsAccountMenuOpen(false)}
-                  className="w-full px-4 py-3 text-left text-xs hover:bg-white/10 transition-colors flex items-center gap-2 text-gray-300"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                  <span className="font-semibold uppercase tracking-wider">{config.get('nav.dashboard', 'Dashboard')}</span>
-                </Link>
-                <button
-                  onClick={() => setIsAccountMenuOpen(false)}
-                  className="w-full px-4 py-3 text-left text-xs hover:bg-white/10 transition-colors flex items-center gap-2 text-gray-300 border-t border-white/10"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                  </svg>
-                  <span className="font-semibold uppercase tracking-wider">{config.get('nav.logout', 'Logout')}</span>
-                </button>
-              </div>
-            )}
-          </div>
+              {isAccountMenuOpen && (
+                <div className="absolute top-full mt-2 right-0 bg-black/90 backdrop-blur-md border border-white/10 rounded-lg shadow-xl overflow-hidden min-w-[180px]">
+                  <Link to="/dashboard" onClick={() => setIsAccountMenuOpen(false)} className="w-full px-4 py-3 text-left text-xs hover:bg-white/10 transition-colors flex items-center gap-2 text-gray-300">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span className="font-semibold uppercase tracking-wider">{config.get('nav.dashboard', 'Dashboard')}</span>
+                  </Link>
+                  <button onClick={() => { logout(); setIsAccountMenuOpen(false) }} className="w-full px-4 py-3 text-left text-xs hover:bg-white/10 transition-colors flex items-center gap-2 text-gray-300 border-t border-white/10">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    <span className="font-semibold uppercase tracking-wider">{config.get('nav.logout', 'Logout')}</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Not Logged In - Login/Register Buttons */
+            <div className="flex items-center gap-3">
+              <Link to="/login" className="px-6 py-2 text-black hover:text-black/60 text-xs font-semibold uppercase tracking-wider transition-colors">
+                {config.get('nav.login', 'Login')}
+              </Link>
+              <Link to="/register" className="px-6 py-2 bg-black text-white rounded-md hover:shadow-apple-glow hover:scale-105 transition-all duration-300 text-xs font-semibold uppercase tracking-wider">
+                {config.get('nav.register', 'Register')}
+              </Link>
+            </div>
+          )}
         </div>
       </header>
 

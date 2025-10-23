@@ -4,4 +4,5 @@
  * Export all React contexts
  */
 
-export { I18nProvider, I18nContext } from './I18nContext';
+export { I18nProvider, I18nContext } from './I18nContext'
+export { AuthProvider, useAuth } from './AuthContext'
