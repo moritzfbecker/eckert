@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **auth-service**: JWT Authentication with Config API v2.0 (15 Java files, 8 endpoints)
   - **email-service**: Generic SMTP Utility (4 Java files, reusable wie Config Server!)
   - PostgreSQL database with persistent volume
+- **API Gateway Routes** - /api/auth/**, /api/users/**, /api/email/** (NO stripPrefix!)
+- **HealthCheckController** - Monitors all 6 services (Eureka, Config, Gateway, User, Auth, Email)
 - **100% Config API v2.0 Integration**
   - email-service: SMTP settings via ConfigClient (smtp.host, smtp.port, etc.)
   - auth-service: Email templates via ConfigClient (email.welcome.subject, etc.)
@@ -27,6 +29,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Author**: Moritz F. Becker - Helped by Claude AI
 **Type**: MINOR - Complete Auth System + Generic Email Util
+
+---
+
+## [Frontend 2.12.2] - 2025-10-23
+
+### Changed
+- **Status Page** - Now shows all 6 backend services (was 3, now includes User, Auth, Email)
+- **Version Numbers** - Updated to v3.1.0 (Backend) and v2.12.1 (Frontend)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Status Page Update
 
 ---
 

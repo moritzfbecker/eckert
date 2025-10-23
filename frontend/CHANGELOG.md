@@ -4,6 +4,19 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.12.2] - 2025-10-23
+
+### Changed
+- **Status Page Updated** - Now monitors all 6 backend services
+  - Added: User Service (8081), Auth Service (8082), Email Service (8084)
+  - Version numbers updated to v3.1.0 (Backend) and v2.12.2 (Frontend)
+  - Grid now shows 6 backend cards + 1 frontend card
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Status Monitoring Complete
+
+---
+
 ## [2.12.1] - 2025-10-22
 
 ### Changed

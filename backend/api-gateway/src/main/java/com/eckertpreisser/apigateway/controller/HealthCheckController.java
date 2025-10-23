@@ -38,27 +38,33 @@ public class HealthCheckController {
      */
     @GetMapping("/services")
     public Mono<ResponseEntity<Map<String, Object>>> getServicesHealth() {
-        LoggerUtil.info(logger, "HEALTH_001", "Checking health of all services");
+        LoggerUtil.info(logger, "HEALTH_001", "Checking health of all 6 services");
 
         // Check all services in parallel (reactive, non-blocking)
-        Mono<Map<String, Object>> eurekaCheck = checkService("http://service-discovery:8761/actuator/health", 8761, "1.0.0");
-        Mono<Map<String, Object>> configCheck = checkService("http://config-server:8888/actuator/health", 8888, "1.0.0");
+        Mono<Map<String, Object>> eurekaCheck = checkService("http://service-discovery:8761/actuator/health", 8761, "3.1.0");
+        Mono<Map<String, Object>> configCheck = checkService("http://config-server:8888/actuator/health", 8888, "3.1.0");
+        Mono<Map<String, Object>> userCheck = checkService("http://user-service:8081/actuator/health", 8081, "3.1.0");
+        Mono<Map<String, Object>> authCheck = checkService("http://auth-service:8082/actuator/health", 8082, "3.1.0");
+        Mono<Map<String, Object>> emailCheck = checkService("http://email-service:8084/actuator/health", 8084, "3.1.0");
 
         // Combine all health checks
-        return Mono.zip(eurekaCheck, configCheck)
+        return Mono.zip(eurekaCheck, configCheck, userCheck, authCheck, emailCheck)
             .map(tuple -> {
                 Map<String, Object> response = new HashMap<>();
                 Map<String, Object> services = new HashMap<>();
 
-                // Add checked services
+                // Add all checked services
                 services.put("eureka", tuple.getT1());
                 services.put("config", tuple.getT2());
+                services.put("user", tuple.getT3());
+                services.put("auth", tuple.getT4());
+                services.put("email", tuple.getT5());
 
                 // API Gateway (self) is always UP
                 Map<String, Object> gateway = new HashMap<>();
                 gateway.put("status", "UP");
                 gateway.put("port", 8080);
-                gateway.put("version", "1.0.0");
+                gateway.put("version", "3.1.0");
                 services.put("gateway", gateway);
 
                 response.put("services", services);
@@ -77,12 +83,12 @@ public class HealthCheckController {
                 }
 
                 response.put("frontend", Map.of(
-                    "version", "1.8.0",
+                    "version", "2.12.1",
                     "status", "UP"
                 ));
 
-                LoggerUtil.info(logger, "HEALTH_002", "Health check complete",
-                    Map.of("services", services.size(), "upCount", upCount));
+                LoggerUtil.info(logger, "HEALTH_002", "Health check complete - 6 services",
+                    Map.of("total", services.size(), "upCount", upCount));
 
                 return ResponseEntity.ok(response);
             })

@@ -33,10 +33,16 @@ const Status = () => {
 
     // Default service list (always shown, even if backend is down)
     const defaultServices: ServiceStatus[] = [
-      { name: 'Service Discovery (Eureka)', url: '', port: 8761, status: 'UNKNOWN', version: '1.0.0' },
-      { name: 'Config Server', url: '', port: 8888, status: 'UNKNOWN', version: '1.0.0' },
-      { name: 'API Gateway', url: '', port: 8080, status: 'UNKNOWN', version: '1.0.0' },
-      { name: 'Frontend (Shell)', url: '', port: 3000, status: 'UP', version: '1.8.0' },
+      // Infrastructure Services
+      { name: 'Service Discovery (Eureka)', url: '', port: 8761, status: 'UNKNOWN', version: '3.1.0' },
+      { name: 'Config Server', url: '', port: 8888, status: 'UNKNOWN', version: '3.1.0' },
+      { name: 'API Gateway', url: '', port: 8080, status: 'UNKNOWN', version: '3.1.0' },
+      // Business Services
+      { name: 'User Service (PostgreSQL)', url: '', port: 8081, status: 'UNKNOWN', version: '3.1.0' },
+      { name: 'Auth Service (JWT)', url: '', port: 8082, status: 'UNKNOWN', version: '3.1.0' },
+      { name: 'Email Service (SMTP)', url: '', port: 8084, status: 'UNKNOWN', version: '3.1.0' },
+      // Frontend
+      { name: 'Frontend (Shell)', url: '', port: 3000, status: 'UP', version: '2.12.1' },
     ]
 
     try {
@@ -49,16 +55,25 @@ const Status = () => {
       if (response.ok) {
         const data = await response.json()
 
-        // Update services with real data
+        // Update services with real data from backend
         const updatedServices = defaultServices.map(service => {
-          if (service.name.includes('Eureka') && data.services.eureka) {
+          if (service.name.includes('Eureka') && data.services?.eureka) {
             return { ...service, status: data.services.eureka.status, version: data.services.eureka.version }
           }
-          if (service.name.includes('Config') && data.services.config) {
+          if (service.name.includes('Config') && data.services?.config) {
             return { ...service, status: data.services.config.status, version: data.services.config.version }
           }
-          if (service.name.includes('Gateway') && data.services.gateway) {
+          if (service.name.includes('Gateway') && data.services?.gateway) {
             return { ...service, status: data.services.gateway.status, version: data.services.gateway.version }
+          }
+          if (service.name.includes('User Service') && data.services?.user) {
+            return { ...service, status: data.services.user.status, version: data.services.user.version }
+          }
+          if (service.name.includes('Auth Service') && data.services?.auth) {
+            return { ...service, status: data.services.auth.status, version: data.services.auth.version }
+          }
+          if (service.name.includes('Email Service') && data.services?.email) {
+            return { ...service, status: data.services.email.status, version: data.services.email.version }
           }
           if (service.name.includes('Frontend') && data.frontend) {
             return { ...service, status: data.frontend.status, version: data.frontend.version }
@@ -98,8 +113,8 @@ const Status = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) // Empty dependency - only run once
 
-  const backendServices = services.slice(0, 3) // First 3 are backend
-  const frontendServices = services.slice(3)  // Rest are frontend
+  const backendServices = services.slice(0, 6) // First 6 are backend
+  const frontendServices = services.slice(6)  // Last is frontend
 
   const healthyCount = services.filter(s => s.status === 'UP').length
   const overallStatus = healthyCount === services.length ? 'operational'
@@ -135,7 +150,7 @@ const Status = () => {
                 {healthyCount} / {services.length} Online
               </p>
               <p className="text-black/60">
-                Backend v1.0.3-SNAPSHOT | Frontend v1.8.0
+                Backend v3.1.0 | Frontend v2.12.1
               </p>
             </div>
           </div>
