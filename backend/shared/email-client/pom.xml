@@ -29,6 +29,7 @@
         <dependency>
             <groupId>com.eckertpreisser</groupId>
             <artifactId>config-client</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <!-- Common Utils (LoggerUtil) -->
