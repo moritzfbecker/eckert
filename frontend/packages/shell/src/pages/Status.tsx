@@ -46,8 +46,12 @@ const Status = () => {
     ]
 
     try {
-      // Call API Gateway health endpoint (goes through Vite proxy)
-      const response = await fetch('/api/health/services', {
+      // Get base path (for subpath deployments like /development)
+      const basePath = import.meta.env.BASE_URL || '/'
+      const apiPath = basePath === '/' ? '/api/health/services' : `${basePath}api/health/services`
+
+      // Call API Gateway health endpoint
+      const response = await fetch(apiPath, {
         method: 'GET',
         headers: { 'Accept': 'application/json' },
       })
