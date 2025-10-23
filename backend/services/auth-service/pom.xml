@@ -14,7 +14,7 @@
 
     <artifactId>auth-service</artifactId>
     <name>Auth Service</name>
-    <description>Authentication Microservice - JWT Token Management & User Authentication</description>
+    <description>Authentication Microservice - JWT Token Management and User Authentication</description>
 
     <dependencies>
         <!-- Spring Boot Web -->
