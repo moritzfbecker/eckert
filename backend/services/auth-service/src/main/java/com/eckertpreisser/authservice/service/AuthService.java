@@ -1,11 +1,11 @@
 package com.eckertpreisser.authservice.service;
 
-import com.eckertpreisser.authservice.client.EmailServiceClient;
 import com.eckertpreisser.authservice.client.UserServiceClient;
 import com.eckertpreisser.authservice.dto.*;
 import com.eckertpreisser.common.models.exception.ValidationException;
 import com.eckertpreisser.common.security.JwtUtils;
 import com.eckertpreisser.common.utils.LoggerUtil;
+import com.eckertpreisser.email.client.EmailClient;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * This service does NOT have a database - it coordinates between:
  * - user-service (user data via REST API)
- * - email-service (emails via REST API)
+ * - email-service (emails via shared EmailClient)
  * - JwtUtils (JWT token operations)
  * - BCrypt (password hashing)
  *
@@ -42,7 +42,7 @@ public class AuthService {
     private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
     private final UserServiceClient userServiceClient;
-    private final EmailServiceClient emailServiceClient;
+    private final EmailClient emailClient;  // Shared EmailClient!
     private final PasswordEncoder passwordEncoder;
 
     // In-memory token storage (use Redis in production!)
@@ -72,10 +72,10 @@ public class AuthService {
         String verificationToken = generateToken();
         verificationTokens.put(verificationToken, user.getEmail());
 
-        // Send emails with user's language (Config API v2.0!)
+        // Send emails with user's language (via shared EmailClient!)
         String language = user.getLanguage() != null ? user.getLanguage() : "de";
-        emailServiceClient.sendWelcomeEmail(user.getEmail(), user.getFirstName(), language);
-        emailServiceClient.sendVerificationEmail(user.getEmail(), verificationToken, language);
+        emailClient.sendWelcomeEmail(user.getEmail(), user.getFirstName(), language);
+        emailClient.sendVerificationEmail(user.getEmail(), verificationToken, language);
 
         LoggerUtil.info(logger, "AUTH_012", "User registered successfully",
                 Map.of("email", user.getEmail(), "userId", user.getId()));
@@ -182,9 +182,9 @@ public class AuthService {
         String resetToken = generateToken();
         resetTokens.put(resetToken, user.getEmail());
 
-        // Send email with user's language (Config API v2.0!)
+        // Send email with user's language (via shared EmailClient!)
         String language = user.getLanguage() != null ? user.getLanguage() : "de";
-        emailServiceClient.sendPasswordResetEmail(user.getEmail(), resetToken, language);
+        emailClient.sendPasswordResetEmail(user.getEmail(), resetToken, language);
 
         LoggerUtil.info(logger, "AUTH_020", "Password reset email sent", Map.of("email", user.getEmail()));
     }

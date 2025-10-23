@@ -32,6 +32,7 @@
         <module>shared/common-utils</module>
         <module>shared/security-config</module>
         <module>shared/config-client</module>
+        <module>shared/email-client</module>
     </modules>
 
     <properties>
@@ -72,6 +73,11 @@
             <dependency>
                 <groupId>com.eckertpreisser</groupId>
                 <artifactId>config-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.eckertpreisser</groupId>
+                <artifactId>email-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

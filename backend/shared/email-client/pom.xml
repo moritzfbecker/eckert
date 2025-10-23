@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.eckertpreisser</groupId>
+        <artifactId>eckert-enterprise-backend</artifactId>
+        <version>3.1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>email-client</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Email Client</name>
+    <description>Shared email client for all microservices - Generic Email API</description>
+
+    <dependencies>
+        <!-- Spring Boot Starter Web (for RestTemplate) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Config Client (for loading email templates) -->
+        <dependency>
+            <groupId>com.eckertpreisser</groupId>
+            <artifactId>config-client</artifactId>
+        </dependency>
+
+        <!-- Common Utils (LoggerUtil) -->
+        <dependency>
+            <groupId>com.eckertpreisser</groupId>
+            <artifactId>common-utils</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>
