@@ -30,7 +30,7 @@ services:
     depends_on:
       - service-discovery
     volumes:
-      - ../config:/app/config
+      - config-data:/app/config
     networks:
       - eckert-network
 
