@@ -1,19 +1,20 @@
 # Multi-stage Docker build for Frontend
-# Stage 1: Build React app with Vite
+# Stage 1: Build React app with Vite + pnpm
 FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Install pnpm (understands workspace:* syntax!)
-RUN npm install -g pnpm
+# Install pnpm (supports workspace:* protocol!)
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copy all files
-COPY package*.json pnpm-lock.yaml* ./
+# Copy workspace config and package files
+COPY pnpm-workspace.yaml ./
+COPY package.json ./
 COPY turbo.json ./
 COPY packages packages/
 
-# Install all dependencies with pnpm (workspace aware!)
-RUN pnpm install --frozen-lockfile || pnpm install
+# Install all dependencies with pnpm
+RUN pnpm install --no-frozen-lockfile
 
 # Build with Turborepo
 RUN pnpm run build
