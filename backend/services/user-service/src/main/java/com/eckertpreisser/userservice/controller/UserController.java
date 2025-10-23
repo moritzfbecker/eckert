@@ -14,32 +14,28 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
 /**
- * User Controller - RESTful CRUD API
+ * User REST Controller
  *
- * This controller provides CRUD operations for user management.
- * NO authentication endpoints - auth-service handles that!
+ * RESTful API for user management. NO authentication logic!
  *
  * Endpoints:
- * - POST   /api/users                      - Create user (called by auth-service)
- * - GET    /api/users/{id}                 - Get user by ID
- * - GET    /api/users/email/{email}        - Get user by email
- * - GET    /api/users                      - Get all users (admin)
- * - PUT    /api/users/{id}                 - Update user profile
- * - DELETE /api/users/{id}                 - Deactivate user (soft delete)
- * - PUT    /api/users/{id}/verify-email    - Mark email as verified
- * - PUT    /api/users/{id}/last-login      - Update last login timestamp
- * - PUT    /api/users/{id}/verification-token - Set verification token
- * - PUT    /api/users/{id}/password-reset-token - Set password reset token
- * - DELETE /api/users/{id}/password-reset-token - Clear password reset token
- * - GET    /api/users/exists/{email}       - Check if email exists
+ * - POST   /api/users              - Create user (called by auth-service)
+ * - GET    /api/users/{id}         - Get user by ID
+ * - GET    /api/users/email/{email} - Get user by email (auth-service)
+ * - GET    /api/users              - Get all users (admin)
+ * - PUT    /api/users/{id}         - Update user profile
+ * - PUT    /api/users/{id}/password - Update password (auth-service)
+ * - PUT    /api/users/{id}/email-verified - Set email verified (auth-service)
+ * - PUT    /api/users/{id}/last-login - Update last login (auth-service)
+ * - DELETE /api/users/{id}         - Deactivate user (soft delete)
+ * - GET    /api/users/email/exists/{email} - Check if email exists (auth-service)
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 3.0.0
+ * @version 3.1.0
  */
 @RestController
 @RequestMapping("/api/users")
@@ -52,12 +48,12 @@ public class UserController {
     /**
      * Create new user
      *
-     * Called by auth-service after successful registration
+     * Called by auth-service after password hashing
      * POST /api/users
      */
     @PostMapping
     public ResponseEntity<ApiResponse<UserDTO>> createUser(@Valid @RequestBody CreateUserRequest request) {
-        LoggerUtil.info(logger, "USER_API_001", "Create user request received",
+        LoggerUtil.info(logger, "USER_API_001", "Create user request",
                 Map.of("email", request.getEmail()));
 
         UserDTO user = userService.createUser(request);
@@ -69,7 +65,6 @@ public class UserController {
 
     /**
      * Get user by ID
-     *
      * GET /api/users/{id}
      */
     @GetMapping("/{id}")
@@ -101,7 +96,7 @@ public class UserController {
     /**
      * Get all users
      *
-     * Admin only - for user management
+     * Admin only
      * GET /api/users
      */
     @GetMapping
@@ -114,8 +109,7 @@ public class UserController {
     }
 
     /**
-     * Update user
-     *
+     * Update user profile
      * PUT /api/users/{id}
      */
     @PutMapping("/{id}")
@@ -131,34 +125,41 @@ public class UserController {
     }
 
     /**
-     * Deactivate user (soft delete)
+     * Update user password
      *
-     * DELETE /api/users/{id}
+     * Called by auth-service. Password must be ALREADY HASHED!
+     * PUT /api/users/{id}/password
      */
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<Void>> deactivateUser(@PathVariable Long id) {
-        LoggerUtil.info(logger, "USER_API_006", "Deactivate user request",
+    @PutMapping("/{id}/password")
+    public ResponseEntity<ApiResponse<UserDTO>> updatePassword(
+            @PathVariable Long id,
+            @RequestBody Map<String, String> request) {
+        LoggerUtil.info(logger, "USER_API_006", "Update password request",
                 Map.of("userId", id));
 
-        userService.deactivateUser(id);
+        String hashedPassword = request.get("password");
+        UserDTO user = userService.updatePassword(id, hashedPassword);
 
-        return ResponseEntity.ok(ApiResponse.success("User deactivated successfully", null));
+        return ResponseEntity.ok(ApiResponse.success("Password updated successfully", user));
     }
 
     /**
-     * Verify user email
+     * Set email verified status
      *
      * Called by auth-service after email verification
-     * PUT /api/users/{id}/verify-email
+     * PUT /api/users/{id}/email-verified
      */
-    @PutMapping("/{id}/verify-email")
-    public ResponseEntity<ApiResponse<Void>> verifyEmail(@PathVariable Long id) {
-        LoggerUtil.info(logger, "USER_API_007", "Verify email request",
-                Map.of("userId", id));
+    @PutMapping("/{id}/email-verified")
+    public ResponseEntity<ApiResponse<UserDTO>> setEmailVerified(
+            @PathVariable Long id,
+            @RequestBody Map<String, Boolean> request) {
+        LoggerUtil.info(logger, "USER_API_007", "Set email verified request",
+                Map.of("userId", id, "verified", request.get("verified")));
 
-        userService.verifyEmail(id);
+        boolean verified = request.getOrDefault("verified", true);
+        UserDTO user = userService.setEmailVerified(id, verified);
 
-        return ResponseEntity.ok(ApiResponse.success("Email verified successfully", null));
+        return ResponseEntity.ok(ApiResponse.success("Email verification status updated", user));
     }
 
     /**
@@ -178,74 +179,28 @@ public class UserController {
     }
 
     /**
-     * Set verification token
-     *
-     * Called by auth-service to store email verification token
-     * PUT /api/users/{id}/verification-token
+     * Deactivate user (soft delete)
+     * DELETE /api/users/{id}
      */
-    @PutMapping("/{id}/verification-token")
-    public ResponseEntity<ApiResponse<Void>> setVerificationToken(
-            @PathVariable Long id,
-            @RequestBody Map<String, String> request) {
-        LoggerUtil.debug(logger, "USER_API_009", "Set verification token request",
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<Void>> deactivateUser(@PathVariable Long id) {
+        LoggerUtil.info(logger, "USER_API_009", "Deactivate user request",
                 Map.of("userId", id));
 
-        String token = request.get("token");
-        String expiryStr = request.get("expiry");
-        LocalDateTime expiry = LocalDateTime.parse(expiryStr);
+        userService.deactivateUser(id);
 
-        userService.setVerificationToken(id, token, expiry);
-
-        return ResponseEntity.ok(ApiResponse.success("Verification token set", null));
-    }
-
-    /**
-     * Set password reset token
-     *
-     * Called by auth-service to store password reset token
-     * PUT /api/users/{id}/password-reset-token
-     */
-    @PutMapping("/{id}/password-reset-token")
-    public ResponseEntity<ApiResponse<Void>> setPasswordResetToken(
-            @PathVariable Long id,
-            @RequestBody Map<String, String> request) {
-        LoggerUtil.debug(logger, "USER_API_010", "Set password reset token request",
-                Map.of("userId", id));
-
-        String token = request.get("token");
-        String expiryStr = request.get("expiry");
-        LocalDateTime expiry = LocalDateTime.parse(expiryStr);
-
-        userService.setPasswordResetToken(id, token, expiry);
-
-        return ResponseEntity.ok(ApiResponse.success("Password reset token set", null));
-    }
-
-    /**
-     * Clear password reset token
-     *
-     * Called by auth-service after successful password reset
-     * DELETE /api/users/{id}/password-reset-token
-     */
-    @DeleteMapping("/{id}/password-reset-token")
-    public ResponseEntity<ApiResponse<Void>> clearPasswordResetToken(@PathVariable Long id) {
-        LoggerUtil.debug(logger, "USER_API_011", "Clear password reset token request",
-                Map.of("userId", id));
-
-        userService.clearPasswordResetToken(id);
-
-        return ResponseEntity.ok(ApiResponse.success("Password reset token cleared", null));
+        return ResponseEntity.ok(ApiResponse.success("User deactivated successfully", null));
     }
 
     /**
      * Check if email exists
      *
      * Called by auth-service during registration validation
-     * GET /api/users/exists/{email}
+     * GET /api/users/email/exists/{email}
      */
-    @GetMapping("/exists/{email}")
+    @GetMapping("/email/exists/{email}")
     public ResponseEntity<ApiResponse<Boolean>> emailExists(@PathVariable String email) {
-        LoggerUtil.debug(logger, "USER_API_012", "Check email exists request",
+        LoggerUtil.debug(logger, "USER_API_010", "Check email exists request",
                 Map.of("email", email));
 
         boolean exists = userService.emailExists(email);

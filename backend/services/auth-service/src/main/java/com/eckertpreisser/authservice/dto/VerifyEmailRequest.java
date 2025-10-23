@@ -7,10 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Request DTO for email verification
+ * Verify Email Request DTO
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
@@ -18,6 +18,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class VerifyEmailRequest {
 
-    @NotBlank(message = "Verification token is required")
+    @NotBlank(message = "Token is required")
     private String token;
 }

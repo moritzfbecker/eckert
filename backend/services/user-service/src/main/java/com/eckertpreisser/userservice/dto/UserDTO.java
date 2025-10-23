@@ -8,13 +8,12 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- * User DTO
+ * User DTO - Data Transfer Object
  *
- * User response object (NO password field!)
- * Used for all user-related API responses
+ * Used for API responses. Does NOT include password field for security!
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 3.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
@@ -30,13 +29,7 @@ public class UserDTO {
     private Boolean active;
     private String language;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
     private LocalDateTime lastLoginAt;
 
-    /**
-     * Get full name
-     */
-    public String getFullName() {
-        return firstName + " " + lastName;
-    }
+    // Password is NEVER included in DTO for security!
 }

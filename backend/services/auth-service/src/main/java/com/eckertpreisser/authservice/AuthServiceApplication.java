@@ -7,27 +7,20 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * Auth Service Application
  *
- * Authentication microservice responsible for:
- * - User registration and login
- * - JWT token generation and validation
- * - Email verification
- * - Password reset
+ * Microservice for authentication (JWT token management & user authentication).
+ * Orchestrates between user-service and email-service.
  *
- * Architecture:
- * - NO database - calls user-service API for user data
- * - Uses JwtUtils from security-config for JWT operations
- * - Calls email-service API for email notifications
- * - Uses BCrypt for password encoding
+ * NO database - stateless service using REST API calls!
  *
- * Service-to-Service Communication:
- * - user-service (http://user-service:8081/api/users)
- * - email-service (http://email-service:8084/api/email)
+ * Port: 8082
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
- * @since 1.0.0
+ * @version 3.1.0
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {
+        "com.eckertpreisser.authservice",
+        "com.eckertpreisser.common"
+})
 @EnableDiscoveryClient
 public class AuthServiceApplication {
 

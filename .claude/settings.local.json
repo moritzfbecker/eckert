@@ -44,7 +44,16 @@
       "Bash(del MAVEN_FIX.md)",
       "Bash(del SESSION_OVERVIEW_V2.md)",
       "Bash(move \"C:\\Users\\morit\\IdeaProjects\\Eckert Enterprise\\config_concept_de.properties\" \"C:\\Users\\morit\\IdeaProjects\\Eckert Enterprise\\docs\\config-templates\\concept_de.properties\")",
-      "Bash(cmd /c:*)"
+      "Bash(cmd /c:*)",
+      "Bash(rd /s /q user-service)",
+      "Bash(rd /s /q auth-service)",
+      "Bash(rm:*)",
+      "Bash(mvn clean install:*)",
+      "Bash(for dir in common-models common-utils config-client security-config)",
+      "Bash(do powershell -Command \"(Get-Content -Path ''$dir/pom.xml'' -Raw) -replace ''3.0.0-SNAPSHOT'',''3.1.0-SNAPSHOT'' | Set-Content -Path ''$dir/pom.xml''\")",
+      "Bash(done)",
+      "Bash(for:*)",
+      "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''3.0.0-SNAPSHOT'',''3.1.0-SNAPSHOT'' | Set-Content -Path ''$file''\")"
     ],
     "deny": [],
     "ask": []

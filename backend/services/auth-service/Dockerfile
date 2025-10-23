@@ -1,38 +1,34 @@
-# Dockerfile for Auth Service
-# Eckert Preisser Enterprise Backend
-# Multi-stage build for optimized production image
+# Multi-stage Docker build for auth-service
+FROM maven:3.9.9-eclipse-temurin-21-alpine AS build
 
-# Stage 1: Build
-FROM maven:3.9-eclipse-temurin-21-alpine AS build
 WORKDIR /app
 
-# Copy entire project
-COPY . .
+# Copy parent pom and all modules
+COPY pom.xml .
+COPY shared shared/
+COPY service-discovery service-discovery/
+COPY config-server config-server/
+COPY api-gateway api-gateway/
+COPY services/auth-service services/auth-service/
 
-# Build everything (Maven reactor handles dependencies)
-RUN mvn clean install -DskipTests
+# Build the application
+RUN mvn clean install -DskipTests -pl services/auth-service -am
 
-# Stage 2: Runtime
+# Runtime stage
 FROM eclipse-temurin:21-jre-alpine
+
 WORKDIR /app
 
-# Create non-root user for security
+# Copy the built JAR from build stage
+COPY --from=build /app/services/auth-service/target/auth-service-*.jar app.jar
+
+# Create logs directory
+RUN mkdir -p /app/logs
+
+# Run as non-root user
 RUN addgroup -S spring && adduser -S spring -G spring
-
-# Create config directory with proper permissions
-RUN mkdir -p /app/config && chown -R spring:spring /app/config
-
 USER spring:spring
 
-# Copy JAR from build stage
-COPY --from=build /app/services/auth-service/target/*.jar app.jar
-
-# Expose port
 EXPOSE 8082
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:8082/actuator/health || exit 1
-
-# Run application
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

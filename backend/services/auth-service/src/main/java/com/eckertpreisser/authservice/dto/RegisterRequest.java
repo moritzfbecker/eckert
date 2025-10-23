@@ -9,10 +9,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Request DTO for user registration
+ * Register Request DTO
+ *
+ * Used when user registers. auth-service will hash password before sending to user-service.
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
@@ -20,17 +22,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RegisterRequest {
 
+    @NotBlank(message = "First name is required")
+    @Size(min = 2, max = 50)
+    private String firstName;
+
+    @NotBlank(message = "Last name is required")
+    @Size(min = 2, max = 50)
+    private String lastName;
+
     @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
+    @Email(message = "Email must be valid")
     private String email;
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters")
-    private String password;
-
-    @NotBlank(message = "First name is required")
-    private String firstName;
-
-    @NotBlank(message = "Last name is required")
-    private String lastName;
+    private String password; // Plain text - will be hashed by auth-service!
 }

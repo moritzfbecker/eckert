@@ -9,9 +9,11 @@ import java.util.Optional;
 /**
  * User Repository
  *
- * Data access layer for User entity
+ * Spring Data JPA repository for User entity.
+ * NO business logic here - keep it simple!
  *
- * @author Moritz F. Becker
+ * @author Moritz F. Becker - Helped by Claude AI
+ * @version 3.1.0
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -22,17 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
     /**
-     * Check if user exists by email
+     * Check if email exists
      */
     boolean existsByEmail(String email);
-
-    /**
-     * Find user by verification token
-     */
-    Optional<User> findByVerificationToken(String token);
-
-    /**
-     * Find user by password reset token
-     */
-    Optional<User> findByPasswordResetToken(String token);
 }

@@ -8,10 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Request DTO for forgot password
+ * Forgot Password Request DTO
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
@@ -20,6 +20,6 @@ import lombok.NoArgsConstructor;
 public class ForgotPasswordRequest {
 
     @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
+    @Email(message = "Email must be valid")
     private String email;
 }

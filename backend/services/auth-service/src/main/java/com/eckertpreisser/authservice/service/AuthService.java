@@ -1,7 +1,9 @@
 package com.eckertpreisser.authservice.service;
 
+import com.eckertpreisser.authservice.client.EmailServiceClient;
+import com.eckertpreisser.authservice.client.UserServiceClient;
 import com.eckertpreisser.authservice.dto.*;
-import com.eckertpreisser.common.models.exception.ValidationException;
+import com.eckertpreisser.common.exception.ValidationException;
 import com.eckertpreisser.common.security.JwtUtils;
 import com.eckertpreisser.common.utils.LoggerUtil;
 import lombok.RequiredArgsConstructor;
@@ -19,19 +21,19 @@ import java.util.concurrent.ConcurrentHashMap;
  * Authentication Service
  *
  * Main business logic for authentication:
- * - User registration and login
- * - JWT token generation and refresh
+ * - User registration & login
+ * - JWT token generation & refresh
  * - Email verification
  * - Password reset
  *
  * This service does NOT have a database - it coordinates between:
  * - user-service (user data via REST API)
- * - email-service (email notifications via REST API)
+ * - email-service (emails via REST API)
  * - JwtUtils (JWT token operations)
- * - BCrypt (password encoding)
+ * - BCrypt (password hashing)
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
+ * @version 3.1.0
  */
 @Service
 @RequiredArgsConstructor
@@ -43,70 +45,72 @@ public class AuthService {
     private final EmailServiceClient emailServiceClient;
     private final PasswordEncoder passwordEncoder;
 
-    // In-memory token storage (in production, use Redis or database)
+    // In-memory token storage (use Redis in production!)
     private final Map<String, String> verificationTokens = new ConcurrentHashMap<>();
     private final Map<String, String> resetTokens = new ConcurrentHashMap<>();
     private final Map<String, Long> invalidatedTokens = new ConcurrentHashMap<>();
 
     /**
-     * Register a new user
+     * Register new user
      */
     public UserDTO register(RegisterRequest request) {
-        LoggerUtil.info(logger, "AUTH_017", "Registering new user", Map.of("email", request.getEmail()));
+        LoggerUtil.info(logger, "AUTH_010", "Registering new user", Map.of("email", request.getEmail()));
 
-        // Hash password using BCrypt
+        // Hash password with BCrypt
         String hashedPassword = passwordEncoder.encode(request.getPassword());
-        LoggerUtil.debug(logger, "AUTH_018", "Password hashed successfully");
+        LoggerUtil.debug(logger, "AUTH_011", "Password hashed successfully");
 
-        // Create request with hashed password
-        RegisterRequest hashedRequest = RegisterRequest.builder()
-                .email(request.getEmail())
-                .password(hashedPassword)
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
-                .build();
-
-        // Create user via user-service API
-        UserDTO user = userServiceClient.createUser(hashedRequest);
+        // Create user via user-service
+        UserDTO user = userServiceClient.createUser(
+                request.getFirstName(),
+                request.getLastName(),
+                request.getEmail(),
+                hashedPassword
+        );
 
         // Generate verification token
         String verificationToken = generateToken();
         verificationTokens.put(verificationToken, user.getEmail());
 
-        // Send welcome and verification emails
+        // Send emails
         emailServiceClient.sendWelcomeEmail(user.getEmail(), user.getFirstName());
         emailServiceClient.sendVerificationEmail(user.getEmail(), verificationToken);
 
-        LoggerUtil.info(logger, "AUTH_019", "User registered successfully", Map.of("email", user.getEmail(), "userId", user.getId()));
+        LoggerUtil.info(logger, "AUTH_012", "User registered successfully",
+                Map.of("email", user.getEmail(), "userId", user.getId()));
 
         return user;
     }
 
     /**
-     * Login user and generate JWT token
+     * Login user and generate JWT
      */
     public LoginResponse login(LoginRequest request) {
-        LoggerUtil.info(logger, "AUTH_020", "User login attempt", Map.of("email", request.getEmail()));
+        LoggerUtil.info(logger, "AUTH_013", "User login attempt", Map.of("email", request.getEmail()));
 
-        // Find user via user-service API
+        // Find user
         UserDTO user = userServiceClient.findByEmail(request.getEmail());
 
-        // Verify password using BCrypt
+        // Verify password
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             LoggerUtil.warn(logger, "AUTH_ERR_401_001", "Invalid password", Map.of("email", request.getEmail()));
             throw new ValidationException("AUTH_ERR_401_001", "Invalid email or password");
         }
 
-        // Check if user is active
-        if (!user.isActive()) {
-            LoggerUtil.warn(logger, "AUTH_ERR_403_001", "User account is inactive", Map.of("email", request.getEmail()));
+        // Check if active
+        if (!user.getActive()) {
+            LoggerUtil.warn(logger, "AUTH_ERR_403_001", "User account inactive", Map.of("email", request.getEmail()));
             throw new ValidationException("AUTH_ERR_403_001", "Account is inactive");
         }
 
-        // Generate JWT token using JwtUtils
+        // Generate JWT
         String token = JwtUtils.generateToken(user.getEmail());
 
-        LoggerUtil.info(logger, "AUTH_021", "User logged in successfully", Map.of("email", user.getEmail(), "userId", user.getId()));
+        // Update last login
+        userServiceClient.updateLastLogin(user.getId());
+
+        LoggerUtil.info(logger, "AUTH_014", "User logged in successfully",
+                Map.of("email", user.getEmail(), "userId", user.getId()));
 
         return LoginResponse.of(token, user);
     }
@@ -115,32 +119,25 @@ public class AuthService {
      * Refresh JWT token
      */
     public LoginResponse refreshToken(RefreshTokenRequest request) {
-        LoggerUtil.info(logger, "AUTH_022", "Refreshing JWT token");
+        LoggerUtil.debug(logger, "AUTH_015", "Refreshing token");
 
         try {
-            // Check if token is invalidated (logged out)
+            // Check if invalidated
             if (invalidatedTokens.containsKey(request.getToken())) {
-                LoggerUtil.warn(logger, "AUTH_ERR_401_002", "Token has been invalidated");
                 throw new ValidationException("AUTH_ERR_401_002", "Token has been invalidated");
             }
 
-            // Extract username from token
+            // Extract & validate
             String email = JwtUtils.extractUsername(request.getToken());
-
-            // Validate token
             if (!JwtUtils.isTokenValid(request.getToken(), email)) {
-                LoggerUtil.warn(logger, "AUTH_ERR_401_003", "Invalid token", Map.of("email", email));
                 throw new ValidationException("AUTH_ERR_401_003", "Invalid or expired token");
             }
 
-            // Find user
+            // Find user & generate new token
             UserDTO user = userServiceClient.findByEmail(email);
-
-            // Generate new token
             String newToken = JwtUtils.generateToken(user.getEmail());
 
-            LoggerUtil.info(logger, "AUTH_023", "Token refreshed successfully", Map.of("email", user.getEmail()));
-
+            LoggerUtil.debug(logger, "AUTH_016", "Token refreshed successfully");
             return LoginResponse.of(newToken, user);
 
         } catch (Exception e) {
@@ -153,7 +150,7 @@ public class AuthService {
      * Verify email with token
      */
     public void verifyEmail(VerifyEmailRequest request) {
-        LoggerUtil.info(logger, "AUTH_024", "Verifying email");
+        LoggerUtil.info(logger, "AUTH_017", "Verifying email");
 
         String email = verificationTokens.get(request.getToken());
         if (email == null) {
@@ -161,39 +158,40 @@ public class AuthService {
             throw new ValidationException("AUTH_ERR_400_005", "Invalid or expired verification token");
         }
 
-        // Verify email via user-service API
-        userServiceClient.verifyEmail(email);
+        // Get user & verify
+        UserDTO user = userServiceClient.findByEmail(email);
+        userServiceClient.setEmailVerified(user.getId());
 
         // Remove used token
         verificationTokens.remove(request.getToken());
 
-        LoggerUtil.info(logger, "AUTH_025", "Email verified successfully", Map.of("email", email));
+        LoggerUtil.info(logger, "AUTH_018", "Email verified successfully", Map.of("email", email));
     }
 
     /**
      * Request password reset
      */
     public void forgotPassword(ForgotPasswordRequest request) {
-        LoggerUtil.info(logger, "AUTH_026", "Password reset requested", Map.of("email", request.getEmail()));
+        LoggerUtil.info(logger, "AUTH_019", "Password reset requested", Map.of("email", request.getEmail()));
 
-        // Find user to verify email exists
+        // Find user
         UserDTO user = userServiceClient.findByEmail(request.getEmail());
 
         // Generate reset token
         String resetToken = generateToken();
         resetTokens.put(resetToken, user.getEmail());
 
-        // Send password reset email
+        // Send email
         emailServiceClient.sendPasswordResetEmail(user.getEmail(), resetToken);
 
-        LoggerUtil.info(logger, "AUTH_027", "Password reset email sent", Map.of("email", user.getEmail()));
+        LoggerUtil.info(logger, "AUTH_020", "Password reset email sent", Map.of("email", user.getEmail()));
     }
 
     /**
      * Reset password with token
      */
     public void resetPassword(ResetPasswordRequest request) {
-        LoggerUtil.info(logger, "AUTH_028", "Resetting password");
+        LoggerUtil.info(logger, "AUTH_021", "Resetting password");
 
         String email = resetTokens.get(request.getToken());
         if (email == null) {
@@ -204,35 +202,32 @@ public class AuthService {
         // Hash new password
         String hashedPassword = passwordEncoder.encode(request.getNewPassword());
 
-        // Update password via user-service API
-        userServiceClient.updatePassword(email, hashedPassword);
+        // Update password
+        UserDTO user = userServiceClient.findByEmail(email);
+        userServiceClient.updatePassword(user.getId(), hashedPassword);
 
         // Remove used token
         resetTokens.remove(request.getToken());
 
-        LoggerUtil.info(logger, "AUTH_029", "Password reset successfully", Map.of("email", email));
+        LoggerUtil.info(logger, "AUTH_022", "Password reset successfully", Map.of("email", email));
     }
 
     /**
-     * Get current user from JWT token
+     * Get current user from JWT
      */
-    public UserDTO getCurrentUser(String token) {
-        LoggerUtil.info(logger, "AUTH_030", "Getting current user from token");
+    public UserDTO getCurrentUser(String authHeader) {
+        LoggerUtil.debug(logger, "AUTH_023", "Getting current user from token");
 
         try {
-            // Extract email from token
-            String email = JwtUtils.extractUsername(token.replace("Bearer ", ""));
+            String token = authHeader.replace("Bearer ", "");
+            String email = JwtUtils.extractUsername(token);
 
-            // Validate token
-            if (!JwtUtils.isTokenValid(token.replace("Bearer ", ""), email)) {
-                LoggerUtil.warn(logger, "AUTH_ERR_401_005", "Invalid token", Map.of("email", email));
+            if (!JwtUtils.isTokenValid(token, email)) {
                 throw new ValidationException("AUTH_ERR_401_005", "Invalid or expired token");
             }
 
-            // Find user
             UserDTO user = userServiceClient.findByEmail(email);
-
-            LoggerUtil.info(logger, "AUTH_031", "Current user retrieved successfully", Map.of("email", user.getEmail()));
+            LoggerUtil.debug(logger, "AUTH_024", "Current user retrieved", Map.of("email", user.getEmail()));
 
             return user;
 
@@ -245,15 +240,13 @@ public class AuthService {
     /**
      * Logout user (invalidate token)
      */
-    public void logout(String token) {
-        LoggerUtil.info(logger, "AUTH_032", "Logging out user");
+    public void logout(String authHeader) {
+        LoggerUtil.debug(logger, "AUTH_025", "Logging out user");
 
-        String cleanToken = token.replace("Bearer ", "");
+        String token = authHeader.replace("Bearer ", "");
+        invalidatedTokens.put(token, System.currentTimeMillis());
 
-        // Add token to invalidated list
-        invalidatedTokens.put(cleanToken, System.currentTimeMillis());
-
-        LoggerUtil.info(logger, "AUTH_033", "User logged out successfully");
+        LoggerUtil.debug(logger, "AUTH_026", "User logged out successfully");
     }
 
     /**

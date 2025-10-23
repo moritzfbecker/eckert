@@ -8,10 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Request DTO for user login
+ * Login Request DTO
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class LoginRequest {
 
     @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
+    @Email(message = "Email must be valid")
     private String email;
 
     @NotBlank(message = "Password is required")

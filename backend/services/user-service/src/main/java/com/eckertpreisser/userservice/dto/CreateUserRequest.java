@@ -11,11 +11,10 @@ import lombok.NoArgsConstructor;
 /**
  * Create User Request DTO
  *
- * Used by auth-service to create a new user after successful registration
- * NO password field - auth-service manages passwords separately
+ * Used when creating a new user. Password must be ALREADY HASHED by auth-service!
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 3.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
@@ -35,8 +34,10 @@ public class CreateUserRequest {
     @Email(message = "Email must be valid")
     private String email;
 
-    @Size(max = 20, message = "Role must be max 20 characters")
-    private String role; // Optional, defaults to USER
+    @NotBlank(message = "Password is required")
+    private String password; // MUST BE HASHED by caller (auth-service)!
 
-    private String language; // Optional, defaults to "de"
+    private String role; // Optional - defaults to USER
+
+    private String language; // Optional - defaults to de
 }

@@ -5,23 +5,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 /**
- * User DTO received from user-service
+ * User DTO
+ *
+ * Copy of UserDTO from user-service for auth-service use.
+ * Returned from user-service API calls.
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-
     private Long id;
-    private String email;
-    private String password;
     private String firstName;
     private String lastName;
-    private boolean emailVerified;
-    private boolean active;
+    private String email;
+    private String password; // Hashed password - needed for login validation
+    private String role;
+    private Boolean emailVerified;
+    private Boolean active;
+    private String language;
+    private LocalDateTime createdAt;
+    private LocalDateTime lastLoginAt;
 }

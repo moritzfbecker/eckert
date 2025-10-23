@@ -13,16 +13,15 @@ import java.time.LocalDateTime;
 /**
  * User Entity
  *
- * Represents a user in the system - CRUD ONLY (NO password field!)
- * Password management is handled by auth-service
+ * Stores user data in database. Password is hashed by auth-service before saving.
+ * This service does NOT perform authentication - only CRUD operations!
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 3.0.0
+ * @version 3.1.0
  */
 @Entity
 @Table(name = "users", indexes = {
-        @Index(name = "idx_email", columnList = "email", unique = true),
-        @Index(name = "idx_verification_token", columnList = "verificationToken")
+        @Index(name = "idx_email", columnList = "email", unique = true)
 })
 @Data
 @Builder
@@ -44,24 +43,15 @@ public class User {
     private String email;
 
     @Column(nullable = false)
+    private String password; // ALWAYS hashed - never store plain text!
+
+    @Column(nullable = false)
     @Builder.Default
-    private String role = "USER"; // USER, ADMIN, etc.
+    private String role = "USER"; // USER, ADMIN
 
     @Column(nullable = false)
     @Builder.Default
     private Boolean emailVerified = false;
-
-    @Column
-    private String verificationToken;
-
-    @Column
-    private LocalDateTime verificationTokenExpiry;
-
-    @Column
-    private String passwordResetToken;
-
-    @Column
-    private LocalDateTime passwordResetTokenExpiry;
 
     @Column(nullable = false)
     @Builder.Default

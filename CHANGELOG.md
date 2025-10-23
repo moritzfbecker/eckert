@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 3.1.0] - 2025-10-23
+
+### Added
+- **Complete Enterprise Auth System** - 3 Microservices rebuilt from scratch
+  - user-service: User CRUD with PostgreSQL (8 Java files, 12 endpoints)
+  - auth-service: JWT Authentication & Password Management (15 Java files, 8 endpoints)
+  - PostgreSQL database with persistent volume
+- **100% Guidelines Compliant** - LoggerUtil, Error Codes, ApiResponse, @Valid
+- **Clean Architecture** - Separation of concerns (CRUD vs Auth)
+- **Dockerfiles** - Production-ready multi-stage builds
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Complete Auth System
+
+---
+
 ## [Frontend 2.12.1] - 2025-10-22
 
 ### Changed

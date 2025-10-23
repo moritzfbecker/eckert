@@ -216,22 +216,43 @@
 #### Success Codes
 | Code | Description | Log Level |
 |------|-------------|-----------|
-| USER_001 | User created successfully | INFO |
-| USER_002 | User updated successfully | INFO |
-| USER_003 | User deleted successfully | INFO |
-| USER_004 | User authenticated successfully | INFO |
+| USER_001 | Creating new user | INFO |
+| USER_002 | User created successfully | INFO |
+| USER_003 | Getting user by ID | DEBUG |
+| USER_004 | Getting user by email | DEBUG |
+| USER_005 | Getting all users | INFO |
+| USER_006 | Updating user | INFO |
+| USER_007 | User updated successfully | INFO |
+| USER_008 | Updating password | INFO |
+| USER_009 | Password updated successfully | INFO |
+| USER_010 | Setting email verified status | INFO |
+| USER_011 | Email verified status updated | INFO |
+| USER_012 | Updating last login | DEBUG |
+| USER_013 | Deactivating user | INFO |
+| USER_014 | User deactivated | INFO |
+| USER_015 | Permanently deleting user | WARN |
+| USER_016 | User deleted permanently | INFO |
+
+#### API Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| USER_API_001 | Create user request | INFO |
+| USER_API_002 | Get user by ID request | DEBUG |
+| USER_API_003 | Get user by email request | DEBUG |
+| USER_API_004 | Get all users request | INFO |
+| USER_API_005 | Update user request | INFO |
+| USER_API_006 | Update password request | INFO |
+| USER_API_007 | Set email verified request | INFO |
+| USER_API_008 | Update last login request | DEBUG |
+| USER_API_009 | Deactivate user request | INFO |
+| USER_API_010 | Check email exists request | DEBUG |
 
 #### Error Codes
 | Code | Description | HTTP Status | Solution |
 |------|-------------|-------------|----------|
 | USER_ERR_404_001 | User not found | 404 | Check user ID |
-| USER_ERR_400_001 | Invalid email format | 400 | Provide valid email |
-| USER_ERR_400_002 | Password too weak | 400 | Use stronger password |
+| USER_ERR_404_002 | User not found with email | 404 | Check email address |
 | USER_ERR_409_001 | Email already exists | 409 | Use different email |
-| USER_ERR_401_001 | Invalid credentials | 401 | Check email and password |
-| USER_ERR_403_001 | Insufficient permissions | 403 | Contact administrator |
-| USER_ERR_BUS_001 | User account locked | 422 | Contact support |
-| USER_ERR_BUS_002 | Email verification required | 422 | Check your email |
 
 ### Auth Service (AUTH)
 
@@ -287,6 +308,26 @@
 | AUTH_047 | Current user retrieved via endpoint | INFO |
 | AUTH_048 | Logout endpoint called | INFO |
 | AUTH_049 | User logged out successfully via endpoint | INFO |
+
+#### API Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| AUTH_API_001 | Register endpoint called | INFO |
+| AUTH_API_002 | Login endpoint called | INFO |
+| AUTH_API_003 | Refresh token endpoint called | DEBUG |
+| AUTH_API_004 | Verify email endpoint called | INFO |
+| AUTH_API_005 | Forgot password endpoint called | INFO |
+| AUTH_API_006 | Reset password endpoint called | INFO |
+| AUTH_API_007 | Get current user endpoint called | DEBUG |
+| AUTH_API_008 | Logout endpoint called | DEBUG |
+
+#### Warning Codes
+| Code | Description | Action |
+|------|-------------|--------|
+| AUTH_WARN_001 | Failed to update last login | Non-critical - user still logged in |
+| AUTH_WARN_002 | Failed to send welcome email | Non-critical - registration still successful |
+| AUTH_WARN_003 | Failed to send verification email | Non-critical - can resend |
+| AUTH_WARN_004 | Failed to send password reset email | Non-critical - can retry |
 
 #### Error Codes
 | Code | Description | HTTP Status | Solution |

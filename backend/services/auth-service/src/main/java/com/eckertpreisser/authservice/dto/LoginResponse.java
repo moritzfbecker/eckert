@@ -6,33 +6,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Response DTO for successful login
- * Contains JWT token and user information
+ * Login Response DTO
+ *
+ * Contains JWT token and user info after successful login.
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 1.0.0
+ * @version 3.1.0
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponse {
-
     private String token;
-    private String type;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private Long userId;
+    private String tokenType = "Bearer";
+    private UserDTO user;
 
     public static LoginResponse of(String token, UserDTO user) {
         return LoginResponse.builder()
                 .token(token)
-                .type("Bearer")
-                .email(user.getEmail())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .userId(user.getId())
+                .tokenType("Bearer")
+                .user(user)
                 .build();
     }
 }
