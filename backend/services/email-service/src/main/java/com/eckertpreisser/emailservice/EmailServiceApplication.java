@@ -18,7 +18,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication(scanBasePackages = {
         "com.eckertpreisser.emailservice",
-        "com.eckertpreisser.common"
+        "com.eckertpreisser.common",
+        "com.eckertpreisser.config.client"  // ConfigClient v2.0!
 })
 @EnableDiscoveryClient
 public class EmailServiceApplication {
