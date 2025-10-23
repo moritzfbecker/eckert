@@ -1203,6 +1203,355 @@ config.get('home.title', 'Willkommen auf unserer Plattform')
 
 ---
 
+# Session Summary - 2025-10-23 (Session 6)
+
+## 🎯 Was wurde erreicht
+
+### Backend v3.1.0 - Complete Auth System Rebuild
+
+**3 Microservices komplett neu erstellt (von Grund auf!):**
+
+**1. user-service (Port 8081) - 12 Files:**
+- ✅ User.java Entity (firstName, lastName, email, password, role, emailVerified, active, language)
+- ✅ UserDTO, CreateUserRequest, UpdateUserRequest
+- ✅ UserRepository (Spring Data JPA)
+- ✅ UserService (16 Error Codes: USER_001-016, USER_API_001-010)
+- ✅ UserController (10 RESTful Endpoints)
+- ✅ SecurityConfig (minimal CORS)
+- ✅ application.yml (PostgreSQL config via ENV vars)
+- ✅ Dockerfile (multi-stage production build)
+
+**2. auth-service (Port 8082) - 17 Files:**
+- ✅ 7 DTOs (RegisterRequest, LoginRequest, LoginResponse, RefreshTokenRequest, VerifyEmailRequest, ForgotPasswordRequest, ResetPasswordRequest, UserDTO)
+- ✅ UserServiceClient (REST calls to user-service)
+- ✅ AuthService (BCrypt, JWT, Token storage, 26 Error Codes)
+- ✅ AuthController (8 RESTful Endpoints)
+- ✅ SecurityConfig (all /auth/** public, BCryptPasswordEncoder)
+- ✅ RestTemplateConfig
+- ✅ application.yml
+- ✅ Dockerfile
+
+**3. email-service (Port 8084) - 4 Files - GENERIC UTIL:**
+- ✅ EmailRequest (to, subject, body, html)
+- ✅ EmailService (JavaMailSender, ConfigClient for SMTP)
+- ✅ EmailController (POST /api/email/send)
+- ✅ Reusable wie Config Server - NO business logic!
+
+**4. shared/email-client/ - NEW Module:**
+- ✅ EmailClient.java (wie ConfigClient!)
+- ✅ Simple API: sendEmail(to, subject, body)
+- ✅ Templated API: sendTemplatedEmail(...) mit Config Server
+- ✅ Convenience methods: sendWelcomeEmail(), sendVerificationEmail(), sendPasswordResetEmail()
+- ✅ Für ALLE Services nutzbar!
+
+### Frontend v2.13.0 - Complete Auth System
+
+**Auth Infrastructure (7 neue Files):**
+- ✅ AuthContext.tsx - State management (user, token, login, logout)
+- ✅ authApi.ts - REST API client (8 endpoints)
+- ✅ Login.tsx - Modern split-screen design
+- ✅ Register.tsx - Split-screen mit 2-column name grid
+- ✅ Dashboard.tsx - Protected user dashboard
+- ✅ ProtectedRoute.tsx - Route protection wrapper
+- ✅ Updated Header - Account button ALWAYS visible, dropdown changes based on auth status
+
+**Features:**
+- ✅ JWT token storage in localStorage
+- ✅ Auto-login on page refresh
+- ✅ Protected routes (redirect to /login)
+- ✅ Logout clears token + calls backend
+- ✅ Header shows user.firstName when logged in
+- ✅ 100% Config API v2.0 (auth.login.*, auth.register.*, auth.dashboard.*)
+
+### Docker Deployment Setup - Production Ready
+
+**Frontend Deployment:**
+- ✅ Dockerfile (Node build + Nginx serve, pnpm for workspace support)
+- ✅ nginx.conf (React Router, API proxy, gzip, security headers)
+- ✅ pnpm-workspace.yaml (Turborepo monorepo)
+- ✅ Added to docker-compose.yml (Port 8090)
+
+**Backend Deployment:**
+- ✅ All services in docker-compose.yml
+- ✅ Disabled postgres/user/auth for initial deployment
+- ✅ Bind mount for config (/opt/eckert/config - SFTP accessible!)
+- ✅ Proper build order (shared modules first)
+
+**Documentation:**
+- ✅ DEPLOYMENT.md (complete deployment guide)
+- ✅ deploy.sh (automated deployment script)
+
+### Linux Server Deployment - LIVE!
+
+**Deployed to:** becker.limited/development
+
+**Services Running (5 containers):**
+1. ✅ service-discovery (Eureka) - 8761
+2. ✅ config-server - 8888
+3. ✅ api-gateway - 8080
+4. ✅ email-service - 8084
+5. ✅ frontend (React + Nginx) - 8090
+
+**Nginx Reverse Proxy:**
+- ✅ /development/ → localhost:8090 (Frontend)
+- ✅ /development/api/ → localhost:8080/api/ (Backend)
+
+**Result:**
+✅ Live Website: https://becker.limited/development
+✅ All pages working (Home, Concept, About, Contact, Legal)
+✅ Translations loading from Config Server
+✅ Language switching works (DE ↔ EN)
+✅ Modern Black/White design
+
+---
+
+## 🔧 Technical Fixes & Improvements
+
+### Import & Compilation Fixes:
+- ✅ Fixed wrong exception imports (common.exception → common.models.exception)
+- ✅ Fixed TypeScript unused variables (isLoading, error, updateTrigger)
+- ✅ Fixed TypeScript unused imports (useCallback, Section)
+- ✅ Added component scanning for config.client + email.client packages
+- ✅ Fixed Maven module build order (shared first!)
+- ✅ Fixed config-client missing source code on GitHub
+
+### Docker Fixes:
+- ✅ Frontend Dockerfile - pnpm for workspace:* support
+- ✅ Dockerfiles copy ALL services for Maven reactor
+- ✅ Port conflicts resolved (8090 instead of 80)
+- ✅ Config bind mount instead of volume (SFTP access!)
+- ✅ All TypeScript production build errors fixed
+
+### Config API v2.0 Integration:
+- ✅ email-service: SMTP via ConfigClient
+- ✅ auth-service: Email templates via ConfigClient
+- ✅ auth-service: Frontend URL via ConfigClient
+- ✅ All services have config-client dependency
+- ✅ Component scanning includes config.client package
+
+---
+
+## 📊 Statistics
+
+**Backend:**
+- Services rebuilt: 3 (user, auth, email)
+- New modules: 1 (email-client)
+- Total Java files: 44
+- Lines of code: ~2,500
+- Error codes added: 50+
+
+**Frontend:**
+- New files: 7 (auth system)
+- Lines of code: ~900
+- TypeScript fixes: 5
+- React components: 4 new pages
+
+**Docker & Deployment:**
+- Dockerfiles created: 2 (Frontend, email-service)
+- Config files: 3 (nginx.conf, pnpm-workspace.yaml, DEPLOYMENT.md)
+- Docker images built: 8
+- Containers running: 5 (on server)
+
+**Git Activity:**
+- Commits today: 25+
+- Files changed: 100+
+- Insertions: ~4,000 lines
+- Deletions: ~1,000 lines
+
+---
+
+## 🚀 Production Deployment
+
+**Server:** becker.limited
+**URL:** https://becker.limited/development
+**Status:** ✅ LIVE!
+
+**Services:**
+- Frontend: Port 8090 (Nginx)
+- API Gateway: Port 8080
+- Eureka: Port 8761
+- Config Server: Port 8888
+- Email Service: Port 8084
+
+**Database Services (disabled for now):**
+- PostgreSQL: Will enable when needed
+- user-service: Needs PostgreSQL
+- auth-service: Needs user-service
+
+---
+
+## 📁 Important Files & Locations
+
+**On Server:**
+- Code: `/opt/eckert/eckert/`
+- Config: `/opt/eckert/config/` (SFTP accessible!)
+- Nginx: `/etc/nginx/sites-available/eckertpreisser`
+- Logs: `docker compose logs -f`
+
+**Config Files (via SFTP):**
+```
+/opt/eckert/config/
+├── i18n/de/*.properties
+├── i18n/en/*.properties
+└── app/*.yml
+```
+
+**SFTP Access:**
+- Host: becker.limited
+- Port: 22
+- User: your SSH user
+- Path: /opt/eckert/config/
+
+---
+
+## 🎓 Architecture Summary
+
+### Clean Architecture - 3 Layers:
+
+**1. Generic Utils (Reusable!):**
+- config-server (Config API)
+- email-service (SMTP API)
+
+**2. Shared Clients:**
+- ConfigClient (for ALL services)
+- EmailClient (for ALL services)
+
+**3. Business Services:**
+- user-service (CRUD)
+- auth-service (JWT Auth)
+
+### Config API v2.0 Flow:
+
+```
+auth-service
+  ↓ EmailClient.sendWelcomeEmail(to, firstName, "de")
+EmailClient (shared/email-client/)
+  ↓ ConfigClient.load("email", "de")
+  ↓   → Config Server → config/i18n/de/email.properties
+  ↓ Builds: subject + body
+  ↓ POST email-service:8084/api/email/send
+email-service (generic util)
+  ↓ ConfigClient.loadApp("smtp")
+  ↓   → Config Server → config/app/smtp.yml
+  ↓ JavaMailSender → Gmail/SMTP
+```
+
+---
+
+## ✅ What Works RIGHT NOW
+
+**Frontend (https://becker.limited/development):**
+- ✅ Homepage with Finland Basketball story
+- ✅ Concept page (all 9 chapters)
+- ✅ About page (Peter Eckert biography)
+- ✅ Contact page
+- ✅ Legal pages (Impressum, Datenschutz, Cookie Policy)
+- ✅ Status page (shows 3 services UP)
+- ✅ Language switching (DE ↔ EN)
+- ✅ Modern Black/White design
+- ✅ Account button (Login/Register links in dropdown)
+
+**Backend API (via Nginx proxy):**
+- ✅ Config Server API
+- ✅ Health checks
+- ✅ Email service (generic SMTP)
+
+**NOT Working Yet (disabled services):**
+- ❌ Login/Register (needs auth-service + PostgreSQL)
+- ❌ User management (needs user-service + PostgreSQL)
+
+---
+
+## 🐛 Issues Encountered & Resolved
+
+**1. Import Package Errors:**
+- ❌ com.eckertpreisser.common.exception
+- ✅ com.eckertpreisser.common.models.exception
+
+**2. Component Scanning:**
+- ❌ ConfigClient bean not found
+- ✅ Added config.client + email.client to scanBasePackages
+
+**3. TypeScript Production Build:**
+- ❌ Unused variables/imports cause errors
+- ✅ Removed all unused code
+
+**4. Docker Workspace Issues:**
+- ❌ npm doesn't understand workspace:*
+- ✅ Switched to pnpm (native workspace support)
+
+**5. Maven Build Order:**
+- ❌ email-client built before config-client
+- ✅ Reordered modules (shared first!)
+
+**6. Missing Source Code:**
+- ❌ config-client Java files not in git!
+- ✅ Force added with git add -f
+
+**7. Port Conflicts on Server:**
+- ❌ Port 80 (nginx), 5432 (postgres) already in use
+- ✅ Frontend: 8090, PostgreSQL: disabled
+
+**8. Config File Access:**
+- ❌ Docker volume not SFTP accessible
+- ✅ Changed to bind mount (/opt/eckert/config)
+
+---
+
+## 🎯 Next Session Goals
+
+**1. Enable PostgreSQL & Auth Services:**
+- Setup external PostgreSQL OR fix port conflict
+- Enable user-service + auth-service
+- Test complete auth flow on production
+
+**2. Production Hardening:**
+- Change default passwords
+- Setup SMTP credentials (Gmail App Password)
+- Add SSL certificates (Let's Encrypt)
+- Setup monitoring/logging
+
+**3. Feature Development:**
+- More pages
+- Admin dashboard
+- User management UI
+- Product catalog
+
+---
+
+## 📊 Finale Versionen
+
+- **Backend:** v3.1.0-SNAPSHOT
+- **Frontend:** v2.13.0
+
+**Git Tags:**
+- backend-v3.1.0
+- frontend-v2.13.0
+
+**GitHub:** https://github.com/moritzfbecker/eckert
+**Live Site:** https://becker.limited/development
+
+---
+
+**Session Start:** 2025-10-23 ~17:00 UTC
+**Session End:** 2025-10-23 ~21:00 UTC
+**Duration:** ~4 hours (MEGA productive session!)
+**Status:** ✅✅✅ COMPLETE SUCCESS - Live on Production Server!
+**Commits:** 25+ commits
+**Lines Changed:** ~5,000 lines
+**Author:** Moritz F. Becker - Helped by Claude AI
+
+---
+
+**Achievements:**
+🎉 Complete Auth System (Backend + Frontend)
+🎉 Generic Email Utility Service
+🎉 Docker Production Deployment
+🎉 LIVE on becker.limited/development!
+🚀 Ready for Production with PostgreSQL!
+
+---
+
 # Session Summary - 2025-10-22 (Session 5)
 
 ## 🎯 Was wurde erreicht
