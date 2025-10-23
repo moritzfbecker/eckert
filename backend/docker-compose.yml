@@ -51,47 +51,47 @@ services:
     networks:
       - eckert-network
 
-  # PostgreSQL for User Service
-  postgres-user:
-    image: postgres:16-alpine
-    environment:
-      - POSTGRES_DB=user_db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres-user-data:/var/lib/postgresql/data
-    networks:
-      - eckert-network
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+  # PostgreSQL for User Service (DISABLED - use external DB)
+  # postgres-user:
+  #   image: postgres:16-alpine
+  #   environment:
+  #     - POSTGRES_DB=user_db
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres-user-data:/var/lib/postgresql/data
+  #   networks:
+  #     - eckert-network
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
 
-  # User Service (CRUD only - no auth)
-  user-service:
-    build:
-      context: .
-      dockerfile: services/user-service/Dockerfile
-    ports:
-      - "8081:8081"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
-      - CONFIG_SERVER_URL=http://config-server:8888
-      - DB_HOST=postgres-user
-      - DB_PORT=5432
-      - DB_NAME=user_db
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=postgres
-    depends_on:
-      - service-discovery
-      - config-server
-      - postgres-user
-    networks:
-      - eckert-network
+  # User Service (CRUD only - no auth) - DISABLED without PostgreSQL
+  # user-service:
+  #   build:
+  #     context: .
+  #     dockerfile: services/user-service/Dockerfile
+  #   ports:
+  #     - "8081:8081"
+  #   environment:
+  #     - SPRING_PROFILES_ACTIVE=docker
+  #     - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+  #     - CONFIG_SERVER_URL=http://config-server:8888
+  #     - DB_HOST=postgres-user
+  #     - DB_PORT=5432
+  #     - DB_NAME=user_db
+  #     - DB_USERNAME=postgres
+  #     - DB_PASSWORD=postgres
+  #   depends_on:
+  #     - service-discovery
+  #     - config-server
+  #     - postgres-user
+  #   networks:
+  #     - eckert-network
 
   # Email Service (Generic SMTP Util)
   email-service:
@@ -110,24 +110,24 @@ services:
     networks:
       - eckert-network
 
-  # Auth Service (JWT + Config API v2.0)
-  auth-service:
-    build:
-      context: .
-      dockerfile: services/auth-service/Dockerfile
-    ports:
-      - "8082:8082"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
-      - CONFIG_SERVER_URL=http://config-server:8888
-    depends_on:
-      - service-discovery
-      - config-server
-      - user-service
-      - email-service
-    networks:
-      - eckert-network
+  # Auth Service (JWT + Config API v2.0) - DISABLED without user-service
+  # auth-service:
+  #   build:
+  #     context: .
+  #     dockerfile: services/auth-service/Dockerfile
+  #   ports:
+  #     - "8082:8082"
+  #   environment:
+  #     - SPRING_PROFILES_ACTIVE=docker
+  #     - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+  #     - CONFIG_SERVER_URL=http://config-server:8888
+  #   depends_on:
+  #     - service-discovery
+  #     - config-server
+  #     - user-service
+  #     - email-service
+  #   networks:
+  #     - eckert-network
 
   # Frontend (React + Nginx)
   frontend:
