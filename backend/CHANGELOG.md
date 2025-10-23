@@ -4,16 +4,16 @@ All backend-specific changes are documented here.
 
 ---
 
-## [3.1.0] - 2025-10-22
+## [3.1.0] - 2025-10-23
 
 ### Added
-- **Email Service** - RESTful Email Microservice [BACKEND_SERVICE_001]
-  - Complete email sending via SMTP (JavaMailSender)
-  - Multi-language email templates via ConfigClient v2.0
-  - 5 API endpoints: send, verification, password-reset, welcome, health
-  - Template system with variable substitution
+- **Email Service** - Generic SMTP Utility Service [BACKEND_SERVICE_001]
+  - Reusable like Config Server - NO business logic!
+  - Simple API: POST /api/email/send (to, subject, body, html)
+  - SMTP config via ConfigClient v2.0 (smtp.host, smtp.port, etc.)
+  - JavaMailSender for actual sending
   - Port: 8084
-  - 799 lines of code across 10 files
+  - 4 Java files (generic, clean, minimal!)
 
 - **User Service** - User CRUD Microservice [BACKEND_SERVICE_002]
   - User management (create, read, update, deactivate)
@@ -25,14 +25,16 @@ All backend-specific changes are documented here.
 
 - **Auth Service** - Authentication Microservice [BACKEND_SERVICE_003]
   - User registration with password hashing (BCrypt)
-  - Login with JWT token generation
+  - Login with JWT token generation (JwtUtils)
   - Email verification flow
   - Password reset flow
   - Refresh token support
+  - Email templates via ConfigClient v2.0 (email.welcome.subject, etc.)
+  - Frontend URL via ConfigClient v2.0 (frontend.url)
   - Calls user-service and email-service via REST API
   - Port: 8082
   - 8 REST API endpoints
-  - 1,092 lines of code across 17 files
+  - 15 Java files (DTOs, Clients, Service, Controller, Configs)
 
 - **PostgreSQL Database** [BACKEND_DB_001]
   - Added to docker-compose.yml

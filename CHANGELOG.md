@@ -13,15 +13,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Complete Enterprise Auth System** - 3 Microservices rebuilt from scratch
-  - user-service: User CRUD with PostgreSQL (8 Java files, 12 endpoints)
-  - auth-service: JWT Authentication & Password Management (15 Java files, 8 endpoints)
+  - **user-service**: User CRUD with PostgreSQL (8 Java files, 10 endpoints)
+  - **auth-service**: JWT Authentication with Config API v2.0 (15 Java files, 8 endpoints)
+  - **email-service**: Generic SMTP Utility (4 Java files, reusable wie Config Server!)
   - PostgreSQL database with persistent volume
+- **100% Config API v2.0 Integration**
+  - email-service: SMTP settings via ConfigClient (smtp.host, smtp.port, etc.)
+  - auth-service: Email templates via ConfigClient (email.welcome.subject, etc.)
+  - auth-service: Frontend URL via ConfigClient (frontend.url)
 - **100% Guidelines Compliant** - LoggerUtil, Error Codes, ApiResponse, @Valid
-- **Clean Architecture** - Separation of concerns (CRUD vs Auth)
+- **Clean Architecture** - Generic Utils (email) + Business Logic (auth) + Data (user)
 - **Dockerfiles** - Production-ready multi-stage builds
 
 **Author**: Moritz F. Becker - Helped by Claude AI
-**Type**: MINOR - Complete Auth System
+**Type**: MINOR - Complete Auth System + Generic Email Util
 
 ---
 

@@ -7,23 +7,18 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * Email Service Application
  *
- * RESTful Email Microservice following Enterprise Pattern
+ * Generic SMTP utility service - reusable like Config Server!
+ * NO templates, NO business logic - just sends emails!
+ *
  * Port: 8084
- * Eureka: Registers as "email-service"
- * Config: Uses ConfigClient v2.0 for SMTP settings
+ * API: POST /api/email/send (to, subject, body, html)
  *
- * Features:
- * - Send generic emails
- * - Send verification emails
- * - Send password reset emails
- * - Template-based emails
- * - SMTP config via Config Server
- *
- * @author Moritz F. Becker
+ * @author Moritz F. Becker - Helped by Claude AI
+ * @version 3.1.0
  */
 @SpringBootApplication(scanBasePackages = {
-    "com.eckertpreisser.emailservice",
-    "com.eckertpreisser.common"
+        "com.eckertpreisser.emailservice",
+        "com.eckertpreisser.common"
 })
 @EnableDiscoveryClient
 public class EmailServiceApplication {
