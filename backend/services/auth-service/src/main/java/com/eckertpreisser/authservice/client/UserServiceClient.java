@@ -1,8 +1,8 @@
 package com.eckertpreisser.authservice.client;
 
 import com.eckertpreisser.authservice.dto.UserDTO;
-import com.eckertpreisser.common.exception.NotFoundException;
-import com.eckertpreisser.common.exception.ValidationException;
+import com.eckertpreisser.common.models.exception.NotFoundException;
+import com.eckertpreisser.common.models.exception.ValidationException;
 import com.eckertpreisser.common.models.dto.ApiResponse;
 import com.eckertpreisser.common.utils.LoggerUtil;
 import lombok.RequiredArgsConstructor;

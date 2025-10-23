@@ -3,7 +3,7 @@ package com.eckertpreisser.authservice.service;
 import com.eckertpreisser.authservice.client.EmailServiceClient;
 import com.eckertpreisser.authservice.client.UserServiceClient;
 import com.eckertpreisser.authservice.dto.*;
-import com.eckertpreisser.common.exception.ValidationException;
+import com.eckertpreisser.common.models.exception.ValidationException;
 import com.eckertpreisser.common.security.JwtUtils;
 import com.eckertpreisser.common.utils.LoggerUtil;
 import lombok.RequiredArgsConstructor;

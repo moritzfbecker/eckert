@@ -1,7 +1,7 @@
 package com.eckertpreisser.userservice.service;
 
-import com.eckertpreisser.common.exception.NotFoundException;
-import com.eckertpreisser.common.exception.ValidationException;
+import com.eckertpreisser.common.models.exception.NotFoundException;
+import com.eckertpreisser.common.models.exception.ValidationException;
 import com.eckertpreisser.common.utils.LoggerUtil;
 import com.eckertpreisser.userservice.dto.CreateUserRequest;
 import com.eckertpreisser.userservice.dto.UpdateUserRequest;
