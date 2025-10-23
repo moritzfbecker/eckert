@@ -216,13 +216,8 @@ export function useConfig(category: string, language: string | null = null): Fro
     loadConfig()
   }, [category, language]) // Only watch category and language!
 
-  // For debugging
-  if (error) {
-    logger.warn('CONFIG_HOOK_WARN_001', 'Config error - using defaults', {
-      category,
-      error: error.message
-    })
-  }
+  // Config loaded, return it
+  // (errors are logged in useEffect, no need to check here)
 
   return config
 }
