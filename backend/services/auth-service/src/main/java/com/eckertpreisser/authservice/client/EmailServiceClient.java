@@ -1,11 +1,9 @@
 package com.eckertpreisser.authservice.client;
 
-import com.eckertpreisser.common.models.dto.ApiResponse;
 import com.eckertpreisser.common.utils.LoggerUtil;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -16,7 +14,8 @@ import java.util.Map;
 /**
  * Client for email-service API
  *
- * Sends emails via email-service for welcome, verification, and password reset.
+ * Calls email-service RESTful API (spezifische Endpoints).
+ * email-service lädt Templates selbst via ConfigClient v2.0!
  *
  * @author Moritz F. Becker - Helped by Claude AI
  * @version 3.1.0
@@ -32,23 +31,25 @@ public class EmailServiceClient {
 
     /**
      * Send welcome email
+     *
+     * Calls email-service /welcome endpoint.
+     * email-service loads templates via ConfigClient v2.0!
      */
-    public void sendWelcomeEmail(String to, String firstName) {
+    public void sendWelcomeEmail(String to, String firstName, String language) {
         LoggerUtil.debug(logger, "AUTH_004", "Sending welcome email", Map.of("email", to));
 
         try {
             Map<String, Object> request = Map.of(
                     "to", to,
-                    "subject", "Welcome to Eckert Preisser Enterprise",
-                    "template", "welcome",
-                    "variables", Map.of("firstName", firstName)
+                    "language", language,
+                    "variables", Map.of("name", firstName)
             );
 
             restTemplate.exchange(
-                    EMAIL_SERVICE_URL + "/send",
+                    EMAIL_SERVICE_URL + "/welcome",
                     HttpMethod.POST,
                     new HttpEntity<>(request),
-                    new ParameterizedTypeReference<ApiResponse<Void>>() {}
+                    Void.class
             );
 
             LoggerUtil.debug(logger, "AUTH_005", "Welcome email sent", Map.of("email", to));
@@ -61,23 +62,25 @@ public class EmailServiceClient {
 
     /**
      * Send email verification email
+     *
+     * Calls email-service /verification endpoint.
+     * email-service loads templates via ConfigClient v2.0!
      */
-    public void sendVerificationEmail(String to, String token) {
+    public void sendVerificationEmail(String to, String token, String language) {
         LoggerUtil.debug(logger, "AUTH_006", "Sending verification email", Map.of("email", to));
 
         try {
             Map<String, Object> request = Map.of(
                     "to", to,
-                    "subject", "Verify your email address",
-                    "template", "email-verification",
-                    "variables", Map.of("verificationToken", token)
+                    "language", language,
+                    "variables", Map.of("verificationLink", "http://localhost:3000/verify-email?token=" + token)
             );
 
             restTemplate.exchange(
-                    EMAIL_SERVICE_URL + "/send",
+                    EMAIL_SERVICE_URL + "/verification",
                     HttpMethod.POST,
                     new HttpEntity<>(request),
-                    new ParameterizedTypeReference<ApiResponse<Void>>() {}
+                    Void.class
             );
 
             LoggerUtil.debug(logger, "AUTH_007", "Verification email sent", Map.of("email", to));
@@ -90,23 +93,25 @@ public class EmailServiceClient {
 
     /**
      * Send password reset email
+     *
+     * Calls email-service /password-reset endpoint.
+     * email-service loads templates via ConfigClient v2.0!
      */
-    public void sendPasswordResetEmail(String to, String token) {
+    public void sendPasswordResetEmail(String to, String token, String language) {
         LoggerUtil.debug(logger, "AUTH_008", "Sending password reset email", Map.of("email", to));
 
         try {
             Map<String, Object> request = Map.of(
                     "to", to,
-                    "subject", "Reset your password",
-                    "template", "password-reset",
-                    "variables", Map.of("resetToken", token)
+                    "language", language,
+                    "variables", Map.of("resetLink", "http://localhost:3000/reset-password?token=" + token)
             );
 
             restTemplate.exchange(
-                    EMAIL_SERVICE_URL + "/send",
+                    EMAIL_SERVICE_URL + "/password-reset",
                     HttpMethod.POST,
                     new HttpEntity<>(request),
-                    new ParameterizedTypeReference<ApiResponse<Void>>() {}
+                    Void.class
             );
 
             LoggerUtil.debug(logger, "AUTH_009", "Password reset email sent", Map.of("email", to));

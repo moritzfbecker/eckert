@@ -72,6 +72,12 @@
             <artifactId>security-config</artifactId>
         </dependency>
 
+        <!-- Config Client v2.0 (Enterprise Config API) -->
+        <dependency>
+            <groupId>com.eckertpreisser</groupId>
+            <artifactId>config-client</artifactId>
+        </dependency>
+
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

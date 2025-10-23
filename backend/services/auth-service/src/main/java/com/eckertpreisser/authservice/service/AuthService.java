@@ -72,9 +72,10 @@ public class AuthService {
         String verificationToken = generateToken();
         verificationTokens.put(verificationToken, user.getEmail());
 
-        // Send emails
-        emailServiceClient.sendWelcomeEmail(user.getEmail(), user.getFirstName());
-        emailServiceClient.sendVerificationEmail(user.getEmail(), verificationToken);
+        // Send emails with user's language (Config API v2.0!)
+        String language = user.getLanguage() != null ? user.getLanguage() : "de";
+        emailServiceClient.sendWelcomeEmail(user.getEmail(), user.getFirstName(), language);
+        emailServiceClient.sendVerificationEmail(user.getEmail(), verificationToken, language);
 
         LoggerUtil.info(logger, "AUTH_012", "User registered successfully",
                 Map.of("email", user.getEmail(), "userId", user.getId()));
@@ -181,8 +182,9 @@ public class AuthService {
         String resetToken = generateToken();
         resetTokens.put(resetToken, user.getEmail());
 
-        // Send email
-        emailServiceClient.sendPasswordResetEmail(user.getEmail(), resetToken);
+        // Send email with user's language (Config API v2.0!)
+        String language = user.getLanguage() != null ? user.getLanguage() : "de";
+        emailServiceClient.sendPasswordResetEmail(user.getEmail(), resetToken, language);
 
         LoggerUtil.info(logger, "AUTH_020", "Password reset email sent", Map.of("email", user.getEmail()));
     }
