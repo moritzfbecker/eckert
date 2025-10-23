@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { logger } from '../utils/logger'
 
 // Config Server direct URL (not through API Gateway!)
@@ -149,9 +149,9 @@ export function useConfig(category: string, language: string | null = null): Fro
 
   const config = configCache.get(cacheKey)!
 
-  const [isLoading, setIsLoading] = useState(!config.isLoaded())
-  const [error, setError] = useState<Error | null>(null)
-  const [updateTrigger, setUpdateTrigger] = useState(0) // Trigger re-render
+  const [, setIsLoading] = useState(!config.isLoaded())
+  const [, setError] = useState<Error | null>(null)
+  const [, setUpdateTrigger] = useState(0) // Trigger re-render
 
   // Load from backend on mount AND when language changes!
   useEffect(() => {
