@@ -211,7 +211,7 @@ export function useConfig(category: string, language: string | null = null): Fro
     }
 
     loadConfig()
-  }, [category, language, config])
+  }, [category, language]) // Only watch category and language!
 
   // For debugging
   if (error) {
