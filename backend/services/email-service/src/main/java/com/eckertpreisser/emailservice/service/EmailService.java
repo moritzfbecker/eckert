@@ -88,28 +88,35 @@ public class EmailService {
      *
      * Just send what you give me - no templates, no business logic!
      */
-    public void sendEmail(EmailRequest request) throws MessagingException {
+    public void sendEmail(EmailRequest request) {
         LoggerUtil.info(logger, "EMAIL_001", "Sending email",
                 Map.of("to", request.getTo(), "subject", request.getSubject()));
 
-        // Load sender info from config
-        ServiceConfig config = configClient.loadApp("smtp");
-        String fromEmail = config.get("smtp.from.email", "noreply@eckertpreisser.de");
-        String fromName = config.get("smtp.from.name", "Eckert Preisser");
+        try {
+            // Load sender info from config
+            ServiceConfig config = configClient.loadApp("smtp");
+            String fromEmail = config.get("smtp.from.email", "noreply@eckertpreisser.de");
+            String fromName = config.get("smtp.from.name", "Eckert Preisser");
 
-        // Create MimeMessage
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            // Create MimeMessage
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-        helper.setFrom(fromEmail, fromName);
-        helper.setTo(request.getTo());
-        helper.setSubject(request.getSubject());
-        helper.setText(request.getBody(), request.isHtml());
+            helper.setFrom(fromEmail, fromName);
+            helper.setTo(request.getTo());
+            helper.setSubject(request.getSubject());
+            helper.setText(request.getBody(), request.isHtml());
 
-        // Send email
-        mailSender.send(message);
+            // Send email
+            mailSender.send(message);
 
-        LoggerUtil.info(logger, "EMAIL_002", "Email sent successfully",
-                Map.of("to", request.getTo()));
+            LoggerUtil.info(logger, "EMAIL_002", "Email sent successfully",
+                    Map.of("to", request.getTo()));
+
+        } catch (MessagingException | java.io.UnsupportedEncodingException e) {
+            LoggerUtil.error(logger, "EMAIL_ERR_001", "Failed to send email", e,
+                    Map.of("to", request.getTo()));
+            throw new RuntimeException("Failed to send email", e);
+        }
     }
 }
