@@ -129,6 +129,20 @@ services:
     networks:
       - eckert-network
 
+  # Frontend (React + Nginx)
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api-gateway
+    networks:
+      - eckert-network
+    restart: unless-stopped
+
 networks:
   eckert-network:
     driver: bridge
