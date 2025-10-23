@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { useAuth } from '@eckert-preisser/shared/contexts/AuthContext'
-import { useConfig } from '@eckert-preisser/shared/hooks'
-import { useTranslation } from '@eckert-preisser/shared/contexts/I18nContext'
+import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { Container } from '../../../shared/ui-components/Container'
 
 const Dashboard = () => {
