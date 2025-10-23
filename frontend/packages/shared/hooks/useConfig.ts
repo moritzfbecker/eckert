@@ -151,13 +151,16 @@ export function useConfig(category: string, language: string | null = null): Fro
 
   const [isLoading, setIsLoading] = useState(!config.isLoaded())
   const [error, setError] = useState<Error | null>(null)
-  const [, forceUpdate] = useState({}) // Force re-render when language changes
+  const [updateTrigger, setUpdateTrigger] = useState(0) // Trigger re-render
 
   // Load from backend on mount AND when language changes!
   useEffect(() => {
-    if (config.isLoaded()) {
+    // Always reload config when language changes (even if cached!)
+    const currentConfig = configCache.get(cacheKey)!
+
+    if (currentConfig.isLoaded()) {
       setIsLoading(false)
-      forceUpdate({}) // Force component to re-render with new config
+      setUpdateTrigger(prev => prev + 1) // Force re-render!
       return
     }
 
