@@ -21,18 +21,22 @@
     <description>Enterprise-level microservices backend for Eckert Preisser</description>
 
     <modules>
-        <module>api-gateway</module>
+        <!-- Shared Modules FIRST (dependencies for all services!) -->
+        <module>shared/common-utils</module>
+        <module>shared/common-models</module>
+        <module>shared/security-config</module>
+        <module>shared/config-client</module>
+        <module>shared/email-client</module>
+
+        <!-- Infrastructure Services -->
         <module>service-discovery</module>
         <module>config-server</module>
+        <module>api-gateway</module>
+
         <!-- Business Services -->
         <module>services/user-service</module>
         <module>services/auth-service</module>
         <module>services/email-service</module>
-        <module>shared/common-models</module>
-        <module>shared/common-utils</module>
-        <module>shared/security-config</module>
-        <module>shared/config-client</module>
-        <module>shared/email-client</module>
     </modules>
 
     <properties>
