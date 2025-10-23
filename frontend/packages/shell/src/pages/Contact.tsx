@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { Container } from '../../../shared/ui-components/Container'
-import { Section } from '../../../shared/ui-components/Section'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { useState } from 'react'
 
