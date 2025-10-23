@@ -4,16 +4,12 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Copy shared package first
-COPY packages/shared packages/shared/
-WORKDIR /app/packages/shared
-RUN npm install && npm run build
+# Copy everything (Vite will bundle shared into shell automatically)
+COPY packages packages/
 
-# Copy and build shell package
+# Go to shell and build (Vite bundles everything!)
 WORKDIR /app/packages/shell
-COPY packages/shell/package*.json ./
 RUN npm install
-COPY packages/shell ./
 RUN npm run build
 
 # Stage 2: Serve with Nginx
