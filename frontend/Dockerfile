@@ -1,20 +1,16 @@
 # Multi-stage Docker build for Frontend
-# Stage 1: Build React app with Vite
+# Stage 1: Build React app with Vite + Turborepo
 FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Copy package files
+# Copy all package files (Turborepo workspace)
 COPY package*.json ./
 COPY turbo.json ./
-COPY packages/shell/package.json packages/shell/
-COPY packages/shared/package.json packages/shared/
-
-# Install dependencies
-RUN npm install
-
-# Copy source code
 COPY packages packages/
+
+# Install dependencies (workspace aware!)
+RUN npm install
 
 # Build for production
 RUN npm run build
