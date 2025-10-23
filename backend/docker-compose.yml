@@ -135,8 +135,7 @@ services:
       context: ../frontend
       dockerfile: Dockerfile
     ports:
-      - "80:80"
-      - "443:443"
+      - "8090:80"  # External 8090, Internal 80 (Port 80 already in use by main site)
     depends_on:
       - api-gateway
     networks:
