@@ -80,6 +80,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - CONFIG_SERVER_URL=http://config-server:8888
       - DB_HOST=postgres-user
       - DB_PORT=5432
       - DB_NAME=user_db
@@ -87,11 +88,12 @@ services:
       - DB_PASSWORD=postgres
     depends_on:
       - service-discovery
+      - config-server
       - postgres-user
     networks:
       - eckert-network
 
-  # Email Service
+  # Email Service (Generic SMTP Util)
   email-service:
     build:
       context: .
@@ -101,13 +103,14 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - CONFIG_SERVER_URL=http://config-server:8888
     depends_on:
       - service-discovery
       - config-server
     networks:
       - eckert-network
 
-  # Auth Service (authentication logic)
+  # Auth Service (JWT + Config API v2.0)
   auth-service:
     build:
       context: .
@@ -117,8 +120,10 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - CONFIG_SERVER_URL=http://config-server:8888
     depends_on:
       - service-discovery
+      - config-server
       - user-service
       - email-service
     networks:
