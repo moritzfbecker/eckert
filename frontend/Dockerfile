@@ -4,13 +4,19 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Copy everything (Vite will bundle shared into shell automatically)
+# Install pnpm (understands workspace:* syntax!)
+RUN npm install -g pnpm
+
+# Copy all files
+COPY package*.json pnpm-lock.yaml* ./
+COPY turbo.json ./
 COPY packages packages/
 
-# Go to shell and build (Vite bundles everything!)
-WORKDIR /app/packages/shell
-RUN npm install
-RUN npm run build
+# Install all dependencies with pnpm (workspace aware!)
+RUN pnpm install --frozen-lockfile || pnpm install
+
+# Build with Turborepo
+RUN pnpm run build
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
