@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { logger } from '../utils/logger'
 
-// Config Server direct URL (not through API Gateway!)
-const CONFIG_SERVER_URL = import.meta.env.VITE_CONFIG_SERVER_URL || 'http://localhost:8888'
+// Config Server URL - use relative path in production (via Nginx proxy)
+// In development: http://localhost:8888
+// In production: '' (empty = same origin, proxied by Nginx)
+const CONFIG_SERVER_URL = import.meta.env.VITE_CONFIG_SERVER_URL || (import.meta.env.PROD ? '' : 'http://localhost:8888')
 
 /**
  * FrontendConfig - Configuration container for React components

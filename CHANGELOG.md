@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.13.1] - 2025-10-29
+
+### Fixed
+- **Config Server Connection Fix** - Frontend can now reach Config Server in production [CONFIG_HOOK_FIX_001]
+  - useConfig.ts: Use relative URL in production (via Nginx proxy)
+  - nginx.conf: Add /api/config/ proxy to config-server:8888
+  - Fixes deutsche Übersetzungen not loading on production server
+  - Now i18n files are auto-created on first request as designed!
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Bug Fix (Config Server Connection)
+
+---
+
 ## [Frontend 2.13.0] - 2025-10-23
 
 ### Added
