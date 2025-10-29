@@ -148,7 +148,7 @@ class Logger {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(entry),
-    }).catch((error) => {
+    }).catch(() => {
       // Silent fail - don't log errors about logging failures
     });
   }
