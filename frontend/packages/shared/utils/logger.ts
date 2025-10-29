@@ -142,12 +142,14 @@ class Logger {
     // Example: Sentry.captureMessage(entry.message, { level: entry.level, extra: entry.context });
 
     // For now, just send to backend API
-    fetch('/api/logs', {
+    // Support subpath deployment (e.g., /development/)
+    const baseUrl = import.meta.env.PROD ? '/development/api' : '/api';
+    fetch(`${baseUrl}/logs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(entry),
     }).catch((error) => {
-      console.error('Failed to send log to server:', error);
+      // Silent fail - don't log errors about logging failures
     });
   }
 

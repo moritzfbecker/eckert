@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.13.2] - 2025-10-29
+
+### Fixed
+- **Subpath Deployment Fix** - All API calls now include /development/ prefix [FRONTEND_SUBPATH_001]
+  - useConfig.ts: CONFIG_SERVER_URL = '/development' in production
+  - api.ts: API_BASE_URL = '/development/api' in production
+  - logger.ts: Logs endpoint = '/development/api/logs' in production
+  - Fixes 404 errors on becker.limited/development deployment
+  - Config Server API calls now work correctly!
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Bug Fix (Subpath Deployment)
+
+---
+
 ## [Frontend 2.13.1] - 2025-10-29
 
 ### Fixed

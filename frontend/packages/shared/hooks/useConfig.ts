@@ -3,8 +3,8 @@ import { logger } from '../utils/logger'
 
 // Config Server URL - use relative path in production (via Nginx proxy)
 // In development: http://localhost:8888
-// In production: '' (empty = same origin, proxied by Nginx)
-const CONFIG_SERVER_URL = import.meta.env.VITE_CONFIG_SERVER_URL || (import.meta.env.PROD ? '' : 'http://localhost:8888')
+// In production: '/development' (subpath deployment at becker.limited/development/)
+const CONFIG_SERVER_URL = import.meta.env.VITE_CONFIG_SERVER_URL || (import.meta.env.PROD ? '/development' : 'http://localhost:8888')
 
 /**
  * FrontendConfig - Configuration container for React components

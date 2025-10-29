@@ -1,4 +1,7 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+// API Base URL - subpath deployment support
+// In development: http://localhost:8080/api
+// In production: /development/api (subpath at becker.limited/development/)
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/development/api' : 'http://localhost:8080/api');
 
 interface ApiResponse<T> {
   success: boolean;
