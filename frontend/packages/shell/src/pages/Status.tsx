@@ -34,15 +34,15 @@ const Status = () => {
     // Default service list (always shown, even if backend is down)
     const defaultServices: ServiceStatus[] = [
       // Infrastructure Services
-      { name: 'Service Discovery (Eureka)', url: '', port: 8761, status: 'UNKNOWN', version: '3.1.0' },
-      { name: 'Config Server', url: '', port: 8888, status: 'UNKNOWN', version: '3.1.0' },
-      { name: 'API Gateway', url: '', port: 8080, status: 'UNKNOWN', version: '3.1.0' },
+      { name: 'Service Discovery (Eureka)', url: '', port: 8761, status: 'UNKNOWN', version: '3.2.0' },
+      { name: 'Config Server', url: '', port: 8888, status: 'UNKNOWN', version: '3.2.0' },
+      { name: 'API Gateway', url: '', port: 8080, status: 'UNKNOWN', version: '3.2.0' },
       // Business Services
-      { name: 'User Service (PostgreSQL)', url: '', port: 8081, status: 'UNKNOWN', version: '3.1.0' },
-      { name: 'Auth Service (JWT)', url: '', port: 8082, status: 'UNKNOWN', version: '3.1.0' },
-      { name: 'Email Service (SMTP)', url: '', port: 8084, status: 'UNKNOWN', version: '3.1.0' },
+      { name: 'User Service (PostgreSQL)', url: '', port: 8081, status: 'UNKNOWN', version: '3.2.0' },
+      { name: 'Auth Service (JWT)', url: '', port: 8082, status: 'UNKNOWN', version: '3.2.0' },
+      { name: 'Email Service (SMTP)', url: '', port: 8084, status: 'UNKNOWN', version: '3.2.0' },
       // Frontend
-      { name: 'Frontend (Shell)', url: '', port: 3000, status: 'UP', version: '2.12.1' },
+      { name: 'Frontend (Shell)', url: '', port: 3000, status: 'UP', version: '2.16.0' },
     ]
 
     try {

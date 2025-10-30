@@ -41,11 +41,11 @@ public class HealthCheckController {
         LoggerUtil.info(logger, "HEALTH_001", "Checking health of all 6 services");
 
         // Check all services in parallel (reactive, non-blocking)
-        Mono<Map<String, Object>> eurekaCheck = checkService("http://service-discovery:8761/actuator/health", 8761, "3.1.0");
-        Mono<Map<String, Object>> configCheck = checkService("http://config-server:8888/actuator/health", 8888, "3.1.0");
-        Mono<Map<String, Object>> userCheck = checkService("http://user-service:8081/actuator/health", 8081, "3.1.0");
-        Mono<Map<String, Object>> authCheck = checkService("http://auth-service:8082/actuator/health", 8082, "3.1.0");
-        Mono<Map<String, Object>> emailCheck = checkService("http://email-service:8084/actuator/health", 8084, "3.1.0");
+        Mono<Map<String, Object>> eurekaCheck = checkService("http://service-discovery:8761/actuator/health", 8761, "3.2.0");
+        Mono<Map<String, Object>> configCheck = checkService("http://config-server:8888/actuator/health", 8888, "3.2.0");
+        Mono<Map<String, Object>> userCheck = checkService("http://user-service:8081/actuator/health", 8081, "3.2.0");
+        Mono<Map<String, Object>> authCheck = checkService("http://auth-service:8082/actuator/health", 8082, "3.2.0");
+        Mono<Map<String, Object>> emailCheck = checkService("http://email-service:8084/actuator/health", 8084, "3.2.0");
 
         // Combine all health checks
         return Mono.zip(eurekaCheck, configCheck, userCheck, authCheck, emailCheck)
@@ -64,7 +64,7 @@ public class HealthCheckController {
                 Map<String, Object> gateway = new HashMap<>();
                 gateway.put("status", "UP");
                 gateway.put("port", 8080);
-                gateway.put("version", "3.1.0");
+                gateway.put("version", "3.2.0");
                 services.put("gateway", gateway);
 
                 response.put("services", services);
@@ -83,7 +83,7 @@ public class HealthCheckController {
                 }
 
                 response.put("frontend", Map.of(
-                    "version", "2.12.1",
+                    "version", "2.16.0",
                     "status", "UP"
                 ));
 
