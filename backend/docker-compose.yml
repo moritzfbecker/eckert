@@ -11,9 +11,9 @@ services:
     networks:
       - eckert-network
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8761/actuator/health", "||", "exit", "1"]
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8761/actuator/health || exit 1"]
       interval: 10s
-      timeout: 5s
+      timeout: 10s
       retries: 5
       start_period: 40s
 
@@ -35,9 +35,9 @@ services:
     networks:
       - eckert-network
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8888/actuator/health", "||", "exit", "1"]
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8888/actuator/health || exit 1"]
       interval: 10s
-      timeout: 5s
+      timeout: 10s
       retries: 5
       start_period: 40s
 
@@ -60,9 +60,9 @@ services:
     networks:
       - eckert-network
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health", "||", "exit", "1"]
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1"]
       interval: 10s
-      timeout: 5s
+      timeout: 10s
       retries: 5
       start_period: 40s
 
@@ -127,9 +127,9 @@ services:
     networks:
       - eckert-network
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8084/actuator/health", "||", "exit", "1"]
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8084/actuator/health || exit 1"]
       interval: 10s
-      timeout: 5s
+      timeout: 10s
       retries: 5
       start_period: 40s
 
