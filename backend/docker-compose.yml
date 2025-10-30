@@ -28,11 +28,18 @@ services:
       - SPRING_PROFILES_ACTIVE=docker,native
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
     depends_on:
-      - service-discovery
+      service-discovery:
+        condition: service_healthy
     volumes:
       - /opt/eckert/config:/app/config  # Bind mount - accessible via SFTP!
     networks:
       - eckert-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8888/actuator/health", "||", "exit", "1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
 
   # API Gateway - ESSENTIAL (for i18n endpoints)
   api-gateway:
@@ -46,10 +53,18 @@ services:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
       - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
     depends_on:
-      - service-discovery
-      - config-server
+      service-discovery:
+        condition: service_healthy
+      config-server:
+        condition: service_healthy
     networks:
       - eckert-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health", "||", "exit", "1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
 
   # PostgreSQL for User Service (DISABLED - use external DB)
   # postgres-user:
@@ -105,10 +120,18 @@ services:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
       - CONFIG_SERVER_URL=http://config-server:8888
     depends_on:
-      - service-discovery
-      - config-server
+      service-discovery:
+        condition: service_healthy
+      config-server:
+        condition: service_healthy
     networks:
       - eckert-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8084/actuator/health", "||", "exit", "1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
 
   # Auth Service (JWT + Config API v2.0) - DISABLED without user-service
   # auth-service:
@@ -137,7 +160,8 @@ services:
     ports:
       - "8090:80"  # External 8090, Internal 80 (Port 80 already in use by main site)
     depends_on:
-      - api-gateway
+      api-gateway:
+        condition: service_healthy
     networks:
       - eckert-network
     restart: unless-stopped
