@@ -6,3 +6,4 @@
 
 export { I18nProvider, I18nContext } from './I18nContext'
 export { AuthProvider, useAuth } from './AuthContext'
+export { CookieConsentProvider, CookieConsentContext } from './CookieConsentContext'

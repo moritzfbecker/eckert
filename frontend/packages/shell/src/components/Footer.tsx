@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Container } from '../../../shared/ui-components/Container'
-import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
+import { useConfig, useTranslation, useCookieConsent } from '@eckert-preisser/shared/hooks'
 
 /**
  * Footer Component - v2.0 Config API
@@ -15,6 +15,9 @@ const Footer = () => {
   // NEW v2.0: useConfig with 'common' category and DYNAMIC language
   const config = useConfig('common', language)
   const currentYear = new Date().getFullYear()
+
+  // Cookie consent for Settings button
+  const { openSettings } = useCookieConsent()
 
   return (
     <footer className="
@@ -88,6 +91,14 @@ const Footer = () => {
                 >
                   {config.get('legal.cookies', 'Cookie Policy')}
                 </Link>
+              </li>
+              <li>
+                <button
+                  onClick={openSettings}
+                  className="text-white/80 hover:text-white transition-colors duration-300 text-left"
+                >
+                  {config.get('legal.cookieSettings', 'Cookie Settings')}
+                </button>
               </li>
             </ul>
           </div>

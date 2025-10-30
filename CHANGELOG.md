@@ -9,6 +9,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.16.0] - 2025-10-30
+
+### Added
+- **DSGVO-Compliant Cookie Consent System** - Complete implementation! [COOKIE_001-008]
+  - **cookieManager.ts** - localStorage utility with 4 categories (necessary, functional, analytics, marketing)
+  - **CookieConsentContext.tsx** - React Context Provider for cookie state management
+  - **useCookieConsent.ts** - Hook for accessing cookie consent (like useConfig!)
+  - **CookieConsent.tsx** - Bottom banner with Accept All/Reject All/Customize
+  - **CookieSettings.tsx** - Modal for individual cookie category settings
+  - **Footer.tsx** - Added "Cookie Settings" button to Legal section
+  - **App.tsx** - CookieConsentProvider + Banner + Settings Modal integrated
+  - **100% Config API v2.0** - All texts via config.get() with English defaults
+  - **Error Codes** - 16 new codes documented (COOKIE_001-007, COOKIE_ERR_001-003, COOKIE_CTX_001-008)
+  - **Framer Motion** - Smooth animations for banner and modal
+  - **Black/White Design** - Apple Gradient hover effects
+  - **DSGVO Features:**
+    - Consent required on first visit
+    - 4 cookie categories (Necessary always active)
+    - Toggle switches for optional cookies
+    - Persistent storage in localStorage
+    - Versioning for policy changes
+    - Easy to reopen settings from footer
+
+### Changed
+- **shared/utils/index.ts** - Exported cookieManager and CookieConsent type
+- **shared/hooks/index.ts** - Exported useCookieConsent
+- **shared/contexts/index.ts** - Exported CookieConsentProvider
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Feature (DSGVO Cookie Consent)
+
+---
+
 ## [Frontend 2.15.1] - 2025-10-30
 
 ### Changed

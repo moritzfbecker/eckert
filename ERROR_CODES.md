@@ -646,6 +646,45 @@
 | CONTACT_002 | Contact form submitted successfully | Success |
 | CONTACT_ERR_001 | Failed to submit contact form | Check network or try again |
 
+### Cookie Consent (COOKIE)
+
+#### Success Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| COOKIE_001 | No cookie consent found | DEBUG |
+| COOKIE_002 | Cookie consent loaded from localStorage | DEBUG |
+| COOKIE_003 | Cookie consent saved to localStorage | INFO |
+| COOKIE_004 | Cookie consent updated | INFO |
+| COOKIE_005 | All cookies accepted | INFO |
+| COOKIE_006 | All optional cookies rejected | INFO |
+| COOKIE_007 | Cookie consent cleared | INFO |
+
+#### Error Codes
+| Code | Description | Action |
+|------|-------------|--------|
+| COOKIE_ERR_001 | Failed to load cookie consent | Check localStorage |
+| COOKIE_ERR_002 | Failed to save cookie consent | Check localStorage permissions |
+| COOKIE_ERR_003 | Failed to clear cookie consent | Check localStorage |
+
+#### Context Codes
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| COOKIE_CTX_001 | Initializing cookie consent context | INFO |
+| COOKIE_CTX_002 | Cookie consent loaded from storage | INFO |
+| COOKIE_CTX_003 | No cookie consent - showing banner | INFO |
+| COOKIE_CTX_004 | User accepted all cookies | INFO |
+| COOKIE_CTX_005 | User rejected all optional cookies | INFO |
+| COOKIE_CTX_006 | User updated cookie preferences | INFO |
+| COOKIE_CTX_007 | Opening cookie settings modal | INFO |
+| COOKIE_CTX_008 | Closing cookie settings modal | INFO |
+
+#### Email Service (EMAIL)
+| Code | Description | Log Level |
+|------|-------------|-----------|
+| EMAIL_001 | Sending email | INFO |
+| EMAIL_002 | Email sent successfully | INFO |
+| EMAIL_ERR_001 | Failed to send email | ERROR |
+
 #### Legal Pages (FRONTEND_LEGAL)
 | Code | Description | Type |
 |------|-------------|------|
