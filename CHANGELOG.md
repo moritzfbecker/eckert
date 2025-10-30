@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.14.0] - 2025-10-30
+
+### Added
+- **Contact Form Email Integration** - Working contact form with Email Service [CONTACT_001-002]
+  - Contact.tsx: Full API integration with email-service
+  - Success/Error message display
+  - Form validation and loading states
+  - Automatic form reset after successful submission
+  - Config keys: contact.form.success, contact.form.error, contact.form.sending
+  - Error codes: CONTACT_001, CONTACT_002, CONTACT_ERR_001 documented in ERROR_CODES.md
+  - Sends email to info@eckertpreisser.de with sender name, email, and message
+
+### Changed
+- **API Gateway Config** - Added explicit route for email-service [EMAIL_001]
+  - config/api-gateway.yml: Added /api/email/** route with load balancing
+  - Email Service now accessible via: POST /api/email/send
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Feature (Contact Form works!)
+
+---
+
 ## [Frontend 2.13.4] - 2025-10-30
 
 ### Removed

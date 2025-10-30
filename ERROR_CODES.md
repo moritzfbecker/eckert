@@ -639,6 +639,13 @@
 | STATUS_WARN_001 | Service unreachable | Check service logs |
 | STATUS_ERR_001 | Failed to fetch service status | Retry or check network |
 
+### Contact Form (CONTACT)
+| Code | Description | Action |
+|------|-------------|--------|
+| CONTACT_001 | Submitting contact form | Info |
+| CONTACT_002 | Contact form submitted successfully | Success |
+| CONTACT_ERR_001 | Failed to submit contact form | Check network or try again |
+
 #### Legal Pages (FRONTEND_LEGAL)
 | Code | Description | Type |
 |------|-------------|------|

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Container } from '../../../shared/ui-components/Container'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { useState } from 'react'
+import { logger } from '@eckert-preisser/shared/utils'
 
 /**
  * Contact Page - v2.0 Config API
@@ -16,10 +17,56 @@ const Contact = () => {
     subject: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement contact form submission via API
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      logger.info('CONTACT_001', 'Submitting contact form', { email: formData.email })
+
+      // Call email service via API Gateway
+      const API_BASE_URL = import.meta.env.MODE === 'production'
+        ? '/development/api'
+        : 'http://localhost:8080/api'
+
+      const response = await fetch(`${API_BASE_URL}/email/send`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: 'info@eckertpreisser.de', // Company email
+          subject: `Contact Form: ${formData.subject}`,
+          body: `From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`,
+          html: false
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send email')
+      }
+
+      logger.info('CONTACT_002', 'Contact form submitted successfully', { email: formData.email })
+      setSubmitStatus('success')
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
+
+    } catch (error) {
+      logger.error('CONTACT_ERR_001', 'Failed to submit contact form', error, { email: formData.email })
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -67,6 +114,24 @@ const Contact = () => {
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Success Message */}
+                {submitStatus === 'success' && (
+                  <div className="p-4 rounded-lg bg-green-500/20 border border-green-500/50">
+                    <p className="text-white font-semibold">
+                      {config.get('contact.form.success', 'Message sent successfully! We\'ll get back to you soon.')}
+                    </p>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <div className="p-4 rounded-lg bg-red-500/20 border border-red-500/50">
+                    <p className="text-white font-semibold">
+                      {config.get('contact.form.error', 'Failed to send message. Please try again later.')}
+                    </p>
+                  </div>
+                )}
+
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-white mb-2 uppercase tracking-wider">
@@ -175,6 +240,7 @@ const Contact = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="
                     w-full px-8 py-5
                     bg-white text-black
@@ -183,9 +249,13 @@ const Contact = () => {
                     hover:scale-[1.02]
                     transition-all duration-300
                     uppercase text-base tracking-wider
+                    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
                   "
                 >
-                  {config.get('contact.form.send', 'Send Message')}
+                  {isSubmitting
+                    ? config.get('contact.form.sending', 'Sending...')
+                    : config.get('contact.form.send', 'Send Message')
+                  }
                 </button>
               </form>
             </div>
