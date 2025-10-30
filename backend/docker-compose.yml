@@ -31,7 +31,7 @@ services:
       service-discovery:
         condition: service_healthy
     volumes:
-      - /opt/eckert/config:/app/config  # Bind mount - accessible via SFTP!
+      - config-data:/app/config  # Docker volume - persistent storage
     networks:
       - eckert-network
     healthcheck:
