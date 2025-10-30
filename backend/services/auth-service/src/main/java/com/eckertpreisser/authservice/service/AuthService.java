@@ -5,6 +5,8 @@ import com.eckertpreisser.authservice.dto.*;
 import com.eckertpreisser.common.models.exception.ValidationException;
 import com.eckertpreisser.common.security.JwtUtils;
 import com.eckertpreisser.common.utils.LoggerUtil;
+import com.eckertpreisser.config.client.ConfigClient;
+import com.eckertpreisser.config.client.ServiceConfig;
 import com.eckertpreisser.email.client.EmailClient;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -42,7 +44,8 @@ public class AuthService {
     private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
     private final UserServiceClient userServiceClient;
-    private final EmailClient emailClient;  // Shared EmailClient!
+    private final EmailClient emailClient;  // Shared EmailClient (Pure SMTP Utility!)
+    private final ConfigClient configClient;  // For email templates!
     private final PasswordEncoder passwordEncoder;
 
     // In-memory token storage (use Redis in production!)
@@ -72,10 +75,10 @@ public class AuthService {
         String verificationToken = generateToken();
         verificationTokens.put(verificationToken, user.getEmail());
 
-        // Send emails with user's language (via shared EmailClient!)
+        // Send emails with user's language (NEW v3.2.0: Load templates from Config Server!)
         String language = user.getLanguage() != null ? user.getLanguage() : "de";
-        emailClient.sendWelcomeEmail(user.getEmail(), user.getFirstName(), language);
-        emailClient.sendVerificationEmail(user.getEmail(), verificationToken, language);
+        sendWelcomeEmail(user, language);
+        sendVerificationEmail(user, verificationToken, language);
 
         LoggerUtil.info(logger, "AUTH_012", "User registered successfully",
                 Map.of("email", user.getEmail(), "userId", user.getId()));
@@ -182,9 +185,9 @@ public class AuthService {
         String resetToken = generateToken();
         resetTokens.put(resetToken, user.getEmail());
 
-        // Send email with user's language (via shared EmailClient!)
+        // Send email with user's language (NEW v3.2.0: Load templates from Config Server!)
         String language = user.getLanguage() != null ? user.getLanguage() : "de";
-        emailClient.sendPasswordResetEmail(user.getEmail(), resetToken, language);
+        sendPasswordResetEmail(user, resetToken, language);
 
         LoggerUtil.info(logger, "AUTH_020", "Password reset email sent", Map.of("email", user.getEmail()));
     }
@@ -249,6 +252,80 @@ public class AuthService {
         invalidatedTokens.put(token, System.currentTimeMillis());
 
         LoggerUtil.debug(logger, "AUTH_026", "User logged out successfully");
+    }
+
+    /**
+     * Send welcome email (NEW v3.2.0 - Templates from Config Server!)
+     */
+    private void sendWelcomeEmail(UserDTO user, String language) {
+        try {
+            // Load template from Config Server
+            ServiceConfig config = configClient.load("email", language);
+            String subject = config.get("email.welcome.subject", "Welcome to Eckert Preisser!");
+            String body = config.get("email.welcome.body", "Hello {name}, thank you for registering!");
+
+            // Replace variables (YOUR business logic!)
+            body = body.replace("{name}", user.getFirstName());
+
+            // Send via EmailClient (pure utility!)
+            emailClient.sendEmail(user.getEmail(), subject, body);
+
+            LoggerUtil.debug(logger, "AUTH_027", "Welcome email sent", Map.of("email", user.getEmail()));
+        } catch (Exception e) {
+            LoggerUtil.warn(logger, "AUTH_WARN_001", "Failed to send welcome email (non-critical)", Map.of("email", user.getEmail()));
+        }
+    }
+
+    /**
+     * Send verification email (NEW v3.2.0 - Templates from Config Server!)
+     */
+    private void sendVerificationEmail(UserDTO user, String token, String language) {
+        try {
+            // Load templates
+            ServiceConfig emailConfig = configClient.load("email", language);
+            ServiceConfig appConfig = configClient.loadApp("auth");
+
+            String subject = emailConfig.get("email.verification.subject", "Verify your email");
+            String bodyTemplate = emailConfig.get("email.verification.body", "Click here to verify: {link}");
+            String frontendUrl = appConfig.get("frontend.url", "http://localhost:3000");
+
+            // Build verification link (YOUR business logic!)
+            String link = frontendUrl + "/verify-email?token=" + token;
+            String body = bodyTemplate.replace("{link}", link).replace("{name}", user.getFirstName());
+
+            // Send via EmailClient (pure utility!)
+            emailClient.sendEmail(user.getEmail(), subject, body);
+
+            LoggerUtil.debug(logger, "AUTH_028", "Verification email sent", Map.of("email", user.getEmail()));
+        } catch (Exception e) {
+            LoggerUtil.warn(logger, "AUTH_WARN_002", "Failed to send verification email (non-critical)", Map.of("email", user.getEmail()));
+        }
+    }
+
+    /**
+     * Send password reset email (NEW v3.2.0 - Templates from Config Server!)
+     */
+    private void sendPasswordResetEmail(UserDTO user, String token, String language) {
+        try {
+            // Load templates
+            ServiceConfig emailConfig = configClient.load("email", language);
+            ServiceConfig appConfig = configClient.loadApp("auth");
+
+            String subject = emailConfig.get("email.reset.subject", "Reset your password");
+            String bodyTemplate = emailConfig.get("email.reset.body", "Click here to reset: {link}");
+            String frontendUrl = appConfig.get("frontend.url", "http://localhost:3000");
+
+            // Build reset link (YOUR business logic!)
+            String link = frontendUrl + "/reset-password?token=" + token;
+            String body = bodyTemplate.replace("{link}", link).replace("{name}", user.getFirstName());
+
+            // Send via EmailClient (pure utility!)
+            emailClient.sendEmail(user.getEmail(), subject, body);
+
+            LoggerUtil.debug(logger, "AUTH_029", "Password reset email sent", Map.of("email", user.getEmail()));
+        } catch (Exception e) {
+            LoggerUtil.warn(logger, "AUTH_WARN_003", "Failed to send password reset email (non-critical)", Map.of("email", user.getEmail()));
+        }
     }
 
     /**
