@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Container } from '../../../shared/ui-components/Container'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { useState } from 'react'
-import { logger } from '@eckert-preisser/shared/utils'
+import { email } from '@eckert-preisser/shared/utils'
 
 /**
  * Contact Page - v2.0 Config API
@@ -25,34 +25,15 @@ const Contact = () => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    try {
-      logger.info('CONTACT_001', 'Submitting contact form', { email: formData.email })
+    // Simple email send - just like emailClient.sendEmail() in backend!
+    const result = await email.send(
+      'info@eckertpreisser.de',
+      `Contact Form: ${formData.subject}`,
+      `From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`
+    )
 
-      // Call email service via API Gateway
-      const API_BASE_URL = import.meta.env.MODE === 'production'
-        ? '/development/api'
-        : 'http://localhost:8080/api'
-
-      const response = await fetch(`${API_BASE_URL}/email/send`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          to: 'info@eckertpreisser.de', // Company email
-          subject: `Contact Form: ${formData.subject}`,
-          body: `From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`,
-          html: false
-        })
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to send email')
-      }
-
-      logger.info('CONTACT_002', 'Contact form submitted successfully', { email: formData.email })
+    if (result.success) {
       setSubmitStatus('success')
-
       // Reset form
       setFormData({
         name: '',
@@ -60,13 +41,11 @@ const Contact = () => {
         subject: '',
         message: ''
       })
-
-    } catch (error) {
-      logger.error('CONTACT_ERR_001', 'Failed to submit contact form', error, { email: formData.email })
+    } else {
       setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
     }
+
+    setIsSubmitting(false)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

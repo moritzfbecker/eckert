@@ -25,13 +25,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Config Client (for loading email templates) -->
-        <dependency>
-            <groupId>com.eckertpreisser</groupId>
-            <artifactId>config-client</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
         <!-- Common Utils (LoggerUtil) -->
         <dependency>
             <groupId>com.eckertpreisser</groupId>

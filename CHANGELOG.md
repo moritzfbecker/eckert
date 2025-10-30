@@ -9,6 +9,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 3.2.0] - 2025-10-30
+
+### Changed
+- **EmailClient Simplified to Pure Utility** - Like Config Server! [EMAIL_CLIENT_REFACTOR_001]
+  - Removed ALL business logic methods (sendWelcomeEmail, sendVerificationEmail, sendPasswordResetEmail, sendTemplatedEmail)
+  - NOW ONLY 2 methods: sendEmail(to, subject, body) and sendEmail(to, subject, body, html)
+  - Removed config-client dependency from email-client pom.xml
+  - Business logic (templates, variables) belongs in YOUR service!
+  - Load templates from ConfigClient, replace variables, THEN call EmailClient.sendEmail()
+  - Clean Architecture - EmailClient is now a pure SMTP utility!
+
+### Added
+- **EMAIL_SERVICE_USAGE.md** - Complete usage guide with examples for Backend + Frontend
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Refactoring (Breaking API Change)
+
+---
+
+## [Frontend 2.15.0] - 2025-10-30
+
+### Added
+- **Frontend Email Utility** - Pure SMTP client like Backend EmailClient! [EMAIL_UTIL_001]
+  - shared/utils/email.ts created (110 lines)
+  - email.send(to, subject, body) - Simple API
+  - email.sendHtml(to, subject, htmlBody) - HTML variant
+  - Exported from @eckert-preisser/shared/utils
+  - Logging with error codes (EMAIL_001, EMAIL_002, EMAIL_ERR_001)
+  - Same API as Backend EmailClient (perfect symmetry!)
+
+### Changed
+- **Contact.tsx Refactored** - Uses email utility instead of direct fetch [CONTACT_REFACTOR_001]
+  - handleSubmit: 40 lines → 15 lines (cleaner!)
+  - await email.send(to, subject, body) - SO SIMPLE!
+  - Consistent with backend EmailClient pattern
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Utility + Refactoring
+
+---
+
 ## [Frontend 2.14.0] - 2025-10-30
 
 ### Added
