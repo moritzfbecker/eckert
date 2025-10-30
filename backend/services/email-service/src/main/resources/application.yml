@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: email-service
+
+  # CRITICAL: SMTP config loaded from Config Server via ConfigClient v2.0!
+  # NO hardcoded SMTP settings!
+
+# Server
+server:
+  port: ${SERVER_PORT:8084}
+
+# Eureka Client
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://service-discovery:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.eckertpreisser: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+  file:
+    name: logs/email-service.log
