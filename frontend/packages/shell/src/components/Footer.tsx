@@ -27,7 +27,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4 text-white">
-              Eckert Preisser
+              {config.get('footer.company.name', 'Eckert Preisser')}
             </h3>
             <p className="text-white/80 mb-4">
               {config.get('footer.tagline', 'Enterprise-level solutions for modern businesses.')}
@@ -107,11 +107,11 @@ const Footer = () => {
             </h4>
             <p className="text-white/80 mb-2">
               <span className="font-semibold text-white">{config.get('footer.email', 'Email')}:</span><br />
-              info@eckertpreisser.de
+              {config.get('footer.email.address', 'info@eckertpreisser.de')}
             </p>
             <p className="text-white/80 mb-4">
               <span className="font-semibold text-white">{config.get('footer.phone', 'Phone')}:</span><br />
-              +49 (0) 123 456789
+              {config.get('footer.phone.number', '+49 (0) 123 456789')}
             </p>
             <Link
               to="/status"

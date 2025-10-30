@@ -44,7 +44,7 @@ const Header = () => {
   const languages = [
     {
       code: 'de',
-      label: 'Deutsch',
+      label: config.get('language.german', 'Deutsch'),
       flagSvg: (
         <svg className="w-4 h-3" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg">
           <rect width="5" height="3" fill="#000"/>
@@ -55,7 +55,7 @@ const Header = () => {
     },
     {
       code: 'en',
-      label: 'English',
+      label: config.get('language.english', 'English'),
       flagSvg: (
         <svg className="w-4 h-3" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
           <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
@@ -91,7 +91,7 @@ const Header = () => {
         transition-opacity duration-300
         ${!isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}
       `}>
-        <Link to="/">ECKERT PREISSER</Link>
+        <Link to="/">{config.get('nav.logo', 'ECKERT PREISSER')}</Link>
       </div>
 
       {/* Main Header Container */}
@@ -278,7 +278,7 @@ const Header = () => {
 
             {/* Language Selector for Mobile */}
             <div className="border-t border-white/10 px-6 py-4">
-              <div className="text-xs text-gray-400 uppercase tracking-wider mb-2">Language</div>
+              <div className="text-xs text-gray-400 uppercase tracking-wider mb-2">{config.get('nav.language', 'Language')}</div>
               <div className="flex flex-col gap-2">
                 {languages.map(lang => (
                   <button
@@ -321,7 +321,7 @@ const Header = () => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
-                <span className="text-sm font-semibold uppercase tracking-wider">Logout</span>
+                <span className="text-sm font-semibold uppercase tracking-wider">{config.get('nav.logout', 'Logout')}</span>
               </button>
             </div>
           </div>

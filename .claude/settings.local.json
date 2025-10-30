@@ -55,7 +55,8 @@
       "Bash(for:*)",
       "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''3.0.0-SNAPSHOT'',''3.1.0-SNAPSHOT'' | Set-Content -Path ''$file''\")",
       "Bash(cat:*)",
-      "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''2.0.0-SNAPSHOT'',''3.1.0-SNAPSHOT'' | Set-Content -Path ''$file''\")"
+      "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''2.0.0-SNAPSHOT'',''3.1.0-SNAPSHOT'' | Set-Content -Path ''$file''\")",
+      "Bash(del nul)"
     ],
     "deny": [],
     "ask": []

@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.13.3] - 2025-10-30
+
+### Fixed
+- **Removed ALL hardcoded texts from Header & Footer** - 100% Config API v2.0 [FRONTEND_I18N_026]
+  - Footer.tsx: Company name, email address, phone number now use config.get()
+  - Header.tsx: Logo, language labels (Deutsch/English), "Language" label now use config.get()
+  - Added config keys: nav.logo, language.german, language.english, nav.language, footer.company.name, footer.email.address, footer.phone.number
+  - All 8 new keys auto-register with English defaults
+  - Now every visible text in Header/Footer comes from Config Server!
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Bug Fix (i18n Completeness)
+
+---
+
 ## [Frontend 2.13.2] - 2025-10-29
 
 ### Fixed
