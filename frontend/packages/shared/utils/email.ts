@@ -97,7 +97,7 @@ const sendEmail = async (
       message: 'Email sent successfully'
     }
   } catch (error) {
-    logger.error('EMAIL_ERR_001', 'Failed to send email', error, { to, subject })
+    logger.error('EMAIL_ERR_001', 'Failed to send email', error as Error, { to, subject })
 
     return {
       success: false,

@@ -50,7 +50,7 @@ export const getConsent = (): CookieConsent | null => {
     return consent
 
   } catch (error) {
-    logger.error('COOKIE_ERR_001', 'Failed to load cookie consent', error)
+    logger.error('COOKIE_ERR_001', 'Failed to load cookie consent', error as Error)
     return null
   }
 }
@@ -94,7 +94,7 @@ export const saveConsent = (preferences: Omit<CookieConsent, 'timestamp' | 'vers
     logger.info('COOKIE_003', 'Cookie consent saved', consent)
 
   } catch (error) {
-    logger.error('COOKIE_ERR_002', 'Failed to save cookie consent', error)
+    logger.error('COOKIE_ERR_002', 'Failed to save cookie consent', error as Error)
   }
 }
 
@@ -158,7 +158,7 @@ export const clearConsent = (): void => {
     localStorage.removeItem(STORAGE_KEY)
     logger.info('COOKIE_007', 'Cookie consent cleared')
   } catch (error) {
-    logger.error('COOKIE_ERR_003', 'Failed to clear cookie consent', error)
+    logger.error('COOKIE_ERR_003', 'Failed to clear cookie consent', error as Error)
   }
 }
 
