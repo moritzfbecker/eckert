@@ -25,9 +25,12 @@ const Contact = () => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
+    // Get company email from same config as footer! (DRY principle)
+    const companyEmail = config.get('footer.email.address', 'info@eckertpreisser.de')
+
     // Simple email send - just like emailClient.sendEmail() in backend!
     const result = await email.send(
-      'info@eckertpreisser.de',
+      companyEmail,  // ← Same as footer!
       `Contact Form: ${formData.subject}`,
       `From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`
     )

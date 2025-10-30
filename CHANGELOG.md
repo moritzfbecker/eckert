@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.15.1] - 2025-10-30
+
+### Changed
+- **Contact Form uses Footer Email Config** - DRY principle! [CONTACT_004]
+  - Contact.tsx now reads footer.email.address from config
+  - Same email for Footer display AND Contact Form recipient
+  - Change email in ONE place (config), updates BOTH!
+  - No more hardcoded email addresses
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Refactoring (DRY principle)
+
+---
+
 ## [Backend 3.2.0] - 2025-10-30
 
 ### Changed
