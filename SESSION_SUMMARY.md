@@ -2017,3 +2017,508 @@ auth-service/ (Port 8082)
 ---
 
 **Next Session:** Backend Auth System sauber fertigstellen + Frontend Auth implementieren 🚀
+
+---
+
+# Session Summary - 2025-10-30 (Session 7)
+
+## 🎯 Was wurde erreicht
+
+### Frontend v2.13.3 → v2.16.0 (3 MINOR Releases!)
+
+**v2.13.3 - Hardcoded Texts entfernt:**
+- ✅ Header.tsx: Logo, Language labels (Deutsch/English), "Language" label via config
+- ✅ Footer.tsx: Company name, email address, phone number via config
+- ✅ 8 neue Config Keys: nav.logo, language.german, language.english, nav.language, footer.company.name, footer.email.address, footer.phone.number
+
+**v2.13.4 - Products Link entfernt:**
+- ✅ Removed /products link from footer (keine Produkte im Angebot)
+- ✅ Cleaner footer mit nur Home + Dashboard
+
+**v2.14.0 - Contact Form Email Integration:**
+- ✅ Contact.tsx: Full API integration mit email-service
+- ✅ Success/Error message display
+- ✅ Form validation + loading states
+- ✅ Auto-reset nach success
+- ✅ Error codes: CONTACT_001, CONTACT_002, CONTACT_ERR_001
+
+**v2.15.0 - Frontend Email Utility:**
+- ✅ shared/utils/email.ts erstellt (110 lines)
+- ✅ email.send(to, subject, body) - Simple API
+- ✅ email.sendHtml(to, subject, htmlBody) - HTML variant
+- ✅ Contact.tsx refactored: 40 lines → 15 lines
+- ✅ Perfect symmetry mit Backend EmailClient
+
+**v2.15.1 - DRY Principle:**
+- ✅ Contact Form nutzt footer.email.address Config
+- ✅ Eine Config für Footer display UND Contact Form recipient
+
+**v2.16.0 - DSGVO Cookie Consent System (MAJOR!):**
+- ✅ **7 neue Files erstellt:**
+  - shared/utils/cookieManager.ts (195 lines) - localStorage mit 4 Kategorien
+  - shared/contexts/CookieConsentContext.tsx (115 lines) - React Context
+  - shared/hooks/useCookieConsent.ts (27 lines) - Hook
+  - shell/components/CookieConsent.tsx (120 lines) - Bottom Banner
+  - shell/components/CookieSettings.tsx (210 lines) - Settings Modal
+- ✅ **DSGVO Features:**
+  - 4 Kategorien: necessary (always on), functional, analytics, marketing
+  - Consent Banner beim ersten Besuch (bottom center)
+  - Cookie Settings Link im Footer
+  - Individual category toggles mit Toggle Switches
+  - localStorage persistence
+  - Version tracking
+- ✅ **100% Config API v2.0** - Alle Texte via config.get()
+- ✅ **25+ neue Config Keys** (cookie.banner.*, cookie.settings.*, cookie.category.*)
+- ✅ **16 Error Codes** dokumentiert (COOKIE_001-007, COOKIE_ERR_001-003, COOKIE_CTX_001-008)
+- ✅ **Black/White Design** mit Apple Gradient hover
+- ✅ **Framer Motion** Animations (slide up, scale)
+
+### Backend v3.1.0 → v3.2.0 (MINOR Release!)
+
+**EmailClient Refactored - Pure Utility:**
+- ✅ Removed ALL business logic methods:
+  - ❌ sendWelcomeEmail() - DELETED
+  - ❌ sendVerificationEmail() - DELETED
+  - ❌ sendPasswordResetEmail() - DELETED
+  - ❌ sendTemplatedEmail() - DELETED
+- ✅ NOW ONLY 2 methods:
+  - sendEmail(to, subject, body)
+  - sendEmail(to, subject, body, html)
+- ✅ Removed config-client dependency from email-client pom.xml
+- ✅ Clean Architecture - EmailClient ist pure SMTP utility (wie Config Server!)
+
+**auth-service Updated:**
+- ✅ Added ConfigClient injection
+- ✅ Created 3 private methods:
+  - sendWelcomeEmail(user, language) - Loads template, replaces vars, sends
+  - sendVerificationEmail(user, token, language) - Builds link, sends
+  - sendPasswordResetEmail(user, token, language) - Builds link, sends
+- ✅ Business logic stays in auth-service
+- ✅ EmailClient stays pure utility
+- ✅ Error codes: AUTH_027-029, AUTH_WARN_001-003
+
+**email-service Config:**
+- ✅ application.yml erstellt + committed (was in .gitignore!)
+- ✅ Eureka URL fix: EUREKA_URL → EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+- ✅ WebConfig.java erstellt (CORS support)
+- ✅ Fixes 403 Forbidden errors
+
+### Documentation (2 neue Files!)
+
+**EMAIL_SERVICE_USAGE.md:**
+- ✅ Complete usage guide für Backend + Frontend
+- ✅ Examples für alle Use Cases
+- ✅ Philosophy: Pure Utility wie Config Server
+- ✅ Backend: Load template → Replace vars → Send
+- ✅ Frontend: email.send() API
+
+**Status Page Updated:**
+- ✅ Versionen updated: 3.1.0 → 3.2.0 (Backend), 2.12.1 → 2.16.0 (Frontend)
+- ✅ HealthCheckController.java updated
+- ✅ Status.tsx updated
+
+### DevOps - Docker Improvements
+
+**docker-compose.yml Fixes:**
+- ✅ Added healthchecks für alle Services:
+  - service-discovery (already had)
+  - config-server (NEW)
+  - api-gateway (NEW)
+  - email-service (NEW)
+- ✅ Changed depends_on zu `condition: service_healthy`
+- ✅ Proper start order: Eureka → Config → Gateway/Email → Frontend
+- ✅ Healthcheck syntax: CMD → CMD-SHELL
+- ✅ Timeout: 5s → 10s (wget needs time)
+- ✅ Config volume: bind mount → Docker volume (fixes read-only filesystem)
+
+**API Gateway Config:**
+- ✅ config/api-gateway.yml: Added email-service route
+- ✅ Route: /api/email/** → lb://EMAIL-SERVICE
+
+---
+
+## 📊 Finale Versionen (Session 7)
+
+- **Backend:** v3.2.0-SNAPSHOT
+- **Frontend:** v2.16.0
+
+**Git Tags:**
+- backend-v3.2.0 (attempted, has issues)
+- frontend-v2.16.0
+
+---
+
+## 📈 Statistics
+
+**Code Changes:**
+- **New Files:** 9 files (7 Cookie System + email.ts + EMAIL_SERVICE_USAGE.md)
+- **Modified Files:** 20+ files
+- **Lines Added:** ~1,100 lines
+- **Lines Deleted:** ~150 lines
+- **Net:** +950 lines
+
+**Commits Today:** 10 commits
+- dc4e28e - fix: remove hardcoded texts from Header & Footer
+- 25fd3bf - chore: remove Products link
+- 7fefd4d - feat: Contact Form Email integration
+- c3cd642 - refactor: Email Service to pure utility
+- c6fdffb - refactor: Contact uses footer email config
+- 89f25c2 - feat: DSGVO Cookie Consent System
+- dfa83c5 - fix: pom.xml versions to 3.2.0
+- 064e0ae - fix: TypeScript errors
+- a5a84c4 - fix: auth-service EmailClient API
+- d5c0373 - fix: Status Page versions
+- fed6f8d - fix: email-service Eureka URL
+- 73e45e5 - fix: email-service CORS
+- 5349f35 - fix: docker healthchecks
+- e44a0a0 - fix: healthcheck timeout
+- 6d2cb74 - fix: Docker volume for config
+
+**Error Codes Added:**
+- 16 Cookie codes (COOKIE_001-007, COOKIE_ERR_001-003, COOKIE_CTX_001-008)
+- 3 Email codes (EMAIL_001, EMAIL_002, EMAIL_ERR_001)
+- 3 Contact codes (CONTACT_001-002, CONTACT_ERR_001)
+- 3 Auth codes (AUTH_027-029, AUTH_WARN_001-003)
+
+**Config Keys Added:**
+- 8 Header/Footer keys
+- 25+ Cookie Consent keys
+- 3 Contact Form keys
+
+**Total: ~36 neue Config Keys mit English defaults!**
+
+---
+
+## ✅ Was FUNKTIONIERT
+
+**Frontend:**
+- ✅ Homepage (Finland Basketball Story)
+- ✅ Concept Page (alle 9 Kapitel)
+- ✅ About Page (Peter Eckert Biografie)
+- ✅ Contact Page (Formular ready, API integration done)
+- ✅ Legal Pages (Impressum, Datenschutz, Cookie Policy)
+- ✅ Status Page (zeigt Services)
+- ✅ **Cookie Consent Banner** (DSGVO-konform!)
+- ✅ **Cookie Settings Modal** (Footer Link)
+- ✅ **Language Switching** (DE ↔ EN)
+- ✅ **100% Config API v2.0** (keine hardcoded Texte!)
+
+**Backend:**
+- ✅ service-discovery (Eureka) - Running
+- ✅ config-server - Running
+- ✅ api-gateway - Running
+- ✅ email-service - Running (Port 8084)
+- ✅ Config API v2.0 - Fully functional
+- ✅ EmailClient - Pure utility (refactored)
+- ✅ auth-service - Code fertig (nicht deployed)
+- ✅ user-service - Code fertig (nicht deployed)
+
+**Docker:**
+- ✅ 5 Services running (Eureka, Config, Gateway, Email, Frontend)
+- ✅ Healthchecks implementiert
+- ✅ Proper dependencies mit service_healthy
+- ✅ Docker volumes für config persistence
+
+---
+
+## ❌ Was NICHT funktioniert (für morgen!)
+
+### 1. **Contact Form 404 Error**
+**Problem:**
+- Frontend → Nginx → API Gateway → 404 Not Found
+- Direct curl zu localhost:8080/api/email/health funktioniert ✅
+- Via Website: 404 ❌
+
+**Vermutung:**
+- Route existiert (gesehen in actuator/gateway/routes)
+- Healthchecks funktionieren
+- Aber irgendwas mit dem Routing stimmt nicht
+
+**Für morgen debuggen:**
+- Nginx Logs checken
+- API Gateway Request Logs live anschauen
+- Möglicherweise CORS oder Path Problem
+
+### 2. **Eureka Registration Issues**
+**Problem:**
+- api-gateway versucht noch localhost:8761 (sollte service-discovery:8761 sein)
+- Services registrieren sich, aber mit Delays
+
+**Für morgen:**
+- api-gateway application.yml checken
+- Eureka ENV vars überprüfen
+- Möglicherweise Config Server lädt falsche Config
+
+### 3. **Docker Healthchecks Timeout**
+**Problem:**
+- service-discovery zeigt "unhealthy" wegen timeout
+- Healthcheck braucht länger als 10s
+
+**Teilweise gefixt:**
+- timeout: 5s → 10s
+- CMD → CMD-SHELL
+- Aber möglicherweise noch nicht genug
+
+---
+
+## 🎓 Key Learnings
+
+**Was gut lief:**
+- ✅ Cookie Consent System in 1 Session komplett implementiert (7 Files, 900+ lines)
+- ✅ EmailClient Refactoring zu pure utility (Clean Architecture!)
+- ✅ Frontend email utility - perfect symmetry mit Backend
+- ✅ Docker healthchecks Konzept verstanden
+- ✅ Alle Änderungen nach Guidelines (Config API, Logger, Error Codes)
+
+**Herausforderungen:**
+- ⚠️ Microservice Networking komplexer als erwartet
+- ⚠️ Docker healthchecks brauchen fine-tuning
+- ⚠️ application.yml in .gitignore = Deployment Issues
+- ⚠️ Route Configuration vs Service Discovery
+
+**Für morgen:**
+- 🔍 Systematisches Debugging: Nginx → API Gateway → Email Service
+- 🔍 Alle ENV vars und Configs überprüfen
+- 🔍 Live Logging während Requests
+- 🔍 Möglicherweise simplify: Direkt routing ohne Eureka für Email Service
+
+---
+
+## 📁 Wichtige neue Files (Session 7)
+
+**Frontend:**
+- frontend/packages/shared/utils/cookieManager.ts
+- frontend/packages/shared/contexts/CookieConsentContext.tsx
+- frontend/packages/shared/hooks/useCookieConsent.ts
+- frontend/packages/shared/utils/email.ts
+- frontend/packages/shell/src/components/CookieConsent.tsx
+- frontend/packages/shell/src/components/CookieSettings.tsx
+
+**Backend:**
+- backend/services/email-service/src/main/resources/application.yml (finally in git!)
+- backend/services/email-service/src/main/java/com/eckertpreisser/emailservice/config/WebConfig.java
+- backend/services/auth-service/src/main/java/com/eckertpreisser/authservice/service/AuthService.java (refactored)
+
+**Documentation:**
+- EMAIL_SERVICE_USAGE.md (complete guide)
+
+**Config:**
+- backend/docker-compose.yml (healthchecks + dependencies)
+
+---
+
+## 🐛 Issues Encountered & Solutions
+
+**1. Hardcoded Texte in Components:**
+- **Issue:** Header/Footer hatten hardcoded "Eckert Preisser", "Deutsch", etc.
+- **Solution:** Alle Texte durch config.get() ersetzt
+- **Result:** ✅ 100% Config API v2.0
+
+**2. EmailClient hatte Business Logic:**
+- **Issue:** sendWelcomeEmail(), sendVerificationEmail() etc. in generic utility
+- **Solution:** Alle Methoden entfernt, nur sendEmail() behalten
+- **Result:** ✅ Pure utility wie Config Server
+
+**3. TypeScript Compilation Errors:**
+- **Issue:** `error` in catch ist `unknown`, nicht `Error`
+- **Solution:** `error as Error` cast in allen catch blocks
+- **Result:** ✅ Production build erfolgreich
+
+**4. Maven Version Mismatch:**
+- **Issue:** Parent pom.xml 3.2.0 aber child modules 3.1.0
+- **Solution:** Alle 11 child pom.xml auf 3.2.0 updated
+- **Result:** ✅ Maven build erfolgreich
+
+**5. auth-service EmailClient API:**
+- **Issue:** auth-service nutzte gelöschte EmailClient Methoden
+- **Solution:** ConfigClient injection + private helper methods
+- **Result:** ✅ Business logic in auth-service, EmailClient pure
+
+**6. email-service application.yml missing:**
+- **Issue:** File war in .gitignore, nie committed
+- **Solution:** git add -f application.yml
+- **Result:** ✅ File jetzt in Git
+
+**7. email-service Eureka URL falsch:**
+- **Issue:** EUREKA_URL statt EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+- **Solution:** ENV variable name geändert
+- **Result:** ✅ Service registriert sich bei Eureka
+
+**8. email-service CORS 403:**
+- **Issue:** Keine CORS Config, Frontend blocked
+- **Solution:** WebConfig.java mit CORS mappings
+- **Result:** ✅ CORS aktiviert
+
+**9. Docker healthcheck Timeout:**
+- **Issue:** wget braucht >5s, CMD syntax falsch
+- **Solution:** CMD-SHELL + timeout 10s
+- **Result:** ⏳ Verbessert, aber noch nicht perfekt
+
+**10. Docker bind mount read-only:**
+- **Issue:** /opt/eckert/config kann nicht erstellt werden
+- **Solution:** Bind mount → Docker volume
+- **Result:** ✅ Volume wird automatisch erstellt
+
+**11. Contact Form 404 Error:**
+- **Issue:** POST /development/api/email/send → 404
+- **Solution:** Versucht - Route in api-gateway.yml, CORS, healthchecks
+- **Result:** ❌ **NICHT GELÖST** - Für morgen!
+
+---
+
+## 🔧 Technical Decisions
+
+**1. Email Service = Pure Utility (wie Config Server)**
+- Keine Templates
+- Keine Business Logic
+- Nur: sendEmail(to, subject, body)
+- Business Services laden Templates selbst
+
+**2. Cookie Consent = React Context**
+- Nicht Redux (zu komplex)
+- Context + Hook Pattern (wie Auth)
+- localStorage für Persistence
+- Version tracking für Policy updates
+
+**3. Docker healthchecks + service_healthy**
+- Proper startup order
+- Wartet bis Services ready
+- Verhindert "Connection refused" race conditions
+
+**4. Docker Volume statt Bind Mount**
+- Einfacher (auto-created)
+- Persistent
+- Kein Filesystem Permission Problem
+
+---
+
+## 🎯 Next Session Goals (Session 8 - Priorität!)
+
+### **1. Fix Contact Form 404 (TOP PRIORITY!)**
+**Debug Plan:**
+1. Nginx access.log live anschauen
+2. API Gateway Request Logging aktivieren
+3. Test: curl localhost:8080 vs becker.limited
+4. Route Configuration validieren
+5. Möglicherweise: Direct routing ohne Eureka
+
+### **2. Microservice Networking stabilisieren**
+1. Alle Services müssen Eureka erreichen
+2. Healthchecks müssen PASS sein
+3. Keine "localhost:8761" Errors mehr
+4. Service Discovery funktioniert
+
+### **3. SMTP Configuration**
+1. smtp.yml auf Server erstellen
+2. Gmail App-Passwort setup
+3. Email Service testen
+4. Contact Form end-to-end testen
+
+### **4. Testing & Verification**
+1. Contact Form sendet echte Emails
+2. Cookie Consent funktioniert
+3. Language Switching funktioniert
+4. Alle Pages laden korrekt
+
+---
+
+## 📊 Current Production Status
+
+**Live:** https://becker.limited/development
+
+**Services Running (5):**
+- ✅ service-discovery (Eureka) - Port 8761
+- ✅ config-server - Port 8888
+- ✅ api-gateway - Port 8080
+- ✅ email-service - Port 8084
+- ✅ frontend (React + Nginx) - Port 8090
+
+**Services NOT Running:**
+- ❌ user-service (disabled - needs PostgreSQL)
+- ❌ auth-service (disabled - needs user-service)
+- ❌ postgres (disabled)
+
+**What Works:**
+- ✅ Homepage, Concept, About, Contact, Legal, Status pages
+- ✅ Language switching (DE ↔ EN)
+- ✅ Cookie Consent Banner + Settings
+- ✅ Config Server API
+- ✅ Status Page monitoring
+
+**What Doesn't Work:**
+- ❌ Contact Form email sending (404 error)
+- ❌ Login/Register (services disabled)
+- ⚠️ Eureka registration (some connection issues)
+
+---
+
+## 📚 Documentation Status
+
+**Updated:**
+- CHANGELOG.md (6 neue Releases dokumentiert)
+- ERROR_CODES.md (25+ neue Codes)
+- SESSION_SUMMARY.md (diese Summary!)
+
+**Created:**
+- EMAIL_SERVICE_USAGE.md (complete guide)
+
+---
+
+## 💡 Important Notes for Tomorrow
+
+**1. Contact Form Debugging:**
+```bash
+# Live Nginx Logs
+tail -f /var/log/nginx/access.log /var/log/nginx/error.log
+
+# Live API Gateway Logs mit Request Logging
+docker compose logs -f api-gateway | grep -E "POST|/api/email"
+
+# Test direkt
+curl http://localhost:8080/api/email/send -X POST -H "Content-Type: application/json" -d '{...}'
+```
+
+**2. Eureka Connectivity:**
+- Alle Services müssen service-discovery:8761 erreichen
+- Keine localhost:8761 mehr
+- Healthchecks müssen green sein
+
+**3. Config Files Location:**
+- Docker Volume: `docker volume inspect backend_config-data`
+- Config files: Wo sind sie? Wie editiert man sie?
+- Alternative: Zurück zu bind mount mit richtiger Directory creation
+
+---
+
+## 🔗 Important Links
+
+**GitHub:**
+- Repository: https://github.com/moritzfbecker/eckert
+- Latest Commit: 6d2cb74
+- Tags: frontend-v2.16.0
+
+**Production:**
+- Website: https://becker.limited/development
+- Eureka: http://becker.limited:8761 (if exposed)
+- Config Server: http://becker.limited:8888 (internal)
+
+**Config Location on Server:**
+- Docker Volume: backend_config-data
+- Files: /home/eckert-config/config/ (current manual location)
+
+---
+
+**Session Start**: 2025-10-30 ~19:00 UTC
+**Session End**: 2025-10-30 ~22:30 UTC
+**Duration**: ~3.5 hours
+**Status**: ⚠️ Cookie System ✅ COMPLETE | Email Integration ⏳ IN PROGRESS (404 issue)
+**GitHub**: https://github.com/moritzfbecker/eckert
+**Commits**: 15 commits
+**Insertions**: ~1,100 lines
+**Deletions**: ~150 lines
+**Tags**: frontend-v2.16.0
+**Author**: Moritz F. Becker - Helped by Claude AI
+
+---
+
+**Next Session Priority:** Fix Contact Form 404 → Debug API Gateway Routing! 🚀
