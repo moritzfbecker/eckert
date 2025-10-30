@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.13.4] - 2025-10-30
+
+### Removed
+- **Products link from Footer** - No longer offering products [FRONTEND_FOOTER_002]
+  - Removed /products link from footer navigation
+  - Footer now only shows Home and Dashboard links
+  - Cleaner footer focused on actual services
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Cleanup
+
+---
+
 ## [Frontend 2.13.3] - 2025-10-30
 
 ### Fixed

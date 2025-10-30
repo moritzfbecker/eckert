@@ -50,14 +50,6 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/products"
-                  className="text-white/80 hover:text-white transition-colors duration-300"
-                >
-                  {config.get('nav.products', 'Products')}
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/dashboard"
                   className="text-white/80 hover:text-white transition-colors duration-300"
                 >
