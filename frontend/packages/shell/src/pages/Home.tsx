@@ -11,6 +11,7 @@ import { Container } from '../../../shared/ui-components/Container'
 import { Section } from '../../../shared/ui-components/Section'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { Link } from 'react-router-dom'
+import TrustedBy from '../components/TrustedBy'
 
 const Home = () => {
   const { language } = useTranslation()
@@ -64,6 +65,12 @@ const Home = () => {
           </motion.div>
         </Container>
       </Section>
+
+      {/* Divider */}
+      <div className="w-full border-t border-black/10" />
+
+      {/* Trusted By Section */}
+      <TrustedBy />
 
       {/* Divider */}
       <div className="w-full border-t border-black/10" />

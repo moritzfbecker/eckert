@@ -83,6 +83,8 @@ export default {
         'scale-in': 'scaleIn 0.5s ease-out',
         'glow': 'glow 2s ease-in-out infinite alternate',
         'float': 'float 3s ease-in-out infinite',
+        'scroll-ltr': 'scrollLTR 40s linear infinite',
+        'scroll-rtl': 'scrollRTL 40s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -116,6 +118,14 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        scrollLTR: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        scrollRTL: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
       transitionDuration: {
