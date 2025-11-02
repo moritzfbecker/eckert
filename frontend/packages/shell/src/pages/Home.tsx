@@ -12,6 +12,7 @@ import { Section } from '../../../shared/ui-components/Section'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { Link } from 'react-router-dom'
 import TrustedBy from '../components/TrustedBy'
+import PeterEckertSection from '../components/PeterEckertSection'
 
 const Home = () => {
   const { language } = useTranslation()
@@ -648,6 +649,15 @@ const Home = () => {
           </motion.div>
         </Container>
       </Section>
+
+      {/* Divider */}
+      <div className="w-full border-t border-black/10" />
+
+      {/* Peter Eckert Section */}
+      <PeterEckertSection />
+
+      {/* Divider */}
+      <div className="w-full border-t border-black/10" />
 
       {/* Final CTA Section */}
       <Section spacing="none" className="py-20 md:py-32 bg-eckert-white">

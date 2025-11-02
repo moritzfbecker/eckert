@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.18.0] - 2025-11-02
+
+### Added
+- **Peter Eckert Section** - Founder credibility with elite university logos
+  - DPES & IIA logos, International Industry Adviser role
+  - Peter Eckert quote + Reinhold Würth quote
+  - Integrated before Final CTA on Homepage
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Section
+
+---
+
 ## [Backend 3.2.1] - 2025-11-02
 
 ### Fixed

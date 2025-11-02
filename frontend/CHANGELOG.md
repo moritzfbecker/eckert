@@ -4,6 +4,27 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.18.0] - 2025-11-02
+
+### Added
+- **Peter Eckert Section** - Founder credibility with elite university logos [FRONTEND_ECKERT_001]
+  - Two-column layout with DPES & IIA logos on left, text on right
+  - International Industry Adviser role presentation
+  - Peter Eckert quote about international collaboration
+  - Reinhold Würth quote section (Hidden Champion wisdom)
+  - Black/White design with subtle animations
+  - Config API v2.0: 8 new keys (eckert.*, wuerth.*)
+  - Integrated into Homepage before Final CTA
+  - Elite university logos from old project
+
+### Changed
+- **Homepage Structure** - Added Peter Eckert Section before Final CTA [FRONTEND_PAGE_012]
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Section (Founder Credibility)
+
+---
+
 ## [2.17.1] - 2025-11-02
 
 ### Changed
