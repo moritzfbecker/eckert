@@ -4,16 +4,27 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.17.1] - 2025-11-02
+
+### Changed
+- **TrustedBy Logos** - Logos keep their original colors (removed grayscale filter) [FRONTEND_TRUSTED_002]
+  - Logos now always show in full color
+  - Opacity effect remains (60% → 100% on hover)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Visual Update
+
+---
+
 ## [2.17.0] - 2025-11-02
 
 ### Added
 - **TrustedBy Component** - Company references section with animated logo scroller [FRONTEND_TRUSTED_001]
   - Two-row infinite scroll animation (LTR + RTL)
   - 17 company logos (Deutsche Bank, Helios, Kolbenschmidt, Motorola, etc.)
-  - Grayscale effect with color on hover
   - Pause animation on hover
   - Smooth fade-out gradient masks on edges
-  - Black/White design (logos grayscale with 60% opacity)
+  - Black/White design with 60% opacity logos
   - Integrated into Homepage (after Hero section)
   - Config API v2.0: trustedBy.title key
 - **Scroll Animations in Tailwind** - Added animate-scroll-ltr and animate-scroll-rtl [FRONTEND_ANIM_007]

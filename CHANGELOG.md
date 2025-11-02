@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.17.1] - 2025-11-02
+
+### Changed
+- **TrustedBy Logos** - Logos keep original colors (removed grayscale)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Visual Update
+
+---
+
 ## [Frontend 2.17.0] - 2025-11-02
 
 ### Added

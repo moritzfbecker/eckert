@@ -76,7 +76,7 @@ const LogoScroller: React.FC<{ logos: Logo[]; rtl?: boolean; isVisible: boolean 
             <img
               src={logo.path}
               alt={logo.name}
-              className="h-16 w-auto max-w-[200px] transition-all duration-300 object-contain filter grayscale hover:grayscale-0 opacity-60 hover:opacity-100"
+              className="h-16 w-auto max-w-[200px] transition-all duration-300 object-contain opacity-60 hover:opacity-100"
               onError={(e) => {
                 // Fallback if image not found - show text
                 const target = e.target as HTMLImageElement
