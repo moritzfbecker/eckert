@@ -4,6 +4,20 @@ All backend-specific changes are documented here.
 
 ---
 
+## [3.2.1] - 2025-11-02
+
+### Fixed
+- **CORS Configuration** - Fixed contact form email sending [BACKEND_CORS_001]
+  - Email-Service WebConfig: Changed allowCredentials to true
+  - Email-Service WebConfig: Added specific allowed origins (localhost:3000, localhost:8090, becker.limited)
+  - API Gateway: Expanded CORS origins to include https://becker.limited
+  - Resolves 403 Forbidden error on /api/email/send
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - CORS Fix
+
+---
+
 ## [3.1.0] - 2025-10-23
 
 ### Added

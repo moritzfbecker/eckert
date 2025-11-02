@@ -57,7 +57,8 @@
       "Bash(cat:*)",
       "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''2.0.0-SNAPSHOT'',''3.1.0-SNAPSHOT'' | Set-Content -Path ''$file''\")",
       "Bash(del nul)",
-      "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''<version>3.1.0-SNAPSHOT</version>'',''<version>3.2.0-SNAPSHOT</version>'' | Set-Content -Path ''$file''\")"
+      "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''<version>3.1.0-SNAPSHOT</version>'',''<version>3.2.0-SNAPSHOT</version>'' | Set-Content -Path ''$file''\")",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

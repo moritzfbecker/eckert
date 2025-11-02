@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 3.2.1] - 2025-11-02
+
+### Fixed
+- **CORS Configuration** - Contact form email sending now works
+  - Email-Service: allowCredentials=true + specific origins
+  - API Gateway: Added https://becker.limited to CORS
+  - Resolves 403 Forbidden on /api/email/send
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - CORS Fix
+
+---
+
 ## [Frontend 2.17.1] - 2025-11-02
 
 ### Changed

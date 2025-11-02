@@ -19,10 +19,14 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*")  // Allow all origins (API Gateway handles CORS)
+                .allowedOrigins(
+                        "http://localhost:3000",
+                        "http://localhost:8090",
+                        "https://becker.limited"
+                )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(false)  // Must be false when allowedOrigins is "*"
+                .allowCredentials(true)  // Must match API Gateway setting
                 .maxAge(3600);
     }
 }
