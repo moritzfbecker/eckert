@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.18.1] - 2025-11-02
+
+### Fixed
+- **Peter Eckert Section** - Fixed image paths with BASE_URL
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Fix
+
+---
+
 ## [Frontend 2.18.0] - 2025-11-02
 
 ### Added

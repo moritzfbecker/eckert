@@ -4,6 +4,18 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.18.1] - 2025-11-02
+
+### Fixed
+- **Peter Eckert Section Images** - Fixed logo paths with BASE_URL [FRONTEND_ECKERT_002]
+  - Added import.meta.env.BASE_URL to image paths
+  - Added error handlers for missing images
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Image Path Fix
+
+---
+
 ## [2.18.0] - 2025-11-02
 
 ### Added

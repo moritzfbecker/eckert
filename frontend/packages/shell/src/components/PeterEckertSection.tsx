@@ -50,18 +50,28 @@ const PeterEckertSection: React.FC = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  src="/logos/dpeslogo.svg"
+                  src={`${import.meta.env.BASE_URL}logos/dpeslogo.svg`}
                   alt="Dhole Phali School for Excellence"
                   className="w-full max-w-sm opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  onError={(e) => {
+                    console.error('Failed to load DPES logo')
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
                 />
                 <motion.img
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                   viewport={{ once: true }}
-                  src="/logos/Dhole_IIA.png"
+                  src={`${import.meta.env.BASE_URL}logos/Dhole_IIA.png`}
                   alt="International Industry Adviser"
                   className="w-full max-w-[240px] rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  onError={(e) => {
+                    console.error('Failed to load IIA logo')
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
                 />
               </div>
 
