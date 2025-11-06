@@ -344,6 +344,37 @@ public class ConfigApiController {
     }
 
     /**
+     * Restart Config Server
+     *
+     * POST /api/config/restart
+     *
+     * Restarts the Config Server to ensure all changes are loaded.
+     * Docker will automatically restart the container.
+     *
+     * @return Success response
+     */
+    @PostMapping("/restart")
+    public ResponseEntity<Map<String, String>> restartServer() {
+        LoggerUtil.info(logger, "CONFIG_API_014", "Config Server restart requested", Map.of());
+
+        // Spawn new thread to allow response to be sent before shutdown
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000); // Wait 1 second to send response
+                LoggerUtil.info(logger, "CONFIG_API_015", "Initiating Config Server shutdown", Map.of());
+                System.exit(0); // Docker will restart the container
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+
+        return ResponseEntity.ok(Map.of(
+                "status", "success",
+                "message", "Config Server restarting..."
+        ));
+    }
+
+    /**
      * Health check endpoint
      *
      * GET /api/config/health

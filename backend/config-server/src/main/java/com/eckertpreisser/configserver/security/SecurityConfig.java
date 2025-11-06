@@ -54,6 +54,7 @@ public class SecurityConfig {
                         // Write endpoints (protected - admin only!)
                         .requestMatchers("/api/config/i18n/*/*/*").authenticated() // PUT/DELETE single keys
                         .requestMatchers("/api/config/cache/clear").authenticated()
+                        .requestMatchers("/api/config/restart").authenticated() // Server restart
 
                         .anyRequest().permitAll()
                 )

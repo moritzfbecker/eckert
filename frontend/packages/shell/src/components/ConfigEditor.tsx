@@ -150,8 +150,9 @@ export const ConfigEditor = ({ onSave }: ConfigEditorProps) => {
 
       await Promise.all(savePromises)
 
-      // Clear cache to ensure changes are reflected (with auth)
-      await fetch(`${API_BASE}/config/cache/clear`, {
+      // Restart Config Server to ensure changes are loaded (with auth)
+      await fetch(`${API_BASE}/config/restart`, {
+        method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
         }
