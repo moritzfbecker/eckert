@@ -64,7 +64,7 @@ const Login = () => {
         navigate('/dashboard')
       }
     } catch (err) {
-      logger.error('LOGIN_ERR_001', 'Login failed', err)
+      logger.error('LOGIN_ERR_001', 'Login failed', err as Error)
       setError(err instanceof Error ? err.message : config.get('auth.login.error', 'Login failed. Please check your credentials.'))
     } finally {
       setLoading(false)

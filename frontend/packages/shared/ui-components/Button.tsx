@@ -20,6 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   const variantClasses = {
     primary: 'bg-black text-white hover:shadow-apple-glow focus:ring-black',
     secondary: 'bg-white text-black border border-black/20 hover:shadow-apple-glow focus:ring-black',
+    gradient: 'bg-apple-gradient text-white hover:shadow-apple-glow focus:ring-pink-500',
   };
 
   const sizeClasses = {
@@ -38,7 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
         sizeClasses[size],
         className
       )}
-      {...props}
+      {...(props as any)}
     >
       {children}
     </motion.button>

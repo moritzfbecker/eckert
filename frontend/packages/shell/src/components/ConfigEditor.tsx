@@ -58,7 +58,7 @@ export const ConfigEditor = ({ onSave }: ConfigEditorProps) => {
 
       logger.info('CONFIG_EDITOR_001', 'Languages loaded', { count: langs.length })
     } catch (error) {
-      logger.error('CONFIG_EDITOR_ERR_001', 'Failed to load languages', error)
+      logger.error('CONFIG_EDITOR_ERR_001', 'Failed to load languages', error as Error)
     } finally {
       setLoading(false)
     }
@@ -83,7 +83,7 @@ export const ConfigEditor = ({ onSave }: ConfigEditorProps) => {
 
       logger.info('CONFIG_EDITOR_002', 'Categories loaded', { language, count: cats.length })
     } catch (error) {
-      logger.error('CONFIG_EDITOR_ERR_002', 'Failed to load categories', error)
+      logger.error('CONFIG_EDITOR_ERR_002', 'Failed to load categories', error as Error)
     } finally {
       setLoading(false)
     }
@@ -105,7 +105,7 @@ export const ConfigEditor = ({ onSave }: ConfigEditorProps) => {
 
       logger.info('CONFIG_EDITOR_003', 'Config loaded', { language, category, keys: Object.keys(data).length })
     } catch (error) {
-      logger.error('CONFIG_EDITOR_ERR_003', 'Failed to load config', error)
+      logger.error('CONFIG_EDITOR_ERR_003', 'Failed to load config', error as Error)
       setConfig({})
     } finally {
       setLoading(false)
@@ -171,7 +171,7 @@ export const ConfigEditor = ({ onSave }: ConfigEditorProps) => {
       setTimeout(() => setSaveStatus('idle'), 3000)
 
     } catch (error) {
-      logger.error('CONFIG_EDITOR_ERR_004', 'Failed to save config', error)
+      logger.error('CONFIG_EDITOR_ERR_004', 'Failed to save config', error as Error)
       setSaveStatus('error')
     } finally {
       setSaving(false)
