@@ -243,6 +243,17 @@ public class ConfigService {
     }
 
     /**
+     * List all available languages
+     *
+     * Scans config/i18n/ directory for language subdirectories
+     *
+     * @return List of language codes (e.g., ["de", "en"])
+     */
+    public List<String> listLanguages() {
+        return repository.listLanguages();
+    }
+
+    /**
      * Clear cache
      *
      * Useful for development/testing or when configs are edited externally

@@ -13,6 +13,17 @@ spring:
           search-locations: file:./config
         bootstrap: true
 
+# Config Editor Authentication
+# Password: EckertPreisser2025!
+# Hash generated with BCrypt (10 rounds)
+config:
+  auth:
+    username: admin
+    password: $2a$10$oYsiwL6jJkVRJwSjdfXc5uUSOXfRkGjlJtUWH/LbkLj313HWL8r5a
+    jwt:
+      secret: eckert-preisser-jwt-secret-super-secure-key-2025-production
+      expiration: 86400000  # 24 hours in milliseconds
+
 eureka:
   client:
     service-url:

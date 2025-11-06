@@ -157,6 +157,34 @@ public class ConfigRepository {
         }
     }
 
+    /**
+     * List all available languages in i18n directory
+     *
+     * Scans config/i18n/ for language subdirectories (de, en, fr, etc.)
+     *
+     * @return List of language codes (e.g., ["de", "en"])
+     */
+    public List<String> listLanguages() {
+        Path i18nPath = Paths.get(CONFIG_DIR, "i18n");
+
+        if (!Files.exists(i18nPath)) {
+            LoggerUtil.info(logger, "CONFIG_REPO_004", "i18n directory does not exist yet", Map.of());
+            return new ArrayList<>();
+        }
+
+        try {
+            return Files.list(i18nPath)
+                    .filter(Files::isDirectory)
+                    .map(Path::getFileName)
+                    .map(Path::toString)
+                    .sorted()
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            LoggerUtil.error(logger, "CONFIG_REPO_ERR_005", "Failed to list languages", e, Map.of());
+            return new ArrayList<>();
+        }
+    }
+
     // Private helper methods
 
     /**

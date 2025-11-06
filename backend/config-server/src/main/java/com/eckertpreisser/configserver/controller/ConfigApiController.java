@@ -193,6 +193,23 @@ public class ConfigApiController {
         return ResponseEntity.ok(categories);
     }
 
+    /**
+     * List all available languages
+     *
+     * GET /api/config/i18n/languages
+     *
+     * Scans config/i18n/ directory for language subdirectories
+     *
+     * @return List of language codes (e.g., ["de", "en"])
+     */
+    @GetMapping("/i18n/languages")
+    public ResponseEntity<List<String>> listLanguages() {
+        LoggerUtil.info(logger, "CONFIG_API_013", "List languages request", Map.of());
+
+        List<String> languages = configService.listLanguages();
+        return ResponseEntity.ok(languages);
+    }
+
     // ========================================
     // App Config Endpoints
     // ========================================

@@ -14,6 +14,9 @@ import { motion } from 'framer-motion'
 import { useAuth } from '@eckert-preisser/shared/contexts/AuthContext'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { Container } from '../../../shared/ui-components/Container'
+import { logger } from '@eckert-preisser/shared/utils'
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api'
 
 const Login = () => {
   const { language } = useTranslation()
@@ -21,7 +24,7 @@ const Login = () => {
   const { login } = useAuth()
   const navigate = useNavigate()
 
-  const [email, setEmail] = useState('')
+  const [emailOrUsername, setEmailOrUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -32,10 +35,37 @@ const Login = () => {
     setLoading(true)
 
     try {
-      await login(email, password)
-      navigate('/dashboard') // Redirect to dashboard after login
+      // Check if logging in as admin (Config Editor)
+      if (emailOrUsername.toLowerCase() === 'admin') {
+        // Config Admin Login
+        const response = await fetch(`${API_BASE}/config/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: 'admin', password })
+        })
+
+        if (!response.ok) {
+          throw new Error('Invalid admin credentials')
+        }
+
+        const data = await response.json()
+
+        // Store token and username for Config Editor
+        localStorage.setItem('configAdminToken', data.token)
+        localStorage.setItem('configAdminUsername', data.username)
+
+        logger.info('CONFIG_LOGIN_001', 'Admin login successful')
+
+        // Redirect to Config Editor Dashboard
+        navigate('/dashboard')
+      } else {
+        // Normal user login (via auth-service)
+        await login(emailOrUsername, password)
+        navigate('/dashboard')
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : config.get('auth.login.error', 'Login failed'))
+      logger.error('LOGIN_ERR_001', 'Login failed', err)
+      setError(err instanceof Error ? err.message : config.get('auth.login.error', 'Login failed. Please check your credentials.'))
     } finally {
       setLoading(false)
     }
@@ -108,15 +138,15 @@ const Login = () => {
 
                 <div>
                   <label className="block text-white text-sm font-semibold mb-2">
-                    {config.get('auth.login.email', 'Email Address')}
+                    {config.get('auth.login.email', 'Email / Username')}
                   </label>
                   <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    value={emailOrUsername}
+                    onChange={(e) => setEmailOrUsername(e.target.value)}
                     required
                     className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
-                    placeholder={config.get('auth.login.email.placeholder', 'your@email.com')}
+                    placeholder={config.get('auth.login.email.placeholder', 'your@email.com or admin')}
                   />
                 </div>
 
