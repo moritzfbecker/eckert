@@ -136,10 +136,10 @@ const Concept = () => {
               transition={{ duration: 0.6 }}
               className="mb-16"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-black mb-4 md:mb-6">
                 {config.get('concept.page.title', 'Our Concept')}
               </h1>
-              <p className="text-xl md:text-2xl text-black/80">
+              <p className="text-lg md:text-xl lg:text-2xl text-black/80">
                 {config.get('concept.page.subtitle', 'A new perspective on strategic HR consulting')}
               </p>
             </motion.div>
@@ -151,64 +151,64 @@ const Concept = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="mb-16 scroll-mt-32"
+              className="mb-12 md:mb-16 scroll-mt-32"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-3 md:mb-4">
                 {config.get('concept.chapter1.title', 'The Hidden Crisis Your Board Meetings Don\'t Address')}
               </h2>
-              <p className="text-xl text-black/60 mb-8 italic">
+              <p className="text-base md:text-lg lg:text-xl text-black/60 mb-6 md:mb-8 italic">
                 {config.get('concept.chapter1.subtitle', 'The pattern you probably already know – but haven\'t quantified yet')}
               </p>
 
               {/* Intro Text */}
-              <div className="text-lg text-black/80 leading-relaxed mb-12">
-                <p className="mb-6">{config.get('concept.chapter1.intro.p1', 'Your last strategy consultation delivered a 300-page presentation. Brilliant analysis. Clear recommendations. 18 months later: 30% of recommendations implemented. The other 70% disappeared into organizational friction.')}</p>
-                <p className="mb-6">
+              <div className="text-base md:text-lg text-black/80 leading-relaxed mb-8 md:mb-12">
+                <p className="mb-4 md:mb-6">{config.get('concept.chapter1.intro.p1', 'Your last strategy consultation delivered a 300-page presentation. Brilliant analysis. Clear recommendations. 18 months later: 30% of recommendations implemented. The other 70% disappeared into organizational friction.')}</p>
+                <p className="mb-4 md:mb-6">
                   {config.get('concept.chapter1.intro.p2', 'You thought that was normal. It\'s not normal � it\'s systematic.').split('Es ist nicht normal – es ist systematisch.')[0]}
                   <strong className="text-black">{config.get('concept.chapter1.intro.p2', 'You thought that was normal. It\'s not normal � it\'s systematic.').split('Es ist nicht normal – es ist systematisch.')[1] ? 'Es ist nicht normal – es ist systematisch.' : config.get('concept.chapter1.intro.p2', 'You thought that was normal. It\'s not normal � it\'s systematic.').match(/It's not normal.*$/)?.[0] || ''}</strong>
                 </p>
-                <p className="mb-6">{config.get('concept.chapter1.intro.p3', 'What if the limiting factor isn\'t your strategy, but something that classical strategy consultancies systematically overlook?')}</p>
+                <p className="mb-4 md:mb-6">{config.get('concept.chapter1.intro.p3', 'What if the limiting factor isn\'t your strategy, but something that classical strategy consultancies systematically overlook?')}</p>
               </div>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">{config.get('concept.chapter1.stat1.value', '34%')}</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
+                <div className="bg-black text-white rounded-lg p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-4xl md:text-5xl font-bold mb-2 md:mb-3">{config.get('concept.chapter1.stat1.value', '34%')}</div>
                   <p className="text-white/90" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.stat1.text', 'of success is explained by budget. 66% remains unexplained.').replace('66%', '<strong class="text-white">66%</strong>') }} />
                 </div>
-                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">{config.get('concept.chapter1.stat2.value', '58%')}</div>
+                <div className="bg-black text-white rounded-lg p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-4xl md:text-5xl font-bold mb-2 md:mb-3">{config.get('concept.chapter1.stat2.value', '58%')}</div>
                   <p className="text-white/90" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.stat2.text', 'of success correlates with Coaching-Leverage').replace('Coaching-Leverage', '<strong class="text-white">Coaching-Leverage</strong>') }} />
                 </div>
-                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">{config.get('concept.chapter1.stat3.value', '167%')}</div>
+                <div className="bg-black text-white rounded-lg p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-4xl md:text-5xl font-bold mb-2 md:mb-3">{config.get('concept.chapter1.stat3.value', '167%')}</div>
                   <p className="text-white/90" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.stat3.text', 'efficiency advantage of systematic developers').replace(/^(\w+)/, '<strong class="text-white">$1</strong>') }} />
                 </div>
               </div>
 
               {/* Annahmen Header */}
-              <h3 className="text-2xl font-bold text-black mb-6">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4 md:mb-6">
                 {config.get('concept.chapter1.assumptions.title', 'The three assumptions sabotaging your resource allocation')}
               </h3>
 
               {/* Annahmen Cards */}
-              <div className="space-y-6 mb-12">
-                <div className="border-l-4 border-black pl-6">
-                  <h4 className="text-lg font-bold text-black mb-2">
+              <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
+                <div className="border-l-4 border-black pl-4 md:pl-6">
+                  <h4 className="text-base md:text-lg font-bold text-black mb-2">
                     {config.get('concept.chapter1.assumption1.title', 'Assumption: Elite-Talent + Elite-Budget = Elite-Performance')}
                   </h4>
                   <p className="text-black/80" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.assumption1.reality', 'Reality from 2025 EuroBasket: Finland reached 4th place. Spain eliminated in preliminary round.').replace(/^(\w+[^:]+:)/, '<strong>$1</strong>') }} />
                 </div>
 
-                <div className="border-l-4 border-black pl-6">
-                  <h4 className="text-lg font-bold text-black mb-2">
+                <div className="border-l-4 border-black pl-4 md:pl-6">
+                  <h4 className="text-base md:text-lg font-bold text-black mb-2">
                     {config.get('concept.chapter1.assumption2.title', 'Assumption: Best practices of market leaders should be copied')}
                   </h4>
                   <p className="text-black/80" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.assumption2.reality', 'Reality: High-talent organizations systematically underperform.').replace(/^(\w+:)/, '<strong>$1</strong>') }} />
                 </div>
 
-                <div className="border-l-4 border-black pl-6">
-                  <h4 className="text-lg font-bold text-black mb-2">
+                <div className="border-l-4 border-black pl-4 md:pl-6">
+                  <h4 className="text-base md:text-lg font-bold text-black mb-2">
                     {config.get('concept.chapter1.assumption3.title', 'Assumption: ROI must be visible within 24 months')}
                   </h4>
                   <p className="text-black/80" dangerouslySetInnerHTML={{ __html: config.get('concept.chapter1.assumption3.reality', 'Reality: ZOLLERN Hidden Champion - 16 years, 8% margin contribution.').replace(/^([^:]+:)/, '<strong>$1</strong>') }} />
@@ -225,29 +225,29 @@ const Concept = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="mb-16 scroll-mt-32"
+              className="mb-12 md:mb-16 scroll-mt-32"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-3 md:mb-4">
                 {config.get('concept.chapter2.title', 'Three Things We Promise You – And Why We Can Deliver Them')}
               </h2>
-              <p className="text-xl text-black/60 mb-8 italic">
+              <p className="text-base md:text-lg lg:text-xl text-black/60 mb-6 md:mb-8 italic">
                 {config.get('concept.chapter2.subtitle', 'What distinguishes us from traditional strategy consultancies?')}
               </p>
 
               {/* Intro Text */}
-              <div className="text-lg text-black/80 leading-relaxed mb-12">
+              <div className="text-base md:text-lg text-black/80 leading-relaxed mb-8 md:mb-12">
                 <p>{config.get('concept.chapter2.intro', 'We don\'t give you presentations. We give you three specific outcomes that traditional strategy consultancies cannot deliver.')}</p>
               </div>
 
               {/* Promises */}
-              <div className="space-y-8 mb-12">
+              <div className="space-y-6 md:space-y-8 mb-8 md:mb-12">
                 {/* Promise 1 */}
-                <div className="border-l-4 border-black pl-6">
-                  <div className="flex items-start gap-4 mb-3">
-                    <span className="text-5xl font-bold text-black/20 leading-none">
+                <div className="border-l-4 border-black pl-4 md:pl-6">
+                  <div className="flex items-start gap-3 md:gap-4 mb-3">
+                    <span className="text-4xl md:text-5xl font-bold text-black/20 leading-none">
                       {config.get('concept.chapter2.promise1.number', '01')}
                     </span>
-                    <h3 className="text-2xl font-bold text-black pt-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-black pt-1 md:pt-2">
                       {config.get('concept.chapter2.promise1.title', 'A New Perspective on Your Limiting Problem')}
                     </h3>
                   </div>
@@ -257,12 +257,12 @@ const Concept = () => {
                 </div>
 
                 {/* Promise 2 */}
-                <div className="border-l-4 border-black pl-6">
-                  <div className="flex items-start gap-4 mb-3">
-                    <span className="text-5xl font-bold text-black/20 leading-none">
+                <div className="border-l-4 border-black pl-4 md:pl-6">
+                  <div className="flex items-start gap-3 md:gap-4 mb-3">
+                    <span className="text-4xl md:text-5xl font-bold text-black/20 leading-none">
                       {config.get('concept.chapter2.promise2.number', '02')}
                     </span>
-                    <h3 className="text-2xl font-bold text-black pt-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-black pt-1 md:pt-2">
                       {config.get('concept.chapter2.promise2.title', 'Solutions for Problems You Haven\'t Explicitly Perceived Yet')}
                     </h3>
                   </div>
@@ -272,12 +272,12 @@ const Concept = () => {
                 </div>
 
                 {/* Promise 3 */}
-                <div className="border-l-4 border-black pl-6">
-                  <div className="flex items-start gap-4 mb-3">
-                    <span className="text-5xl font-bold text-black/20 leading-none">
+                <div className="border-l-4 border-black pl-4 md:pl-6">
+                  <div className="flex items-start gap-3 md:gap-4 mb-3">
+                    <span className="text-4xl md:text-5xl font-bold text-black/20 leading-none">
                       {config.get('concept.chapter2.promise3.number', '03')}
                     </span>
-                    <h3 className="text-2xl font-bold text-black pt-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-black pt-1 md:pt-2">
                       {config.get('concept.chapter2.promise3.title', 'The Breakout from Stagnation Position')}
                     </h3>
                   </div>
@@ -288,8 +288,8 @@ const Concept = () => {
               </div>
 
               {/* Conclusion */}
-              <div className="bg-black text-white rounded-lg p-8 mb-12">
-                <h3 className="text-2xl font-bold mb-4">
+              <div className="bg-black text-white rounded-lg p-6 md:p-8 mb-8 md:mb-12">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
                   {config.get('concept.chapter2.conclusion.title', 'Why These Three Promises Are Sustainable')}
                 </h3>
                 <p className="text-white/90 leading-relaxed whitespace-pre-line">
@@ -389,8 +389,8 @@ const Concept = () => {
               </div>
 
               {/* Conclusion */}
-              <div className="bg-black text-white rounded-lg p-8 mb-12">
-                <h3 className="text-2xl font-bold mb-4">
+              <div className="bg-black text-white rounded-lg p-6 md:p-8 mb-8 md:mb-12">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
                   {config.get('concept.chapter3.conclusion.title', 'The Consequence of This Methodology')}
                 </h3>
                 <p className="text-white/90 leading-relaxed mb-4">
@@ -528,8 +528,8 @@ const Concept = () => {
               </div>
 
               {/* Conclusion */}
-              <div className="bg-black text-white rounded-lg p-8 mb-12">
-                <h3 className="text-2xl font-bold mb-4">
+              <div className="bg-black text-white rounded-lg p-6 md:p-8 mb-8 md:mb-12">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
                   {config.get('concept.chapter4.conclusion.title', 'The Strategic Implication')}
                 </h3>
                 <p className="text-white/90 leading-relaxed mb-4">
