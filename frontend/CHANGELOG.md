@@ -4,6 +4,21 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.19.6] - 2025-11-08
+
+### Fixed
+- **Concept Page - Desktop Sidebar Sticky** - Sidebar now stays visible when scrolling [FRONTEND_CONCEPT_006]
+  - Changed overflow-x-hidden to only apply on mobile
+  - Desktop now has overflow-x-visible (allows sticky to work)
+  - Added max-w-full to flex container to prevent overflow
+  - Added min-w-0 to main content div for proper flex behavior
+  - Desktop sidebar now properly sticky with top-32
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Sticky Sidebar Fix
+
+---
+
 ## [2.19.5] - 2025-11-08
 
 ### Fixed

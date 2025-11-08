@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.19.6] - 2025-11-08
+
+### Fixed
+- **Concept Page - Desktop Sidebar Sticky** - Sidebar stays visible when scrolling
+  - overflow-x-hidden only on mobile, overflow-x-visible on desktop
+  - Sidebar sticky positioning now works correctly
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Sticky Sidebar Fix
+
+---
+
 ## [Frontend 2.19.5] - 2025-11-08
 
 ### Fixed
