@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.19.1] - 2025-11-08
+
+### Fixed
+- **Concept Page Mobile Responsiveness** - Fixed mobile layout and styling guidelines compliance
+  - Fixed main content margin for mobile-first (mx-44 → mx-auto px-4 md:px-8 lg:mx-44)
+  - Removed all gray tones (bg-gray-50 → bg-white) following STYLING_GUIDELINES.md
+  - Increased mobile bottom padding for navigation
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Mobile Responsiveness Fix
+
+---
+
 ## [Frontend 2.18.1] - 2025-11-02
 
 ### Fixed

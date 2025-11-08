@@ -4,6 +4,20 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.19.1] - 2025-11-08
+
+### Fixed
+- **Concept Page Mobile Responsiveness** - Fixed mobile layout and styling [FRONTEND_CONCEPT_001]
+  - Fixed main content margin: changed mx-44 to mx-auto px-4 md:px-8 lg:mx-44 for mobile-first
+  - Replaced all bg-gray-50 with bg-white (following strict black/white styling guidelines)
+  - Increased bottom padding for mobile navigation: pb-32 instead of pb-24
+  - All styling now follows STYLING_GUIDELINES.md v2.0.0 (no gray tones!)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Mobile Responsiveness Fix
+
+---
+
 ## [2.18.1] - 2025-11-02
 
 ### Fixed

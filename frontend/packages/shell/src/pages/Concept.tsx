@@ -62,7 +62,7 @@ const Concept = () => {
   }
 
   return (
-    <div className="min-h-screen bg-eckert-white pt-24 md:pt-32 pb-24 md:pb-20">
+    <div className="min-h-screen bg-eckert-white pt-24 md:pt-32 pb-32 md:pb-20">
       <div className="flex gap-8 px-6">
         {/* Desktop Sidebar - Sticky */}
         <aside className="
@@ -127,7 +127,7 @@ const Concept = () => {
         </nav>
 
         {/* Main Content */}
-        <main className="flex-1 max-w-4xl mx-44">
+        <main className="flex-1 max-w-4xl mx-auto px-4 md:px-8 lg:mx-44">
           <div>
             {/* Hero */}
             <motion.div
@@ -569,7 +569,7 @@ const Concept = () => {
               {/* Three Pillars */}
               <div className="space-y-10 mb-12">
                 {/* Pillar 1 - Technology Portfolio */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <div className="flex items-start gap-4 mb-4">
                     <span className="text-5xl font-bold text-black/20 leading-none">
                       {config.get('concept.chapter5.pillar1.number', '01')}
@@ -600,7 +600,7 @@ const Concept = () => {
                 </div>
 
                 {/* Pillar 2 - Resource Strength */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <div className="flex items-start gap-4 mb-4">
                     <span className="text-5xl font-bold text-black/20 leading-none">
                       {config.get('concept.chapter5.pillar2.number', '02')}
@@ -631,7 +631,7 @@ const Concept = () => {
                 </div>
 
                 {/* Pillar 3 - Human Performance Potential */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <div className="flex items-start gap-4 mb-4">
                     <span className="text-5xl font-bold text-black/20 leading-none">
                       {config.get('concept.chapter5.pillar3.number', '03')}
@@ -740,7 +740,7 @@ const Concept = () => {
                   <p className="text-black/80 mb-4">
                     {config.get('concept.chapter6.insight1.text', 'Only 34% of performance variance is explained by budget. 66% remains unexplained – until you understand that coaching leverage, not capital intensity, is the decisive factor.')}
                   </p>
-                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                  <div className="bg-white p-6 rounded-lg border border-black/10">
                     <p className="text-sm font-semibold text-black mb-2">
                       {config.get('concept.chapter6.insight1.implication.label', 'Implication for your organization:')}
                     </p>
@@ -758,7 +758,7 @@ const Concept = () => {
                   <p className="text-black/80 mb-4">
                     {config.get('concept.chapter6.insight2.text', 'Coaching leverage explains 58% of performance variance – 71% more than budget (34%). Finland\'s coaching leverage of 1.86 was 7x higher than Germany\'s 1.14.')}
                   </p>
-                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                  <div className="bg-white p-6 rounded-lg border border-black/10">
                     <p className="text-sm font-semibold text-black mb-2">
                       {config.get('concept.chapter6.insight2.implication.label', 'Implication for your organization:')}
                     </p>
@@ -776,7 +776,7 @@ const Concept = () => {
                   <p className="text-black/80 mb-4">
                     {config.get('concept.chapter6.insight3.text', 'Finland outperformed expectations by +10 places over 16 years. Georgia +11, Portugal +6. All three: Systematic developers, not talent accumulators.')}
                   </p>
-                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                  <div className="bg-white p-6 rounded-lg border border-black/10">
                     <p className="text-sm font-semibold text-black mb-2">
                       {config.get('concept.chapter6.insight3.implication.label', 'Implication for your organization:')}
                     </p>
@@ -794,7 +794,7 @@ const Concept = () => {
                   <p className="text-black/80 mb-4">
                     {config.get('concept.chapter6.insight4.text', 'Spain (elite talent) underperformed by -13 places. Serbia (Jokić = best player in the world) by -6. Finland (weakest talent in semifinals) outperformed by +10.')}
                   </p>
-                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                  <div className="bg-white p-6 rounded-lg border border-black/10">
                     <p className="text-sm font-semibold text-black mb-2">
                       {config.get('concept.chapter6.insight4.implication.label', 'Implication for your organization:')}
                     </p>
@@ -812,7 +812,7 @@ const Concept = () => {
                   <p className="text-black/80 mb-4">
                     {config.get('concept.chapter6.insight5.text', 'Finland: Only team with documented 16-year development. ROI break-even year 4. Cumulative performance increase: 8-12% per year (vs. industry standard 2-3%).')}
                   </p>
-                  <div className="bg-gray-50 p-6 rounded-lg border border-black/10">
+                  <div className="bg-white p-6 rounded-lg border border-black/10">
                     <p className="text-sm font-semibold text-black mb-2">
                       {config.get('concept.chapter6.insight5.implication.label', 'Implication for your organization:')}
                     </p>
@@ -872,7 +872,7 @@ const Concept = () => {
 
               {/* Comparison Table */}
               <div className="overflow-x-auto mb-12">
-                <div className="bg-gray-50 rounded-lg border border-black/10 p-6">
+                <div className="bg-white rounded-lg border border-black/10 p-6">
                   <table className="w-full">
                     <thead>
                       <tr className="border-b-2 border-black/20">
@@ -999,7 +999,7 @@ const Concept = () => {
               {/* Two Archetypes */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 {/* Archetype 1 - Underdog Systematizers */}
-                <div className="bg-gray-50 rounded-lg p-8 border-2 border-black/10">
+                <div className="bg-white rounded-lg p-8 border-2 border-black/10">
                   <h3 className="text-2xl font-bold text-black mb-2">
                     {config.get('concept.chapter8.archetype1.title', 'Underdog Systematizers')}
                   </h3>
@@ -1135,7 +1135,7 @@ const Concept = () => {
               {/* Five Scenarios */}
               <div className="space-y-10 mb-12">
                 {/* Scenario 1 - Investment Patience */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <h3 className="text-xl font-bold text-black mb-4">
                     {config.get('concept.chapter9.scenario1.title', 'SCENARIO 1: Investment Patience Under Pressure')}
                   </h3>
@@ -1167,7 +1167,7 @@ const Concept = () => {
                 </div>
 
                 {/* Scenario 2 - Vision Horizon */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <h3 className="text-xl font-bold text-black mb-4">
                     {config.get('concept.chapter9.scenario2.title', 'SCENARIO 2: Vision Horizon Definition')}
                   </h3>
@@ -1199,7 +1199,7 @@ const Concept = () => {
                 </div>
 
                 {/* Scenario 3 - CEO Role Definition */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <h3 className="text-xl font-bold text-black mb-4">
                     {config.get('concept.chapter9.scenario3.title', 'SCENARIO 3: CEO Role Definition')}
                   </h3>
@@ -1231,7 +1231,7 @@ const Concept = () => {
                 </div>
 
                 {/* Scenario 4 - Underdog Mentality */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <h3 className="text-xl font-bold text-black mb-4">
                     {config.get('concept.chapter9.scenario4.title', 'SCENARIO 4: Underdog Mentality vs. External Skepticism')}
                   </h3>
@@ -1263,7 +1263,7 @@ const Concept = () => {
                 </div>
 
                 {/* Scenario 5 - System over Talent */}
-                <div className="bg-gray-50 rounded-lg p-8 border-l-4 border-black">
+                <div className="bg-white rounded-lg p-8 border-l-4 border-black border border-black/10">
                   <h3 className="text-xl font-bold text-black mb-4">
                     {config.get('concept.chapter9.scenario5.title', 'SCENARIO 5: System-over-Talent Prioritization')}
                   </h3>
