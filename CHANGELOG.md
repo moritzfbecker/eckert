@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.19.4] - 2025-11-08
+
+### Changed
+- **Concept Page - Mobile Without Navigation** - Desktop keeps sidebar, mobile clean like About
+  - Desktop: Sidebar with chapter navigation KEPT
+  - Mobile: Removed bottom navigation, simple scrolling
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Mobile Navigation Removal
+
+---
+
 ## [Frontend 2.19.3] - 2025-11-08
 
 ### Changed

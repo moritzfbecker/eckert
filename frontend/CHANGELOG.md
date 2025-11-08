@@ -4,6 +4,20 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.19.4] - 2025-11-08
+
+### Changed
+- **Concept Page - Mobile Without Navigation** - Clean mobile like About, Desktop keeps sidebar [FRONTEND_CONCEPT_004]
+  - Desktop: Sidebar with chapter navigation KEPT (hidden md:block)
+  - Mobile: Removed bottom navigation bar for clean scrolling
+  - Mobile: Simple scrollable content like About page
+  - Desktop: Full navigation and scrollspy functionality
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Mobile Navigation Removal
+
+---
+
 ## [2.19.3] - 2025-11-08
 
 ### Changed
