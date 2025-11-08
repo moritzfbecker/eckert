@@ -4,6 +4,22 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.19.5] - 2025-11-08
+
+### Fixed
+- **Concept Page - Fixed Horizontal Scrolling** - No more left/right swiping on mobile [FRONTEND_CONCEPT_005]
+  - Added overflow-x-hidden to main container
+  - Changed flex gap from gap-8 to gap-0 md:gap-8 (no gap on mobile)
+  - Changed outer padding from px-6 to px-0 md:px-6 (no padding on mobile)
+  - Changed main content from px-4 md:px-8 to px-4 md:px-6 lg:px-8
+  - Changed main from max-w-4xl to w-full md:max-w-4xl
+  - Content now fits perfectly within viewport on mobile
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Horizontal Scroll Fix
+
+---
+
 ## [2.19.4] - 2025-11-08
 
 ### Changed

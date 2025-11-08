@@ -62,8 +62,8 @@ const Concept = () => {
   }
 
   return (
-    <div className="min-h-screen bg-eckert-white pt-24 md:pt-32 pb-20">
-      <div className="flex gap-8 px-6">
+    <div className="min-h-screen bg-eckert-white pt-24 md:pt-32 pb-20 overflow-x-hidden">
+      <div className="flex gap-0 md:gap-8 px-0 md:px-6">
         {/* Desktop Sidebar - Sticky */}
         <aside className="
           hidden md:block
@@ -99,7 +99,7 @@ const Concept = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 max-w-4xl mx-auto px-4 md:px-8 lg:mx-44">
+        <main className="flex-1 w-full md:max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <div>
             {/* Hero */}
             <motion.div

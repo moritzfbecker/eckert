@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.19.5] - 2025-11-08
+
+### Fixed
+- **Concept Page - Fixed Horizontal Scrolling** - No more left/right swiping on mobile
+  - Added overflow-x-hidden
+  - Removed gaps and outer padding on mobile
+  - Content fits viewport perfectly
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Horizontal Scroll Fix
+
+---
+
 ## [Frontend 2.19.4] - 2025-11-08
 
 ### Changed
