@@ -4,6 +4,32 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.20.0] - 2025-11-08
+
+### Changed
+- **Impressum Page - Updated Company Data** - New official company information [FRONTEND_IMPRESSUM_001]
+  - Company: ECKERTPREISSER Personalberatung Partnerschaft (not GmbH!)
+  - Address: Im Burgstall 25, 74343 Sachsenheim
+  - Phone: +49 (0) 7147 960210
+  - Email: kontakt@eckertpreisser.de
+  - Partners: Peter Eckert & Margarete Eckert-Preisser
+  - Register: Amtsgericht Stuttgart, PR 720497
+  - VAT ID: DE298681715
+  - Responsible: Peter Eckert
+
+### Added
+- **Impressum - Bildnachweise und Quellen** - Extended section with source citations [FRONTEND_IMPRESSUM_002]
+  - Changed title from "Bildnachweise" to "Bildnachweise und Quellen"
+  - Added source: Fredmund Malik: Strategie des Managements komplexer Systeme, Haupt-Verlag 2015
+  - Added source: W. Pfeiffer et al.: Technologie-Portfolio zum Management strategischer Zukunftsgeschäftsfelder. Göttingen 1982
+  - Updated intro text to mention "Quellen"
+  - All sources listed with bullet points
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Company Data Update + New Content
+
+---
+
 ## [2.19.6] - 2025-11-08
 
 ### Fixed

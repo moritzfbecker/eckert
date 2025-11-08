@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.20.0] - 2025-11-08
+
+### Changed
+- **Impressum - Updated Company Data** - Official company information and legal details
+  - ECKERTPREISSER Personalberatung Partnerschaft
+  - New address, phone, partners, register number, VAT ID
+
+### Added
+- **Impressum - Bildnachweise und Quellen** - Extended with academic source citations
+  - Fredmund Malik (Haupt-Verlag 2015)
+  - W. Pfeiffer et al. (Göttingen 1982)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Company Data + New Content
+
+---
+
 ## [Frontend 2.19.6] - 2025-11-08
 
 ### Fixed

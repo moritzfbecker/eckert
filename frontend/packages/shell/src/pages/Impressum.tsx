@@ -31,9 +31,9 @@ const Impressum = () => {
               </h2>
               <div className="bg-black p-6 rounded-lg border border-black/10">
                 <p className="font-semibold text-white">
-                  {config.get('impressum.provider.name', 'Eckert Preisser GmbH')}
+                  {config.get('impressum.provider.name', 'ECKERTPREISSER Personalberatung Partnerschaft')}
                 </p>
-                {config.get('impressum.provider.address', 'Musterstraße 123\n12345 Musterstadt\nGermany').split('\n').map((line, i) => (
+                {config.get('impressum.provider.address', 'Im Burgstall 25\n74343 Sachsenheim\nDeutschland').split('\n').map((line, i) => (
                   <p key={i} className="text-white/80">{line}</p>
                 ))}
               </div>
@@ -47,18 +47,18 @@ const Impressum = () => {
               <div className="bg-black p-6 rounded-lg border border-black/10 space-y-2">
                 <p className="text-white/80">
                   <span className="font-semibold text-white">
-                    {config.get('impressum.contact.phone', 'Phone')}:
-                  </span> +49 (0) 123 456789
+                    {config.get('impressum.contact.phone', 'Telefon')}:
+                  </span> {config.get('impressum.contact.phone.number', '+49 (0) 7147 960210')}
                 </p>
                 <p className="text-white/80">
                   <span className="font-semibold text-white">
-                    {config.get('impressum.contact.email', 'Email')}:
-                  </span> info@eckertpreisser.de
+                    {config.get('impressum.contact.email', 'E-Mail')}:
+                  </span> {config.get('impressum.contact.email.address', 'kontakt@eckertpreisser.de')}
                 </p>
                 <p className="text-white/80">
                   <span className="font-semibold text-white">
-                    {config.get('impressum.contact.website', 'Website')}:
-                  </span> www.eckertpreisser.de
+                    {config.get('impressum.contact.website', 'Webseite')}:
+                  </span> {config.get('impressum.contact.website.url', 'www.eckertpreisser.de')}
                 </p>
               </div>
             </section>
@@ -66,11 +66,14 @@ const Impressum = () => {
             {/* Vertretungsberechtigte */}
             <section>
               <h2 className="text-2xl font-bold mb-4 text-black">
-                {config.get('impressum.representative.title', 'Authorized Representatives')}
+                {config.get('impressum.representative.title', 'Vertretungsberechtigte')}
               </h2>
-              <div className="bg-black p-6 rounded-lg border border-black/10">
+              <div className="bg-black p-6 rounded-lg border border-black/10 space-y-2">
                 <p className="text-white/80">
-                  {config.get('impressum.representative.content', 'Managing Director: Max Mustermann')}
+                  <span className="font-semibold text-white">Partner:</span> {config.get('impressum.representative.partner1', 'Peter Eckert')}
+                </p>
+                <p className="text-white/80">
+                  <span className="font-semibold text-white">PartnerIn:</span> {config.get('impressum.representative.partner2', 'Margarete Eckert-Preisser')}
                 </p>
               </div>
             </section>
@@ -83,13 +86,13 @@ const Impressum = () => {
               <div className="bg-black p-6 rounded-lg border border-black/10 space-y-2">
                 <p className="text-white/80">
                   <span className="font-semibold text-white">
-                    {config.get('impressum.register.court', 'Register Court')}:
-                  </span> Amtsgericht Musterstadt
+                    {config.get('impressum.register.court', 'Registergericht')}:
+                  </span> {config.get('impressum.register.court.name', 'Amtsgericht Stuttgart')}
                 </p>
                 <p className="text-white/80">
                   <span className="font-semibold text-white">
-                    {config.get('impressum.register.number', 'Registration Number')}:
-                  </span> HRB 12345
+                    {config.get('impressum.register.number', 'Registernummer')}:
+                  </span> {config.get('impressum.register.number.value', 'PR 720497')}
                 </p>
               </div>
             </section>
@@ -97,11 +100,11 @@ const Impressum = () => {
             {/* Umsatzsteuer-ID */}
             <section>
               <h2 className="text-2xl font-bold mb-4 text-black">
-                {config.get('impressum.vat.title', 'VAT ID')}
+                {config.get('impressum.vat.title', 'Umsatzsteuer-ID')}
               </h2>
               <div className="bg-black p-6 rounded-lg border border-black/10">
                 <p className="text-white/80">
-                  {config.get('impressum.vat.content', 'VAT identification number according to §27a Value Added Tax Act: DE123456789')}
+                  {config.get('impressum.vat.content', 'Umsatzsteuer-Identifikationsnummer § 27 a Umsatzsteuergesetz: DE298681715')}
                 </p>
               </div>
             </section>
@@ -109,10 +112,10 @@ const Impressum = () => {
             {/* Verantwortlich für den Inhalt */}
             <section>
               <h2 className="text-2xl font-bold mb-4 text-black">
-                {config.get('impressum.responsible.title', 'Responsible for Content')}
+                {config.get('impressum.responsible.title', 'Verantwortlich für den Inhalt')}
               </h2>
               <div className="bg-black p-6 rounded-lg border border-black/10">
-                {config.get('impressum.responsible.content', 'Max Mustermann\nMusterstraße 123\n12345 Musterstadt').split('\n').map((line, i) => (
+                {config.get('impressum.responsible.content', 'Peter Eckert\nIm Burgstall 25\n74343 Sachsenheim').split('\n').map((line, i) => (
                   <p key={i} className="text-white/80">{line}</p>
                 ))}
               </div>
@@ -216,15 +219,23 @@ const Impressum = () => {
               </div>
             </section>
 
-            {/* Bildnachweise */}
+            {/* Bildnachweise und Quellen */}
             <section>
               <h2 className="text-2xl font-bold mb-4 text-black">
-                {config.get('impressum.images.title', 'Image Credits')}
+                {config.get('impressum.sources.title', 'Bildnachweise und Quellen')}
               </h2>
-              <div className="bg-black p-6 rounded-lg border border-black/10">
+              <div className="bg-black p-6 rounded-lg border border-black/10 space-y-4">
                 <p className="text-white/80 leading-relaxed">
-                  {config.get('impressum.images.content', 'All images and graphics used on this website are either created by us or used under appropriate licenses. Sources are indicated where required.')}
+                  {config.get('impressum.sources.intro', 'Alle auf dieser Webseite verwendeten Bilder, Grafiken und Quellen wurden entweder von uns erstellt oder werden unter entsprechenden Lizenzen verwendet. Quellen sind wo erforderlich explizit angegeben. Insbesondere sind dies:')}
                 </p>
+                <div className="mt-4 space-y-3 border-t border-white/10 pt-4">
+                  <p className="text-white/80 leading-relaxed">
+                    • {config.get('impressum.sources.source1', 'Fredmund Malik: Strategie des Managements komplexer Systeme, Haupt-Verlag 2015')}
+                  </p>
+                  <p className="text-white/80 leading-relaxed">
+                    • {config.get('impressum.sources.source2', 'W. Pfeiffer, G. Metze, W. Schneider, R. Amler: Technologie-Portfolio zum Management strategischer Zukunftsgeschäftsfelder. 1. Auflage. Göttingen 1982.')}
+                  </p>
+                </div>
               </div>
             </section>
           </div>
