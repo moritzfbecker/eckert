@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.19.3] - 2025-11-08
+
+### Changed
+- **Concept Page - Simplified Mobile Layout** - Clean mobile experience like About page
+  - Removed desktop sidebar and mobile bottom navigation
+  - Simple scrollable Container layout
+  - Distraction-free reading on mobile
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Layout Simplification
+
+---
+
 ## [Frontend 2.19.2] - 2025-11-08
 
 ### Fixed

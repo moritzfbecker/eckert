@@ -1,133 +1,27 @@
 import { motion } from 'framer-motion'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
-import { useState, useEffect } from 'react'
+import { Container } from '../../../shared/ui-components/Container'
 
 /**
  * Concept Page - v2.0 Config API
  *
+ * Simple scrollable layout like About page (no sidebar, no mobile nav)
  * Uses NEW useConfig Hook with 'concept' category.
- * All Chapter 1 & 2 content with English defaults.
+ * All Chapter 1-9 content with English defaults.
  * Language switches dynamically via Language Switcher.
  */
 const Concept = () => {
-  const [activeSection, setActiveSection] = useState('chapter1')
-
   // Get current language from I18nContext
   const { language } = useTranslation()
 
   // NEW v2.0: useConfig with 'concept' category and DYNAMIC language
   const config = useConfig('concept', language)
 
-  // Kapitel mit IDs
-  const chapters = [
-    { id: 'chapter1', titleKey: 'concept.nav.chapter1' },
-    { id: 'chapter2', titleKey: 'concept.nav.chapter2' },
-    { id: 'chapter3', titleKey: 'concept.nav.chapter3' },
-    { id: 'chapter4', titleKey: 'concept.nav.chapter4' },
-    { id: 'chapter5', titleKey: 'concept.nav.chapter5' },
-    { id: 'chapter6', titleKey: 'concept.nav.chapter6' },
-    { id: 'chapter7', titleKey: 'concept.nav.chapter7' },
-    { id: 'chapter8', titleKey: 'concept.nav.chapter8' },
-    { id: 'chapter9', titleKey: 'concept.nav.chapter9' }
-  ]
-
-  // ScrollSpy - Detect active section
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = chapters.map(ch => document.getElementById(ch.id))
-      const scrollPosition = window.scrollY + 150
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i]
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(chapters[i].id)
-          break
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Initial check
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Smooth scroll to section
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const yOffset = -100
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
-      window.scrollTo({ top: y, behavior: 'smooth' })
-    }
-  }
-
   return (
-    <div className="min-h-screen bg-eckert-white pt-24 md:pt-32 pb-32 md:pb-20">
-      <div className="flex gap-8 px-6">
-        {/* Desktop Sidebar - Sticky */}
-        <aside className="
-          hidden md:block
-          w-72
-          flex-shrink-0
-        ">
-          <div className="sticky top-32 max-h-[calc(100vh-10rem)] overflow-y-auto">
-            <div className="bg-black rounded-lg p-6">
-              <h2 className="text-lg font-bold text-white mb-6 uppercase tracking-wider">
-                {config.get('concept.sidebar.title', 'Table of Contents')}
-              </h2>
-              <nav className="space-y-2">
-                {chapters.map((chapter) => (
-                  <button
-                    key={chapter.id}
-                    onClick={() => scrollToSection(chapter.id)}
-                    className={`
-                      w-full text-left px-4 py-3 rounded-lg
-                      transition-all duration-300
-                      text-sm font-medium
-                      ${activeSection === chapter.id
-                        ? 'bg-white/10 text-white shadow-apple-glow'
-                        : 'text-white/70 hover:text-white hover:bg-white/5'
-                      }
-                    `}
-                  >
-                    {config.get(chapter.titleKey, `Chapter ${chapters.indexOf(chapter) + 1}`)}
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </div>
-        </aside>
-
-        {/* Mobile Bottom Navigation - App Style */}
-        <nav className="
-          md:hidden fixed bottom-0 left-0 right-0
-          bg-black/95 backdrop-blur-md border-t border-white/10
-          z-40
-          overflow-x-auto
-        ">
-          <div className="flex px-2 py-2 gap-1 min-w-max">
-            {chapters.map((chapter) => (
-              <button
-                key={chapter.id}
-                onClick={() => scrollToSection(chapter.id)}
-                className={`
-                  px-4 py-2 rounded-lg
-                  transition-all duration-300
-                  text-xs font-medium whitespace-nowrap
-                  ${activeSection === chapter.id
-                    ? 'bg-white/10 text-white shadow-apple-glow'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
-                  }
-                `}
-              >
-                {config.get(chapter.titleKey, `Chapter ${chapters.indexOf(chapter) + 1}`)}
-              </button>
-            ))}
-          </div>
-        </nav>
-
+    <div className="min-h-screen bg-eckert-white pt-24 pb-20">
+      <Container>
         {/* Main Content */}
-        <main className="flex-1 max-w-4xl mx-auto px-4 md:px-8 lg:mx-44">
+        <div className="max-w-4xl mx-auto">
           <div>
             {/* Hero */}
             <motion.div
@@ -151,7 +45,7 @@ const Concept = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="mb-12 md:mb-16 scroll-mt-32"
+              className="mb-12 md:mb-16"
             >
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-3 md:mb-4">
                 {config.get('concept.chapter1.title', 'The Hidden Crisis Your Board Meetings Don\'t Address')}
@@ -225,7 +119,7 @@ const Concept = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="mb-12 md:mb-16 scroll-mt-32"
+              className="mb-12 md:mb-16"
             >
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-3 md:mb-4">
                 {config.get('concept.chapter2.title', 'Three Things We Promise You – And Why We Can Deliver Them')}
@@ -1308,36 +1202,9 @@ const Concept = () => {
                 </p>
               </div>
             </motion.section>
-
-            {/* Other Chapters - Standard Layout (None left!) */}
-            {chapters.slice(9).map((chapter, index) => (
-              <motion.section
-                key={chapter.id}
-                id={chapter.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="mb-16 scroll-mt-32"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                  {config.get(`concept.${chapter.id}.title`, `Chapter ${chapters.indexOf(chapter) + 1}`)}
-                </h2>
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-lg text-black/80 leading-relaxed whitespace-pre-line">
-                    {config.get(`concept.${chapter.id}.content`, 'Content coming soon...')}
-                  </p>
-                </div>
-
-                {/* Separator */}
-                {index < chapters.length - 2 && (
-                  <div className="mt-12 border-t border-black/10" />
-                )}
-              </motion.section>
-            ))}
           </div>
-        </main>
-      </div>
+        </div>
+      </Container>
     </div>
   )
 }

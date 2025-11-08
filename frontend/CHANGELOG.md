@@ -4,6 +4,22 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.19.3] - 2025-11-08
+
+### Changed
+- **Concept Page - Simplified Mobile Layout** - Removed all navigation for clean mobile experience [FRONTEND_CONCEPT_003]
+  - Removed desktop sidebar completely
+  - Removed mobile bottom navigation bar
+  - Simple scrollable layout like About page
+  - Uses Container component for consistent spacing
+  - Clean, distraction-free reading experience on mobile
+  - No scroll-spy or active section tracking needed
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Layout Simplification
+
+---
+
 ## [2.19.2] - 2025-11-08
 
 ### Fixed
