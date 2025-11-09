@@ -13,7 +13,7 @@
  */
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Container } from '../../../shared/ui-components/Container'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
 import { logger } from '@eckert-preisser/shared/utils'
