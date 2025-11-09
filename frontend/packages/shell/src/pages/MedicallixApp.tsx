@@ -20,8 +20,23 @@ import { logger } from '@eckert-preisser/shared/utils'
 import { useAuth } from '@eckert-preisser/shared/contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
-// API Base URL - use environment variable or default to production subpath
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/development/api' : 'http://localhost:8080/api')
+// API Base URL - dynamic based on hostname (same logic as shared/utils/api.ts)
+const getApiBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL
+  }
+
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname
+    if (hostname === 'eckertpreisser.de' || hostname === 'www.eckertpreisser.de' || hostname === 'becker.limited') {
+      return '/development/api'
+    }
+  }
+
+  return 'http://localhost:8080/api'
+}
+
+const API_BASE_URL = getApiBaseUrl()
 
 // TypeScript interfaces
 interface Conversation {

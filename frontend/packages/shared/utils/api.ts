@@ -1,7 +1,30 @@
-// API Base URL - subpath deployment support
-// In development: http://localhost:8080/api
-// In production: /development/api (subpath at becker.limited/development/)
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/development/api' : 'http://localhost:8080/api');
+// API Base URL - dynamic based on hostname
+// Development: http://localhost:8080/api
+// Production: Same host + /development/api subpath
+const getApiBaseUrl = () => {
+  // If env variable set, use it
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+
+  // In browser, check hostname
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+
+    // Production domains
+    if (hostname === 'eckertpreisser.de' || hostname === 'www.eckertpreisser.de') {
+      return '/development/api';
+    }
+    if (hostname === 'becker.limited') {
+      return '/development/api';
+    }
+  }
+
+  // Default: localhost for development
+  return 'http://localhost:8080/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 interface ApiResponse<T> {
   success: boolean;
