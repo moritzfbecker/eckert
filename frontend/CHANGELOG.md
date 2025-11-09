@@ -4,6 +4,36 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.21.0] - 2025-11-09
+
+### Added
+- **Medicallix App - Live Demo Application** [FRONTEND_APP_001]
+  - Complete AI-powered medical documentation demo app
+  - Protected route (/medicallix/app) - login required
+  - 2-column layout: Conversation history (left sidebar) + Live recording (right main area)
+  - Live speech recording with Web Speech API (continuous mode)
+  - Real-time transcription display with interim results
+  - Automatic backend processing after recording stops
+  - AI extraction visualization:
+    - Patient identification (name, age extracted from speech)
+    - ICD-10 code suggestions
+    - Structured medical sections (Anamnese, Befund, Therapie, Procedere)
+  - Conversation history sidebar with selection
+  - Raw transcript view (expandable)
+  - Full i18n support (DE/EN) with 25+ keys
+  - Black/White design with responsive layout
+  - Integration with medicallix-service backend (Port 8085)
+
+- **Medicallix Landing Page - CTA Buttons** [FRONTEND_PAGE_009]
+  - Added "Try Live Demo" button linking to /medicallix/app
+  - Added "Contact Sales" secondary button
+  - Updated i18n keys for both buttons (DE/EN)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Medicallix Live Demo Application
+
+---
+
 ## [2.20.1] - 2025-11-09
 
 ### Added

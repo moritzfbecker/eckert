@@ -431,21 +431,38 @@ const Medicallix = () => {
                 {config.get('cta.subtitle', 'Join the future of healthcare. Give your medical staff the gift of time - for what really matters: the patients.')}
               </p>
 
-              <Link
-                to="/contact"
-                className="
-                  inline-block
-                  bg-white text-black
-                  px-10 py-5
-                  rounded-lg
-                  font-bold text-xl
-                  uppercase tracking-wider
-                  hover:shadow-apple-glow hover:scale-105
-                  transition-all duration-300
-                "
-              >
-                {config.get('cta.button', 'Request Free Demo')}
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/medicallix/app"
+                  className="
+                    inline-block
+                    bg-white text-black
+                    px-10 py-5
+                    rounded-lg
+                    font-bold text-xl
+                    uppercase tracking-wider
+                    hover:shadow-apple-glow hover:scale-105
+                    transition-all duration-300
+                  "
+                >
+                  {config.get('cta.button.demo', 'Try Live Demo')}
+                </Link>
+                <Link
+                  to="/contact"
+                  className="
+                    inline-block
+                    bg-black/10 text-white border-2 border-white/20
+                    px-10 py-5
+                    rounded-lg
+                    font-bold text-xl
+                    uppercase tracking-wider
+                    hover:bg-white/10 hover:scale-105
+                    transition-all duration-300
+                  "
+                >
+                  {config.get('cta.button.contact', 'Contact Sales')}
+                </Link>
+              </div>
 
               <div className="mt-8 space-y-2">
                 <p className="text-base text-white/60">

@@ -18,6 +18,8 @@ import Datenschutz from './pages/Datenschutz'
 import CookiePolicy from './pages/CookiePolicy'
 import Status from './pages/Status'
 import Medicallix from './pages/Medicallix'
+import MedicallixApp from './pages/MedicallixApp'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -47,6 +49,11 @@ function App() {
 
                 {/* Protected Routes */}
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/medicallix/app" element={
+                  <ProtectedRoute>
+                    <MedicallixApp />
+                  </ProtectedRoute>
+                } />
 
                 {/* Legal Routes */}
                 <Route path="/impressum" element={<Impressum />} />

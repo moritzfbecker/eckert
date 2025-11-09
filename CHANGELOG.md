@@ -9,6 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 3.4.0 + Frontend 2.21.0] - 2025-11-09
+
+### Added - Backend
+- **Medicallix Service** - Complete AI-powered medical documentation microservice
+  - Patient & Conversation entities with full CRUD
+  - AI extraction: Patient info, ICD-10 codes, structured medical sections
+  - REST API with 10+ endpoints (Port 8085)
+
+### Added - Frontend
+- **Medicallix App** - Live demo application with speech-to-text
+  - Protected route with login requirement
+  - 2-column layout (conversation history + live recording)
+  - Web Speech API integration for real-time transcription
+  - AI extraction visualization (patient, ICD codes, structured data)
+  - Full i18n support (DE/EN)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Complete Medicallix Platform
+
+---
+
 ## [Frontend 2.20.1] - 2025-11-09
 
 ### Added

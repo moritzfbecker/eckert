@@ -4,6 +4,28 @@ All backend-specific changes are documented here.
 
 ---
 
+## [3.4.0] - 2025-11-09
+
+### Added
+- **Medicallix Service** - AI-powered Medical Documentation Microservice [BACKEND_SERVICE_004]
+  - Complete microservice for speech-to-text medical documentation
+  - Patient entity: firstName, lastName, dateOfBirth, gender, insurance number
+  - Conversation entity: transcript, AI-extracted structured data (anamnese, befund, therapie, procedere)
+  - AI Extraction Service: Pattern-matching for patient info, ICD-10 codes, medical structuring
+  - REST API: Create conversation, get all conversations, get by patient, delete
+  - Automatic patient identification from doctor's speech
+  - ICD-10 code suggestion from keywords (17+ common diagnoses)
+  - Security: User-ID based access control (doctor can only see own conversations)
+  - Port: 8085
+  - Database: PostgreSQL (medicallix_db)
+  - 10+ REST API endpoints
+  - Full logging with error codes (MEDICALLIX_*)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Medicallix Service
+
+---
+
 ## [3.2.1] - 2025-11-02
 
 ### Fixed
