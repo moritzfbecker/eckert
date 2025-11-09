@@ -64,7 +64,8 @@
       "Bash(do powershell -Command \"(Get-Content -Path ''''$file'''' -Raw) -replace ''''<version>3.2.0-SNAPSHOT</version>'''',''''<version>3.3.0-SNAPSHOT</version>'''' | Set-Content -Path ''''$file''''\")",
       "Bash(temp_concept.txt)",
       "Bash(git checkout:*)",
-      "Bash(del temp_concept.txt)"
+      "Bash(del temp_concept.txt)",
+      "Bash(do powershell -Command \"(Get-Content -Path ''$file'' -Raw) -replace ''3.3.0-SNAPSHOT'',''3.4.0-SNAPSHOT'' | Set-Content -Path ''$file''\")"
     ],
     "deny": [],
     "ask": []
