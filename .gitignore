@@ -75,7 +75,8 @@ secrets/
 *.crt
 
 # Config (NEVER commit config files!)
-config/
+# Only ignore root config directory, not Java config packages!
+/config/
 *.yml
 !**/src/**/application.yml
 !**/src/**/logback*.xml
