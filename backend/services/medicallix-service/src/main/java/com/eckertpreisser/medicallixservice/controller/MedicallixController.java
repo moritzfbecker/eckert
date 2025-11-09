@@ -4,6 +4,7 @@ import com.eckertpreisser.medicallixservice.dto.ConversationDTO;
 import com.eckertpreisser.medicallixservice.dto.CreateConversationRequest;
 import com.eckertpreisser.medicallixservice.dto.PatientDTO;
 import com.eckertpreisser.medicallixservice.service.MedicallixService;
+import com.eckertpreisser.common.utils.LoggerUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
