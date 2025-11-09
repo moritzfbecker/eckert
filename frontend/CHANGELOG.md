@@ -4,6 +4,41 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.20.1] - 2025-11-09
+
+### Added
+- **Medicallix Page - AI-powered Medical Documentation Solution** [FRONTEND_PAGE_008]
+  - New page showcasing revolutionary KI-Plattform for healthcare documentation
+  - Hero section with main value proposition
+  - Problem section: bureaucracy crisis (3-5h daily, 784k lost positions, 32B€ cost)
+  - Solution section: mobile AI platform for real-time documentation
+  - Features: continuous speech recognition, discrete input, local AI, universal integration
+  - ROI section: 36:1 average, specific examples (hospital 26:1, nursing home 88:1)
+  - Market potential section: 2M users, 1.2B€ TAM, 420M€ SAM
+  - CTA section with free demo request
+  - Full i18n support (DE/EN) with useConfig hook
+  - Black/White design with Apple Gradient hover effects
+
+- **Navigation - Medicallix Link** [FRONTEND_NAV_025]
+  - Added Medicallix to main navigation (after Home, before Concept)
+  - Updated Header.tsx with nav.medicallix translation key
+  - Mobile menu support included
+
+- **i18n - Medicallix Translations** [FRONTEND_I18N_026]
+  - Created config/i18n/de/medicallix.properties (40+ keys)
+  - Created config/i18n/en/medicallix.properties (40+ keys)
+  - Added nav.medicallix to common.properties (DE/EN)
+  - All sections fully translated: hero, problem, solution, features, ROI, market, CTA
+
+- **Routing - Medicallix Route** [FRONTEND_ROUTE_001]
+  - Added /medicallix route in App.tsx
+  - Proper routing structure with public access
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Medicallix Landing Page
+
+---
+
 ## [2.20.0] - 2025-11-08
 
 ### Changed

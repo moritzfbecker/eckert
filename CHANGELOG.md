@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.20.1] - 2025-11-09
+
+### Added
+- **Medicallix Page** - New AI-powered medical documentation solution landing page
+  - Hero, Problem (bureaucracy crisis), Solution (AI platform), Features, ROI (36:1), Market, CTA
+  - Full i18n support (DE/EN) with 40+ translation keys
+  - Navigation link added to main menu
+  - Black/White design with Apple Gradient hover effects
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - New Landing Page
+
+---
+
 ## [Frontend 2.20.0] - 2025-11-08
 
 ### Changed

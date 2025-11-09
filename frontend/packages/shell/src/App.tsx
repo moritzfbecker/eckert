@@ -17,6 +17,7 @@ import Impressum from './pages/Impressum'
 import Datenschutz from './pages/Datenschutz'
 import CookiePolicy from './pages/CookiePolicy'
 import Status from './pages/Status'
+import Medicallix from './pages/Medicallix'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />
+                <Route path="/medicallix" element={<Medicallix />} />
                 <Route path="/concept" element={<Concept />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
