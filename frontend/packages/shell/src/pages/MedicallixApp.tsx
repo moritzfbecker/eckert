@@ -20,6 +20,9 @@ import { logger } from '@eckert-preisser/shared/utils'
 import { useAuth } from '@eckert-preisser/shared/contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
+// API Base URL - use environment variable or default to production subpath
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/development/api' : 'http://localhost:8080/api')
+
 // TypeScript interfaces
 interface Conversation {
   id: number
@@ -194,7 +197,7 @@ const MedicallixApp = () => {
     logger.info('MEDICALLIX_PROCESS_001', 'Processing transcript with AI', { length: text.length })
 
     try {
-      const response = await fetch('http://localhost:8085/api/medicallix/conversations', {
+      const response = await fetch(`${API_BASE_URL}/medicallix/conversations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -229,7 +232,7 @@ const MedicallixApp = () => {
   useEffect(() => {
     const loadConversations = async () => {
       try {
-        const response = await fetch('http://localhost:8085/api/medicallix/conversations', {
+        const response = await fetch(`${API_BASE_URL}/medicallix/conversations`, {
           headers: {
             'X-User-Id': user?.id?.toString() || '1'
           }
