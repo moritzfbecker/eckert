@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Backend 3.4.1 + Frontend 2.21.4] - 2025-11-11
+
+### Fixed - Backend
+- **All Auth Services Activated** - docker-compose.yml now starts all required services
+  - PostgreSQL database for user data
+  - user-service, auth-service, medicallix-service all running
+  - Complete auth flow functional
+
+### Fixed - Frontend
+- **Multi-Domain API Routing** - eckertpreisser.de vs becker.limited support
+  - Dynamic URL detection in all API clients
+  - Vite base path corrected for asset loading
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical Service Activation + Multi-Domain Support
+
+---
+
 ## [Frontend 2.21.4] - 2025-11-11
 
 ### Fixed

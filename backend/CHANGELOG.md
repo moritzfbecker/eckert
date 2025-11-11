@@ -4,6 +4,23 @@ All backend-specific changes are documented here.
 
 ---
 
+## [3.4.1] - 2025-11-11
+
+### Fixed
+- **Docker Compose - All Services Activated** - Enabled auth, user, and medicallix services [BACKEND_DOCKER_001]
+  - Activated postgres-user database
+  - Activated user-service (Port 8081) with health checks
+  - Activated auth-service (Port 8082) with health checks
+  - Activated medicallix-service (Port 8085) with health checks
+  - Created Dockerfile for medicallix-service
+  - All services now properly registered with Eureka
+  - Complete auth flow now functional (register, login, JWT)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical Service Activation
+
+---
+
 ## [3.4.0] - 2025-11-09
 
 ### Added
