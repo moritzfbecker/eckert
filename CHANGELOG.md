@@ -9,6 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.21.3] - 2025-11-11
+
+### Fixed
+- **Auth API Dynamic URL Detection** - Fixed hardcoded localhost:8080 in authApi.ts
+  - Now uses same hostname detection as api.ts
+  - Auth endpoints work correctly on all domains (localhost, eckertpreisser.de, becker.limited)
+  - Resolves CORS issues for registration and login on production
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical Auth Fix
+
+---
+
+## [Frontend 2.21.2] - 2025-11-11
+
+### Changed
+- **Medicallix Navigation Update** - Moved Medicallix from navbar to footer and About page
+  - Removed from main navigation bar for cleaner UX
+  - Added to footer "Unternehmen" column
+  - Made Company 5 (2020) in About page clickable → links to /medicallix
+  - Focus on core pages in main nav: Home, Concept, About, Contact
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Navigation Restructuring
+
+---
+
 ## [Backend 3.4.0 + Frontend 2.21.0] - 2025-11-09
 
 ### Added - Backend

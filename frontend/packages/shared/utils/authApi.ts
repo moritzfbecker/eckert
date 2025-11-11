@@ -2,16 +2,40 @@
  * Auth API Client
  *
  * RESTful API calls to auth-service via API Gateway.
- * All endpoints go through: http://localhost:8080/api/auth/*
+ * Dynamic URL based on hostname (same as api.ts).
  *
  * @author Moritz F. Becker - Helped by Claude AI
- * @version 2.13.0
+ * @version 2.21.3
  */
 
 import { logger } from './logger'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080'
-const AUTH_API = `${API_BASE_URL}/api/auth`
+// Dynamic API Base URL - same logic as api.ts
+const getApiBaseUrl = () => {
+  // If env variable set, use it
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+
+  // In browser, check hostname
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+
+    // Production domains
+    if (hostname === 'eckertpreisser.de' || hostname === 'www.eckertpreisser.de') {
+      return '/development/api';
+    }
+    if (hostname === 'becker.limited') {
+      return '/development/api';
+    }
+  }
+
+  // Default: localhost for development
+  return 'http://localhost:8080/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
+const AUTH_API = `${API_BASE_URL}/auth`
 
 export interface User {
   id: number

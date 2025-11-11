@@ -151,7 +151,14 @@ const About = () => {
                     <p><strong className="text-black">{config.get('about.phase2.company2', 'Company 2 (1998):')}</strong> {config.get('about.phase2.company2.text', 'Process industry with production (paper mill restructuring). Proof: Crisis management competence under pressure.')}</p>
                     <p><strong className="text-black">{config.get('about.phase2.company3', 'Company 3 (2005):')}</strong> {config.get('about.phase2.company3.text', 'Services. Scaling service organizations.')}</p>
                     <p><strong className="text-black">{config.get('about.phase2.company4', 'Company 4 (2017):')}</strong> {config.get('about.phase2.company4.text', 'Technology scale-up. Practical testing of Pillar 3 prototypes.')}</p>
-                    <p><strong className="text-black">{config.get('about.phase2.company5', 'Company 5 (2020):')}</strong> {config.get('about.phase2.company5.text', 'Continuous development of methodology.')}</p>
+                    <p>
+                      <Link
+                        to="/medicallix"
+                        className="hover:opacity-70 transition-opacity duration-300 inline-block"
+                      >
+                        <strong className="text-black">{config.get('about.phase2.company5', 'Company 5 (2020):')}</strong> {config.get('about.phase2.company5.text', 'Continuous development of methodology.')}
+                      </Link>
+                    </p>
                   </div>
 
                   <div className="bg-white border-l-4 border-black rounded-lg p-4 mt-6">

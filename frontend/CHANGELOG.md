@@ -4,6 +4,38 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.21.3] - 2025-11-11
+
+### Fixed
+- **Auth API Dynamic URL Detection** - Fixed hardcoded API URL in authApi.ts [FRONTEND_FIX_011]
+  - authApi.ts now uses same dynamic URL detection as api.ts
+  - Detects hostname and uses correct API endpoint:
+    - localhost → http://localhost:8080/api
+    - eckertpreisser.de → /development/api
+    - becker.limited → /development/api
+  - Fixes CORS issues on production domains
+  - All auth endpoints (register, login, etc.) now work correctly on all domains
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical Auth API Fix
+
+---
+
+## [2.21.2] - 2025-11-11
+
+### Changed
+- **Medicallix Navigation Update** - Moved Medicallix from navbar to footer and About page [FRONTEND_NAV_026]
+  - Removed Medicallix from main navigation bar (Header.tsx)
+  - Added Medicallix link to footer in "Unternehmen" (Company) column
+  - Made Company 5 (2020) text clickable in About page, linking to /medicallix
+  - Medicallix now accessible via: Footer link + About page Peter Eckert timeline
+  - Cleaner main navigation with focus on core pages (Home, Concept, About, Contact)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Navigation Restructuring
+
+---
+
 ## [2.21.0] - 2025-11-09
 
 ### Added

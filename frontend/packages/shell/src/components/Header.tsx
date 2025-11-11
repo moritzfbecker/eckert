@@ -75,7 +75,6 @@ const Header = () => {
   // Navigation links - v2.0 with English defaults
   const navLinks = [
     { name: config.get('nav.home', 'Home'), path: '/' },
-    { name: config.get('nav.medicallix', 'Medicallix'), path: '/medicallix' },
     { name: config.get('nav.concept', 'Concept'), path: '/concept' },
     { name: config.get('nav.about', 'About'), path: '/about' },
     { name: config.get('nav.contact', 'Contact'), path: '/contact' }
