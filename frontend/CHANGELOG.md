@@ -4,6 +4,27 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.21.4] - 2025-11-11
+
+### Fixed
+- **Multi-Domain API URL Support** - Fixed API URLs for eckertpreisser.de vs becker.limited [FRONTEND_FIX_012]
+  - eckertpreisser.de now uses `/api` (NO /development prefix)
+  - becker.limited uses `/development/api` (WITH /development subpath)
+  - Fixed in all files:
+    - api.ts - Main API client
+    - authApi.ts - Auth API client
+    - useConfig.ts - Config Server URL
+    - email.ts - Email API URL
+    - logger.ts - Logging API URL
+  - Vite base path changed from `/development/` to `/` for correct asset loading
+  - Resolves 405 Method Not Allowed errors on eckertpreisser.de
+  - Resolves MIME type errors for JavaScript/CSS assets
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical Multi-Domain Fix
+
+---
+
 ## [2.21.3] - 2025-11-11
 
 ### Fixed

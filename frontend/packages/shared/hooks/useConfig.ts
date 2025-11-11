@@ -1,10 +1,29 @@
 import { useState, useEffect } from 'react'
 import { logger } from '../utils/logger'
 
-// Config Server URL - use relative path in production (via Nginx proxy)
-// In development: http://localhost:8888
-// In production: '/development' (subpath deployment at becker.limited/development/)
-const CONFIG_SERVER_URL = import.meta.env.VITE_CONFIG_SERVER_URL || (import.meta.env.PROD ? '/development' : 'http://localhost:8888')
+// Config Server URL - dynamic based on hostname
+// Development: http://localhost:8888
+// eckertpreisser.de: '' (root, API Gateway proxies to config-server)
+// becker.limited: '/development' (subpath deployment)
+const getConfigServerUrl = () => {
+  if (import.meta.env.VITE_CONFIG_SERVER_URL) {
+    return import.meta.env.VITE_CONFIG_SERVER_URL;
+  }
+
+  if (import.meta.env.PROD && typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname === 'eckertpreisser.de' || hostname === 'www.eckertpreisser.de') {
+      return '';  // NO /development prefix for eckertpreisser.de
+    }
+    if (hostname === 'becker.limited') {
+      return '/development';  // WITH /development prefix for becker.limited
+    }
+  }
+
+  return 'http://localhost:8888';
+};
+
+const CONFIG_SERVER_URL = getConfigServerUrl()
 
 /**
  * FrontendConfig - Configuration container for React components

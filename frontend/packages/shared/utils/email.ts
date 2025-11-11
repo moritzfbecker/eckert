@@ -31,9 +31,26 @@ interface EmailResponse {
   message: string
 }
 
-const EMAIL_API_URL = import.meta.env.MODE === 'production'
-  ? '/development/api/email'
-  : 'http://localhost:8080/api/email'
+// Dynamic Email API URL based on hostname
+const getEmailApiUrl = () => {
+  if (import.meta.env.MODE !== 'production') {
+    return 'http://localhost:8080/api/email';
+  }
+
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname === 'eckertpreisser.de' || hostname === 'www.eckertpreisser.de') {
+      return '/api/email';  // NO /development prefix
+    }
+    if (hostname === 'becker.limited') {
+      return '/development/api/email';  // WITH /development prefix
+    }
+  }
+
+  return '/api/email';
+};
+
+const EMAIL_API_URL = getEmailApiUrl()
 
 /**
  * Send plain text email (simple API!)

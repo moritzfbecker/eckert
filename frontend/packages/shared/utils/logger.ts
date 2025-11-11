@@ -142,8 +142,15 @@ class Logger {
     // Example: Sentry.captureMessage(entry.message, { level: entry.level, extra: entry.context });
 
     // For now, just send to backend API
-    // Support subpath deployment (e.g., /development/)
-    const baseUrl = import.meta.env.PROD ? '/development/api' : '/api';
+    // Dynamic URL based on hostname
+    let baseUrl = '/api';
+    if (import.meta.env.PROD && typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      if (hostname === 'becker.limited') {
+        baseUrl = '/development/api';  // WITH /development prefix for becker.limited
+      }
+      // eckertpreisser.de uses '/api' (no prefix)
+    }
     fetch(`${baseUrl}/logs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

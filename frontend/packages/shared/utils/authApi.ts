@@ -23,10 +23,10 @@ const getApiBaseUrl = () => {
 
     // Production domains
     if (hostname === 'eckertpreisser.de' || hostname === 'www.eckertpreisser.de') {
-      return '/development/api';
+      return '/api';  // NO /development prefix for eckertpreisser.de
     }
     if (hostname === 'becker.limited') {
-      return '/development/api';
+      return '/development/api';  // WITH /development prefix for becker.limited subpath
     }
   }
 

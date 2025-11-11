@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.21.4] - 2025-11-11
+
+### Fixed
+- **Multi-Domain API URL Support** - Different API paths for eckertpreisser.de vs becker.limited
+  - eckertpreisser.de: `/api` (no /development prefix)
+  - becker.limited: `/development/api` (subpath deployment)
+  - Fixed Vite base path from `/development/` → `/` for asset loading
+  - Fixes 405 errors and translation loading issues on eckertpreisser.de
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical Domain-Specific Routing
+
+---
+
 ## [Frontend 2.21.3] - 2025-11-11
 
 ### Fixed
