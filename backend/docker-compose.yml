@@ -94,7 +94,7 @@ services:
       - "8081:8081"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - EUREKA_URL=http://service-discovery:8761/eureka/
       - CONFIG_SERVER_URL=http://config-server:8888
       - DB_HOST=postgres-user
       - DB_PORT=5432
@@ -151,7 +151,7 @@ services:
       - "8082:8082"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - EUREKA_URL=http://service-discovery:8761/eureka/
       - CONFIG_SERVER_URL=http://config-server:8888
     depends_on:
       service-discovery:
@@ -180,7 +180,7 @@ services:
       - "8085:8085"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - EUREKA_URL=http://service-discovery:8761/eureka/
       - CONFIG_SERVER_URL=http://config-server:8888
       - DB_HOST=postgres-user
       - DB_PORT=5432
