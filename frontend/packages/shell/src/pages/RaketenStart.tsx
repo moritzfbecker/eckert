@@ -35,7 +35,7 @@ const RaketenStart = () => {
     totalBenefit: 0,
     investment: 0,
     roi: 0,
-    payback: 0,
+    payback: '0',
     lighthouse: 0,
     productivity: 0,
     ceoTime: 50000,
@@ -131,7 +131,7 @@ const RaketenStart = () => {
       </Section>
 
       {/* 4-Phasen-Timeline */}
-      <Section spacing="default">
+      <Section spacing="lg">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}

@@ -43,7 +43,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* Executive Summary */}
-      <Section spacing="default">
+      <Section spacing="lg">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -247,7 +247,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* Scientific Sources by Category */}
-      <Section spacing="default">
+      <Section spacing="lg">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
