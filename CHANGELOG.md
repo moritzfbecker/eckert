@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.22.0] - 2025-11-24
+
+### Added - Major Content Release 🚀
+- **3 New Pages** - Comprehensive content expansion with scientific foundation and programs
+  - **Wissenschaftliche Fundierung** (`/wissenschaftliche-fundierung`) - 27 peer-reviewed sources, ZOLLERN Case Study, methodology excellence
+  - **Finnland-Quellen** (`/finnland-quellen`) - 153 scientific sources analyzing Finland Basketball success
+  - **Raketen-Start-Programm** (`/raketen-start`) - 10-week intensive program with interactive ROI calculator
+- **Navigation Enhancement** - Added 3 new links with Apple Gradient highlight for "Raketen-Start"
+- **Full i18n Support** - 6 new config files (science, finland, raketen) in DE/EN via Config API v2.0
+- **Interactive ROI Calculator** - JavaScript-powered calculator with real-time benefit calculation on Raketen-Start page
+- **Design System Consistency** - All pages follow Black/White + Apple Gradient design with Framer Motion
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Major Feature Release
+**Business Impact**: Complete scientific validation and quick-start program now available to all users
+
+---
+
 ## [Backend 3.4.1 + Frontend 2.21.4] - 2025-11-11
 
 ### Fixed - Backend

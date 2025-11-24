@@ -19,6 +19,9 @@ import CookiePolicy from './pages/CookiePolicy'
 import Status from './pages/Status'
 import Medicallix from './pages/Medicallix'
 import MedicallixApp from './pages/MedicallixApp'
+import WissenschaftlicheFundierung from './pages/WissenschaftlicheFundierung'
+import FinnlandQuellen from './pages/FinnlandQuellen'
+import RaketenStart from './pages/RaketenStart'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -42,6 +45,11 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/status" element={<Status />} />
+
+                {/* New Routes - Email 1, 2, 3 */}
+                <Route path="/wissenschaftliche-fundierung" element={<WissenschaftlicheFundierung />} />
+                <Route path="/finnland-quellen" element={<FinnlandQuellen />} />
+                <Route path="/raketen-start" element={<RaketenStart />} />
 
                 {/* Auth Routes */}
                 <Route path="/login" element={<Login />} />

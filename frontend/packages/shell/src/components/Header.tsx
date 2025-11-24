@@ -75,6 +75,8 @@ const Header = () => {
   // Navigation links - v2.0 with English defaults
   const navLinks = [
     { name: config.get('nav.home', 'Home'), path: '/' },
+    { name: config.get('nav.raketen', 'Raketen-Start'), path: '/raketen-start', highlight: true },
+    { name: config.get('nav.science', 'Wissenschaft'), path: '/wissenschaftliche-fundierung' },
     { name: config.get('nav.concept', 'Concept'), path: '/concept' },
     { name: config.get('nav.about', 'About'), path: '/about' },
     { name: config.get('nav.contact', 'Contact'), path: '/contact' }
@@ -114,9 +116,13 @@ const Header = () => {
                   key={link.name}
                   to={link.path}
                   className={`
-                    text-gray-200 hover:text-white transition-colors
+                    ${link.highlight
+                      ? 'bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 text-white hover:shadow-apple-glow'
+                      : 'text-gray-200 hover:text-white'
+                    }
+                    transition-all
                     px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider
-                    ${location.pathname === link.path ? 'text-white' : ''}
+                    ${location.pathname === link.path && !link.highlight ? 'text-white' : ''}
                   `}
                 >
                   {link.name}

@@ -1,0 +1,986 @@
+HOMEPAGE-INTEGRATION: RAKETEN-START-PROGRAMM
+============================================
+Textvorschläge für www.eckertpreisser.de
+=========================================
+
+
+OPTION 1: HERO-SECTION MIT DRINGLICHKEITS-TRIGGER
+==================================================
+
+PLATZIERUNG: Direkt im Hero-Bereich, prominent sichtbar
+
+VERSION A - DIREKTER ANSATZ:
+-----------------------------
+
+ÜBERSCHRIFT (H1):
+"Keine Zeit für 4 Jahre Change? Erste messbare Erfolge in 10 Wochen."
+
+SUBLINE:
+"Das FINNLAND-70-TAGE-PROGRAMM: Wissenschaftlich fundierte Performance-Steigerung 
+mit sichtbaren Ergebnissen - ohne jahrelange Berater-Abhängigkeit."
+
+CTA-BUTTONS:
+[Primär] "10-Wochen-Programm kennenlernen →"
+[Sekundär] "ROI-Rechner: Was bringt es mir?"
+
+TRUST-ELEMENT darunter:
+"✓ 563% ROI in 10 Wochen  ✓ Payback nach 1,5 Wochen  ✓ 25% der Langfrist-Wirkung sofort"
+
+
+VERSION B - PROBLEM-LÖSUNG-ANSATZ:
+-----------------------------------
+
+ÜBERSCHRIFT (H1):
+"Strategie-Papiere verstauben? Talente frustriert? Meetings ohne Ergebnisse?"
+
+SUBLINE:
+"Das RAKETEN-START-PROGRAMM aktiviert Ihre Organisation in 70 Tagen - 
+mit messbaren Erfolgen, die Ihr Board sehen wird."
+
+CTA-BUTTONS:
+[Primär] "Zeigen Sie mir, wie →"
+[Sekundär] "Erfolgsbeispiele ansehen"
+
+TRUST-ELEMENT darunter:
+"✓ Erste Erfolge nach 14 Tagen  ✓ 1 Leuchtturm-Projekt in 10 Wochen  ✓ Keine Langzeit-Bindung"
+
+
+VERSION C - WISSENSCHAFTLICH-FUNDIERT-ANSATZ:
+----------------------------------------------
+
+ÜBERSCHRIFT (H1):
+"Warum 16 Jahre warten? Wissenschaft zeigt: 25% der Wirkung in 10 Wochen erreichbar."
+
+SUBLINE:
+"Das FINNLAND-MODELL komprimiert: Systematische Performance-Architektur 
+mit Quick Wins statt endloser Transformations-Projekte."
+
+CTA-BUTTONS:
+[Primär] "Wissenschaftliche Basis ansehen →"
+[Sekundär] "10-Wochen-Roadmap herunterladen"
+
+TRUST-ELEMENT darunter:
+"Basierend auf 27 peer-reviewed Studien | 16 Jahre ZOLLERN-Case validiert | 3.000+ Unternehmen analysiert"
+
+
+HTML-CODE für Hero (Beispiel Version A):
+-----------------------------------------
+
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="urgency-badge">
+            ⚡ NEU: Der schnelle Einstieg ohne Langzeit-Commitment
+        </div>
+        
+        <h1 class="hero-title">
+            Keine Zeit für 4 Jahre Change?<br>
+            Erste messbare Erfolge <span class="highlight">in 10 Wochen</span>.
+        </h1>
+        
+        <p class="hero-subtitle">
+            Das <strong>FINNLAND-70-TAGE-PROGRAMM</strong>: Wissenschaftlich fundierte 
+            Performance-Steigerung mit sichtbaren Ergebnissen - ohne jahrelange Berater-Abhängigkeit.
+        </p>
+        
+        <div class="hero-cta">
+            <a href="raketen-start.html" class="btn-primary">
+                10-Wochen-Programm kennenlernen →
+            </a>
+            <a href="raketen-start.html#roi-rechner" class="btn-secondary">
+                ROI-Rechner: Was bringt es mir?
+            </a>
+        </div>
+        
+        <div class="trust-metrics">
+            <div class="metric">
+                <span class="metric-icon">✓</span>
+                <span class="metric-text">563% ROI in 10 Wochen</span>
+            </div>
+            <div class="metric">
+                <span class="metric-icon">✓</span>
+                <span class="metric-text">Payback nach 1,5 Wochen</span>
+            </div>
+            <div class="metric">
+                <span class="metric-icon">✓</span>
+                <span class="metric-text">25% der Langfrist-Wirkung sofort</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-visual">
+        <!-- Optional: Grafik oder Video hier -->
+        <img src="images/finnland-timeline.png" alt="10-Wochen-Timeline">
+    </div>
+</section>
+
+
+CSS für Hero:
+-------------
+
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.urgency-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background: white;
+    color: #667eea;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.trust-metrics {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.metric {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.metric-icon {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-cta {
+        flex-direction: column;
+    }
+}
+
+
+═══════════════════════════════════════════════════════════════════
+
+
+OPTION 2: ZWEISPALTIGE VERGLEICHS-SECTION
+==========================================
+
+PLATZIERUNG: Nach Hero, als erste Content-Section
+
+KONZEPT: Gegenüberstellung "Klassischer Change" vs. "Raketen-Start"
+
+HTML-CODE:
+----------
+
+<section class="comparison-section">
+    <div class="container">
+        <h2 class="section-title">
+            Die Management-Realität: "Was genau ist es? Was bringt es mir?"
+        </h2>
+        
+        <p class="section-intro">
+            Sie kennen das: Ein Berater verspricht Transformation. 5 Jahre später: 
+            Endlose Workshops, hohe Kosten, wenig Ergebnis. <strong>Wir machen es anders.</strong>
+        </p>
+        
+        <div class="comparison-grid">
+            <!-- Linke Spalte: Klassischer Ansatz -->
+            <div class="comparison-card traditional">
+                <div class="card-header">
+                    <span class="icon">🐌</span>
+                    <h3>Klassischer Change</h3>
+                </div>
+                
+                <div class="card-content">
+                    <div class="comparison-item negative">
+                        <span class="label">Zeitraum:</span>
+                        <span class="value">4-7 Jahre bis Break-Even</span>
+                    </div>
+                    
+                    <div class="comparison-item negative">
+                        <span class="label">Sichtbare Erfolge:</span>
+                        <span class="value">Erst nach 18-24 Monaten</span>
+                    </div>
+                    
+                    <div class="comparison-item negative">
+                        <span class="label">Investment:</span>
+                        <span class="value">€2-4 Mio. über Laufzeit</span>
+                    </div>
+                    
+                    <div class="comparison-item negative">
+                        <span class="label">Risiko:</span>
+                        <span class="value">67% scheitern an Umsetzung</span>
+                    </div>
+                    
+                    <div class="comparison-item negative">
+                        <span class="label">CEO-Commitment:</span>
+                        <span class="value">500+ Stunden über Jahre</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rechte Spalte: Raketen-Start -->
+            <div class="comparison-card raketen-start">
+                <div class="card-header">
+                    <span class="icon">🚀</span>
+                    <h3>Raketen-Start-Programm</h3>
+                    <span class="badge">NEU</span>
+                </div>
+                
+                <div class="card-content">
+                    <div class="comparison-item positive">
+                        <span class="label">Zeitraum:</span>
+                        <span class="value">10 Wochen, dann Entscheidung</span>
+                    </div>
+                    
+                    <div class="comparison-item positive">
+                        <span class="label">Sichtbare Erfolge:</span>
+                        <span class="value">Nach 14 Tagen messbar</span>
+                    </div>
+                    
+                    <div class="comparison-item positive">
+                        <span class="label">Investment:</span>
+                        <span class="value">€75k-€125k (Mittelstand)</span>
+                    </div>
+                    
+                    <div class="comparison-item positive">
+                        <span class="label">Risiko:</span>
+                        <span class="value">Niedrig - Payback 1,5 Wochen</span>
+                    </div>
+                    
+                    <div class="comparison-item positive">
+                        <span class="label">CEO-Commitment:</span>
+                        <span class="value">Nur 28 Stunden in 10 Wochen</span>
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    <a href="raketen-start.html" class="btn-cta">
+                        Programm im Detail →
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Untertitel -->
+        <div class="comparison-footer">
+            <p class="footer-text">
+                <strong>Die Wissenschaft dahinter:</strong> Unser 10-Wochen-Programm erreicht 
+                <span class="highlight-number">25% der Langfrist-Wirkung</span> - validiert durch 
+                16 Jahre ZOLLERN-Case und 27 peer-reviewed Studien.
+            </p>
+            
+            <a href="wissenschaftliche-fundierung.html" class="link-subtle">
+                → Wissenschaftliche Fundierung ansehen
+            </a>
+        </div>
+    </div>
+</section>
+
+
+CSS für Comparison-Section:
+----------------------------
+
+.comparison-section {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.section-intro {
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+}
+
+.comparison-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.comparison-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.raketen-start {
+    border: 3px solid #667eea;
+}
+
+.card-header {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.traditional .card-header {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+}
+
+.card-header .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #FFD700;
+    color: #2c3e50;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.comparison-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.comparison-item:last-child {
+    border-bottom: none;
+}
+
+.comparison-item .label {
+    font-weight: bold;
+    color: #555;
+}
+
+.positive .value {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.negative .value {
+    color: #e74c3c;
+}
+
+.card-footer {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.comparison-footer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.footer-text {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.highlight-number {
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+
+═══════════════════════════════════════════════════════════════════
+
+
+OPTION 3: 4-PHASEN-TIMELINE (AKZEPTANZ-MODELL)
+===============================================
+
+PLATZIERUNG: Als eigene Section nach Vergleich
+
+KONZEPT: Visualisierung der 4 Manager-Akzeptanz-Phasen
+
+HTML-CODE:
+----------
+
+<section class="acceptance-timeline-section">
+    <div class="container">
+        <h2 class="section-title">
+            Die 4 Phasen: Von "Was ist das?" zu "Her damit!"
+        </h2>
+        
+        <p class="section-intro">
+            Manager denken pragmatisch. Unser 10-Wochen-Programm folgt exakt 
+            dieser Psychologie - mit messbaren Erfolgen in jeder Phase.
+        </p>
+        
+        <div class="timeline">
+            <!-- Phase 1 -->
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="phase-number">1</span>
+                </div>
+                <div class="timeline-content">
+                    <h3 class="phase-title">
+                        <span class="phase-question">"Was genau ist es?"</span>
+                        <span class="phase-timeframe">Woche 1-2</span>
+                    </h3>
+                    <p class="phase-description">
+                        <strong>Performance-Architektur-Assessment:</strong> Wir diagnostizieren 
+                        Ihren Performance-Gap mit kristallklarer Klarheit. Keine Vermutungen - 
+                        harte Daten.
+                    </p>
+                    <div class="phase-output">
+                        <strong>Output:</strong> Performance-Gap-Report, Hidden-Talent-Matrix, 
+                        Quick-Win-Roadmap
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="phase-number">2</span>
+                </div>
+                <div class="timeline-content">
+                    <h3 class="phase-title">
+                        <span class="phase-question">"Was bringt es mir?"</span>
+                        <span class="phase-timeframe">Woche 3-4</span>
+                    </h3>
+                    <p class="phase-description">
+                        <strong>Losada-Leadership-Boost:</strong> Erste messbare Erfolge nach 
+                        14 Tagen! Ihre Team-Performance steigt sichtbar - und Sie tracken es täglich.
+                    </p>
+                    <div class="phase-output">
+                        <strong>Typischer Effekt:</strong> Losada-Ratio 1,2:1 → 2,8:1, 
+                        +22% Mitarbeiter-Engagement
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 3 -->
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="phase-number">3</span>
+                </div>
+                <div class="timeline-content">
+                    <h3 class="phase-title">
+                        <span class="phase-question">"Wie kann ich es fressen?"</span>
+                        <span class="phase-timeframe">Woche 5-8</span>
+                    </h3>
+                    <p class="phase-description">
+                        <strong>Hidden-Talent-Aktivierung & Selbstläufer-Installation:</strong> 
+                        3-5 Ihrer "unsichtbaren" Stars übernehmen strategische Projekte. 
+                        Das System läuft ohne permanenten CEO-Input.
+                    </p>
+                    <div class="phase-output">
+                        <strong>Typischer Impact:</strong> 1 Leuchtturm-Projekt generiert 
+                        €150k-€500k nachweisbaren Benefit
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 4 -->
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="phase-number">4</span>
+                </div>
+                <div class="timeline-content">
+                    <h3 class="phase-title">
+                        <span class="phase-question">"Her damit!"</span>
+                        <span class="phase-timeframe">Woche 9-10</span>
+                    </h3>
+                    <p class="phase-description">
+                        <strong>Leuchtturm-Präsentation & Skalierungs-Entscheidung:</strong> 
+                        Board-Ready-Präsentation mit ROI-Nachweis. Jetzt entscheiden SIE: 
+                        Weiter mit Langfrist-Programm oder konsolidieren?
+                    </p>
+                    <div class="phase-output">
+                        <strong>Ihre Entscheidung:</strong> GO für 12-36 Monate oder Stop - 
+                        ohne Vendor-Lock-In
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="timeline-cta">
+            <div class="cta-box">
+                <h3>Überzeugt? Starten Sie in 2 Wochen.</h3>
+                <p>
+                    Buchen Sie ein 30-Minuten-Strategiegespräch. Wir analysieren Ihren 
+                    Performance-Gap und zeigen Ihnen, welche Quick Wins in 10 Wochen erreichbar sind.
+                </p>
+                <a href="raketen-start.html#kontakt" class="btn-large">
+                    Strategiegespräch buchen (30 Min, kostenlos) →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+CSS für Timeline:
+-----------------
+
+.acceptance-timeline-section {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.timeline {
+    max-width: 900px;
+    margin: 3rem auto;
+    position: relative;
+}
+
+/* Vertikale Linie */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-marker {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    z-index: 1;
+}
+
+.phase-number {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.timeline-content {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.phase-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.phase-question {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.phase-timeframe {
+    font-size: 1rem;
+    color: #667eea;
+    font-weight: normal;
+}
+
+.phase-description {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.phase-output {
+    background: white;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 3px solid #27ae60;
+    font-size: 0.95rem;
+}
+
+.timeline-cta {
+    margin-top: 4rem;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-box h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-box p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.btn-large {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 1.2rem 3rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.btn-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 15px;
+    }
+    
+    .timeline-marker {
+        width: 40px;
+        height: 40px;
+        margin-right: 1rem;
+    }
+    
+    .phase-number {
+        font-size: 1.2rem;
+    }
+    
+    .phase-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+═══════════════════════════════════════════════════════════════════
+
+
+OPTION 4: BENEFIT-CALCULATOR (INTERAKTIV)
+==========================================
+
+PLATZIERUNG: Als eigene Section - sehr wirkungsvoll!
+
+KONZEPT: User gibt Umsatz/Mitarbeiter ein → ROI wird berechnet
+
+HTML-CODE:
+----------
+
+<section class="roi-calculator-section" id="roi-rechner">
+    <div class="container">
+        <h2 class="section-title">
+            ROI-Rechner: Was bringt das Raketen-Start-Programm Ihrem Unternehmen?
+        </h2>
+        
+        <p class="section-intro">
+            Geben Sie Ihre Unternehmenskennzahlen ein - wir berechnen Ihren 
+            erwarteten Benefit wissenschaftlich fundiert.
+        </p>
+        
+        <div class="calculator-wrapper">
+            <!-- Input Section -->
+            <div class="calculator-inputs">
+                <h3>Ihre Unternehmenskennzahlen</h3>
+                
+                <div class="input-group">
+                    <label for="revenue">Jahresumsatz (Mio. €)</label>
+                    <input type="number" id="revenue" value="50" min="10" max="1000">
+                </div>
+                
+                <div class="input-group">
+                    <label for="employees">Anzahl Mitarbeiter</label>
+                    <input type="number" id="employees" value="200" min="50" max="5000">
+                </div>
+                
+                <div class="input-group">
+                    <label for="margin">Umsatzrendite (%)</label>
+                    <input type="number" id="margin" value="5" min="1" max="20" step="0.5">
+                </div>
+                
+                <button onclick="calculateROI()" class="btn-calculate">
+                    Benefit berechnen →
+                </button>
+            </div>
+            
+            <!-- Output Section -->
+            <div class="calculator-outputs" id="results" style="display:none;">
+                <h3>Ihr erwarteter Benefit (10 Wochen)</h3>
+                
+                <div class="result-grid">
+                    <div class="result-card highlight">
+                        <div class="result-label">Gesamt-Benefit</div>
+                        <div class="result-value" id="total-benefit">€ 630.000</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Investment</div>
+                        <div class="result-value" id="investment">€ 95.000</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">ROI</div>
+                        <div class="result-value" id="roi">563%</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Payback</div>
+                        <div class="result-value" id="payback">1,5 Wochen</div>
+                    </div>
+                </div>
+                
+                <div class="breakdown">
+                    <h4>Benefit-Zusammensetzung:</h4>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Leuchtturm-Projekt:</span>
+                        <span class="breakdown-value" id="lighthouse">€ 150.000</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Produktivitätssteigerung:</span>
+                        <span class="breakdown-value" id="productivity">€ 270.000</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">CEO-Zeit-Freischaufeln:</span>
+                        <span class="breakdown-value" id="ceo-time">€ 50.000</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Retention-Effekt:</span>
+                        <span class="breakdown-value" id="retention">€ 160.000</span>
+                    </div>
+                </div>
+                
+                <div class="calculator-cta">
+                    <p class="cta-text">
+                        Überzeugt? Lassen Sie uns in einem 30-Minuten-Gespräch Ihre 
+                        spezifischen Quick Wins identifizieren.
+                    </p>
+                    <a href="raketen-start.html#kontakt" class="btn-cta-large">
+                        Jetzt Strategiegespräch buchen →
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="calculator-disclaimer">
+            <p>
+                <strong>Hinweis:</strong> Berechnung basiert auf wissenschaftlich 
+                validierten Durchschnittswerten (27 peer-reviewed Studien, 16-Jahres-ZOLLERN-Case). 
+                Individuelle Ergebnisse können variieren.
+                <a href="wissenschaftliche-fundierung.html">→ Wissenschaftliche Basis ansehen</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+function calculateROI() {
+    const revenue = parseFloat(document.getElementById('revenue').value);
+    const employees = parseFloat(document.getElementById('employees').value);
+    const margin = parseFloat(document.getElementById('margin').value);
+    
+    // Berechnung basierend auf wissenschaftlichen Formeln
+    const avgSalary = 65000; // EUR
+    const totalPersonalCosts = employees * avgSalary;
+    
+    // Produktivitätssteigerung (20% auf 100 betroffene Mitarbeiter)
+    const affectedEmployees = Math.min(employees * 0.5, 150);
+    const productivityGain = (affectedEmployees * avgSalary * 0.20) * (10/52); // 10 Wochen
+    
+    // Leuchtturm-Projekt (skaliert mit Umsatz)
+    const lighthouseProject = Math.min(150000 + (revenue - 50) * 5000, 500000);
+    
+    // CEO-Zeit (10h/Woche * 10 Wochen * 500 EUR/h)
+    const ceoTime = 50000;
+    
+    // Retention (2-3 Mitarbeiter, skaliert)
+    const retentionEffect = employees > 500 ? 240000 : 160000;
+    
+    const totalBenefit = lighthouseProject + productivityGain + ceoTime + retentionEffect;
+    
+    // Investment skaliert mit Unternehmensgröße
+    const investment = revenue < 100 ? 95000 : 150000;
+    
+    const roi = ((totalBenefit - investment) / investment * 100).toFixed(0);
+    const payback = (investment / (totalBenefit / 10)).toFixed(1);
+    
+    // Update DOM
+    document.getElementById('total-benefit').textContent = '€ ' + Math.round(totalBenefit).toLocaleString('de-DE');
+    document.getElementById('investment').textContent = '€ ' + investment.toLocaleString('de-DE');
+    document.getElementById('roi').textContent = roi + '%';
+    document.getElementById('payback').textContent = payback + ' Wochen';
+    
+    document.getElementById('lighthouse').textContent = '€ ' + Math.round(lighthouseProject).toLocaleString('de-DE');
+    document.getElementById('productivity').textContent = '€ ' + Math.round(productivityGain).toLocaleString('de-DE');
+    document.getElementById('ceo-time').textContent = '€ ' + ceoTime.toLocaleString('de-DE');
+    document.getElementById('retention').textContent = '€ ' + retentionEffect.toLocaleString('de-DE');
+    
+    // Show results
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+
+═══════════════════════════════════════════════════════════════════
+
+
+EMPFOHLENE GESAMT-INTEGRATION AUF HAUPTSEITE
+=============================================
+
+REIHENFOLGE DER SECTIONS (von oben nach unten):
+------------------------------------------------
+
+1. HERO (Option 1, Version A oder C)
+   → Sofort Aufmerksamkeit auf 10-Wochen-Programm
+
+2. VERGLEICHS-SECTION (Option 2)
+   → Zeigt Unterschied zu klassischem Change
+
+3. 4-PHASEN-TIMELINE (Option 3)
+   → Erklärt das "Wie" der 10 Wochen
+
+4. ROI-CALCULATOR (Option 4)
+   → Macht Benefit konkret und individuell
+
+5. CALL-TO-ACTION
+   → Strategiegespräch buchen
+
+6. WISSENSCHAFTLICHE FUNDIERUNG (Link zur Unterseite)
+   → Für Skeptiker und Detail-Interessierte
+
+
+NAVIGATION INTEGRATION:
+-----------------------
+
+Ergänzen Sie die Haupt-Navigation:
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="raketen-start.html" class="highlight">10-Wochen-Programm</a></li>
+        <li><a href="wissenschaftliche-fundierung.html">Wissenschaft</a></li>
+        <li><a href="#methodik">Methodik</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+</nav>
+
+CSS für highlight:
+.highlight {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+
+═══════════════════════════════════════════════════════════════════
+END OF DOCUMENT
+═══════════════════════════════════════════════════════════════════

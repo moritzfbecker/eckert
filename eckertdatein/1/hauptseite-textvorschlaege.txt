@@ -1,0 +1,381 @@
+TEXTVORSCHLÄGE FÜR DIE HAUPTSEITE www.eckertpreisser.de
+======================================================
+
+INTEGRATION DER WISSENSCHAFTLICHEN FUNDIERUNG
+=============================================
+
+
+OPTION 1: HERO-SECTION BADGE/BANNER (GANZ OBEN)
+------------------------------------------------
+Platzierung: Direkt unter dem Haupttitel im Hero-Bereich
+
+Text:
+"🏆 Die einzige wissenschaftlich fundierte Performance-Architecture-Methodik im deutschen Mittelstand
+[Link: Wissenschaftliche Fundierung ansehen →]"
+
+HTML-Code:
+<div class="science-badge">
+    🏆 Die einzige wissenschaftlich fundierte Performance-Architecture-Methodik im deutschen Mittelstand
+    <a href="wissenschaftliche-fundierung.html" class="science-link">
+        Wissenschaftliche Fundierung ansehen →
+    </a>
+</div>
+
+CSS (zum Einfügen):
+.science-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 900px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.science-link {
+    color: white;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+.science-link:hover {
+    opacity: 0.8;
+}
+
+
+OPTION 2: NACH DEM HERO - PROMINENT-BOX
+----------------------------------------
+Platzierung: Erste Section nach dem Hero-Bereich
+
+Text:
+"Wissenschaftlich fundiert. Empirisch validiert. 16 Jahre erprobt.
+
+Die Eckert-Preisser-Methodik ist die einzige Performance-Architecture-Methodik im deutschen Mittelstand, 
+die auf 27 peer-reviewed Quellen aus Harvard Business School, Stanford GSB und McKinsey Global Institute 
+basiert. Jeder Parameter unserer Methodik ist wissenschaftlich validiert.
+
+→ Erfahren Sie mehr über unsere wissenschaftliche Fundierung"
+
+HTML-Code:
+<div class="science-section">
+    <div class="science-header">
+        <span class="science-icon">🔬</span>
+        <h2>Wissenschaftlich fundiert. Empirisch validiert. 16 Jahre erprobt.</h2>
+    </div>
+    
+    <p class="science-intro">
+        Die Eckert-Preisser-Methodik ist die <strong>einzige Performance-Architecture-Methodik 
+        im deutschen Mittelstand</strong>, die auf 27 peer-reviewed Quellen aus Harvard Business School, 
+        Stanford GSB und McKinsey Global Institute basiert. Jeder Parameter unserer Methodik ist 
+        wissenschaftlich validiert.
+    </p>
+    
+    <div class="science-stats">
+        <div class="stat-item">
+            <span class="stat-number">27</span>
+            <span class="stat-label">Peer-Reviewed Quellen</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">3.000+</span>
+            <span class="stat-label">Validierte Unternehmen</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">16 Jahre</span>
+            <span class="stat-label">Praktische Validierung</span>
+        </div>
+    </div>
+    
+    <a href="wissenschaftliche-fundierung.html" class="science-cta-button">
+        📚 Wissenschaftliche Fundierung im Detail →
+    </a>
+</div>
+
+CSS (zum Einfügen):
+.science-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 4rem 2rem;
+    margin: 3rem 0;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.science-header {
+    margin-bottom: 2rem;
+}
+
+.science-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.science-intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    color: #2c3e50;
+}
+
+.science-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+}
+
+.stat-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 1rem;
+    color: #555;
+}
+
+.science-cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.science-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+
+OPTION 3: KOMPAKTER HINWEIS IM "ÜBER UNS" BEREICH
+--------------------------------------------------
+Platzierung: Im "Über Peter Eckert" oder "Methodik" Bereich
+
+Text:
+"Die Eckert-Preisser-Methodik basiert auf 27 wissenschaftlichen Quellen und wurde über 16 Jahre 
+in der Praxis validiert. Als einzige wissenschaftlich fundierte Performance-Architecture-Methodik 
+im deutschen Mittelstand kombiniert sie akademische Exzellenz mit Fraunhofer-Systematik.
+
+[Link: Wissenschaftliche Fundierung im Detail →]"
+
+HTML-Code:
+<div class="science-callout">
+    <div class="science-callout-icon">🎓</div>
+    <div class="science-callout-content">
+        <h4>Wissenschaftlich fundiert & empirisch validiert</h4>
+        <p>
+            Die Eckert-Preisser-Methodik basiert auf <strong>27 wissenschaftlichen Quellen</strong> 
+            und wurde über <strong>16 Jahre in der Praxis validiert</strong>. Als einzige wissenschaftlich 
+            fundierte Performance-Architecture-Methodik im deutschen Mittelstand kombiniert sie akademische 
+            Exzellenz mit Fraunhofer-Systematik.
+        </p>
+        <a href="wissenschaftliche-fundierung.html" class="inline-link">
+            Wissenschaftliche Fundierung im Detail →
+        </a>
+    </div>
+</div>
+
+CSS (zum Einfügen):
+.science-callout {
+    display: flex;
+    align-items: flex-start;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-left: 5px solid #667eea;
+    border-radius: 5px;
+    margin: 2rem 0;
+}
+
+.science-callout-icon {
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.science-callout-content h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.science-callout-content p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.inline-link {
+    color: #667eea;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid #667eea;
+}
+
+.inline-link:hover {
+    color: #764ba2;
+    border-color: #764ba2;
+}
+
+
+OPTION 4: NAVIGATION MENU INTEGRATION
+--------------------------------------
+Platzierung: Im Haupt-Navigationsmenü
+
+HTML-Code für Navigation:
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#methodik">Methodik</a></li>
+        <li><a href="wissenschaftliche-fundierung.html">Wissenschaftliche Fundierung</a></li>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+</nav>
+
+
+OPTION 5: KOMBINATION - HERO + DETAIL-SECTION
+----------------------------------------------
+Empfohlene Kombination für maximale Wirkung:
+
+1. IM HERO-BEREICH (ganz oben):
+   Kleiner Badge/Banner: "🏆 Die einzige wissenschaftlich fundierte Methodik"
+
+2. ALS EIGENE SECTION (nach Vorstellung):
+   Ausführliche Box mit Stats und CTA zur Unterseite
+
+HTML-Struktur:
+<!-- Im Hero -->
+<div class="hero">
+    <h1>ECKERTPREISSER</h1>
+    <p class="subtitle">Performance-Architecture für Hidden Champions</p>
+    <div class="hero-badge">
+        🏆 Die einzige wissenschaftlich fundierte Performance-Architecture-Methodik
+    </div>
+</div>
+
+<!-- Nach Vorstellung -->
+<section id="wissenschaft" class="science-full-section">
+    <div class="container">
+        <h2>Wissenschaftlich fundiert. Empirisch validiert.</h2>
+        <p class="lead">
+            Die Eckert-Preisser-Methodik basiert auf 27 peer-reviewed Quellen aus Harvard Business School, 
+            Stanford GSB und McKinsey Global Institute. Jeder Parameter unserer Methodik ist wissenschaftlich 
+            validiert – validiert über 16 Jahre praktische Anwendung im deutschen Mittelstand.
+        </p>
+        
+        <!-- Stats Grid hier einfügen -->
+        
+        <a href="wissenschaftliche-fundierung.html" class="btn-primary">
+            Vollständige wissenschaftliche Fundierung ansehen →
+        </a>
+    </div>
+</section>
+
+
+EMPFEHLUNG: PLATZIERUNG UND HIERARCHIE
+=======================================
+
+PRIMÄR-PLATZIERUNG (Pflicht):
+-----------------------------
+→ Option 2: Prominente Science-Section direkt nach dem Hero-Bereich
+   Begründung: Maximale Sichtbarkeit, glaubwürdigkeitsstiftend, differenzierend
+
+SEKUNDÄR-PLATZIERUNGEN (Optional):
+-----------------------------------
+→ Option 1: Badge im Hero für sofortige Positionierung
+→ Option 4: Link im Haupt-Navigationsmenü für einfachen Zugriff
+→ Option 3: Zusätzlicher Hinweis im "Über Peter Eckert" Bereich
+
+
+FORMULIERUNGSALTERNATIVEN FÜR "EINZIGE"
+========================================
+
+Falls "einzige" zu absolut erscheint, hier Alternativen:
+
+1. "Die wissenschaftlich fundierteste Performance-Architecture-Methodik im deutschen Mittelstand"
+
+2. "Eine der wenigen wissenschaftlich validierten Performance-Architecture-Methoden mit 16-jähriger 
+    praktischer Erprobung"
+
+3. "Die Performance-Architecture-Methodik mit der umfassendsten wissenschaftlichen Fundierung 
+    (27 peer-reviewed Quellen)"
+
+4. "Einzigartig wissenschaftlich fundiert: 27 Quellen, 16 Jahre Praxis, 3.000+ validierte Unternehmen"
+
+
+ZUSÄTZLICHE ELEMENTE FÜR DIE HAUPTSEITE
+========================================
+
+TRUST-BADGES (optional integrierbar):
+--------------------------------------
+✓ 27 peer-reviewed Quellen
+✓ Harvard Business School
+✓ Stanford GSB  
+✓ McKinsey Global Institute
+✓ Fraunhofer IPA
+✓ 16 Jahre praktische Validierung
+✓ 3.000+ validierte Unternehmen
+
+
+FOOTER-INTEGRATION:
+-------------------
+Im Footer sollte ebenfalls ein Link zur wissenschaftlichen Fundierung erscheinen:
+
+<footer>
+    <div class="footer-links">
+        <h4>Über uns</h4>
+        <ul>
+            <li><a href="wissenschaftliche-fundierung.html">Wissenschaftliche Fundierung</a></li>
+            <li><a href="#methodik">Unsere Methodik</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+CALL-TO-ACTION INTEGRATION:
+---------------------------
+In jedem relevanten CTA-Bereich kann die wissenschaftliche Fundierung als Trust-Element erwähnt werden:
+
+Beispiel:
+"Überzeugen Sie sich selbst von der einzigen wissenschaftlich fundierten Performance-Architecture-Methodik. 
+[Link zum Erstgespräch] oder [Link zur wissenschaftlichen Fundierung]"
+
+
+ZUSAMMENFASSUNG
+===============
+
+KRITISCHE STELLEN FÜR INTEGRATION:
+1. ✓ Hero-Badge (Option 1) - Sofortige Positionierung
+2. ✓✓✓ Science-Section (Option 2) - HAUPTPLATZIERUNG, sehr prominent
+3. ✓ Navigation (Option 4) - Einfacher Zugriff
+4. ✓ Footer - Permanente Sichtbarkeit
+
+KERNBOTSCHAFT:
+"Die Eckert-Preisser-Methodik ist die einzige wissenschaftlich fundierte Performance-Architecture-Methodik 
+im deutschen Mittelstand - basierend auf 27 peer-reviewed Quellen und validiert über 16 Jahre praktische Anwendung."
+
+LINK ZUR UNTERSEITE:
+<a href="wissenschaftliche-fundierung.html">Wissenschaftliche Fundierung im Detail →</a>

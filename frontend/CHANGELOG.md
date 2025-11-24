@@ -4,6 +4,69 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.22.0] - 2025-11-24
+
+### Added
+- **Wissenschaftliche Fundierung Page** - Comprehensive scientific foundation page [FRONTEND_FEAT_027]
+  - New page `/wissenschaftliche-fundierung` with 27 peer-reviewed sources
+  - ZOLLERN Case Study with 16-year validation
+  - Validation table for all core parameters
+  - Methodology excellence section with 6 categories
+  - Transparency & limitations section
+  - Full i18n support (DE/EN) via Config API v2.0
+  - Category: `science`
+
+- **Finnland-Quellen Page** - Finland Basketball 153 sources analysis [FRONTEND_FEAT_028]
+  - New page `/finnland-quellen` with 153 scientific sources
+  - Executive summary with budget paradox analysis
+  - 6 key findings systematically presented
+  - Business translation section
+  - Source categories overview (8 categories)
+  - Full i18n support (DE/EN) via Config API v2.0
+  - Category: `finland`
+
+- **Raketen-Start-Programm Page** - 10-Week Intensive Program [FRONTEND_FEAT_029]
+  - New page `/raketen-start` with complete 10-week program
+  - 4-Phase Timeline (Acceptance Model visualization)
+  - 5 Modules detailed (Assessment, Losada, Hidden Talents, Selbstläufer, Leuchtturm)
+  - **Interactive ROI Calculator** with JavaScript logic
+  - Pricing section (Mittelstand + Konzern variants)
+  - Scientific validation section
+  - Full i18n support (DE/EN) via Config API v2.0
+  - Category: `raketen`
+
+- **Navigation Updates** - Added 3 new links to Header navigation [FRONTEND_NAV_027]
+  - "Raketen-Start" link with Apple Gradient highlight (NEW badge)
+  - "Wissenschaft" link for scientific foundation
+  - Updated common.properties (DE/EN) with new nav labels
+
+- **Config API v2.0 Support** - New i18n configuration files [FRONTEND_CONFIG_008]
+  - `config/i18n/de/science.properties` (German scientific foundation)
+  - `config/i18n/en/science.properties` (English scientific foundation)
+  - `config/i18n/de/finland.properties` (German Finland analysis)
+  - `config/i18n/en/finland.properties` (English Finland analysis)
+  - `config/i18n/de/raketen.properties` (German Rocket-Start program)
+  - `config/i18n/en/raketen.properties` (English Rocket-Start program)
+  - All config files use English defaults in code, German from Config Server
+
+- **Route Definitions** - 3 new routes in App.tsx [FRONTEND_ROUTE_006]
+  - `/wissenschaftliche-fundierung` → WissenschaftlicheFundierung component
+  - `/finnland-quellen` → FinnlandQuellen component
+  - `/raketen-start` → RaketenStart component
+
+### Changed
+- **Design System Consistency** - All new pages follow Black/White + Apple Gradient design
+  - Minimalist Black/White theme throughout
+  - Apple Gradient (Pink → Purple → Yellow) for hover effects only
+  - Framer Motion animations for all sections
+  - Mobile-first responsive design
+  - Tailwind CSS for all styling (NO inline styles)
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: MINOR - Major Feature Release (3 New Pages)
+
+---
+
 ## [2.21.4] - 2025-11-11
 
 ### Fixed
