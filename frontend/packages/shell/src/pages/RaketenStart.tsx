@@ -326,8 +326,9 @@ const RaketenStart = () => {
       </Section>
 
       {/* ROI Calculator */}
-      <Section spacing="lg" id="roi-rechner">
-        <Container>
+      <div id="roi-rechner">
+        <Section spacing="lg">
+          <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -471,6 +472,7 @@ const RaketenStart = () => {
           </motion.div>
         </Container>
       </Section>
+      </div>
 
       {/* Pricing */}
       <Section spacing="lg" className="bg-gradient-to-br from-gray-900 to-black text-white">
