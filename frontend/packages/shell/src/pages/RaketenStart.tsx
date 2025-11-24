@@ -226,7 +226,7 @@ const RaketenStart = () => {
       </Section>
 
       {/* 5 Module */}
-      <Section spacing="default" className="bg-gray-50">
+      <Section spacing="lg" className="bg-gray-50">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -326,7 +326,7 @@ const RaketenStart = () => {
       </Section>
 
       {/* ROI Calculator */}
-      <Section spacing="default" id="roi-rechner">
+      <Section spacing="lg" id="roi-rechner">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -473,7 +473,7 @@ const RaketenStart = () => {
       </Section>
 
       {/* Pricing */}
-      <Section spacing="default" className="bg-gradient-to-br from-gray-900 to-black text-white">
+      <Section spacing="lg" className="bg-gradient-to-br from-gray-900 to-black text-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -611,7 +611,7 @@ const RaketenStart = () => {
       </Section>
 
       {/* Scientific Validation */}
-      <Section spacing="default" className="bg-gray-50">
+      <Section spacing="lg" className="bg-gray-50">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -660,7 +660,7 @@ const RaketenStart = () => {
       </Section>
 
       {/* Final CTA */}
-      <Section spacing="default" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
+      <Section spacing="lg" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}

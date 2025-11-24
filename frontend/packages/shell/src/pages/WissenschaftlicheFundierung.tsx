@@ -94,7 +94,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* Core Validation Table */}
-      <Section spacing="default" className="bg-white">
+      <Section spacing="lg" className="bg-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -200,7 +200,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* ZOLLERN Case Study */}
-      <Section spacing="default" className="bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500">
+      <Section spacing="lg" className="bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -360,7 +360,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* Methodology Excellence */}
-      <Section spacing="default" className="bg-white">
+      <Section spacing="lg" className="bg-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -428,7 +428,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* Transparency & Limitations */}
-      <Section spacing="default" className="bg-gray-50">
+      <Section spacing="lg" className="bg-gray-50">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -490,7 +490,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* Conclusion */}
-      <Section spacing="default" className="bg-white">
+      <Section spacing="lg" className="bg-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -526,7 +526,7 @@ const WissenschaftlicheFundierung = () => {
       </Section>
 
       {/* Final CTA */}
-      <Section spacing="default" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
+      <Section spacing="lg" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}

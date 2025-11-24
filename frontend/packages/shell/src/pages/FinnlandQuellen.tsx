@@ -102,7 +102,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Key Findings */}
-      <Section spacing="default" className="bg-white">
+      <Section spacing="lg" className="bg-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -160,7 +160,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Translation to Business */}
-      <Section spacing="default" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
+      <Section spacing="lg" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -287,7 +287,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Key Sources Highlight */}
-      <Section spacing="default" className="bg-white">
+      <Section spacing="lg" className="bg-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -375,7 +375,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Methodology */}
-      <Section spacing="default" className="bg-gray-50">
+      <Section spacing="lg" className="bg-gray-50">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -418,7 +418,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Conclusion */}
-      <Section spacing="default" className="bg-white">
+      <Section spacing="lg" className="bg-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -454,7 +454,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Final CTA */}
-      <Section spacing="default" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
+      <Section spacing="lg" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
