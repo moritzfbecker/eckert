@@ -17,6 +17,35 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-eckert-white pt-24 pb-20">
+      {/* Hero Banner with Portrait */}
+      <div className="relative bg-black overflow-hidden mb-12">
+        <div className="absolute inset-0">
+          <img
+            src="/images/peter-eckert-portrait-5.png"
+            alt="Peter Eckert"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        </div>
+        <Container>
+          <div className="relative py-20 md:py-32">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-2xl"
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+                {config.get('about.hero.title', 'Peter Eckert')}
+              </h1>
+              <p className="text-xl md:text-2xl text-white/80 leading-relaxed">
+                {config.get('about.hero.subtitle', 'Vom Unternehmer für Unternehmer – 40 Jahre Performance Architecture')}
+              </p>
+            </motion.div>
+          </div>
+        </Container>
+      </div>
+
       <Container>
         {/* Bio Grid: Sidebar + Content */}
         <div className="py-12">
@@ -30,8 +59,12 @@ const About = () => {
                 className="bg-white border-2 border-black/10 rounded-xl p-8 shadow-subtle sticky top-32"
               >
                 {/* Photo */}
-                <div className="w-48 h-48 bg-black text-white rounded-full flex items-center justify-center text-6xl font-black mx-auto mb-8 shadow-apple-glow">
-                  PE
+                <div className="w-48 h-48 rounded-full mx-auto mb-8 shadow-apple-glow overflow-hidden">
+                  <img
+                    src="/images/peter-eckert-library.png"
+                    alt="Peter Eckert"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <h3 className="text-2xl font-bold text-black text-center mb-8">
@@ -254,14 +287,29 @@ const About = () => {
                 </motion.div>
               </div>
 
-              {/* Unique Combination Box */}
+              {/* Unique Combination Box with Image */}
               <div className="bg-white border-l-4 border-black rounded-xl p-8 mt-12 shadow-subtle">
-                <h3 className="text-xl font-bold text-black mb-4">
-                  {config.get('about.combination.title', 'The Unique Combination')}
-                </h3>
-                <p className="text-base text-black/70 leading-relaxed">
-                  {config.get('about.combination.text', 'What distinguishes Peter Eckert from classical strategy consultants: He combines academic research methodology (6 years Fraunhofer), entrepreneurial hands-on experience (5 companies, diverse industries), long-term transformation proof (8 years ZOLLERN to self-running, then 12 years self-running phase = €192M impact), and systematic method development (44 years across numerous Hidden Champions projects). This combination exists at no MBB partner.')}
-                </p>
+                <div className="flex flex-col md:flex-row gap-8 items-center">
+                  {/* Thought Leadership Image */}
+                  <div className="md:w-1/3 flex-shrink-0">
+                    <div className="rounded-xl overflow-hidden shadow-elevated">
+                      <img
+                        src="/images/peter-eckert-thinking.png"
+                        alt="Peter Eckert - Thought Leadership"
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                  </div>
+                  {/* Text Content */}
+                  <div className="md:w-2/3">
+                    <h3 className="text-xl font-bold text-black mb-4">
+                      {config.get('about.combination.title', 'The Unique Combination')}
+                    </h3>
+                    <p className="text-base text-black/70 leading-relaxed">
+                      {config.get('about.combination.text', 'What distinguishes Peter Eckert from classical strategy consultants: He combines academic research methodology (6 years Fraunhofer), entrepreneurial hands-on experience (5 companies, diverse industries), long-term transformation proof (8 years ZOLLERN to self-running, then 12 years self-running phase = €192M impact), and systematic method development (44 years across numerous Hidden Champions projects). This combination exists at no MBB partner.')}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

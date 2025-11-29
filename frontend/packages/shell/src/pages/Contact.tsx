@@ -62,8 +62,24 @@ const Contact = () => {
     <div className="min-h-screen bg-eckert-white pt-24 pb-20">
       <Container>
         <div className="py-12">
-          {/* Header */}
+          {/* Header with Portrait */}
           <div className="text-center mb-12">
+            {/* Portrait */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="mb-8"
+            >
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto overflow-hidden shadow-apple-glow border-4 border-black">
+                <img
+                  src="/images/peter-eckert-portrait-1.png"
+                  alt="Peter Eckert"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

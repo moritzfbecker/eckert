@@ -76,6 +76,43 @@ const Home = () => {
       {/* Divider */}
       <div className="w-full border-t border-black/10" />
 
+      {/* Video Introduction Section */}
+      <Section spacing="none" className="py-20 md:py-32 bg-black">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="max-w-5xl mx-auto"
+          >
+            {/* Video Title */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white text-center mb-6">
+              {config.get('home.video.title', 'See Performance Architecture in Action')}
+            </h2>
+            <p className="text-lg md:text-xl text-white/70 text-center mb-12">
+              {config.get('home.video.subtitle', 'Peter Eckert explains the methodology that transformed companies for over 40 years')}
+            </p>
+
+            {/* Video Player */}
+            <div className="relative rounded-xl overflow-hidden shadow-apple-glow">
+              <video
+                className="w-full h-auto"
+                controls
+                poster="/images/peter-eckert-portrait-1.png"
+                preload="metadata"
+              >
+                <source src="/videos/peter-eckert-video-1.mp4" type="video/mp4" />
+                {config.get('home.video.fallback', 'Your browser does not support the video tag.')}
+              </video>
+            </div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* Divider */}
+      <div className="w-full border-t border-black/10" />
+
       {/* Target Audience Section */}
       <Section spacing="none" className="py-20 md:py-32">
         <Container>

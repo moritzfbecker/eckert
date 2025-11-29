@@ -288,6 +288,20 @@ const Concept = () => {
                 {config.get('concept.chapter3.subtitle', 'What distinguishes us from academic consultants and classical strategy consultancies')}
               </p>
 
+              {/* Peter Eckert Image - Working Shot */}
+              <div className="mb-12">
+                <div className="rounded-xl overflow-hidden shadow-elevated">
+                  <img
+                    src="/images/peter-eckert-working.png"
+                    alt="Peter Eckert - Research & Development"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                <p className="text-sm text-black/50 mt-3 text-center italic">
+                  {config.get('concept.chapter3.image.caption', 'Peter Eckert: 40 years combining scientific research with entrepreneurial practice')}
+                </p>
+              </div>
+
               {/* Intro Text */}
               <div className="text-lg text-black/80 leading-relaxed mb-12">
                 <p className="mb-6">

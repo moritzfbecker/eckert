@@ -29,11 +29,24 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 text-white">
-              {config.get('footer.company.name', 'Eckert Preisser')}
-            </h3>
+            <div className="flex items-center gap-4 mb-4">
+              {/* Peter Eckert Portrait */}
+              <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/20">
+                <img
+                  src="/images/peter-eckert-portrait-1.png"
+                  alt="Peter Eckert"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">
+                  {config.get('footer.company.name', 'Eckert Preisser')}
+                </h3>
+                <p className="text-sm text-white/60">Peter Eckert</p>
+              </div>
+            </div>
             <p className="text-white/80 mb-4">
-              {config.get('footer.tagline', 'Enterprise-level solutions for modern businesses.')}
+              {config.get('footer.tagline', 'Performance Architecture | Vom Unternehmer für Unternehmer')}
             </p>
           </div>
 
