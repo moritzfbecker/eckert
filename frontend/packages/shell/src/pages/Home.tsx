@@ -94,97 +94,93 @@ const Home = () => {
               {config.get('home.video.subtitle', 'Peter Eckert explains the methodology that transformed companies for over 40 years')}
             </p>
 
-            {/* Video Grid - Larger Videos */}
-            <div className="space-y-8 md:space-y-12">
-              {/* Row 1: Video 1 (Large) + 3-Pillar Info */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-                {/* Video 1: Performance Architecture - Takes 2 columns on large screens */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="lg:col-span-2"
+            {/* Video 1: Performance Architecture - Full Width Hero Video */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-16 md:mb-24"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-apple-glow">
+                <video
+                  className="w-full h-auto"
+                  controls
+                  poster="/images/peter-eckert-portrait-1.png"
+                  preload="metadata"
                 >
-                  <div className="relative rounded-xl overflow-hidden shadow-apple-glow aspect-video">
-                    <video
-                      className="w-full h-full object-cover"
-                      controls
-                      poster="/images/peter-eckert-portrait-1.png"
-                      preload="metadata"
-                    >
-                      <source src="/videos/performance-architecture.mp4" type="video/mp4" />
-                    </video>
-                  </div>
-                  <div className="mt-4 md:mt-6">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-                      {config.get('home.video.col1.title', 'Performance Architecture')}
-                    </h3>
-                    <p className="text-sm md:text-base text-white/70">
-                      {config.get('home.video.col1.desc', 'The systematic approach to unleashing human performance potential.')}
-                    </p>
-                  </div>
-                </motion.div>
-
-                {/* 3-Pillar Method Info Box */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col justify-center bg-white/5 rounded-xl p-6 md:p-8"
-                >
-                  <div className="text-5xl md:text-6xl mb-4 md:mb-6 text-center">🎯</div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 text-center">
-                    {config.get('home.video.col2.title', 'The 3-Pillar Method')}
-                  </h3>
-                  <p className="text-sm md:text-base text-white/80 text-center mb-4 md:mb-6">
-                    {config.get('home.video.col2.desc', 'Technology Portfolio + Resource Strength + Human Performance = Sustainable Excellence')}
-                  </p>
-                  <Link
-                    to="/concept"
-                    className="
-                      mx-auto inline-block
-                      bg-white text-black
-                      px-6 py-3
-                      rounded-lg
-                      font-bold text-sm
-                      hover:shadow-apple-glow hover:scale-105
-                      transition-all duration-300
-                    "
-                  >
-                    {config.get('home.video.col2.button', 'Learn More')}
-                  </Link>
-                </motion.div>
+                  <source src="/videos/performance-architecture.mp4" type="video/mp4" />
+                </video>
               </div>
+              <div className="mt-6 md:mt-8 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                  {config.get('home.video.col1.title', 'Performance Architecture')}
+                </h3>
+                <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
+                  {config.get('home.video.col1.desc', 'The systematic approach to unleashing human performance potential.')}
+                </p>
+              </div>
+            </motion.div>
 
-              {/* Row 2: Video 2 (Herrschaftswissen) - Full Width */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="relative rounded-xl overflow-hidden shadow-apple-glow aspect-video max-w-5xl mx-auto">
-                  <video
-                    className="w-full h-full object-cover"
-                    controls
-                    poster="/images/peter-eckert-portrait-2.png"
-                    preload="metadata"
-                  >
-                    <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
-                  </video>
-                </div>
-                <div className="mt-4 md:mt-6 text-center max-w-3xl mx-auto">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-                    {config.get('home.video.col3.title', 'Herrschaftswissen')}
-                  </h3>
-                  <p className="text-sm md:text-base text-white/70">
-                    {config.get('home.video.col3.desc', 'The knowledge that separates top performers from the rest.')}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+            {/* 3-Pillar Method Info - Centered */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white/5 rounded-2xl p-8 md:p-12 mb-16 md:mb-24 max-w-4xl mx-auto"
+            >
+              <div className="text-center">
+                <div className="text-6xl md:text-7xl mb-6">🎯</div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  {config.get('home.video.col2.title', 'The 3-Pillar Method')}
+                </h3>
+                <p className="text-base md:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+                  {config.get('home.video.col2.desc', 'Technology Portfolio + Resource Strength + Human Performance = Sustainable Excellence')}
+                </p>
+                <Link
+                  to="/concept"
+                  className="
+                    inline-block
+                    bg-white text-black
+                    px-8 py-4
+                    rounded-lg
+                    font-bold text-base
+                    hover:shadow-apple-glow hover:scale-105
+                    transition-all duration-300
+                  "
+                >
+                  {config.get('home.video.col2.button', 'Learn More')}
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Video 2: Herrschaftswissen - Full Width */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-apple-glow">
+                <video
+                  className="w-full h-auto"
+                  controls
+                  poster="/images/peter-eckert-portrait-2.png"
+                  preload="metadata"
+                >
+                  <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="mt-6 md:mt-8 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                  {config.get('home.video.col3.title', 'Herrschaftswissen')}
+                </h3>
+                <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
+                  {config.get('home.video.col3.desc', 'The knowledge that separates top performers from the rest.')}
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
