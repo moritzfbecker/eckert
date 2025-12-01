@@ -76,7 +76,7 @@ const Home = () => {
       {/* Divider */}
       <div className="w-full border-t border-black/10" />
 
-      {/* Video Introduction Section */}
+      {/* 3-Column Video Teaser Section */}
       <Section spacing="none" className="py-20 md:py-32 bg-black">
         <Container>
           <motion.div
@@ -84,9 +84,9 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="max-w-5xl mx-auto"
+            className="max-w-7xl mx-auto"
           >
-            {/* Video Title */}
+            {/* Section Title */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white text-center mb-6">
               {config.get('home.video.title', 'See Performance Architecture in Action')}
             </h2>
@@ -94,17 +94,90 @@ const Home = () => {
               {config.get('home.video.subtitle', 'Peter Eckert explains the methodology that transformed companies for over 40 years')}
             </p>
 
-            {/* Video Player */}
-            <div className="relative rounded-xl overflow-hidden shadow-apple-glow">
-              <video
-                className="w-full h-auto"
-                controls
-                poster="/images/peter-eckert-portrait-1.png"
-                preload="metadata"
+            {/* 3-Column Video Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Column 1: Performance Architecture Video */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="flex flex-col"
               >
-                <source src="/videos/peter-eckert-video-1.mp4" type="video/mp4" />
-                {config.get('home.video.fallback', 'Your browser does not support the video tag.')}
-              </video>
+                <div className="relative rounded-xl overflow-hidden shadow-apple-glow mb-4 aspect-video">
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    poster="/images/peter-eckert-portrait-1.png"
+                    preload="metadata"
+                  >
+                    <source src="/videos/performance-architecture.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {config.get('home.video.col1.title', 'Performance Architecture')}
+                </h3>
+                <p className="text-sm text-white/70">
+                  {config.get('home.video.col1.desc', 'The systematic approach to unleashing human performance potential.')}
+                </p>
+              </motion.div>
+
+              {/* Column 2: The Method (Text or Image) */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col justify-center bg-white/5 rounded-xl p-8"
+              >
+                <div className="text-6xl mb-6 text-center">🎯</div>
+                <h3 className="text-2xl font-bold text-white mb-4 text-center">
+                  {config.get('home.video.col2.title', 'The 3-Pillar Method')}
+                </h3>
+                <p className="text-base text-white/80 text-center mb-6">
+                  {config.get('home.video.col2.desc', 'Technology Portfolio + Resource Strength + Human Performance = Sustainable Excellence')}
+                </p>
+                <Link
+                  to="/concept"
+                  className="
+                    mx-auto inline-block
+                    bg-white text-black
+                    px-6 py-3
+                    rounded-lg
+                    font-bold text-sm
+                    hover:shadow-apple-glow
+                    transition-all duration-300
+                  "
+                >
+                  {config.get('home.video.col2.button', 'Learn More')}
+                </Link>
+              </motion.div>
+
+              {/* Column 3: Herrschaftswissen Video */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="flex flex-col"
+              >
+                <div className="relative rounded-xl overflow-hidden shadow-apple-glow mb-4 aspect-video">
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    poster="/images/peter-eckert-portrait-2.png"
+                    preload="metadata"
+                  >
+                    <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {config.get('home.video.col3.title', 'Herrschaftswissen')}
+                </h3>
+                <p className="text-sm text-white/70">
+                  {config.get('home.video.col3.desc', 'The knowledge that separates top performers from the rest.')}
+                </p>
+              </motion.div>
             </div>
           </motion.div>
         </Container>

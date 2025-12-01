@@ -111,8 +111,24 @@ const Concept = () => {
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-black mb-4 md:mb-6">
                 {config.get('concept.page.title', 'Our Concept')}
               </h1>
-              <p className="text-lg md:text-xl lg:text-2xl text-black/80">
+              <p className="text-lg md:text-xl lg:text-2xl text-black/80 mb-8">
                 {config.get('concept.page.subtitle', 'A new perspective on strategic HR consulting')}
+              </p>
+
+              {/* Hero Video - Performance Architecture */}
+              <div className="relative rounded-xl overflow-hidden shadow-elevated">
+                <video
+                  className="w-full h-auto"
+                  controls
+                  poster="/images/peter-eckert-portrait-1.png"
+                  preload="metadata"
+                >
+                  <source src="/videos/performance-architecture.mp4" type="video/mp4" />
+                  {config.get('concept.video.fallback', 'Your browser does not support the video tag.')}
+                </video>
+              </div>
+              <p className="text-sm text-black/50 mt-3 text-center italic">
+                {config.get('concept.video.caption', 'Peter Eckert introduces the Performance Architecture methodology')}
               </p>
             </motion.div>
 

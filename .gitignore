@@ -93,3 +93,7 @@ secrets/
 *.tar.gz
 *.zip
 *.rar
+
+# Large Media Files (videos)
+frontend/packages/shell/public/videos/*.mp4
+eckertdatein/

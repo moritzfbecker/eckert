@@ -179,6 +179,23 @@ const About = () => {
                     {config.get('about.phase2.intro', 'Co-founder of 5 companies across various industries. Direct experience with scale-up challenges, resource scarcity, team development.')}
                   </p>
 
+                  {/* Papierfabrik Video */}
+                  <div className="mb-8">
+                    <div className="relative rounded-xl overflow-hidden shadow-elevated">
+                      <video
+                        className="w-full h-auto"
+                        controls
+                        poster="/images/peter-eckert-working.png"
+                        preload="metadata"
+                      >
+                        <source src="/videos/papierfabrik.mp4" type="video/mp4" />
+                      </video>
+                    </div>
+                    <p className="text-sm text-black/50 mt-3 text-center italic">
+                      {config.get('about.phase2.video.caption', 'Peter Eckert on the paper mill restructuring experience')}
+                    </p>
+                  </div>
+
                   <div className="space-y-3 text-sm text-black/80 leading-relaxed">
                     <p><strong className="text-black">{config.get('about.phase2.company1', 'Company 1 (1989):')}</strong> {config.get('about.phase2.company1.text', 'Technology marketing. First systematic development of performance methods.')}</p>
                     <p><strong className="text-black">{config.get('about.phase2.company2', 'Company 2 (1998):')}</strong> {config.get('about.phase2.company2.text', 'Process industry with production (paper mill restructuring). Proof: Crisis management competence under pressure.')}</p>
@@ -622,6 +639,60 @@ const About = () => {
                 <p><strong className="text-white">{config.get('about.insight.text2', 'Pillar 3 is the game changer:')}</strong> {config.get('about.insight.text2b', 'Cannot be copied. Develops over years. Generates self-running quality. Compensates weaknesses in other pillars.')}</p>
                 <p className="text-2xl font-black text-white pt-8 border-t border-white/20">
                   {config.get('about.insight.finland', 'Finland had weaker Pillar 1+2 than 13 teams. But through Pillar 3: 4th place out of 24.')}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="w-full border-t-2 border-black/10 my-20" />
+
+          {/* Viktor Frankl Section */}
+          <div className="mb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Text Content */}
+              <div>
+                <span className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                  {config.get('about.frankl.badge', 'Philosophical Foundation')}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
+                  {config.get('about.frankl.title', 'Viktor Frankl: The Search for Meaning')}
+                </h2>
+                <p className="text-lg text-black/70 leading-relaxed mb-6">
+                  {config.get('about.frankl.intro', 'Viktor Frankl\'s Logotherapy forms a philosophical cornerstone of our methodology. His insight that humans can endure almost anything if they have a "why" directly informs Pillar 3.')}
+                </p>
+                <div className="space-y-4 text-base text-black/80 leading-relaxed">
+                  <p>
+                    <strong className="text-black">{config.get('about.frankl.principle1.label', 'Will to Meaning:')}</strong> {config.get('about.frankl.principle1.text', 'The primary motivational force in humans is not pleasure or power, but meaning.')}
+                  </p>
+                  <p>
+                    <strong className="text-black">{config.get('about.frankl.principle2.label', 'Freedom to Choose:')}</strong> {config.get('about.frankl.principle2.text', 'Between stimulus and response, there is a space. In that space lies our freedom.')}
+                  </p>
+                  <p>
+                    <strong className="text-black">{config.get('about.frankl.principle3.label', 'Responsibility:')}</strong> {config.get('about.frankl.principle3.text', 'Live as if you were living for the second time and had acted wrongly the first time.')}
+                  </p>
+                </div>
+                <div className="bg-black text-white rounded-lg p-6 mt-8">
+                  <p className="text-base text-white/90 leading-relaxed">
+                    <strong className="text-white">{config.get('about.frankl.application.label', 'Application in Pillar 3:')}</strong> {config.get('about.frankl.application.text', 'Performance without purpose is unsustainable. Our methodology helps organizations discover and activate their collective "why" – the foundation for self-running excellence.')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Viktor Frankl Video */}
+              <div>
+                <div className="relative rounded-xl overflow-hidden shadow-elevated">
+                  <video
+                    className="w-full h-auto"
+                    controls
+                    poster="/images/peter-eckert-thinking.png"
+                    preload="metadata"
+                  >
+                    <source src="/videos/viktor-frankl.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <p className="text-sm text-black/50 mt-3 text-center italic">
+                  {config.get('about.frankl.video.caption', 'Peter Eckert on the influence of Viktor Frankl\'s philosophy')}
                 </p>
               </div>
             </div>
