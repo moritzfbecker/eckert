@@ -185,7 +185,6 @@ const About = () => {
                       <video
                         className="w-full h-auto"
                         controls
-                        poster="/images/peter-eckert-working.png"
                         preload="metadata"
                       >
                         <source src="/videos/papierfabrik.mp4" type="video/mp4" />
@@ -685,7 +684,6 @@ const About = () => {
                   <video
                     className="w-full h-auto"
                     controls
-                    poster="/images/peter-eckert-thinking.png"
                     preload="metadata"
                   >
                     <source src="/videos/viktor-frankl.mp4" type="video/mp4" />
