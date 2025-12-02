@@ -164,22 +164,113 @@ const Home = () => {
               {config.get('home.video.subtitle', 'Peter Eckert explains the methodology that transformed companies for over 40 years')}
             </p>
 
-            {/* 3-Pillar Method Info - Centered */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white/5 rounded-2xl p-8 md:p-12 mb-16 md:mb-24 max-w-4xl mx-auto"
-            >
-              <div className="text-center">
-                <div className="text-6xl md:text-7xl mb-6">🎯</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  {config.get('home.video.col2.title', 'The 3-Pillar Method')}
+            {/* 3-Pillar Method - Three Columns with Vertical Videos */}
+            <div className="mb-16 md:mb-24">
+              {/* Section Header */}
+              <div className="text-center mb-12">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                  {config.get('home.pillars.section.title', 'The 3-Pillar Method')}
                 </h3>
-                <p className="text-base md:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-                  {config.get('home.video.col2.desc', 'Technology Portfolio + Resource Strength + Human Performance = Sustainable Excellence')}
+                <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+                  {config.get('home.pillars.section.subtitle', 'Technology Portfolio + Resource Strength + Human Performance = Sustainable Excellence')}
                 </p>
+              </div>
+
+              {/* Three Pillars Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Pillar 1: Technology Portfolio */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                >
+                  <h4 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
+                    {config.get('home.pillar1.title', 'Pillar 1: Technology Portfolio')}
+                  </h4>
+                  {/* Vertical Video Placeholder */}
+                  <div className="relative rounded-xl overflow-hidden mb-4 bg-white/10" style={{ aspectRatio: '9/16' }}>
+                    <video
+                      className="w-full h-full object-cover"
+                      controls
+                      preload="metadata"
+                    >
+                      <source src="/videos/pillar-1-technology.mp4" type="video/mp4" />
+                    </video>
+                    {/* Placeholder overlay - remove when video is added */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-white/5">
+                      <span className="text-white/50 text-sm">Video Placeholder</span>
+                    </div>
+                  </div>
+                  <p className="text-base text-white/70 text-center">
+                    {config.get('home.pillar1.desc', 'The technological capabilities you have or can build.')}
+                  </p>
+                </motion.div>
+
+                {/* Pillar 2: Resource Strength */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                >
+                  <h4 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
+                    {config.get('home.pillar2.title', 'Pillar 2: Resource Strength')}
+                  </h4>
+                  {/* Vertical Video Placeholder */}
+                  <div className="relative rounded-xl overflow-hidden mb-4 bg-white/10" style={{ aspectRatio: '9/16' }}>
+                    <video
+                      className="w-full h-full object-cover"
+                      controls
+                      preload="metadata"
+                    >
+                      <source src="/videos/pillar-2-resources.mp4" type="video/mp4" />
+                    </video>
+                    {/* Placeholder overlay - remove when video is added */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-white/5">
+                      <span className="text-white/50 text-sm">Video Placeholder</span>
+                    </div>
+                  </div>
+                  <p className="text-base text-white/70 text-center">
+                    {config.get('home.pillar2.desc', 'The financial and human resources you have or can develop.')}
+                  </p>
+                </motion.div>
+
+                {/* Pillar 3: Human Performance */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 ring-2 ring-white/20"
+                >
+                  <h4 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
+                    {config.get('home.pillar3.title', 'Pillar 3: Human Performance')}
+                  </h4>
+                  {/* Vertical Video Placeholder */}
+                  <div className="relative rounded-xl overflow-hidden mb-4 bg-white/10" style={{ aspectRatio: '9/16' }}>
+                    <video
+                      className="w-full h-full object-cover"
+                      controls
+                      preload="metadata"
+                    >
+                      <source src="/videos/pillar-3-performance.mp4" type="video/mp4" />
+                    </video>
+                    {/* Placeholder overlay - remove when video is added */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-white/5">
+                      <span className="text-white/50 text-sm">Video Placeholder</span>
+                    </div>
+                  </div>
+                  <p className="text-base text-white/70 text-center">
+                    {config.get('home.pillar3.desc', 'The untapped 8-12% potential that 95% don\'t measure.')}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="text-center mt-12">
                 <Link
                   to="/concept"
                   className="
@@ -192,10 +283,10 @@ const Home = () => {
                     transition-all duration-300
                   "
                 >
-                  {config.get('home.video.col2.button', 'Learn More')}
+                  {config.get('home.pillars.button', 'Learn More')}
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
             {/* Video 2: Herrschaftswissen - Full Width */}
             <motion.div
