@@ -1,12 +1,13 @@
 /**
- * Home Page - v3.0 Finland Basketball Story
+ * Home Page - v3.1 Finland Basketball Story with Hero Video
  *
  * Professional homepage with Finland Basketball narrative
  * Category: 'homepage'
  * Design: Schwarz/Weiß, Apple Gradient hover, Professional typography
  */
 
-import { motion } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Container } from '../../../shared/ui-components/Container'
 import { Section } from '../../../shared/ui-components/Section'
 import { useConfig, useTranslation } from '@eckert-preisser/shared/hooks'
@@ -17,53 +18,122 @@ import PeterEckertSection from '../components/PeterEckertSection'
 const Home = () => {
   const { language } = useTranslation()
   const config = useConfig('homepage', language)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Try to autoplay video on mount
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      // Attempt autoplay
+      video.play().catch(() => {
+        // Autoplay was prevented (browser policy), text stays visible
+        setIsVideoPlaying(false)
+      })
+    }
+  }, [])
+
+  const handleVideoPlay = () => {
+    setIsVideoPlaying(true)
+  }
+
+  const handleVideoPause = () => {
+    setIsVideoPlaying(false)
+  }
+
+  const handleVideoEnded = () => {
+    setIsVideoPlaying(false)
+  }
 
   return (
     <div className="min-h-screen bg-eckert-white">
-      {/* Hero Section - Finland Story */}
-      <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32">
+      {/* Hero Section - Video with Text Overlay */}
+      <Section spacing="none" className="pt-24 md:pt-32 pb-20 md:pb-32">
         <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-5xl mx-auto"
-          >
-            {/* Main Question */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="
-                text-5xl md:text-6xl lg:text-7xl xl:text-8xl
-                font-black text-black mb-12
-                leading-[1.1] tracking-tight
-                text-center
-              "
-            >
-              {config.get('home.hero.question', 'How do you achieve more with less than the competition?')}
-            </motion.h1>
+          <div className="max-w-6xl mx-auto relative">
+            {/* Video Container */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <video
+                ref={videoRef}
+                className="w-full h-auto"
+                controls
+                autoPlay
+                muted
+                playsInline
+                poster="/images/peter-eckert-portrait-1.png"
+                preload="auto"
+                onPlay={handleVideoPlay}
+                onPause={handleVideoPause}
+                onEnded={handleVideoEnded}
+              >
+                <source src="/videos/performance-architecture.mp4" type="video/mp4" />
+              </video>
 
-            {/* Finland Stat */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl lg:text-3xl text-black/70 text-center mb-8 leading-relaxed"
-            >
-              {config.get('home.hero.finland.stat', 'Finland reached 4th place at the Basketball European Championship – with 37% less budget than average.')}
-            </motion.p>
+              {/* Text Overlay - fades out when video plays */}
+              <AnimatePresence>
+                {!isVideoPlaying && (
+                  <motion.div
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="
+                      absolute inset-0
+                      bg-black/70
+                      flex flex-col items-center justify-center
+                      p-6 md:p-12
+                      pointer-events-none
+                    "
+                  >
+                    {/* Main Question */}
+                    <motion.h1
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                      className="
+                        text-3xl md:text-5xl lg:text-6xl xl:text-7xl
+                        font-black text-white mb-6 md:mb-8
+                        leading-[1.1] tracking-tight
+                        text-center
+                      "
+                    >
+                      {config.get('home.hero.question', 'How do you achieve more with less than the competition?')}
+                    </motion.h1>
 
-            {/* Secret */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl md:text-2xl text-black font-semibold text-center"
-            >
-              {config.get('home.hero.secret', 'Their secret: The third pillar that 95% of all companies don\'t even measure.')}
-            </motion.p>
-          </motion.div>
+                    {/* Finland Stat */}
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                      className="text-base md:text-xl lg:text-2xl text-white/80 text-center mb-4 md:mb-6 leading-relaxed max-w-4xl"
+                    >
+                      {config.get('home.hero.finland.stat', 'Finland reached 4th place at the Basketball European Championship – with 37% less budget than average.')}
+                    </motion.p>
+
+                    {/* Secret */}
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.6 }}
+                      className="text-base md:text-xl text-white font-semibold text-center max-w-3xl"
+                    >
+                      {config.get('home.hero.secret', 'Their secret: The third pillar that 95% of all companies don\'t even measure.')}
+                    </motion.p>
+
+                    {/* Play hint */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.8, delay: 1 }}
+                      className="mt-8 text-white/60 text-sm md:text-base"
+                    >
+                      ▶ {config.get('home.hero.playHint', 'Click to play video')}
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
         </Container>
       </Section>
 
@@ -88,39 +158,11 @@ const Home = () => {
           >
             {/* Section Title */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white text-center mb-6">
-              {config.get('home.video.title', 'See Performance Architecture in Action')}
+              {config.get('home.video.title', 'Learn More About Our Method')}
             </h2>
             <p className="text-lg md:text-xl text-white/70 text-center mb-12">
               {config.get('home.video.subtitle', 'Peter Eckert explains the methodology that transformed companies for over 40 years')}
             </p>
-
-            {/* Video 1: Performance Architecture - Full Width Hero Video */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="mb-16 md:mb-24"
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-apple-glow">
-                <video
-                  className="w-full h-auto"
-                  controls
-                  poster="/images/peter-eckert-portrait-1.png"
-                  preload="metadata"
-                >
-                  <source src="/videos/performance-architecture.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="mt-6 md:mt-8 text-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                  {config.get('home.video.col1.title', 'Performance Architecture')}
-                </h3>
-                <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
-                  {config.get('home.video.col1.desc', 'The systematic approach to unleashing human performance potential.')}
-                </p>
-              </div>
-            </motion.div>
 
             {/* 3-Pillar Method Info - Centered */}
             <motion.div
