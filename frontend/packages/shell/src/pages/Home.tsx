@@ -147,7 +147,7 @@ const Home = () => {
       <div className="w-full border-t border-black/10" />
 
       {/* 3-Column Video Teaser Section */}
-      <Section spacing="none" className="py-20 md:py-32 bg-black">
+      <Section spacing="none" className="py-20 md:py-32 !bg-black">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -189,19 +189,15 @@ const Home = () => {
                   <h4 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
                     {config.get('home.pillar1.title', 'Pillar 1: Technology Portfolio')}
                   </h4>
-                  {/* Vertical Video Placeholder */}
+                  {/* Vertical Video */}
                   <div className="relative rounded-xl overflow-hidden mb-4 bg-white/10" style={{ aspectRatio: '9/16' }}>
                     <video
                       className="w-full h-full object-cover"
                       controls
                       preload="metadata"
                     >
-                      <source src="/videos/pillar-1-technology.mp4" type="video/mp4" />
+                      <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
                     </video>
-                    {/* Placeholder overlay - remove when video is added */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-white/5">
-                      <span className="text-white/50 text-sm">Video Placeholder</span>
-                    </div>
                   </div>
                   <p className="text-base text-white/70 text-center">
                     {config.get('home.pillar1.desc', 'The technological capabilities you have or can build.')}
@@ -288,32 +284,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Video 2: Herrschaftswissen - Full Width */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-apple-glow">
-                <video
-                  className="w-full h-auto"
-                  controls
-                  poster="/images/peter-eckert-portrait-2.png"
-                  preload="metadata"
-                >
-                  <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="mt-6 md:mt-8 text-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                  {config.get('home.video.col3.title', 'Herrschaftswissen')}
-                </h3>
-                <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
-                  {config.get('home.video.col3.desc', 'The knowledge that separates top performers from the rest.')}
-                </p>
-              </div>
-            </motion.div>
           </motion.div>
         </Container>
       </Section>
