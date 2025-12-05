@@ -178,7 +178,7 @@ const Home = () => {
 
               {/* Three Pillars Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Pillar 1: Technology Portfolio */}
+                {/* Spalte 1: Performance */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -187,7 +187,7 @@ const Home = () => {
                   className="bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
                   <h4 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
-                    {config.get('home.pillar1.title', 'Pillar 1: Technology Portfolio')}
+                    {config.get('home.column1.title', 'Performance')}
                   </h4>
                   {/* Vertical Video */}
                   <div className="relative rounded-xl overflow-hidden mb-4 bg-white/10" style={{ aspectRatio: '9/16' }}>
@@ -199,12 +199,12 @@ const Home = () => {
                       <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
                     </video>
                   </div>
-                  <p className="text-base text-white/70 text-center">
-                    {config.get('home.pillar1.desc', 'The technological capabilities you have or can build.')}
+                  <p className="text-sm text-white/70 text-center leading-relaxed">
+                    {config.get('home.column1.text', 'What do Jürgen Klopp\'s Champions League victory and ZOLLERN\'s profit increase have in common? Performance Architecture transfers elite sports methods to corporate management.')}
                   </p>
                 </motion.div>
 
-                {/* Pillar 2: Resource Strength */}
+                {/* Spalte 2: Leistungsethos */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -213,7 +213,7 @@ const Home = () => {
                   className="bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
                   <h4 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
-                    {config.get('home.pillar2.title', 'Pillar 2: Resource Strength')}
+                    {config.get('home.column2.title', 'Leistungsethos')}
                   </h4>
                   {/* Vertical Video Placeholder */}
                   <div className="relative rounded-xl overflow-hidden mb-4 bg-white/10" style={{ aspectRatio: '9/16' }}>
@@ -229,12 +229,12 @@ const Home = () => {
                       <span className="text-white/50 text-sm">Video Placeholder</span>
                     </div>
                   </div>
-                  <p className="text-base text-white/70 text-center">
-                    {config.get('home.pillar2.desc', 'The financial and human resources you have or can develop.')}
+                  <p className="text-sm text-white/70 text-center leading-relaxed">
+                    {config.get('home.column2.text', 'Klopp and Alonso achieve what most companies don\'t: genuine performance ethos. In sports, people want to improve. In companies? The majority withdraws. Performance Architecture makes the difference.')}
                   </p>
                 </motion.div>
 
-                {/* Pillar 3: Human Performance */}
+                {/* Spalte 3: Herrschaftswissen */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -243,7 +243,7 @@ const Home = () => {
                   className="bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 ring-2 ring-white/20"
                 >
                   <h4 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
-                    {config.get('home.pillar3.title', 'Pillar 3: Human Performance')}
+                    {config.get('home.column3.title', 'Herrschaftswissen')}
                   </h4>
                   {/* Vertical Video Placeholder */}
                   <div className="relative rounded-xl overflow-hidden mb-4 bg-white/10" style={{ aspectRatio: '9/16' }}>
@@ -259,8 +259,8 @@ const Home = () => {
                       <span className="text-white/50 text-sm">Video Placeholder</span>
                     </div>
                   </div>
-                  <p className="text-base text-white/70 text-center">
-                    {config.get('home.pillar3.desc', 'The untapped 8-12% potential that 95% don\'t measure.')}
+                  <p className="text-sm text-white/70 text-center leading-relaxed">
+                    {config.get('home.column3.text', 'ChatGPT democratizes knowledge. Marketing, finance, technology – AI makes everything accessible. What remains? The third pillar according to Pfeiffer: human performance potential. The new privileged knowledge for the post-AI era.')}
                   </p>
                 </motion.div>
               </div>

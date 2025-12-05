@@ -179,8 +179,9 @@ const About = () => {
                     {config.get('about.phase2.intro', 'Co-founder of 5 companies across various industries. Direct experience with scale-up challenges, resource scarcity, team development.')}
                   </p>
 
-                  {/* Papierfabrik Video */}
-                  <div className="mb-8">
+                  {/* Papierfabrik Video + Text - Side by Side */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 items-center">
+                    {/* Video Left */}
                     <div className="relative rounded-xl overflow-hidden shadow-elevated">
                       <video
                         className="w-full h-auto"
@@ -190,9 +191,12 @@ const About = () => {
                         <source src="/videos/papierfabrik.mp4" type="video/mp4" />
                       </video>
                     </div>
-                    <p className="text-sm text-black/50 mt-3 text-center italic">
-                      {config.get('about.phase2.video.caption', 'Peter Eckert on the paper mill restructuring experience')}
-                    </p>
+                    {/* Text Right */}
+                    <div>
+                      <p className="text-base md:text-lg text-black/80 leading-relaxed">
+                        {config.get('about.phase2.papierfabrik.text', 'After ZOLLERN came the paper mill – taken over from a larger corporate group, then a patent made the main product obsolete. I deployed Performance Architecture – at my own risk as a co-entrepreneur. 30 months of intensive transformation.')}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="space-y-3 text-sm text-black/80 leading-relaxed">

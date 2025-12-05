@@ -115,20 +115,26 @@ const Concept = () => {
                 {config.get('concept.page.subtitle', 'A new perspective on strategic HR consulting')}
               </p>
 
-              {/* Hero Video - Performance Architecture */}
-              <div className="relative rounded-xl overflow-hidden shadow-elevated">
-                <video
-                  className="w-full h-auto"
-                  controls
-                  preload="metadata"
-                >
-                  <source src="/videos/performance-architecture.mp4" type="video/mp4" />
-                  {config.get('concept.video.fallback', 'Your browser does not support the video tag.')}
-                </video>
+              {/* Hero Video + Text - Side by Side */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                {/* Video Left */}
+                <div className="relative rounded-xl overflow-hidden shadow-elevated">
+                  <video
+                    className="w-full h-auto"
+                    controls
+                    preload="metadata"
+                  >
+                    <source src="/videos/performance-architecture.mp4" type="video/mp4" />
+                    {config.get('concept.video.fallback', 'Your browser does not support the video tag.')}
+                  </video>
+                </div>
+                {/* Text Right */}
+                <div>
+                  <p className="text-lg md:text-xl lg:text-2xl text-black/80 leading-relaxed">
+                    {config.get('concept.hero.text', 'What do Jürgen Klopp\'s Champions League victory and ZOLLERN\'s 8% margin increase have in common? Elite sports methods transferred to corporate management. Scientifically validated through 153 studies. Measurable. Sustainable. In under 16 months.')}
+                  </p>
+                </div>
               </div>
-              <p className="text-sm text-black/50 mt-3 text-center italic">
-                {config.get('concept.video.caption', 'Peter Eckert introduces the Performance Architecture methodology')}
-              </p>
             </motion.div>
 
             {/* Chapter 1 - Special Visualization */}
