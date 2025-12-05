@@ -66,7 +66,7 @@ const Home = () => {
                 onPause={handleVideoPause}
                 onEnded={handleVideoEnded}
               >
-                <source src="/videos/performance-architecture.mp4" type="video/mp4" />
+                <source src="/videos/peter-eckert-video-6.mp4" type="video/mp4" />
               </video>
 
               {/* Text Overlay - fades out when video plays */}

@@ -386,7 +386,7 @@ const WissenschaftlicheFundierung = () => {
                 {
                   icon: '🔧',
                   title: config.get('methodology.fraunhofer.title', 'Fraunhofer-Systematik'),
-                  desc: config.get('methodology.fraunhofer.desc', '20 Jahre Forschung am Fraunhofer IPA zu Technology-Implementation-Patterns.')
+                  desc: config.get('methodology.fraunhofer.desc', '6 Jahre Forschung am Fraunhofer IPA zu Technology-Implementation-Patterns (1981-1986).')
                 },
                 {
                   icon: '📊',

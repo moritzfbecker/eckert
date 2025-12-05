@@ -161,6 +161,38 @@ const Medicallix = () => {
       {/* Divider */}
       <div className="w-full border-t border-black/10" />
 
+      {/* Video Section */}
+      <Section spacing="none" className="py-20 md:py-32 bg-eckert-white">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-black text-center mb-8">
+              {config.get('video.title', 'See Medicallix in Action')}
+            </h2>
+            <div className="relative rounded-xl overflow-hidden shadow-elevated">
+              <video
+                className="w-full h-auto"
+                controls
+                preload="metadata"
+              >
+                <source src="/videos/peter-eckert-video-6.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p className="text-sm text-black/50 mt-4 text-center italic">
+              {config.get('video.caption', 'Peter Eckert explains the vision behind Medicallix')}
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* Divider */}
+      <div className="w-full border-t border-black/10" />
+
       {/* Solution Section */}
       <Section spacing="none" className="py-20 md:py-32 bg-eckert-white">
         <Container>

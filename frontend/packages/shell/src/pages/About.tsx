@@ -86,7 +86,7 @@ const About = () => {
                       {config.get('about.sidebar.entrepreneurial', 'Entrepreneurial')}
                     </strong>
                     <p className="text-sm text-black/70 leading-relaxed">
-                      {config.get('about.sidebar.entrepreneurial.text', '5 companies founded (1989-2020)')}
+                      {config.get('about.sidebar.entrepreneurial.text', '5 companies founded (1989-2019)')}
                     </p>
                   </li>
                   <li className="pb-6 border-b border-black/10">
@@ -170,7 +170,7 @@ const About = () => {
                   <div className="absolute -left-[51px] top-0 w-4 h-4 bg-black rounded-full border-4 border-white shadow-md" />
 
                   <div className="text-2xl font-bold text-black mb-2">
-                    {config.get('about.phase2.years', '1989-2020')}
+                    {config.get('about.phase2.years', '1989-2019')}
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
                     {config.get('about.phase2.title', 'Entrepreneurship: Practice Validation')}
@@ -205,7 +205,7 @@ const About = () => {
                         to="/medicallix"
                         className="hover:opacity-70 transition-opacity duration-300 inline-block"
                       >
-                        <strong className="text-black">{config.get('about.phase2.company5', 'Company 5 (2020):')}</strong> {config.get('about.phase2.company5.text', 'Continuous development of methodology.')}
+                        <strong className="text-black">{config.get('about.phase2.company5', 'Company 5 (2019): Medicallix')}</strong> {config.get('about.phase2.company5.text', 'Development of AI-powered medical documentation software. Application of Performance Architecture principles to healthcare technology. Systematic elaboration of techniques for real-time documentation.')}
                       </Link>
                     </p>
                   </div>
@@ -343,51 +343,54 @@ const About = () => {
 
           {/* Viktor Frankl Section */}
           <div className="mb-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Text Content */}
-              <div>
-                <span className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                  {config.get('about.frankl.badge', 'Philosophical Foundation')}
-                </span>
-                <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
-                  {config.get('about.frankl.title', 'Viktor Frankl: The Search for Meaning')}
-                </h2>
-                <p className="text-lg text-black/70 leading-relaxed mb-6">
-                  {config.get('about.frankl.intro', 'Viktor Frankl\'s Logotherapy forms a philosophical cornerstone of our methodology. His insight that humans can endure almost anything if they have a "why" directly informs Pillar 3.')}
+            {/* Text Content - Top */}
+            <div className="mb-12">
+              <span className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                {config.get('about.frankl.badge', 'Philosophical Foundation')}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
+                {config.get('about.frankl.title', 'Viktor Frankl: The Search for Meaning')}
+              </h2>
+              <p className="text-lg text-black/70 leading-relaxed mb-6">
+                {config.get('about.frankl.intro', 'Viktor Frankl\'s Logotherapy forms a philosophical cornerstone of our methodology. His insight that humans can endure almost anything if they have a "why" directly informs Pillar 3.')}
+              </p>
+              <div className="space-y-4 text-base text-black/80 leading-relaxed">
+                <p>
+                  <strong className="text-black">{config.get('about.frankl.principle1.label', 'Will to Meaning:')}</strong> {config.get('about.frankl.principle1.text', 'The primary motivational force in humans is not pleasure or power, but meaning.')}
                 </p>
-                <div className="space-y-4 text-base text-black/80 leading-relaxed">
-                  <p>
-                    <strong className="text-black">{config.get('about.frankl.principle1.label', 'Will to Meaning:')}</strong> {config.get('about.frankl.principle1.text', 'The primary motivational force in humans is not pleasure or power, but meaning.')}
-                  </p>
-                  <p>
-                    <strong className="text-black">{config.get('about.frankl.principle2.label', 'Freedom to Choose:')}</strong> {config.get('about.frankl.principle2.text', 'Between stimulus and response, there is a space. In that space lies our freedom.')}
-                  </p>
-                  <p>
-                    <strong className="text-black">{config.get('about.frankl.principle3.label', 'Responsibility:')}</strong> {config.get('about.frankl.principle3.text', 'Live as if you were living for the second time and had acted wrongly the first time.')}
-                  </p>
-                </div>
-                <div className="bg-black text-white rounded-lg p-6 mt-8">
-                  <p className="text-base text-white/90 leading-relaxed">
-                    <strong className="text-white">{config.get('about.frankl.application.label', 'Application in Pillar 3:')}</strong> {config.get('about.frankl.application.text', 'Performance without purpose is unsustainable. Our methodology helps organizations discover and activate their collective "why" – the foundation for self-running excellence.')}
-                  </p>
-                </div>
+                <p>
+                  <strong className="text-black">{config.get('about.frankl.principle2.label', 'Freedom to Choose:')}</strong> {config.get('about.frankl.principle2.text', 'Between stimulus and response, there is a space. In that space lies our freedom.')}
+                </p>
+                <p>
+                  <strong className="text-black">{config.get('about.frankl.principle3.label', 'Responsibility:')}</strong> {config.get('about.frankl.principle3.text', 'Live as if you were living for the second time and had acted wrongly the first time.')}
+                </p>
               </div>
+            </div>
 
-              {/* Viktor Frankl Video */}
-              <div>
-                <div className="relative rounded-xl overflow-hidden shadow-elevated">
-                  <video
-                    className="w-full h-auto"
-                    controls
-                    preload="metadata"
-                  >
-                    <source src="/videos/viktor-frankl.mp4" type="video/mp4" />
-                  </video>
-                </div>
-                <p className="text-sm text-black/50 mt-3 text-center italic">
-                  {config.get('about.frankl.video.caption', 'Peter Eckert on the influence of Viktor Frankl\'s philosophy')}
-                </p>
+            {/* Viktor Frankl Video - Middle */}
+            <div className="mb-12">
+              <div className="relative rounded-xl overflow-hidden shadow-elevated max-w-4xl mx-auto">
+                <video
+                  className="w-full h-auto"
+                  controls
+                  preload="metadata"
+                >
+                  <source src="/videos/viktor-frankl.mp4" type="video/mp4" />
+                </video>
               </div>
+              <p className="text-sm text-black/50 mt-3 text-center italic">
+                {config.get('about.frankl.video.caption', 'Peter Eckert on the influence of Viktor Frankl\'s philosophy')}
+              </p>
+            </div>
+
+            {/* Die philosophische Basis - Box after Video */}
+            <div className="bg-black text-white rounded-xl p-8 md:p-10">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                {config.get('about.frankl.basis.title', 'Die philosophische Basis')}
+              </h3>
+              <p className="text-base md:text-lg text-white/90 leading-relaxed">
+                <strong className="text-white">{config.get('about.frankl.application.label', 'Application in Pillar 3:')}</strong> {config.get('about.frankl.application.text', 'Performance without purpose is unsustainable. Our methodology helps organizations discover and activate their collective "why" – the foundation for self-running excellence.')}
+              </p>
             </div>
           </div>
 

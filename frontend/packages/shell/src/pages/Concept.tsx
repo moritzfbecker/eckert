@@ -120,7 +120,6 @@ const Concept = () => {
                 <video
                   className="w-full h-auto"
                   controls
-                  poster="/images/peter-eckert-portrait-1.png"
                   preload="metadata"
                 >
                   <source src="/videos/performance-architecture.mp4" type="video/mp4" />
