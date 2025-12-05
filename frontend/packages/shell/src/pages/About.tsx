@@ -343,7 +343,8 @@ const About = () => {
 
           {/* Viktor Frankl Section - Video Left, Text Right */}
           <div className="mb-24">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Grid: Video Left, Text Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
               {/* Video - Left */}
               <div>
                 <div className="relative rounded-xl overflow-hidden shadow-elevated">
@@ -369,6 +370,16 @@ const About = () => {
                   {config.get('about.frankl.text', 'Viktor Frankl survived four concentration camps. His insight: People need meaning, not happiness. Performance Architecture systematizes meaning: Clear mission. Visible impact. Respect as a system. Then productivity becomes self-running.')}
                 </p>
               </div>
+            </div>
+
+            {/* Die philosophische Basis - Black Box below */}
+            <div className="bg-black text-white rounded-xl p-8 md:p-10">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                {config.get('about.frankl.basis.title', 'Die philosophische Basis')}
+              </h3>
+              <p className="text-base md:text-lg text-white/90 leading-relaxed">
+                <strong className="text-white">{config.get('about.frankl.application.label', 'Anwendung in Säule 3:')}</strong> {config.get('about.frankl.application.text', 'Performance without purpose is unsustainable. Our methodology helps organizations discover and activate their collective "why" – the foundation for self-running excellence.')}
+              </p>
             </div>
           </div>
 
