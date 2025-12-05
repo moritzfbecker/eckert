@@ -331,10 +331,10 @@ const About = () => {
                       />
                     </div>
                   </div>
-                  {/* Placeholder Text - Right */}
+                  {/* Text - Right */}
                   <div className="md:w-1/2">
-                    <p className="text-base text-black/70 leading-relaxed">
-                      {config.get('about.combination.placeholder', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.')}
+                    <p className="text-base md:text-lg text-black/80 leading-relaxed">
+                      {config.get('about.combination.quote', 'Performance Architecture is not what I learned. It is what I lived – in my own companies, with my own risk, with measurable results. I only pass on what has proven itself in practice.')}
                     </p>
                   </div>
                 </div>
