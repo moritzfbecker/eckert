@@ -341,56 +341,34 @@ const About = () => {
           {/* Divider */}
           <div className="w-full border-t-2 border-black/10 my-20" />
 
-          {/* Viktor Frankl Section */}
+          {/* Viktor Frankl Section - Video Left, Text Right */}
           <div className="mb-24">
-            {/* Text Content - Top */}
-            <div className="mb-12">
-              <span className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                {config.get('about.frankl.badge', 'Philosophical Foundation')}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
-                {config.get('about.frankl.title', 'Viktor Frankl: The Search for Meaning')}
-              </h2>
-              <p className="text-lg text-black/70 leading-relaxed mb-6">
-                {config.get('about.frankl.intro', 'Viktor Frankl\'s Logotherapy forms a philosophical cornerstone of our methodology. His insight that humans can endure almost anything if they have a "why" directly informs Pillar 3.')}
-              </p>
-              <div className="space-y-4 text-base text-black/80 leading-relaxed">
-                <p>
-                  <strong className="text-black">{config.get('about.frankl.principle1.label', 'Will to Meaning:')}</strong> {config.get('about.frankl.principle1.text', 'The primary motivational force in humans is not pleasure or power, but meaning.')}
-                </p>
-                <p>
-                  <strong className="text-black">{config.get('about.frankl.principle2.label', 'Freedom to Choose:')}</strong> {config.get('about.frankl.principle2.text', 'Between stimulus and response, there is a space. In that space lies our freedom.')}
-                </p>
-                <p>
-                  <strong className="text-black">{config.get('about.frankl.principle3.label', 'Responsibility:')}</strong> {config.get('about.frankl.principle3.text', 'Live as if you were living for the second time and had acted wrongly the first time.')}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Video - Left */}
+              <div>
+                <div className="relative rounded-xl overflow-hidden shadow-elevated">
+                  <video
+                    className="w-full h-auto"
+                    controls
+                    preload="metadata"
+                  >
+                    <source src="/videos/viktor-frankl.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+
+              {/* Text - Right */}
+              <div>
+                <span className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                  {config.get('about.frankl.badge', 'Philosophical Foundation')}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
+                  {config.get('about.frankl.title', 'Viktor Frankl')}
+                </h2>
+                <p className="text-lg md:text-xl text-black/80 leading-relaxed">
+                  {config.get('about.frankl.text', 'Viktor Frankl survived four concentration camps. His insight: People need meaning, not happiness. Performance Architecture systematizes meaning: Clear mission. Visible impact. Respect as a system. Then productivity becomes self-running.')}
                 </p>
               </div>
-            </div>
-
-            {/* Viktor Frankl Video - Middle */}
-            <div className="mb-12">
-              <div className="relative rounded-xl overflow-hidden shadow-elevated max-w-4xl mx-auto">
-                <video
-                  className="w-full h-auto"
-                  controls
-                  preload="metadata"
-                >
-                  <source src="/videos/viktor-frankl.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <p className="text-sm text-black/50 mt-3 text-center italic">
-                {config.get('about.frankl.video.caption', 'Peter Eckert on the influence of Viktor Frankl\'s philosophy')}
-              </p>
-            </div>
-
-            {/* Die philosophische Basis - Box after Video */}
-            <div className="bg-black text-white rounded-xl p-8 md:p-10">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                {config.get('about.frankl.basis.title', 'Die philosophische Basis')}
-              </h3>
-              <p className="text-base md:text-lg text-white/90 leading-relaxed">
-                <strong className="text-white">{config.get('about.frankl.application.label', 'Application in Pillar 3:')}</strong> {config.get('about.frankl.application.text', 'Performance without purpose is unsustainable. Our methodology helps organizations discover and activate their collective "why" – the foundation for self-running excellence.')}
-              </p>
             </div>
           </div>
 
