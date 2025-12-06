@@ -66,7 +66,7 @@ const Home = () => {
                 onPause={handleVideoPause}
                 onEnded={handleVideoEnded}
               >
-                <source src="/videos/peter-eckert-video-6.mp4" type="video/mp4" />
+                <source src="/videos/mediallix.mp4" type="video/mp4" />
               </video>
 
               {/* Text Overlay - fades out when video plays */}
@@ -196,7 +196,7 @@ const Home = () => {
                       controls
                       preload="metadata"
                     >
-                      <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
+                      <source src="/videos/performance-architecture.mp4" type="video/mp4" />
                     </video>
                   </div>
                   <p className="text-sm text-white/70 text-center leading-relaxed">
@@ -222,12 +222,8 @@ const Home = () => {
                       controls
                       preload="metadata"
                     >
-                      <source src="/videos/pillar-2-resources.mp4" type="video/mp4" />
+                      <source src="/videos/sport-vs-unternehmen.mp4" type="video/mp4" />
                     </video>
-                    {/* Placeholder overlay - remove when video is added */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-white/5">
-                      <span className="text-white/50 text-sm">Video Placeholder</span>
-                    </div>
                   </div>
                   <p className="text-sm text-white/70 text-center leading-relaxed">
                     {config.get('home.column2.text', 'Klopp and Alonso achieve what most companies don\'t: genuine performance ethos. In sports, people want to improve. In companies? The majority withdraws. Performance Architecture makes the difference.')}
@@ -252,12 +248,8 @@ const Home = () => {
                       controls
                       preload="metadata"
                     >
-                      <source src="/videos/pillar-3-performance.mp4" type="video/mp4" />
+                      <source src="/videos/herrschaftswissen.mp4" type="video/mp4" />
                     </video>
-                    {/* Placeholder overlay - remove when video is added */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-white/5">
-                      <span className="text-white/50 text-sm">Video Placeholder</span>
-                    </div>
                   </div>
                   <p className="text-sm text-white/70 text-center leading-relaxed">
                     {config.get('home.column3.text', 'ChatGPT democratizes knowledge. Marketing, finance, technology – AI makes everything accessible. What remains? The third pillar according to Pfeiffer: human performance potential. The new privileged knowledge for the post-AI era.')}
