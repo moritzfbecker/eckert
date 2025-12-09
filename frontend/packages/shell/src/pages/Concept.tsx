@@ -436,11 +436,11 @@ const Concept = () => {
 
               {/* Stats Grid - ZOLLERN Proof */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">
+                <div className="bg-black text-white rounded-lg p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-4xl md:text-5xl font-bold mb-3">
                     {config.get('concept.chapter4.stat1.value', '16')}
                   </div>
-                  <p className="text-white/90">
+                  <p className="text-white/90 text-sm md:text-base">
                     {config.get('concept.chapter4.stat1.text', 'years of systematic support').split('Wirtschaftszyklen')[0]}
                     <strong className="text-white block mt-1">
                       {config.get('concept.chapter4.stat1.highlight', 'Across multiple economic cycles')}
@@ -448,11 +448,11 @@ const Concept = () => {
                   </p>
                 </div>
 
-                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">
+                <div className="bg-black text-white rounded-lg p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-4xl md:text-5xl font-bold mb-3">
                     {config.get('concept.chapter4.stat2.value', '8%')}
                   </div>
-                  <p className="text-white/90">
+                  <p className="text-white/90 text-sm md:text-base">
                     {config.get('concept.chapter4.stat2.text', 'contribution to pre-tax return on sales').split('nachweisbar')[0]}
                     <strong className="text-white block mt-1">
                       {config.get('concept.chapter4.stat2.highlight', 'Documented and verifiable')}
@@ -460,11 +460,11 @@ const Concept = () => {
                   </p>
                 </div>
 
-                <div className="bg-black text-white rounded-lg p-8 hover:shadow-apple-glow transition-all duration-300">
-                  <div className="text-5xl font-bold mb-3">
+                <div className="bg-black text-white rounded-lg p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300">
+                  <div className="text-2xl md:text-4xl font-bold mb-3 break-words">
                     {config.get('concept.chapter4.stat3.value', 'Self-Running')}
                   </div>
-                  <p className="text-white/90">
+                  <p className="text-white/90 text-sm md:text-base">
                     {config.get('concept.chapter4.stat3.text', 'CEO became Performance Enabler').split('Berater')[0]}
                     <strong className="text-white block mt-1">
                       {config.get('concept.chapter4.stat3.highlight', 'System runs independent of consultant')}
