@@ -60,14 +60,15 @@ Eckert Enterprise/
 │   ├── config-server/               # Config Server (Port: 8888)
 │   ├── services/
 │   │   ├── user-service/           # User Management (Port: 8081)
-│   │   ├── product-service/        # Product Management (Port: 8082)
-│   │   ├── order-service/          # Order Management (Port: 8083)
-│   │   └── notification-service/   # Notifications (Port: 8084)
+│   │   ├── auth-service/           # Authentication (Port: 8082)
+│   │   ├── email-service/          # Email/SMTP Utility (Port: 8084)
+│   │   └── medicallix-service/     # Medical Documentation AI (Port: 8085)
 │   ├── shared/
-│   │   ├── common-models/          # Shared DTOs
-│   │   ├── common-utils/           # Shared Utilities
-│   │   ├── security-config/        # Security Configuration
-│   │   └── config-client/          # Config Client (NEW v2.0!)
+│   │   ├── common-models/          # Shared DTOs, ApiResponse, Exceptions
+│   │   ├── common-utils/           # LoggerUtil, DateUtils
+│   │   ├── security-config/        # JWT Utils, Spring Security Config
+│   │   ├── config-client/          # Config Client (v2.0)
+│   │   └── email-client/           # Shared Email Client
 │   ├── pom.xml                     # Root Maven Configuration
 │   └── docker-compose.yml          # Docker Compose Setup
 │
@@ -250,10 +251,10 @@ API Gateway (8080) ← CORS, Load Balancing, Circuit Breaker
 Service Discovery (8761) ← Service Registration
   ↓
 Microservices:
-  - User Service (8081)
-  - Product Service (8082)
-  - Order Service (8083)
-  - Notification Service (8084)
+  - User Service (8081) ← User CRUD Operations
+  - Auth Service (8082) ← JWT Authentication, Registration, Login
+  - Email Service (8084) ← SMTP Utility for sending emails
+  - Medicallix Service (8085) ← AI Medical Documentation
 ```
 
 ### Frontend Architecture
@@ -311,9 +312,9 @@ animate-glow
 | Eureka Server | 8761 | http://localhost:8761 |
 | Config Server | 8888 | http://localhost:8888 |
 | User Service | 8081 | http://localhost:8081 |
-| Product Service | 8082 | http://localhost:8082 |
-| Order Service | 8083 | http://localhost:8083 |
-| Notification Service | 8084 | http://localhost:8084 |
+| Auth Service | 8082 | http://localhost:8082 |
+| Email Service | 8084 | http://localhost:8084 |
+| Medicallix Service | 8085 | http://localhost:8085 |
 | Shell App | 3000 | http://localhost:3000 |
 
 ## 🔐 Security
@@ -411,8 +412,8 @@ git tag backend-v1.0.1
 ```
 
 Aktuelle Versionen:
-- Backend: **v2.0.0** (Config API - MAJOR Release!)
-- Frontend: **v2.0.0** (useConfig Hook)
+- Backend: **v3.4.1-SNAPSHOT** (Medicallix + Auth Service)
+- Frontend: **v2.22.0** (Science pages + Raketen-Start)
 
 Siehe [VERSION_MANAGEMENT.md](./VERSION_MANAGEMENT.md) für Details.
 

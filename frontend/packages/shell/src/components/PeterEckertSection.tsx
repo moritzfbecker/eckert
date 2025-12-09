@@ -21,7 +21,7 @@ const PeterEckertSection: React.FC = () => {
   const config = useConfig('homepage', language)
 
   return (
-    <Section spacing="none" className="py-20 md:py-32 bg-gray-50">
+    <Section spacing="none" className="py-20 md:py-32 bg-white">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 40 }}

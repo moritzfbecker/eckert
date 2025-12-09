@@ -17,10 +17,10 @@ MAJOR.MINOR.PATCH
 
 ## Current Versions
 
-| Component | Version | Last Updated |
-|-----------|---------|--------------|
-| Backend   | 1.0.0   | 2025-10-14   |
-| Frontend  | 1.0.0   | 2025-10-14   |
+| Component | Version        | Last Updated |
+|-----------|----------------|--------------|
+| Backend   | 3.4.1-SNAPSHOT | 2025-12-09   |
+| Frontend  | 2.22.0         | 2025-11-24   |
 
 ---
 
@@ -321,13 +321,13 @@ Before every commit, ensure:
 
 Keep track of compatible versions:
 
-| Backend | Frontend | Compatible | Notes |
-|---------|----------|------------|-------|
-| 1.0.0   | 1.0.0    | ✅         | Initial release |
-| 1.0.1   | 1.0.0    | ✅         | Backend bugfix |
-| 1.1.0   | 1.0.0    | ⚠️         | New backend features |
-| 1.1.0   | 1.1.0    | ✅         | Frontend updated |
-| 2.0.0   | 1.1.0    | ❌         | Breaking changes |
+| Backend        | Frontend | Compatible | Notes |
+|----------------|----------|------------|-------|
+| 1.0.0          | 1.0.0    | ✅         | Initial release |
+| 2.0.0          | 2.0.0    | ✅         | Config API v2.0 (Major rewrite) |
+| 3.0.0          | 2.10.0   | ✅         | Medicallix service added |
+| 3.4.0          | 2.21.0   | ✅         | Auth service + Multi-domain routing |
+| 3.4.1-SNAPSHOT | 2.22.0   | ✅         | Current (Science pages + Raketen-Start) |
 
 ---
 
@@ -402,5 +402,5 @@ git push --tags
 
 ---
 
-**Last Updated**: 2025-10-14
-**Version**: 1.0.0
+**Last Updated**: 2025-12-09
+**Version**: 2.0.0

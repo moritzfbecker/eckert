@@ -1,6 +1,12 @@
-# Quick Start: Configuration System
+# Quick Start: Configuration System (v1.x - DEPRECATED)
 
-## 5-Minute Guide
+> **DEPRECATED**: This document describes the old Config System v1.x.
+> **Please use Config API v2.0 instead!**
+> See: [QUICK_START_CONFIG_V2.md](./QUICK_START_CONFIG_V2.md)
+
+---
+
+## 5-Minute Guide (Legacy)
 
 ### NO .env Files!
 
@@ -263,5 +269,11 @@ System.out.println("Config: " + configDir);
 
 ## Need More Help?
 
-- Full Documentation: CONFIG_SYSTEM.md
-- ConfigManager: backend/shared/common-utils/ConfigManager.java
+- **RECOMMENDED**: Use [QUICK_START_CONFIG_V2.md](./QUICK_START_CONFIG_V2.md) instead!
+- Full Documentation v2.0: CONFIG_API.md
+- Legacy Documentation: CONFIG_SYSTEM.md
+
+---
+
+> **Migration Note**: ConfigManager.java has been removed in v2.0.
+> Use ConfigClient.java instead. See CONFIG_API.md for migration guide.

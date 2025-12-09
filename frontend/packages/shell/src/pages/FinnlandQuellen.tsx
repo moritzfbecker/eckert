@@ -7,7 +7,7 @@
  * 153+ externe Quellen, 3 interne Dokumente, 24 Teams analysiert, 16 Jahre Entwicklung
  *
  * Category: 'finland'
- * Design: Black/White, Apple Gradient, Professional Scientific Design
+ * Design: Clean Black/White, Apple Gradient hover only
  */
 
 import { motion } from 'framer-motion'
@@ -21,9 +21,9 @@ const FinnlandQuellen = () => {
   const config = useConfig('finland', language)
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32 bg-gradient-to-r from-[#667eea] to-[#764ba2]">
+      <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32 bg-black">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -31,26 +31,23 @@ const FinnlandQuellen = () => {
             transition={{ duration: 0.8 }}
             className="text-center text-white"
           >
-            <div className="text-7xl mb-6">🏀</div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 drop-shadow-lg">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6">
               {config.get('hero.title', '153 Wissenschaftliche Quellen')}
             </h1>
-            <p className="text-2xl md:text-3xl mb-8 opacity-95 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/80 max-w-4xl mx-auto">
               {config.get('hero.subtitle', 'Finnland EuroBasket 2025: Wie systematische Coach-Entwicklung 37% weniger Budget in Platz 4 von 24 Nationen verwandelte')}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold">
-                {config.get('hero.badge1', '153+ externe Quellen')}
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold">
-                {config.get('hero.badge2', '3 interne Dokumente')}
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold">
-                {config.get('hero.badge3', '24 Teams analysiert')}
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold">
-                {config.get('hero.badge4', '16 Jahre Entwicklung')}
-              </div>
+            <div className="flex flex-wrap gap-3 justify-center">
+              {[
+                config.get('hero.badge1', '153+ externe Quellen'),
+                config.get('hero.badge2', '3 interne Dokumente'),
+                config.get('hero.badge3', '24 Teams analysiert'),
+                config.get('hero.badge4', '16 Jahre Entwicklung')
+              ].map((badge, index) => (
+                <div key={index} className="bg-white/10 px-5 py-2 rounded-lg text-sm font-medium">
+                  {badge}
+                </div>
+              ))}
             </div>
           </motion.div>
         </Container>
@@ -64,36 +61,36 @@ const FinnlandQuellen = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl border-l-8 border-[#667eea]"
+            className="bg-white rounded-xl p-6 md:p-10 shadow-xl border-2 border-black/10"
           >
-            <h2 className="text-3xl md:text-4xl font-black text-black mb-8">
+            <h2 className="text-2xl md:text-3xl font-black text-black mb-8">
               {config.get('summary.title', 'Executive Summary')}
             </h2>
 
             {/* Key Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <div className="bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-xl p-8 text-center">
-                <div className="text-6xl font-black mb-3">€3,2M</div>
-                <p className="text-lg opacity-90">{config.get('summary.budget.finland', 'Finnland Budget')}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+              <div className="bg-black text-white rounded-xl p-6 text-center">
+                <div className="text-4xl md:text-5xl font-black mb-2">€3,2M</div>
+                <p className="text-sm text-white/70">{config.get('summary.budget.finland', 'Finnland Budget')}</p>
               </div>
-              <div className="bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-xl p-8 text-center">
-                <div className="text-6xl font-black mb-3">€8,6M</div>
-                <p className="text-lg opacity-90">{config.get('summary.budget.average', 'Top-4-Durchschnitt')}</p>
+              <div className="bg-black text-white rounded-xl p-6 text-center">
+                <div className="text-4xl md:text-5xl font-black mb-2">€8,6M</div>
+                <p className="text-sm text-white/70">{config.get('summary.budget.average', 'Top-4-Durchschnitt')}</p>
               </div>
-              <div className="bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-xl p-8 text-center">
-                <div className="text-6xl font-black mb-3">63%</div>
-                <p className="text-lg opacity-90">{config.get('summary.budget.less', 'Weniger Budget')}</p>
+              <div className="bg-black text-white rounded-xl p-6 text-center">
+                <div className="text-4xl md:text-5xl font-black mb-2">63%</div>
+                <p className="text-sm text-white/70">{config.get('summary.budget.less', 'Weniger Budget')}</p>
               </div>
             </div>
 
-            <div className="space-y-6 text-lg text-black/80 leading-relaxed">
+            <div className="space-y-4 text-base md:text-lg text-black/80 leading-relaxed">
               <p>
                 <strong>{config.get('summary.paradox', 'Das Finnland-Paradox:')}</strong> {config.get('summary.paradox.text', 'Finnland erreichte 2025 das Halbfinale der Basketball-EM (Platz 4 von 24 Nationen) mit dem 14. Budget-Rang. Während Spitzenteams wie Spanien, Frankreich oder Deutschland jeweils €6-12 Millionen pro Jahr in ihre Programme investieren, arbeitet Finnland mit nur €3,2 Millionen – 63% weniger als der Top-4-Durchschnitt.')}
               </p>
               <p>
                 <strong>{config.get('summary.secret', 'Das Geheimnis:')}</strong> {config.get('summary.secret.text', '16 Jahre systematische Coach-Entwicklung statt Star-Player-Einkauf. Finnland investierte 70% seines Budgets in die Entwicklung von 400+ Coaches auf allen Ebenen (Jugend bis Profi). Das Ergebnis: Die beste Coaching-Dichte Europas (1 zertifizierter Coach pro 127 Einwohner) und ein System, das systematisch Hidden Talents aktiviert.')}
               </p>
-              <p className="text-2xl font-bold text-black">
+              <p className="text-xl font-bold text-black pt-4">
                 {config.get('summary.roi', 'ROI: 10x Return on Investment bei 37% weniger Ressourcen')}
               </p>
             </div>
@@ -102,7 +99,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Key Findings */}
-      <Section spacing="lg" className="bg-white">
+      <Section spacing="lg" className="bg-black">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -110,35 +107,40 @@ const FinnlandQuellen = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-12 text-center">
-              <span className="text-4xl mr-3">📊</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-12 text-center">
               {config.get('findings.title', 'Kern-Erkenntnisse')}
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {[
                 {
-                  title: config.get('finding1.title', '1. Budget-Performance-Paradox'),
+                  num: '01',
+                  title: config.get('finding1.title', 'Budget-Performance-Paradox'),
                   content: config.get('finding1.content', 'Finnland (14. Budget-Rang) → 4. Platz. Beweis: Mehr Geld ≠ Bessere Performance. Coach-Dichte schlägt Talent-Budget.')
                 },
                 {
-                  title: config.get('finding2.title', '2. Systemische Entwicklung > Star-Akquise'),
+                  num: '02',
+                  title: config.get('finding2.title', 'Systemische Entwicklung > Star-Akquise'),
                   content: config.get('finding2.content', '16 Jahre kontinuierliche Coach-Entwicklung schafft selbstverstärkendes System. 400+ Coaches entwickelt, nicht 1-2 Stars gekauft.')
                 },
                 {
-                  title: config.get('finding3.title', '3. Hidden-Talent-Aktivierung'),
+                  num: '03',
+                  title: config.get('finding3.title', 'Hidden-Talent-Aktivierung'),
                   content: config.get('finding3.content', 'Finnland nutzt domestische Spieler zu 85% (EU-Durchschnitt: 55%). Eigene Talente systematisch entwickelt statt extern eingekauft.')
                 },
                 {
-                  title: config.get('finding4.title', '4. Long-Term-Commitment'),
+                  num: '04',
+                  title: config.get('finding4.title', 'Long-Term-Commitment'),
                   content: config.get('finding4.content', 'Finnlands Erfolg kam nicht über Nacht: 2008 gestartet, 2017 erste Erfolge, 2025 Halbfinale. 16 Jahre Geduld.')
                 },
                 {
-                  title: config.get('finding5.title', '5. Coach-Leverage-Effekt'),
+                  num: '05',
+                  title: config.get('finding5.title', 'Coach-Leverage-Effekt'),
                   content: config.get('finding5.content', '1 gut entwickelter Coach entwickelt 50+ Spieler über Karriere. Multiplikator-Effekt: 400 Coaches × 50 Spieler = 20.000 entwickelte Talente.')
                 },
                 {
-                  title: config.get('finding6.title', '6. David-über-Goliath-Mechanik'),
+                  num: '06',
+                  title: config.get('finding6.title', 'David-über-Goliath-Mechanik'),
                   content: config.get('finding6.content', 'Kleine Nationen mit systematischer Entwicklung schlagen ressourcenreiche Giganten. Finnland besiegte Deutschland, Italien, Spanien im Turnier.')
                 }
               ].map((finding, index) => (
@@ -148,10 +150,15 @@ const FinnlandQuellen = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-[#667eea] hover:shadow-xl transition-all duration-300"
+                  className="bg-white rounded-xl p-6 hover:shadow-apple-glow transition-all duration-300"
                 >
-                  <h3 className="text-2xl font-bold text-black mb-4">{finding.title}</h3>
-                  <p className="text-lg text-black/70 leading-relaxed">{finding.content}</p>
+                  <div className="flex items-start gap-4">
+                    <span className="text-3xl font-black text-black/20">{finding.num}</span>
+                    <div>
+                      <h3 className="text-lg font-bold text-black mb-2">{finding.title}</h3>
+                      <p className="text-sm text-black/70 leading-relaxed">{finding.content}</p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -160,45 +167,6 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Translation to Business */}
-      <Section spacing="lg" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-black mb-12 text-center">
-              <span className="text-5xl mr-3">💼</span>
-              {config.get('business.title', 'Übersetzung ins Business')}
-            </h2>
-
-            <div className="max-w-5xl mx-auto space-y-8">
-              <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-4">{config.get('business.q1', 'Finnland hatte: Begrenzter Talent-Pool')}</h3>
-                <p className="text-xl opacity-90">{config.get('business.a1', 'Ihr Unternehmen hat: Strukturelle Schwächen in Technologie oder Ressourcen (vielleicht beides)')}</p>
-              </div>
-
-              <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-4">{config.get('business.q2', 'Finnland tat: Underdog-Systematik entwickeln')}</h3>
-                <p className="text-xl opacity-90">{config.get('business.a2', 'Sie können: Strukturelle Schwächen durch Human Performance überkompensieren')}</p>
-              </div>
-
-              <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-4">{config.get('business.q3', 'Finnland erreichte: 4x bessere Platzierung als Budget-Rang')}</h3>
-                <p className="text-xl opacity-90">{config.get('business.a3', 'Sie erreichen: 8-12% latentes Potenzial systematisch freigeschaltet')}</p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 text-black mt-12">
-                <h3 className="text-3xl font-black mb-4 text-center">{config.get('business.difference', 'Der Unterschied: 16-Jahres-Commitment')}</h3>
-                <p className="text-xl text-center opacity-80">{config.get('business.difference.text', 'Nicht "mehr Training". Ein komplett neues System, wie Potenzial freigeschaltet wird.')}</p>
-              </div>
-            </div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* Source Categories Overview */}
       <Section spacing="lg">
         <Container>
           <motion.div
@@ -207,16 +175,53 @@ const FinnlandQuellen = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-12 text-center">
-              <span className="text-4xl mr-3">📚</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 text-center">
+              {config.get('business.title', 'Übersetzung ins Business')}
+            </h2>
+
+            <div className="max-w-5xl mx-auto space-y-6">
+              <div className="bg-black/5 rounded-xl p-6">
+                <h3 className="text-lg font-bold text-black mb-2">{config.get('business.q1', 'Finnland hatte: Begrenzter Talent-Pool')}</h3>
+                <p className="text-base text-black/70">{config.get('business.a1', 'Ihr Unternehmen hat: Strukturelle Schwächen in Technologie oder Ressourcen (vielleicht beides)')}</p>
+              </div>
+
+              <div className="bg-black/5 rounded-xl p-6">
+                <h3 className="text-lg font-bold text-black mb-2">{config.get('business.q2', 'Finnland tat: Underdog-Systematik entwickeln')}</h3>
+                <p className="text-base text-black/70">{config.get('business.a2', 'Sie können: Strukturelle Schwächen durch Human Performance überkompensieren')}</p>
+              </div>
+
+              <div className="bg-black/5 rounded-xl p-6">
+                <h3 className="text-lg font-bold text-black mb-2">{config.get('business.q3', 'Finnland erreichte: 4x bessere Platzierung als Budget-Rang')}</h3>
+                <p className="text-base text-black/70">{config.get('business.a3', 'Sie erreichen: 8-12% latentes Potenzial systematisch freigeschaltet')}</p>
+              </div>
+
+              <div className="bg-black text-white rounded-xl p-8 mt-8">
+                <h3 className="text-2xl font-black mb-3 text-center">{config.get('business.difference', 'Der Unterschied: 16-Jahres-Commitment')}</h3>
+                <p className="text-base text-center text-white/80">{config.get('business.difference.text', 'Nicht "mehr Training". Ein komplett neues System, wie Potenzial freigeschaltet wird.')}</p>
+              </div>
+            </div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* Source Categories Overview */}
+      <Section spacing="lg" className="bg-black">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 text-center">
               {config.get('sources.title', '153 Quellen in 8 Kategorien')}
             </h2>
 
-            <p className="text-xl text-black/70 text-center mb-16 max-w-4xl mx-auto">
+            <p className="text-lg text-white/70 text-center mb-12 max-w-4xl mx-auto">
               {config.get('sources.intro', 'Die Finnland-Analyse basiert auf einer umfassenden Recherche von 153 externen Quellen (wissenschaftliche Studien, offizielle Statistiken, Interviews) plus 3 internen Dokumenten. Hier ein Überblick der Quellen-Kategorien:')}
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 {
                   category: config.get('cat1.title', 'I. Offizielle Basketball-Statistiken'),
@@ -265,19 +270,19 @@ const FinnlandQuellen = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-[#667eea] hover:shadow-xl transition-all duration-300"
+                  className="bg-white rounded-xl p-6 hover:shadow-apple-glow transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0">
+                  <div className="flex items-start gap-4 mb-3">
+                    <div className="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm flex-shrink-0">
                       {index + 1}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-black mb-2">{category.category}</h3>
-                      <p className="text-lg font-semibold text-[#667eea] mb-3">{category.count}</p>
+                      <h3 className="text-base font-bold text-black mb-1">{category.category}</h3>
+                      <p className="text-sm font-semibold text-black/60">{category.count}</p>
                     </div>
                   </div>
-                  <p className="text-base text-black/60 leading-relaxed italic">
-                    {config.get(`cat${index + 1}.label`, 'Beispiele: ')}{category.examples}
+                  <p className="text-sm text-black/50 leading-relaxed italic">
+                    {category.examples}
                   </p>
                 </motion.div>
               ))}
@@ -287,7 +292,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Key Sources Highlight */}
-      <Section spacing="lg" className="bg-white">
+      <Section spacing="lg">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -295,12 +300,11 @@ const FinnlandQuellen = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-12 text-center">
-              <span className="text-4xl mr-3">⭐</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 text-center">
               {config.get('highlights.title', 'Kern-Quellen (Auswahl)')}
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {[
                 {
                   number: '[1]',
@@ -345,17 +349,17 @@ const FinnlandQuellen = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-[#667eea] hover:shadow-lg transition-all duration-300"
+                  className="bg-white border-2 border-black/10 rounded-xl p-5 hover:border-black hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="inline-block bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white font-bold px-4 py-2 rounded-full flex-shrink-0">
+                    <span className="inline-block bg-black text-white font-bold px-3 py-1 rounded text-sm flex-shrink-0">
                       {source.number}
                     </span>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-black mb-2">{source.title}</h3>
-                      <p className="text-sm text-black/50 italic mb-3">{source.source}</p>
-                      <div className="bg-green-50 border-l-4 border-green-500 rounded p-4">
-                        <p className="text-base text-black/80">
+                      <h3 className="text-base font-bold text-black mb-1">{source.title}</h3>
+                      <p className="text-xs text-black/50 italic mb-2">{source.source}</p>
+                      <div className="bg-black/5 rounded-lg p-3">
+                        <p className="text-sm text-black/80">
                           <strong>Kernfindung:</strong> {source.finding}
                         </p>
                       </div>
@@ -365,8 +369,8 @@ const FinnlandQuellen = () => {
               ))}
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="text-xl text-black/60">
+            <div className="mt-10 text-center">
+              <p className="text-lg text-black/60">
                 {config.get('sources.footer', '+ 147 weitere Quellen dokumentiert und validiert')}
               </p>
             </div>
@@ -375,7 +379,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Methodology */}
-      <Section spacing="lg" className="bg-gray-50">
+      <Section spacing="lg" className="bg-black">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -384,30 +388,29 @@ const FinnlandQuellen = () => {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-12 text-center">
-              <span className="text-4xl mr-3">🔬</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-12 text-center">
               {config.get('methodology.title', 'Research Methodology')}
             </h2>
 
-            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl">
-              <div className="space-y-8">
+            <div className="bg-white rounded-xl p-6 md:p-10">
+              <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-black mb-4">{config.get('method.data', 'Daten-Erhebung')}</h3>
-                  <p className="text-lg text-black/70 leading-relaxed">
+                  <h3 className="text-xl font-bold text-black mb-3">{config.get('method.data', 'Daten-Erhebung')}</h3>
+                  <p className="text-base text-black/70 leading-relaxed">
                     {config.get('method.data.text', 'Alle 24 EuroBasket 2025 Teams analysiert. Budget-Daten von 18 Federations offiziell bestätigt. 16-Jahres-Zeitraum (2008-2024) systematisch dokumentiert.')}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-black mb-4">{config.get('method.validation', 'Validierung')}</h3>
-                  <p className="text-lg text-black/70 leading-relaxed">
+                  <h3 className="text-xl font-bold text-black mb-3">{config.get('method.validation', 'Validierung')}</h3>
+                  <p className="text-base text-black/70 leading-relaxed">
                     {config.get('method.validation.text', 'Triangulation durch 3 Quellen-Typen: (1) Offizielle Statistiken, (2) Wissenschaftliche Studien, (3) Expert Interviews. Jede Kern-Aussage mit mindestens 2 unabhängigen Quellen validiert.')}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-black mb-4">{config.get('method.limitations', 'Limitationen')}</h3>
-                  <p className="text-lg text-black/70 leading-relaxed">
+                  <h3 className="text-xl font-bold text-black mb-3">{config.get('method.limitations', 'Limitationen')}</h3>
+                  <p className="text-base text-black/70 leading-relaxed">
                     {config.get('method.limitations.text', 'Single-Sport-Analyse (Basketball), Transfer-Risiko zu anderen Branchen bedarf Vorsicht. Finnland-Case ist spezifisch, aber Prinzipien sind generalisierbar (siehe: Schwaninger 2009, Malik-Kybernetik).')}
                   </p>
                 </div>
@@ -418,7 +421,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Conclusion */}
-      <Section spacing="lg" className="bg-white">
+      <Section spacing="lg">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -427,24 +430,23 @@ const FinnlandQuellen = () => {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-12 text-center">
-              <span className="text-4xl mr-3">✅</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-8 text-center">
               {config.get('conclusion.title', 'Fazit: Von Finnland lernen')}
             </h2>
 
-            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl border-l-8 border-green-500">
-              <p className="text-xl md:text-2xl text-black/90 leading-relaxed mb-8">
+            <div className="bg-white rounded-xl p-6 md:p-10 shadow-xl border-2 border-black/10">
+              <p className="text-lg md:text-xl text-black/80 leading-relaxed mb-6">
                 {config.get('conclusion.text1', 'Der Finnland-Case beweist empirisch, was die Eckert-Preisser-Methodik theoretisch postuliert: Systematische Entwicklung des dritten Pfeilers (Human Performance) kann strukturelle Schwächen in Ressourcen (Säule 1) und Technologie (Säule 2) überkompensieren.')}
               </p>
-              <p className="text-xl md:text-2xl text-black/90 leading-relaxed mb-12">
+              <p className="text-lg md:text-xl text-black/80 leading-relaxed mb-8">
                 {config.get('conclusion.text2', 'Mit 37% weniger Budget erreichte Finnland eine 10x bessere Platzierung als ihr Budget-Rang erwarten ließ. Die Formel: 16 Jahre systematische Coach-Entwicklung + Hidden-Talent-Aktivierung + Selbstläufer-Mechanismen.')}
               </p>
 
-              <div className="bg-green-50 rounded-xl p-8 border-l-4 border-green-600">
-                <p className="text-2xl font-bold text-black mb-4 text-center">
+              <div className="bg-black/5 rounded-lg p-6">
+                <p className="text-xl font-bold text-black mb-3 text-center">
                   {config.get('conclusion.takeaway', 'Die Kernbotschaft für Ihr Unternehmen:')}
                 </p>
-                <p className="text-xl text-black/80 leading-relaxed text-center">
+                <p className="text-base text-black/80 leading-relaxed text-center">
                   {config.get('conclusion.takeaway.text', 'Sie müssen nicht die größten Ressourcen haben. Sie brauchen das beste System zur Aktivierung Ihres Human-Performance-Potenzials.')}
                 </p>
               </div>
@@ -454,7 +456,7 @@ const FinnlandQuellen = () => {
       </Section>
 
       {/* Final CTA */}
-      <Section spacing="lg" className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white">
+      <Section spacing="lg" className="bg-black">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -463,22 +465,22 @@ const FinnlandQuellen = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
               {config.get('cta.title', 'Bereit, Ihr eigenes Finnland-Modell zu bauen?')}
             </h2>
-            <p className="text-xl md:text-2xl mb-10 opacity-95 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl mx-auto">
               {config.get('cta.subtitle', 'Erfahren Sie, wie Sie mit systematischer Human-Performance-Entwicklung strukturelle Schwächen überkompensieren können.')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-block bg-white text-[#667eea] px-12 py-5 rounded-full font-bold text-xl hover:scale-105 hover:shadow-2xl transition-all duration-300"
+                className="inline-block bg-white text-black px-12 py-5 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
               >
-                {config.get('cta.button1', 'Jetzt Gespräch vereinbaren →')}
+                {config.get('cta.button1', 'Jetzt Gespräch vereinbaren')}
               </Link>
               <Link
                 to="/wissenschaftliche-fundierung"
-                className="inline-block bg-transparent border-2 border-white text-white px-12 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-[#667eea] transition-all duration-300"
+                className="inline-block bg-transparent border-2 border-white text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all duration-300"
               >
                 {config.get('cta.button2', 'Wissenschaftliche Basis ansehen')}
               </Link>

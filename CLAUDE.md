@@ -17,8 +17,8 @@ Languages: Multi-language (German/English)
 Config: Enterprise Config API v2.0 (NO .env files!)
 
 Current Versions:
-- Backend: v2.0.0 (Config API - MAJOR REWRITE!)
-- Frontend: v2.0.0 (useConfig Hook)
+- Backend: v3.4.1-SNAPSHOT (Medicallix + Auth Service)
+- Frontend: v2.22.0 (Science pages + Raketen-Start)
 
 CRITICAL: All user-facing text MUST be in both German and English!
 CRITICAL: NO .env files! All config via Config Server RESTful API!
@@ -282,7 +282,8 @@ Documentation:
 - CONFIG_SYSTEM.md (root - Updated v2.0)
 - docs/QUICK_START_LOGGING.md
 - docs/QUICK_START_VERSIONING.md
-- docs/QUICK_START_CONFIG.md
+- docs/QUICK_START_CONFIG.md (DEPRECATED - use V2!)
+- docs/QUICK_START_CONFIG_V2.md (CURRENT!)
 
 Backend Shared:
 - common-utils/LoggerUtil.java
