@@ -69,8 +69,9 @@ const RaketenStart = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32 bg-black">
-        <Container>
+      <div className="bg-black">
+        <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32">
+          <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -131,6 +132,7 @@ const RaketenStart = () => {
           </motion.div>
         </Container>
       </Section>
+      </div>
 
       {/* 4-Phasen-Timeline */}
       <Section spacing="lg">
@@ -228,8 +230,9 @@ const RaketenStart = () => {
       </Section>
 
       {/* 5 Module */}
-      <Section spacing="lg" className="bg-black">
-        <Container>
+      <div className="bg-black">
+        <Section spacing="lg">
+          <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -328,6 +331,7 @@ const RaketenStart = () => {
           </motion.div>
         </Container>
       </Section>
+      </div>
 
       {/* ROI Calculator */}
       <div id="roi-rechner">
@@ -358,7 +362,7 @@ const RaketenStart = () => {
                     type="number"
                     value={revenue}
                     onChange={(e) => setRevenue(Number(e.target.value))}
-                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold focus:border-black focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold text-black bg-white focus:border-black focus:outline-none transition-colors"
                     min="10"
                     max="1000"
                   />
@@ -371,7 +375,7 @@ const RaketenStart = () => {
                     type="number"
                     value={employees}
                     onChange={(e) => setEmployees(Number(e.target.value))}
-                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold focus:border-black focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold text-black bg-white focus:border-black focus:outline-none transition-colors"
                     min="50"
                     max="5000"
                   />
@@ -384,7 +388,7 @@ const RaketenStart = () => {
                     type="number"
                     value={margin}
                     onChange={(e) => setMargin(Number(e.target.value))}
-                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold focus:border-black focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold text-black bg-white focus:border-black focus:outline-none transition-colors"
                     min="1"
                     max="20"
                     step="0.5"
@@ -479,8 +483,9 @@ const RaketenStart = () => {
       </div>
 
       {/* Scientific Validation */}
-      <Section spacing="lg" className="bg-black">
-        <Container>
+      <div className="bg-black">
+        <Section spacing="lg">
+          <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -526,6 +531,7 @@ const RaketenStart = () => {
           </motion.div>
         </Container>
       </Section>
+      </div>
 
       {/* Final CTA */}
       <Section spacing="lg">
