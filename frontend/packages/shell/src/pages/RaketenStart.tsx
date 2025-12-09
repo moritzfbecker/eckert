@@ -69,9 +69,8 @@ const RaketenStart = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div style={{ backgroundColor: '#000000' }}>
-        <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32">
-          <Container>
+      <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32">
+        <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -83,13 +82,13 @@ const RaketenStart = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-block backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold mb-8"
-              style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#FFFFFF' }}
+              className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-8"
+              style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
             >
               {config.get('hero.badge', 'NEU: Der schnelle Einstieg ohne Langzeit-Commitment')}
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6" style={{ color: '#FFFFFF' }}>
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6" style={{ color: '#000000' }}>
               {config.get('hero.title.line1', 'Keine Zeit für 4 Jahre Change?')}<br/>
               <span className="relative">
                 {config.get('hero.title.line2', 'Erste messbare Erfolge ')}
@@ -99,7 +98,7 @@ const RaketenStart = () => {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto" style={{ color: 'rgba(0,0,0,0.8)' }}>
               {config.get('hero.subtitle', 'Das FINNLAND-70-TAGE-PROGRAMM: Wissenschaftlich fundierte Performance-Steigerung mit sichtbaren Ergebnissen - ohne jahrelange Berater-Abhängigkeit.')}
             </p>
 
@@ -107,14 +106,14 @@ const RaketenStart = () => {
               <a
                 href="#roi-rechner"
                 className="inline-block px-10 py-5 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
-                style={{ backgroundColor: '#FFFFFF', color: '#000000' }}
+                style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
               >
                 {config.get('hero.cta1', '10-Wochen-Programm kennenlernen')}
               </a>
               <a
                 href="#roi-rechner"
                 className="inline-block px-10 py-5 rounded-full font-bold text-lg transition-all duration-300"
-                style={{ backgroundColor: 'transparent', border: '2px solid #FFFFFF', color: '#FFFFFF' }}
+                style={{ backgroundColor: '#FFFFFF', border: '2px solid #000000', color: '#000000' }}
               >
                 {config.get('hero.cta2', 'ROI-Rechner: Was bringt es mir?')}
               </a>
@@ -127,7 +126,7 @@ const RaketenStart = () => {
                 config.get('hero.trust2', 'Payback nach 1,5 Wochen'),
                 config.get('hero.trust3', '25% der Langfrist-Wirkung sofort')
               ].map((metric, index) => (
-                <div key={index} className="px-5 py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#FFFFFF' }}>
+                <div key={index} className="px-5 py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: 'rgba(0,0,0,0.05)', color: '#000000' }}>
                   {metric}
                 </div>
               ))}
@@ -135,7 +134,6 @@ const RaketenStart = () => {
           </motion.div>
         </Container>
       </Section>
-      </div>
 
       {/* 4-Phasen-Timeline */}
       <Section spacing="lg">
@@ -233,19 +231,18 @@ const RaketenStart = () => {
       </Section>
 
       {/* 5 Module */}
-      <div style={{ backgroundColor: '#000000' }}>
-        <Section spacing="lg">
-          <Container>
+      <Section spacing="lg">
+        <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-center" style={{ color: '#FFFFFF' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-center" style={{ color: '#000000' }}>
               {config.get('modules.title', 'Die 5 Module im Detail')}
             </h2>
-            <p className="text-lg md:text-xl mb-16 text-center max-w-3xl mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            <p className="text-lg md:text-xl mb-16 text-center max-w-3xl mx-auto" style={{ color: 'rgba(0,0,0,0.7)' }}>
               {config.get('modules.intro', '5 wissenschaftlich validierte Module für maximale Wirkung in minimaler Zeit')}
             </p>
 
@@ -298,8 +295,8 @@ const RaketenStart = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`rounded-xl p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300 ${index === 4 ? 'lg:col-span-2' : ''}`}
-                  style={{ backgroundColor: '#FFFFFF' }}
+                  className={`rounded-xl p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300 border-2 ${index === 4 ? 'lg:col-span-2' : ''}`}
+                  style={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(0,0,0,0.1)' }}
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <span className="text-4xl font-black" style={{ color: 'rgba(0,0,0,0.2)' }}>{module.num}</span>
@@ -328,14 +325,13 @@ const RaketenStart = () => {
             </div>
 
             <div className="mt-12 text-center">
-              <p className="text-xl font-bold" style={{ color: 'rgba(255,255,255,0.8)' }}>
+              <p className="text-xl font-bold" style={{ color: 'rgba(0,0,0,0.8)' }}>
                 {config.get('modules.total', 'Gesamt CEO-Zeitaufwand: Nur 28 Stunden über 10 Wochen')}
               </p>
             </div>
           </motion.div>
         </Container>
       </Section>
-      </div>
 
       {/* ROI Calculator */}
       <div id="roi-rechner">
@@ -492,9 +488,8 @@ const RaketenStart = () => {
       </div>
 
       {/* Scientific Validation */}
-      <div style={{ backgroundColor: '#000000' }}>
-        <Section spacing="lg">
-          <Container>
+      <Section spacing="lg">
+        <Container>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -502,10 +497,10 @@ const RaketenStart = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4" style={{ color: '#FFFFFF' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4" style={{ color: '#000000' }}>
               {config.get('validation.title', 'Wissenschaftlich validiert')}
             </h2>
-            <p className="text-lg md:text-xl mb-12" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            <p className="text-lg md:text-xl mb-12" style={{ color: 'rgba(0,0,0,0.7)' }}>
               {config.get('validation.intro', 'Alle Aussagen und Parameter basieren auf 27 peer-reviewed Studien und 16 Jahren ZOLLERN Case-Dokumentation.')}
             </p>
 
@@ -524,9 +519,9 @@ const RaketenStart = () => {
                   desc: config.get('validation.source3.desc', '30 Jahre Forschungszeitraum')
                 }
               ].map((item, index) => (
-                <div key={index} className="rounded-xl p-6" style={{ backgroundColor: '#FFFFFF' }}>
-                  <p className="text-xl font-black mb-2" style={{ color: '#000000' }}>{item.title}</p>
-                  <p className="text-sm" style={{ color: 'rgba(0,0,0,0.6)' }}>{item.desc}</p>
+                <div key={index} className="rounded-xl p-6" style={{ backgroundColor: '#000000' }}>
+                  <p className="text-xl font-black mb-2" style={{ color: '#FFFFFF' }}>{item.title}</p>
+                  <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -534,14 +529,13 @@ const RaketenStart = () => {
             <Link
               to="/wissenschaftliche-fundierung"
               className="inline-block px-10 py-4 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
-              style={{ backgroundColor: '#FFFFFF', color: '#000000' }}
+              style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
             >
               {config.get('validation.cta', 'Vollständige wissenschaftliche Fundierung ansehen')}
             </Link>
           </motion.div>
         </Container>
       </Section>
-      </div>
 
       {/* Final CTA */}
       <Section spacing="lg">
