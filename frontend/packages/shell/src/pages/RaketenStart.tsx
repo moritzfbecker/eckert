@@ -77,19 +77,19 @@ const RaketenStart = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
-            style={{ color: '#FFFFFF' }}
           >
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold mb-8"
+              className="inline-block backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold mb-8"
+              style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#FFFFFF' }}
             >
               {config.get('hero.badge', 'NEU: Der schnelle Einstieg ohne Langzeit-Commitment')}
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6" style={{ color: '#FFFFFF' }}>
               {config.get('hero.title.line1', 'Keine Zeit für 4 Jahre Change?')}<br/>
               <span className="relative">
                 {config.get('hero.title.line2', 'Erste messbare Erfolge ')}
@@ -99,20 +99,22 @@ const RaketenStart = () => {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl mb-10 text-white/80 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto" style={{ color: 'rgba(255,255,255,0.8)' }}>
               {config.get('hero.subtitle', 'Das FINNLAND-70-TAGE-PROGRAMM: Wissenschaftlich fundierte Performance-Steigerung mit sichtbaren Ergebnissen - ohne jahrelange Berater-Abhängigkeit.')}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-8">
               <a
                 href="#roi-rechner"
-                className="inline-block bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+                className="inline-block px-10 py-5 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: '#FFFFFF', color: '#000000' }}
               >
                 {config.get('hero.cta1', '10-Wochen-Programm kennenlernen')}
               </a>
               <a
                 href="#roi-rechner"
-                className="inline-block bg-transparent border-2 border-white text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all duration-300"
+                className="inline-block px-10 py-5 rounded-full font-bold text-lg transition-all duration-300"
+                style={{ backgroundColor: 'transparent', border: '2px solid #FFFFFF', color: '#FFFFFF' }}
               >
                 {config.get('hero.cta2', 'ROI-Rechner: Was bringt es mir?')}
               </a>
@@ -125,7 +127,7 @@ const RaketenStart = () => {
                 config.get('hero.trust2', 'Payback nach 1,5 Wochen'),
                 config.get('hero.trust3', '25% der Langfrist-Wirkung sofort')
               ].map((metric, index) => (
-                <div key={index} className="bg-white/10 px-5 py-2 rounded-lg text-sm font-medium">
+                <div key={index} className="px-5 py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#FFFFFF' }}>
                   {metric}
                 </div>
               ))}
@@ -144,10 +146,10 @@ const RaketenStart = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-4 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-center" style={{ color: '#000000' }}>
               {config.get('phases.title', 'Die 4 Phasen des Programms')}
             </h2>
-            <p className="text-lg md:text-xl text-black/70 mb-16 text-center max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl mb-16 text-center max-w-3xl mx-auto" style={{ color: 'rgba(0,0,0,0.7)' }}>
               {config.get('phases.intro', 'Manager denken pragmatisch. Unser 10-Wochen-Programm folgt exakt dieser Psychologie - mit messbaren Erfolgen in jeder Phase.')}
             </p>
 
@@ -196,29 +198,29 @@ const RaketenStart = () => {
                 >
                   {/* Phase Number */}
                   <div className="flex-shrink-0">
-                    <div className="w-14 h-14 md:w-16 md:h-16 bg-black rounded-full flex items-center justify-center text-white text-2xl md:text-3xl font-black">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl font-black" style={{ backgroundColor: '#000000', color: '#FFFFFF' }}>
                       {phase.phase}
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 bg-white border-2 border-black/10 rounded-xl p-5 md:p-6 hover:border-black hover:shadow-xl transition-all duration-300">
+                  <div className="flex-1 border-2 rounded-xl p-5 md:p-6 hover:shadow-xl transition-all duration-300" style={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(0,0,0,0.1)' }}>
                     <div className="flex flex-wrap justify-between items-start mb-3">
-                      <h3 className="text-xl md:text-2xl font-bold text-black">
+                      <h3 className="text-xl md:text-2xl font-bold" style={{ color: '#000000' }}>
                         {phase.question}
                       </h3>
-                      <span className="text-sm font-semibold text-black/60 bg-black/5 px-3 py-1 rounded-full">
+                      <span className="text-sm font-semibold px-3 py-1 rounded-full" style={{ color: 'rgba(0,0,0,0.6)', backgroundColor: 'rgba(0,0,0,0.05)' }}>
                         {phase.timeframe}
                       </span>
                     </div>
-                    <h4 className="text-lg font-bold text-black/80 mb-2">
+                    <h4 className="text-lg font-bold mb-2" style={{ color: 'rgba(0,0,0,0.8)' }}>
                       {phase.title}
                     </h4>
-                    <p className="text-base text-black/70 leading-relaxed mb-4">
+                    <p className="text-base leading-relaxed mb-4" style={{ color: 'rgba(0,0,0,0.7)' }}>
                       {phase.desc}
                     </p>
-                    <div className="bg-black/5 rounded-lg p-4">
-                      <p className="text-sm text-black/80">
+                    <div className="rounded-lg p-4" style={{ backgroundColor: 'rgba(0,0,0,0.05)' }}>
+                      <p className="text-sm" style={{ color: 'rgba(0,0,0,0.8)' }}>
                         <strong>Output:</strong> {phase.output}
                       </p>
                     </div>
@@ -296,28 +298,29 @@ const RaketenStart = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`bg-white rounded-xl p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300 ${index === 4 ? 'lg:col-span-2' : ''}`}
+                  className={`rounded-xl p-6 md:p-8 hover:shadow-apple-glow transition-all duration-300 ${index === 4 ? 'lg:col-span-2' : ''}`}
+                  style={{ backgroundColor: '#FFFFFF' }}
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <span className="text-4xl font-black text-black/20">{module.num}</span>
+                    <span className="text-4xl font-black" style={{ color: 'rgba(0,0,0,0.2)' }}>{module.num}</span>
                     <div className="flex-1">
                       <div className="flex flex-wrap justify-between items-start gap-2 mb-2">
-                        <h3 className="text-xl font-bold text-black">{module.title}</h3>
-                        <span className="text-xs font-semibold text-black/60 bg-black/5 px-3 py-1 rounded-full">
+                        <h3 className="text-xl font-bold" style={{ color: '#000000' }}>{module.title}</h3>
+                        <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ color: 'rgba(0,0,0,0.6)', backgroundColor: 'rgba(0,0,0,0.05)' }}>
                           {module.weeks}
                         </span>
                       </div>
                     </div>
                   </div>
-                  <p className="text-base text-black/70 leading-relaxed mb-4">
+                  <p className="text-base leading-relaxed mb-4" style={{ color: 'rgba(0,0,0,0.7)' }}>
                     {module.desc}
                   </p>
-                  <div className="bg-black/5 rounded-lg p-4 mb-3">
-                    <p className="text-sm text-black/80">
+                  <div className="rounded-lg p-4 mb-3" style={{ backgroundColor: 'rgba(0,0,0,0.05)' }}>
+                    <p className="text-sm" style={{ color: 'rgba(0,0,0,0.8)' }}>
                       <strong>Output:</strong> {module.output}
                     </p>
                   </div>
-                  <p className="text-sm text-black/60">
+                  <p className="text-sm" style={{ color: 'rgba(0,0,0,0.6)' }}>
                     <strong>CEO-Aufwand:</strong> {module.ceo}
                   </p>
                 </motion.div>
@@ -345,51 +348,54 @@ const RaketenStart = () => {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-4 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-center" style={{ color: '#000000' }}>
               {config.get('calculator.title', 'ROI-Rechner: Was bringt das Programm Ihrem Unternehmen?')}
             </h2>
-            <p className="text-lg md:text-xl text-black/70 mb-12 text-center">
+            <p className="text-lg md:text-xl mb-12 text-center" style={{ color: 'rgba(0,0,0,0.7)' }}>
               {config.get('calculator.intro', 'Geben Sie Ihre Unternehmenskennzahlen ein - wir berechnen Ihren erwarteten Benefit wissenschaftlich fundiert.')}
             </p>
 
-            <div className="bg-white rounded-xl p-6 md:p-10 shadow-xl border-2 border-black/10">
+            <div className="rounded-xl p-6 md:p-10 shadow-xl border-2" style={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(0,0,0,0.1)' }}>
               {/* Inputs */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div>
-                  <label className="block text-sm font-bold text-black mb-3">
+                  <label className="block text-sm font-bold mb-3" style={{ color: '#000000' }}>
                     {config.get('calculator.revenue', 'Jahresumsatz (Mio. €)')}
                   </label>
                   <input
                     type="number"
                     value={revenue}
                     onChange={(e) => setRevenue(Number(e.target.value))}
-                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold text-black bg-white focus:border-black focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 rounded-lg text-lg font-semibold focus:outline-none transition-colors"
+                    style={{ borderColor: 'rgba(0,0,0,0.2)', color: '#000000', backgroundColor: '#FFFFFF' }}
                     min="10"
                     max="1000"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-black mb-3">
+                  <label className="block text-sm font-bold mb-3" style={{ color: '#000000' }}>
                     {config.get('calculator.employees', 'Anzahl Mitarbeiter')}
                   </label>
                   <input
                     type="number"
                     value={employees}
                     onChange={(e) => setEmployees(Number(e.target.value))}
-                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold text-black bg-white focus:border-black focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 rounded-lg text-lg font-semibold focus:outline-none transition-colors"
+                    style={{ borderColor: 'rgba(0,0,0,0.2)', color: '#000000', backgroundColor: '#FFFFFF' }}
                     min="50"
                     max="5000"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-black mb-3">
+                  <label className="block text-sm font-bold mb-3" style={{ color: '#000000' }}>
                     {config.get('calculator.margin', 'Umsatzrendite (%)')}
                   </label>
                   <input
                     type="number"
                     value={margin}
                     onChange={(e) => setMargin(Number(e.target.value))}
-                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg text-lg font-semibold text-black bg-white focus:border-black focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 rounded-lg text-lg font-semibold focus:outline-none transition-colors"
+                    style={{ borderColor: 'rgba(0,0,0,0.2)', color: '#000000', backgroundColor: '#FFFFFF' }}
                     min="1"
                     max="20"
                     step="0.5"
@@ -399,7 +405,8 @@ const RaketenStart = () => {
 
               <button
                 onClick={calculateROI}
-                className="w-full bg-black text-white px-8 py-5 rounded-full font-bold text-xl hover:shadow-apple-glow hover:scale-[1.02] transition-all duration-300"
+                className="w-full px-8 py-5 rounded-full font-bold text-xl hover:shadow-apple-glow hover:scale-[1.02] transition-all duration-300"
+                style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
               >
                 {config.get('calculator.button', 'Benefit berechnen')}
               </button>
@@ -412,33 +419,33 @@ const RaketenStart = () => {
                   transition={{ duration: 0.6 }}
                   className="mt-12"
                 >
-                  <h3 className="text-2xl md:text-3xl font-black text-black mb-8 text-center">
+                  <h3 className="text-2xl md:text-3xl font-black mb-8 text-center" style={{ color: '#000000' }}>
                     {config.get('calculator.results.title', 'Ihr erwarteter Benefit (10 Wochen)')}
                   </h3>
 
                   {/* Main Results Grid */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                    <div className="bg-black text-white rounded-xl p-5 text-center">
-                      <div className="text-xs font-semibold mb-1 text-white/70">Gesamt-Benefit</div>
-                      <div className="text-2xl md:text-3xl font-black">€{results.totalBenefit.toLocaleString('de-DE')}</div>
+                    <div className="rounded-xl p-5 text-center" style={{ backgroundColor: '#000000' }}>
+                      <div className="text-xs font-semibold mb-1" style={{ color: 'rgba(255,255,255,0.7)' }}>Gesamt-Benefit</div>
+                      <div className="text-2xl md:text-3xl font-black" style={{ color: '#FFFFFF' }}>€{results.totalBenefit.toLocaleString('de-DE')}</div>
                     </div>
-                    <div className="bg-black text-white rounded-xl p-5 text-center">
-                      <div className="text-xs font-semibold mb-1 text-white/70">Investment</div>
-                      <div className="text-2xl md:text-3xl font-black">€{results.investment.toLocaleString('de-DE')}</div>
+                    <div className="rounded-xl p-5 text-center" style={{ backgroundColor: '#000000' }}>
+                      <div className="text-xs font-semibold mb-1" style={{ color: 'rgba(255,255,255,0.7)' }}>Investment</div>
+                      <div className="text-2xl md:text-3xl font-black" style={{ color: '#FFFFFF' }}>€{results.investment.toLocaleString('de-DE')}</div>
                     </div>
-                    <div className="bg-black text-white rounded-xl p-5 text-center">
-                      <div className="text-xs font-semibold mb-1 text-white/70">ROI</div>
-                      <div className="text-2xl md:text-3xl font-black">{results.roi}%</div>
+                    <div className="rounded-xl p-5 text-center" style={{ backgroundColor: '#000000' }}>
+                      <div className="text-xs font-semibold mb-1" style={{ color: 'rgba(255,255,255,0.7)' }}>ROI</div>
+                      <div className="text-2xl md:text-3xl font-black" style={{ color: '#FFFFFF' }}>{results.roi}%</div>
                     </div>
-                    <div className="bg-black text-white rounded-xl p-5 text-center">
-                      <div className="text-xs font-semibold mb-1 text-white/70">Payback</div>
-                      <div className="text-2xl md:text-3xl font-black">{results.payback} Wo.</div>
+                    <div className="rounded-xl p-5 text-center" style={{ backgroundColor: '#000000' }}>
+                      <div className="text-xs font-semibold mb-1" style={{ color: 'rgba(255,255,255,0.7)' }}>Payback</div>
+                      <div className="text-2xl md:text-3xl font-black" style={{ color: '#FFFFFF' }}>{results.payback} Wo.</div>
                     </div>
                   </div>
 
                   {/* Breakdown */}
-                  <div className="bg-black/5 rounded-xl p-6">
-                    <h4 className="text-lg font-bold text-black mb-4">Benefit-Zusammensetzung:</h4>
+                  <div className="rounded-xl p-6" style={{ backgroundColor: 'rgba(0,0,0,0.05)' }}>
+                    <h4 className="text-lg font-bold mb-4" style={{ color: '#000000' }}>Benefit-Zusammensetzung:</h4>
                     <div className="space-y-3">
                       {[
                         { label: 'Leuchtturm-Projekt:', value: results.lighthouse },
@@ -447,8 +454,8 @@ const RaketenStart = () => {
                         { label: 'Retention-Effekt:', value: results.retention }
                       ].map((item, index) => (
                         <div key={index} className="flex justify-between items-center">
-                          <span className="text-base text-black/70">{item.label}</span>
-                          <span className="text-base font-bold text-black">€{item.value.toLocaleString('de-DE')}</span>
+                          <span className="text-base" style={{ color: 'rgba(0,0,0,0.7)' }}>{item.label}</span>
+                          <span className="text-base font-bold" style={{ color: '#000000' }}>€{item.value.toLocaleString('de-DE')}</span>
                         </div>
                       ))}
                     </div>
@@ -456,12 +463,13 @@ const RaketenStart = () => {
 
                   {/* CTA */}
                   <div className="mt-8 text-center">
-                    <p className="text-base text-black/70 mb-6">
+                    <p className="text-base mb-6" style={{ color: 'rgba(0,0,0,0.7)' }}>
                       {config.get('calculator.results.cta.text', 'Überzeugt? Lassen Sie uns in einem 30-Minuten-Gespräch Ihre spezifischen Quick Wins identifizieren.')}
                     </p>
                     <Link
                       to="/contact"
-                      className="inline-block bg-black text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+                      className="inline-block px-10 py-4 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+                      style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
                     >
                       {config.get('calculator.results.cta.button', 'Jetzt Strategiegespräch buchen')}
                     </Link>
@@ -471,10 +479,10 @@ const RaketenStart = () => {
             </div>
 
             {/* Disclaimer */}
-            <p className="text-sm text-black/50 text-center mt-8">
+            <p className="text-sm text-center mt-8" style={{ color: 'rgba(0,0,0,0.5)' }}>
               {config.get('calculator.disclaimer', 'Hinweis: Berechnung basiert auf wissenschaftlich validierten Durchschnittswerten (27 peer-reviewed Studien, 16-Jahres-ZOLLERN-Case). Individuelle Ergebnisse können variieren.')}
               {' '}
-              <Link to="/wissenschaftliche-fundierung" className="text-black font-semibold hover:underline">
+              <Link to="/wissenschaftliche-fundierung" className="font-semibold hover:underline" style={{ color: '#000000' }}>
                 {config.get('calculator.disclaimer.link', 'Wissenschaftliche Basis ansehen')}
               </Link>
             </p>
@@ -545,28 +553,30 @@ const RaketenStart = () => {
             viewport={{ once: true }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6" style={{ color: '#000000' }}>
               {config.get('final.title', 'Bereit für Finnland in 70 Tagen?')}
             </h2>
-            <p className="text-lg md:text-xl text-black/70 mb-10">
+            <p className="text-lg md:text-xl mb-10" style={{ color: 'rgba(0,0,0,0.7)' }}>
               {config.get('final.subtitle', 'Starten Sie in 2 Wochen. Erste Erfolge nach 14 Tagen. Entscheidung nach 10 Wochen.')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-block bg-black text-white px-12 py-5 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+                className="inline-block px-12 py-5 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
               >
                 {config.get('final.cta1', 'Strategiegespräch buchen (30 Min, kostenlos)')}
               </Link>
               <a
                 href="#roi-rechner"
-                className="inline-block bg-white text-black border-2 border-black px-12 py-5 rounded-full font-bold text-lg hover:bg-black hover:text-white transition-all duration-300"
+                className="inline-block border-2 px-12 py-5 rounded-full font-bold text-lg transition-all duration-300"
+                style={{ backgroundColor: '#FFFFFF', color: '#000000', borderColor: '#000000' }}
               >
                 {config.get('final.cta2', 'ROI nochmal berechnen')}
               </a>
             </div>
 
-            <div className="mt-12 space-y-1 text-black/50 text-sm">
+            <div className="mt-12 space-y-1 text-sm" style={{ color: 'rgba(0,0,0,0.5)' }}>
               <p>{config.get('final.footer1', 'Keine Langzeit-Bindung. Keine versteckten Kosten.')}</p>
               <p>{config.get('final.footer2', 'Nur ein wissenschaftlich fundiertes 10-Wochen-Programm mit messbaren Ergebnissen.')}</p>
             </div>
