@@ -69,14 +69,15 @@ const RaketenStart = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="bg-black">
+      <div style={{ backgroundColor: '#000000' }}>
         <Section spacing="none" className="pt-40 md:pt-48 pb-20 md:pb-32">
           <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center text-white"
+            className="text-center"
+            style={{ color: '#FFFFFF' }}
           >
             {/* Badge */}
             <motion.div
@@ -230,7 +231,7 @@ const RaketenStart = () => {
       </Section>
 
       {/* 5 Module */}
-      <div className="bg-black">
+      <div style={{ backgroundColor: '#000000' }}>
         <Section spacing="lg">
           <Container>
           <motion.div
@@ -239,10 +240,10 @@ const RaketenStart = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-center" style={{ color: '#FFFFFF' }}>
               {config.get('modules.title', 'Die 5 Module im Detail')}
             </h2>
-            <p className="text-lg md:text-xl text-white/70 mb-16 text-center max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl mb-16 text-center max-w-3xl mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
               {config.get('modules.intro', '5 wissenschaftlich validierte Module für maximale Wirkung in minimaler Zeit')}
             </p>
 
@@ -324,7 +325,7 @@ const RaketenStart = () => {
             </div>
 
             <div className="mt-12 text-center">
-              <p className="text-xl text-white/80 font-bold">
+              <p className="text-xl font-bold" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {config.get('modules.total', 'Gesamt CEO-Zeitaufwand: Nur 28 Stunden über 10 Wochen')}
               </p>
             </div>
@@ -483,7 +484,7 @@ const RaketenStart = () => {
       </div>
 
       {/* Scientific Validation */}
-      <div className="bg-black">
+      <div style={{ backgroundColor: '#000000' }}>
         <Section spacing="lg">
           <Container>
           <motion.div
@@ -493,10 +494,10 @@ const RaketenStart = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4" style={{ color: '#FFFFFF' }}>
               {config.get('validation.title', 'Wissenschaftlich validiert')}
             </h2>
-            <p className="text-lg md:text-xl text-white/70 mb-12">
+            <p className="text-lg md:text-xl mb-12" style={{ color: 'rgba(255,255,255,0.7)' }}>
               {config.get('validation.intro', 'Alle Aussagen und Parameter basieren auf 27 peer-reviewed Studien und 16 Jahren ZOLLERN Case-Dokumentation.')}
             </p>
 
@@ -515,16 +516,17 @@ const RaketenStart = () => {
                   desc: config.get('validation.source3.desc', '30 Jahre Forschungszeitraum')
                 }
               ].map((item, index) => (
-                <div key={index} className="bg-white rounded-xl p-6">
-                  <p className="text-xl font-black text-black mb-2">{item.title}</p>
-                  <p className="text-sm text-black/60">{item.desc}</p>
+                <div key={index} className="rounded-xl p-6" style={{ backgroundColor: '#FFFFFF' }}>
+                  <p className="text-xl font-black mb-2" style={{ color: '#000000' }}>{item.title}</p>
+                  <p className="text-sm" style={{ color: 'rgba(0,0,0,0.6)' }}>{item.desc}</p>
                 </div>
               ))}
             </div>
 
             <Link
               to="/wissenschaftliche-fundierung"
-              className="inline-block bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+              className="inline-block px-10 py-4 rounded-full font-bold text-lg hover:shadow-apple-glow hover:scale-105 transition-all duration-300"
+              style={{ backgroundColor: '#FFFFFF', color: '#000000' }}
             >
               {config.get('validation.cta', 'Vollständige wissenschaftliche Fundierung ansehen')}
             </Link>
