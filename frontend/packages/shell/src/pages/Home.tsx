@@ -60,7 +60,6 @@ const Home = () => {
                 autoPlay
                 muted
                 playsInline
-                poster="/images/peter-eckert-portrait-1.png"
                 preload="auto"
                 onPlay={handleVideoPlay}
                 onPause={handleVideoPause}
