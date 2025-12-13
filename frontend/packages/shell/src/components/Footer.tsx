@@ -131,11 +131,11 @@ const Footer = () => {
             </h4>
             <p className="text-white/80 mb-2">
               <span className="font-semibold text-white">{config.get('footer.email', 'Email')}:</span><br />
-              {config.get('footer.email.address', 'info@eckertpreisser.de')}
+              info@ep-pb.de
             </p>
             <p className="text-white/80 mb-4">
               <span className="font-semibold text-white">{config.get('footer.phone', 'Phone')}:</span><br />
-              {config.get('footer.phone.number', '+49 (0) 123 456789')}
+              +49 1578 9033073
             </p>
             <Link
               to="/status"

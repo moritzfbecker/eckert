@@ -26,7 +26,7 @@ const Contact = () => {
     setSubmitStatus('idle')
 
     // Get company email from same config as footer! (DRY principle)
-    const companyEmail = config.get('footer.email.address', 'info@eckertpreisser.de')
+    const companyEmail = 'info@ep-pb.de'
 
     // Simple email send - just like emailClient.sendEmail() in backend!
     const result = await email.send(
@@ -84,7 +84,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6"
             >
               {config.get('contact.title', 'Contact')}
             </motion.h1>
@@ -106,7 +106,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <div className="bg-black text-white rounded-lg p-8 md:p-12 shadow-elevated hover:shadow-apple-glow transition-all duration-300">
+            <div className="bg-black text-white rounded-lg p-6 sm:p-8 md:p-12 shadow-elevated hover:shadow-apple-glow transition-all duration-300">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
                 {config.get('contact.form.title', 'Send us a message')}
               </h2>

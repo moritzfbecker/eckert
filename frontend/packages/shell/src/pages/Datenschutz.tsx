@@ -143,7 +143,7 @@ const Datenschutz = () => {
                       <p key={`company-${i}`} className="text-white/80">{line}</p>
                     ))}
                     <p className="text-white/80 mt-3 whitespace-pre-line">
-                      {config.get('datenschutz.responsible.contact', 'Phone: +49 (0) 123 456789\nEmail: info@eckertpreisser.de')}
+                      Phone: +49 1578 9033073{'\n'}Email: info@ep-pb.de
                     </p>
                     <p className="text-white/80 leading-relaxed mt-4">
                       {config.get('datenschutz.responsible.content2', 'The responsible party is the natural or legal person who alone or jointly with others determines the purposes and means of the processing of personal data (e.g. names, email addresses, etc.).')}

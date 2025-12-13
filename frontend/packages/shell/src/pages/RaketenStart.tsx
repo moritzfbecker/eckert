@@ -420,7 +420,7 @@ const RaketenStart = () => {
                   </h3>
 
                   {/* Main Results Grid */}
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
                     <div className="rounded-xl p-5 text-center" style={{ backgroundColor: '#000000' }}>
                       <div className="text-xs font-semibold mb-1" style={{ color: 'rgba(255,255,255,0.7)' }}>Gesamt-Benefit</div>
                       <div className="text-2xl md:text-3xl font-black" style={{ color: '#FFFFFF' }}>€{results.totalBenefit.toLocaleString('de-DE')}</div>

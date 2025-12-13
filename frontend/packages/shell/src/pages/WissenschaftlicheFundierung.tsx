@@ -66,7 +66,7 @@ const WissenschaftlicheFundierung = () => {
       {/* Key Statistics */}
       <Section spacing="none" className="pb-20">
         <Container>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
               { number: '27', label: config.get('stats.sources', 'Peer-Reviewed Quellen') },
               { number: '3.000+', label: config.get('stats.companies', 'Validierte Unternehmen') },

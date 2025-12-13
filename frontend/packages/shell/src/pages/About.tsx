@@ -49,7 +49,7 @@ const About = () => {
       <Container>
         {/* Bio Grid: Sidebar + Content */}
         <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-12 md:gap-16 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 md:gap-12 lg:gap-16 mb-20">
             {/* Sidebar */}
             <div>
               <motion.div
@@ -118,7 +118,7 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h1 className="text-4xl md:text-5xl font-black text-black mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-6">
                   {config.get('about.journey.title', 'The Journey from Science to Entrepreneurship to Performance Architecture')}
                 </h1>
                 <p className="text-xl text-black/70 leading-relaxed">

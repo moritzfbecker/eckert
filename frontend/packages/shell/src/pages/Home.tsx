@@ -461,7 +461,7 @@ const Home = () => {
                 transition-all duration-300
               "
             >
-              <div className="text-8xl md:text-9xl font-black text-white mb-4">
+              <div className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white mb-4">
                 {config.get('home.stats.roi', '340%')}
               </div>
               <p className="text-2xl md:text-3xl text-white/80">
