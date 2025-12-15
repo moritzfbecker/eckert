@@ -4,6 +4,27 @@ All frontend-specific changes are documented here.
 
 ---
 
+## [2.22.1] - 2025-12-15
+
+### Fixed
+- **German Navbar Translations** - Corrected German nav labels in common.properties [FRONTEND_I18N_030]
+  - nav.concept: "Concept" → "Konzept"
+  - nav.about: "About" → "Über uns"
+  - nav.contact: "Contact" → "Kontakt"
+
+- **Contact Information** - Updated hardcoded contact details across all pages [FRONTEND_CONTACT_003]
+  - Footer.tsx: Email + Phone updated
+  - Contact.tsx: Form submission email updated
+  - CookiePolicy.tsx: Contact section updated
+  - Datenschutz.tsx: Responsible party contact updated
+  - Email: "info@ep-pb.de" → "kontakt@eckertpreisser.de"
+  - Phone: "+49 1578 9033073" → "07147 960210"
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - i18n Fix + Contact Update
+
+---
+
 ## [2.22.0] - 2025-11-24
 
 ### Added

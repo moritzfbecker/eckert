@@ -391,12 +391,12 @@ const CookiePolicy = () => {
                   <p className="text-black/70">
                     <span className="font-semibold text-black">
                       {config.get('footer.email', 'Email')}:
-                    </span> info@ep-pb.de
+                    </span> kontakt@eckertpreisser.de
                   </p>
                   <p className="text-black/70 mt-2">
                     <span className="font-semibold text-black">
                       {config.get('footer.phone', 'Phone')}:
-                    </span> +49 1578 9033073
+                    </span> 07147 960210
                   </p>
                 </div>
                 <p className="text-white/80 leading-relaxed mt-4">

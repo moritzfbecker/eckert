@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.22.1] - 2025-12-15
+
+### Fixed
+- **German Navbar Translations** - Corrected German navigation labels
+  - "Concept" → "Konzept", "About" → "Über uns", "Contact" → "Kontakt"
+- **Contact Information** - Updated across all pages (Footer, Contact, CookiePolicy, Datenschutz)
+  - Email: kontakt@eckertpreisser.de
+  - Phone: 07147 960210
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - i18n + Contact Fix
+
+---
+
 ## [Frontend 2.22.0] - 2025-11-24
 
 ### Added - Major Content Release 🚀

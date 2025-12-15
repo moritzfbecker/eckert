@@ -26,7 +26,7 @@ const Contact = () => {
     setSubmitStatus('idle')
 
     // Get company email from same config as footer! (DRY principle)
-    const companyEmail = 'info@ep-pb.de'
+    const companyEmail = 'kontakt@eckertpreisser.de'
 
     // Simple email send - just like emailClient.sendEmail() in backend!
     const result = await email.send(
