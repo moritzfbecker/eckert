@@ -420,6 +420,29 @@ const About = () => {
                   <p className="text-sm text-white/80">{config.get('about.zollern.stat4', 'Years SR')}</p>
                 </div>
               </div>
+
+              {/* Management & Shareholders Info */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5">
+                  <p className="text-xs font-bold text-white/60 uppercase tracking-wider mb-2">
+                    {config.get('about.zollern.management.title', 'Geschäftsführung ZOLLERN (1994-2002):')}
+                  </p>
+                  <p className="text-sm text-white/90">
+                    {config.get('about.zollern.management.name', 'Dr. Horst Michael Holzbaur')}
+                  </p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5">
+                  <p className="text-xs font-bold text-white/60 uppercase tracking-wider mb-2">
+                    {config.get('about.zollern.shareholders.title', 'Gesellschafter & Beirat (1994-2002)')}
+                  </p>
+                  <p className="text-sm text-white/90">
+                    {config.get('about.zollern.shareholders.name1', '1. Karl Friedrich von Hohenzollern')}
+                  </p>
+                  <p className="text-sm text-white/90">
+                    {config.get('about.zollern.shareholders.name2', '2. Adolf Merckle (Merckle-Gruppe)')}
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* SECTION 1: Die Ausgangssituation (1994) */}
