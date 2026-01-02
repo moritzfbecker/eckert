@@ -31,7 +31,7 @@ services:
       service-discovery:
         condition: service_healthy
     volumes:
-      - config-data:/app/config  # Docker volume - persistent storage
+      - ../config:/app/config  # Bind mount to local config files (i18n translations)
     networks:
       - eckert-network
     healthcheck:
@@ -225,7 +225,5 @@ networks:
     driver: bridge
 
 volumes:
-  # Config Server persistent storage for configuration files
-  config-data:
   # PostgreSQL persistent storage
   postgres-user-data:

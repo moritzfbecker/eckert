@@ -9,6 +9,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Frontend 2.22.2] - 2026-01-02
+
+### Fixed
+- **Deprecated i18n System Causing 404 Errors** - Fixed old i18n.ts auto-initialization [I18N_DEPRECATE_001]
+  - Removed auto-initialization that called deprecated `/api/i18n/messages/{language}` endpoints
+  - These endpoints no longer exist (replaced by Config API v2.0)
+  - LanguageSwitcher now uses `useTranslation` hook instead of old i18n functions
+  - Root cause: Old i18n.ts was auto-initializing on import and calling non-existent endpoints
+  - Fixes 404 errors in browser console on all pages
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical i18n Fix
+
+---
+
+## [Backend 3.4.2] - 2026-01-02
+
+### Fixed
+- **Docker Config Volume Mount** - Fixed i18n translations not loading on About/Concept pages [CONFIG_DOCKER_001]
+  - Changed from Docker Named Volume (`config-data`) to Bind Mount (`../config:/app/config`)
+  - Config-Server now correctly loads German/English translation files
+  - Removed unused `config-data` volume definition
+  - Root cause: Named Volume was empty, translations couldn't be loaded
+
+**Author**: Moritz F. Becker - Helped by Claude AI
+**Type**: PATCH - Critical i18n Fix
+
+---
+
 ## [Frontend 2.22.1] - 2025-12-15
 
 ### Fixed

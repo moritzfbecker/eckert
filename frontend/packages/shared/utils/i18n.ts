@@ -181,18 +181,19 @@ export const isI18nInitialized = (): boolean => {
   return isInitialized;
 };
 
-// Auto-initialize on import
+// DEPRECATED: Auto-initialization removed!
+// This file is deprecated. Use I18nContext + useConfig instead.
+// The old /api/i18n/messages endpoints no longer exist.
+// See I18nContext.tsx and useConfig.ts for the new Config API v2.0 system.
+//
+// If you need language state: import { useTranslation } from '@eckert-preisser/shared/hooks';
+// If you need translations: import { useConfig } from '@eckert-preisser/shared/hooks';
+
 if (typeof window !== 'undefined') {
-  // Check for saved language preference
+  // Only load saved language preference, NO backend calls!
   const savedLanguage = localStorage.getItem('language');
   if (savedLanguage && (savedLanguage === 'de' || savedLanguage === 'en')) {
     currentLanguage = savedLanguage;
   }
-
-  // Initialize from backend
-  // CRITICAL: No fallback translations loaded here!
-  // All translations MUST come from backend config system
-  initI18n().catch((error) => {
-    logger.error('I18N_INIT_ERR_002', 'Critical: Failed to initialize i18n', error);
-  });
+  // REMOVED: initI18n() call - old endpoints don't exist anymore!
 }

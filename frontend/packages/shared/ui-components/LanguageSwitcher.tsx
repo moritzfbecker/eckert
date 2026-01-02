@@ -1,27 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { changeLanguage, getCurrentLanguage, getAvailableLanguages } from '../utils/i18n';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Language Switcher Component
  *
  * Allows users to switch between German and English
+ * Uses I18nContext (Config API v2.0) for language management
  */
 export const LanguageSwitcher: React.FC = () => {
-  const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
-  const languages = getAvailableLanguages();
+  const { language, changeLanguage } = useTranslation();
 
-  useEffect(() => {
-    const handleLanguageChange = (event: CustomEvent) => {
-      setCurrentLang(event.detail.language);
-    };
-
-    window.addEventListener('languageChanged', handleLanguageChange as EventListener);
-
-    return () => {
-      window.removeEventListener('languageChanged', handleLanguageChange as EventListener);
-    };
-  }, []);
+  const languages = [
+    { code: 'de', name: 'Deutsch' },
+    { code: 'en', name: 'English' },
+  ];
 
   const handleLanguageChange = (langCode: string) => {
     changeLanguage(langCode);
@@ -38,7 +31,7 @@ export const LanguageSwitcher: React.FC = () => {
           className={`
             px-3 py-1 rounded-md text-sm font-medium transition-all duration-300
             ${
-              currentLang === lang.code
+              language === lang.code
                 ? 'bg-black text-white'
                 : 'bg-white text-black border border-black/20 hover:bg-apple-gradient hover:text-white hover:border-transparent'
             }
