@@ -128,6 +128,13 @@ class FrontendConfig {
     return this.loaded
   }
 
+  /**
+   * Check if config has any values loaded (not empty)
+   */
+  hasValues(): boolean {
+    return this.values.size > 0
+  }
+
   getCategory(): string {
     return this.category
   }
@@ -176,12 +183,13 @@ export function useConfig(category: string, language: string | null = null): Fro
 
   // Load from backend on mount AND when language changes!
   useEffect(() => {
-    // Always reload config when language changes (even if cached!)
+    // Check if we already have this config cached AND loaded
     const currentConfig = configCache.get(cacheKey)!
 
-    if (currentConfig.isLoaded()) {
+    // If already loaded with values, just trigger re-render
+    if (currentConfig.isLoaded() && currentConfig.hasValues()) {
       setIsLoading(false)
-      setUpdateTrigger(prev => prev + 1) // Force re-render!
+      setUpdateTrigger(prev => prev + 1) // Force re-render with cached values!
       return
     }
 
