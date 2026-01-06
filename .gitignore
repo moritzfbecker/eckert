@@ -74,14 +74,27 @@ secrets/
 *.pem
 *.crt
 
-# Config (NEVER commit config files!)
-# Only ignore root config directory, not Java config packages!
-/config/
+# Config (Sensitive configs only!)
+# Only ignore sensitive config files, NOT i18n translations!
+/config/*.yml
+/config/database.yml
+/config/mail.yml
+/config/application.yml
+# BUT allow i18n translations (needed for production!)
+!/config/i18n/
+!/config/i18n/**
+
+# YAML files (except allowed ones)
 *.yml
 !**/src/**/application.yml
 !**/src/**/logback*.xml
+!/config/i18n/**/*.yml
+!backend/docker-compose.yml
+
+# Properties files (except allowed ones)
 *.properties
 !**/src/**/application*.properties
+!/config/i18n/**/*.properties
 
 # Compiled
 *.class
